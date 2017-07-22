@@ -3,10 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 Vue.config.productionTip = false
-// import VueGoodTable from '../../src/index.js'
-import VueGoodTable from '../../dist/vue-good-table.js'
+import facebookLogin from '../../src/index.js'
 
-Vue.use(VueGoodTable)
+Vue.use(facebookLogin)
 
 /* eslint-disable no-new */
 window.Vue = new Vue({

@@ -1,5 +1,4 @@
 import facebookLogin from './components/facebook-login.vue'
-console.log(facebookLogin)
 const facebookLoginPlugin = {
   install: function (Vue, options) {
     Vue.component(facebookLogin.name, facebookLogin)
