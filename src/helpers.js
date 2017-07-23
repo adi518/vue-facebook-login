@@ -5,7 +5,7 @@ export function loadFbSdk(appId, version) {
     window.fbAsyncInit = function () { // eslint-disable-line func-names
       FB.init({
         appId,
-        xfbml: true,
+        xfbml: false,
         version,
         cookie: true
       });

@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     buttonClicked() {
-      // this.props.onClick();
+      this.onClick();
       if (this.isConnected) {
         this.logout();
       } else {
@@ -47,7 +47,7 @@ export default {
           console.info('logout response', response);
           this.isWorking = false;
           this.isConnected = false;
-          // this.props.onLogoutEvent(response);
+          this.onLogoutEvent(response);
         }
         );
     },
@@ -62,7 +62,8 @@ export default {
             this.isConnected = false;
           }
           this.isWorking = false;
-          // this.props.onLoginEvent(response);
+          debugger;
+          this.onLoginEvent(response);
         });
     }
   },
@@ -73,7 +74,7 @@ export default {
     },
     version: {
       type: String,
-      default: 'v2.9'
+      default: 'v2.10'
     },
     logoutLabel: {
       type: String,
@@ -90,6 +91,22 @@ export default {
           scope: 'email'
         }
       }
+    },
+    onClick: {
+      type: Function,
+      default: () => { }
+    },
+    onLoginEvent: {
+      type: Function,
+      default: () => { }
+    },
+    onLogoutEvent: {
+      type: Function,
+      default: () => { }
+    },
+    onWillMount: {
+      type: Function,
+      default: () => { }
     }
   },
   mounted() {
@@ -104,7 +121,7 @@ export default {
           this.isConnected = true;
         }
         this.isWorking = false;
-        // this.props.onWillMount(response);
+        this.onWillMount(response);
       });
 
   }
@@ -120,7 +137,7 @@ button {
   line-height: 34px;
   font-size: 16px;
   color: #FFF;
-  min-width:225px;
+  min-width: 225px;
   background-image: linear-gradient(#4C69BA, #3B55A0);
 }
 
@@ -137,11 +154,10 @@ button {
 }
 
 img {
-    position: absolute;
-    top: 3px;
-    left: 10px;
-    width: 30px;
-
+  position: absolute;
+  top: 3px;
+  left: 10px;
+  width: 30px;
 }
 
 @keyframes spin {
