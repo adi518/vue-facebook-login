@@ -1,15 +1,14 @@
 <template>
   <div id="app">
-    <facebookLogin appId="326022817735322">
-    </facebookLogin>
+     <facebook-login appId="326022817735322">
+    </facebook-login>
   </div>
 </template>
 
 <script>
-import facebookLogin from './facebook-login.vue'
+
 export default {
-  name: 'app-app',
-  components: { facebookLogin }
+  name: 'app-app'
 }
 </script>
 
