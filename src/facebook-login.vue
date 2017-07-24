@@ -61,7 +61,6 @@ export default {
             this.isConnected = false;
           }
           this.isWorking = false;
-          debugger;
           this.onLoginEvent(response);
         });
     }

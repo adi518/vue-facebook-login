@@ -69,6 +69,8 @@ export default {
 .information {
   margin-top: 100px;
   margin: auto;
+  display:flex;
+  flex-direction: column;
 }
 
 .well {
@@ -81,6 +83,9 @@ export default {
 .login {
   width:200px;
   margin:auto;
+}
+.list-item:first-child {
+  margin:0;
 }
 .list-item {
   display: flex;

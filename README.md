@@ -1,3 +1,8 @@
+Prologue
+======
+Re-write to VueJs Component. Based [on my same component](https://www.npmjs.com/package/facebook-login-redux-react) that was written in react.
+
+
 Contribute
 ======
 I welcome any kind of contributions/requests/questions/general feedback.
@@ -14,7 +19,7 @@ Example
 ======
 source code of the example can be found in [example](https://github.com/iliran11/facebook-login-vue/tree/master/example) folder.
 the actual component is just the button (:
-![app preview](http://i.imgur.com/FuSVydj.gif "")
+![app preview](http://i.imgur.com/YhzfUkI.gif "")
 
 
 
@@ -28,8 +33,27 @@ npm i facebook-login-vuejs
 Usage
 ======
 
+**main.js**
+
+```javascript
+import facebookLogin from '../../src/index.js'
+Vue.use(facebookLogin)
+```
+
+**my-component.vue**
+
+
+```xml
+    <facebook-login class="button"
+     appId="326022817735322"
+     :onLoginEvent="getInitialInformation"
+     :onWillMount="getInitialInformation"
+     :onLogoutEvent="onLogout">
+    </facebook-login>
+```
+
 Props
-------
+======
 
 
 | Props 	| Type 	| Default 	| Notes 	|
@@ -45,20 +69,6 @@ Props
 | onLoginEvent 	| function 	|  	|  	|
 | onLogoutEvent 	| function 	|  	|  	|
 
-
-
-Example:
-------
-
-
-```xml
-    <facebook-login class="button"
-     appId="326022817735322"
-     :onLoginEvent="getInitialInformation"
-     :onWillMount="getInitialInformation"
-     :onLogoutEvent="onLogout">
-    </facebook-login>
-```
 Development
 ======
 
