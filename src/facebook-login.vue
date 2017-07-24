@@ -6,7 +6,6 @@
     </button>
   </div>
 </template>
-
 <script>
 import { loadFbSdk, getLoginStatus, fbLogout, fbLogin } from './helpers.js'
 import icon from './icon.png'
@@ -123,7 +122,6 @@ export default {
         this.isWorking = false;
         this.onWillMount(response);
       });
-
   }
 }
 </script>

@@ -1,30 +1,70 @@
-# facebook-login-vue
+Contribute
+======
+I welcome any kind of contributions/requests/questions/general feedback.
+possible methods to contact me:
 
-> A Vue.js project
+1. [open an Issue](https://github.com/iliran11/facebook-login-vue/issues)
+2. send me a mail: iliran11@gmail.com
+3. [contact me on facebook](https://www.facebook.com/Liran.Co.1984)
 
-## Build Setup
+[![npm](https://img.shields.io/npm/dm/facebook-login-redux-react.svg)](https://www.npmjs.com/package/facebook-login-redux-react)
 
-``` bash
-# install dependencies
-npm install
 
-# serve with hot reload at localhost:8080
-npm run dev
+Example
+======
+source code of the example can be found in [example](https://github.com/iliran11/facebook-login-vue/tree/master/example) folder.
+the actual component is just the button (:
+![app preview](http://i.imgur.com/FuSVydj.gif "")
 
-# build for production with minification
-npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
 
-# run unit tests
-npm run unit
+Installation
+======
 
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+```
+npm i facebook-login-vuejs
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+Usage
+======
+
+Props
+------
+
+
+| Props 	| Type 	| Default 	| Notes 	|
+|---------------	|----------	|---------------------------------------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+| appId 	| string 	| None.It is a required prop. 	|  	|
+| version 	| string 	| 'v2.9' 	| refer to [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for explanation on available values 	|
+| loginLabel 	| string 	| Log In To Facebook 	|  	|
+| loginOptions 	| object 	| {scope: 'email'} 	| all options listed on [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/v2.9) are passable with camelCase. e.g : {returnScopes: false} 	|
+| logoutLabel 	| string 	| Log out from Facebook 	|   	|
+| verbose 	| boolean 	| false 	|  	|
+| onWillMount 	| function 	|  	|  	|
+| onClick 	| function 	|  	| will execute before the onLoginEvent/onLogoutEvent. useful for triggering the fetching event for redux store. 	|
+| onLoginEvent 	| function 	|  	|  	|
+| onLogoutEvent 	| function 	|  	|  	|
+
+
+
+Example:
+------
+
+
+```xml
+    <facebook-login class="button"
+     appId="326022817735322"
+     :onLoginEvent="getInitialInformation"
+     :onWillMount="getInitialInformation"
+     :onLogoutEvent="onLogout">
+    </facebook-login>
+```
+Development
+======
+
+- running the example on dev server `npm start`. this will run the example app, which is configured for redux,
+
+Tests
+======
+
+tests will be added hopefully soon.

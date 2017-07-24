@@ -1,22 +1,23 @@
 <template>
   <div id="app">
-    <facebook-login appId="326022817735322" :onLoginEvent="getInitialInformation" :onWillMount="getInitialInformation" :onLogoutEvent="onLogout"
-    logoutLabel="bye bye!"
-    loginLabel="hi!"
-    >
+    <facebook-login class="button" appId="326022817735322" :onLoginEvent="getInitialInformation" :onWillMount="getInitialInformation" :onLogoutEvent="onLogout">
     </facebook-login>
-    <div v-if="isConnected" class="well">
-      <div class="list-item">
-        <img :src="loginImage">
-        <i>{{name}}</i>
-      </div>
-      <div class="list-item">
-        <img :src="mailImage">
-        <i>{{email}}</i>
-      </div>
-      <div class="list-item">
-        <img :src="faceImage">
-        <i>{{personalID}}</i>
+    <img v-if="!isConnected" :src="loginImage" class="login">
+    <div v-if="isConnected" class="information">
+      <h1>My Facebook Information</h1>
+      <div class="well">
+        <div class="list-item">
+          <img :src="loginImage">
+          <i>{{name}}</i>
+        </div>
+        <div class="list-item">
+          <img :src="mailImage">
+          <i>{{email}}</i>
+        </div>
+        <div class="list-item">
+          <img :src="faceImage">
+          <i>{{personalID}}</i>
+        </div>
       </div>
     </div>
   </div>
@@ -51,8 +52,8 @@ export default {
         )
       }
     },
-    onLogout(){
-      this.isConnected=false;
+    onLogout() {
+      this.isConnected = false;
     }
   }
 }
@@ -65,18 +66,29 @@ export default {
   align-items: flex-start
 }
 
+.information {
+  margin-top: 100px;
+  margin: auto;
+}
+
 .well {
   background-color: rgb(191, 238, 229);
   margin: auto;
-  padding: 50px;
+  padding: 50px 50px;;
   border-radius: 20px;
-  margin-top: 100px;
   /* display:inline-block; */
 }
-
+.login {
+  width:200px;
+  margin:auto;
+}
 .list-item {
   display: flex;
   align-items: center;
   margin-top: 20px;
+}
+
+.button {
+  margin: auto;
 }
 </style>
