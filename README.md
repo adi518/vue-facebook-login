@@ -12,8 +12,6 @@ possible methods to contact me:
 2. send me a mail: iliran11@gmail.com
 3. [contact me on facebook](https://www.facebook.com/Liran.Co.1984)
 
-[![npm](https://img.shields.io/npm/dm/facebook-login-redux-react.svg)](https://www.npmjs.com/package/facebook-login-redux-react)
-
 
 Example
 ======
@@ -36,7 +34,7 @@ Usage
 **main.js**
 
 ```javascript
-import facebookLogin from '../../src/index.js'
+import facebookLogin from 'facebook-login-vuejs'
 Vue.use(facebookLogin)
 ```
 
@@ -72,7 +70,7 @@ Props
 Development
 ======
 
-- running the example on dev server `npm start`. this will run the example app, which is configured for redux,
+- running the example on dev server `npm start`. this will run the example app.
 
 Tests
 ======
