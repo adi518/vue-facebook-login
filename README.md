@@ -17,7 +17,7 @@ Installation
 npm i facebook-login-vuejs
 ```
 
-Usage
+Example Usage
 ======
 
 **main.js**
@@ -37,10 +37,10 @@ Vue.component('my-component', {
 
 ```xml
     <facebook-login class="button"
-     appId="326022817735322"
-     :onLoginEvent="getInitialInformation"
-     :onWillMount="getInitialInformation"
-     :onLogoutEvent="onLogout">
+      appId="326022817735322"
+      @login="getUserData"
+      @logout="onLogout"
+      @get-initial-status="getUserData">
     </facebook-login>
 ```
 
