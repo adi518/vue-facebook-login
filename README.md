@@ -20,7 +20,7 @@ npm i facebook-login-vuejs
 Example Usage
 ======
 
-**main.js**
+**my-component.vue**
 
 ```javascript
 import facebookLogin from 'facebook-login-vuejs';
@@ -31,9 +31,6 @@ Vue.component('my-component', {
     }
 });
 ```
-
-**my-component.vue**
-
 
 ```xml
     <facebook-login class="button"
