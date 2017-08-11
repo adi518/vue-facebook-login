@@ -3,9 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 Vue.config.productionTip = false
-import facebookLogin from '../../src/index.js'
-
-Vue.use(facebookLogin)
 
 /* eslint-disable no-new */
 window.Vue = new Vue({

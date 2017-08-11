@@ -1,9 +1,16 @@
 <template>
   <div id="app">
-    <facebook-login class="button" appId="326022817735322" :onLoginEvent="getInitialInformation" :onWillMount="getInitialInformation" :onLogoutEvent="onLogout">
+    <facebook-login class="button"
+      appId="326022817735322"
+      @login="getUserData"
+      @logout="onLogout"
+      @get-initial-status="getUserData">
     </facebook-login>
-    <img v-if="!isConnected" :src="loginImage" class="login">
-    <div v-if="isConnected" class="information">
+    <img v-if="!isConnected"
+      :src="loginImage"
+      class="login">
+    <div v-if="isConnected"
+      class="information">
       <h1>My Facebook Information</h1>
       <div class="well">
         <div class="list-item">
@@ -24,6 +31,7 @@
 </template>
 
 <script>
+import facebookLogin from '../../src/index.js'
 import idImage from './id.svg'
 import loginImage from './login.svg'
 import mailImage from './mail.svg'
@@ -39,9 +47,10 @@ export default {
       personalID: ''
     }
   },
+  components: { facebookLogin },
   methods: {
-    getInitialInformation: function (response) {
-      if (response.status === "connected") {
+    getUserData(loginResponse) {
+      if (loginResponse.status === "connected") {
         this.isConnected = true;
         FB.api('/me', 'GET', { fields: 'id,name,email' },
           userInformation => {
@@ -69,24 +78,28 @@ export default {
 .information {
   margin-top: 100px;
   margin: auto;
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
 .well {
   background-color: rgb(191, 238, 229);
   margin: auto;
-  padding: 50px 50px;;
+  padding: 50px 50px;
+  ;
   border-radius: 20px;
   /* display:inline-block; */
 }
+
 .login {
-  width:200px;
-  margin:auto;
+  width: 200px;
+  margin: auto;
 }
+
 .list-item:first-child {
-  margin:0;
+  margin: 0;
 }
+
 .list-item {
   display: flex;
   align-items: center;

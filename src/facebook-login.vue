@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <button @click="buttonClicked">
-      <div class="spinner" v-if="isWorking"> </div>
-      <img :src="icon" v-if="!isWorking"> {{getButtonText}}
+      <div class="spinner"
+        v-if="isWorking"> </div>
+      <img :src="icon"
+        v-if="!isWorking"> {{getButtonText}}
     </button>
   </div>
 </template>
@@ -32,7 +34,7 @@ export default {
   },
   methods: {
     buttonClicked() {
-      this.onClick();
+      this.$emit('click')
       if (this.isConnected) {
         this.logout();
       } else {
@@ -43,10 +45,9 @@ export default {
       this.isWorking = true;
       fbLogout()
         .then(response => {
-          console.info('logout response', response);
           this.isWorking = false;
           this.isConnected = false;
-          this.onLogoutEvent(response);
+          this.$emit('logout', response)
         }
         );
     },
@@ -54,14 +55,13 @@ export default {
       this.isWorking = true;
       fbLogin(this.loginOptions)
         .then(response => {
-          console.info('login response', response);
           if (response.status === 'connected') {
             this.isConnected = true;
           } else {
             this.isConnected = false;
           }
           this.isWorking = false;
-          this.onLoginEvent(response);
+          this.$emit('login', response)
         });
     }
   },
@@ -89,29 +89,12 @@ export default {
           scope: 'email'
         }
       }
-    },
-    onClick: {
-      type: Function,
-      default: () => { }
-    },
-    onLoginEvent: {
-      type: Function,
-      default: () => { }
-    },
-    onLogoutEvent: {
-      type: Function,
-      default: () => { }
-    },
-    onWillMount: {
-      type: Function,
-      default: () => { }
     }
   },
   mounted() {
     this.isWorking = true;
     loadFbSdk(this.appId, this.version)
       .then(loadingResult => {
-        console.info(loadingResult, window.FB);
       })
       .then(() => getLoginStatus())
       .then(response => {
@@ -119,7 +102,7 @@ export default {
           this.isConnected = true;
         }
         this.isWorking = false;
-        this.onWillMount(response);
+        this.$emit('get-initial-status', response);
       });
   }
 }
