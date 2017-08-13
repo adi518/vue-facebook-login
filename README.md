@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/dm/facebook-login-vuejs.svg)](https://www.npmjs.com/package/facebook-login-vuejs)
+
 Description
 ======
 Vue Component that  lets you drop it into your existing project and get the benefits of Facebook Login quickly.
