@@ -2,9 +2,9 @@
   <div id="app">
     <facebook-login class="button"
       appId="326022817735322"
-      @login="getUserData"
+      @login="onLogin"
       @logout="onLogout"
-      @get-initial-status="getUserData">
+      @sdk-loaded="sdkLoaded">
     </facebook-login>
     <img v-if="!isConnected"
       :src="loginImage"
@@ -44,22 +44,29 @@ export default {
       isConnected: false,
       name: '',
       email: '',
-      personalID: ''
+      personalID: '',
+      FB: undefined
     }
   },
   components: { facebookLogin },
   methods: {
-    getUserData(loginResponse) {
-      if (loginResponse.status === "connected") {
-        this.isConnected = true;
-        FB.api('/me', 'GET', { fields: 'id,name,email' },
-          userInformation => {
-            this.personalID = userInformation.id;
-            this.email = userInformation.email;
-            this.name = userInformation.name;
-          }
-        )
-      }
+    getUserData() {
+      this.FB.api('/me', 'GET', { fields: 'id,name,email' },
+        userInformation => {
+          this.personalID = userInformation.id;
+          this.email = userInformation.email;
+          this.name = userInformation.name;
+        }
+      )
+    },
+    sdkLoaded(payload) {
+      this.isConnected = payload.isConnected
+      this.FB = payload.FB
+      if (this.isConnected) this.getUserData()
+    },
+    onLogin() {
+      this.isConnected = true
+      this.getUserData()
     },
     onLogout() {
       this.isConnected = false;

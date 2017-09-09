@@ -60,7 +60,8 @@ Events
 
 | Event              | Output | Description                                                 |
 |--------------------|--------|-------------------------------------------------------------|
-| get-initial-status | Object | Initial Check to decide weather the user already connected. |
+| get-initial-status | Object | TO BE DEPRECATED. Initial Check to decide weather the user already connected. |
+| sdkLoaded | Object | returns an object with the following keys: <br> <b>isConnected</b>: Boolean. is the User conneted? <br> <b>FB:</b> the api object. |
 | click              |        | The Component has been clicked.                             |
 | login              | Object | User tried to login                                         |
 | logout             | Object | User tried to logout                                        |

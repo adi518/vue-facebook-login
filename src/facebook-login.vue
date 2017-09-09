@@ -61,7 +61,10 @@ export default {
             this.isConnected = false;
           }
           this.isWorking = false;
-          this.$emit('login', response)
+          this.$emit('login', {
+            response,
+            FB: window.FB
+          })
         });
     }
   },
@@ -84,7 +87,7 @@ export default {
     },
     loginOptions: {
       type: Object,
-      default: function () {
+      default: function() {
         return {
           scope: 'email'
         }
@@ -102,7 +105,12 @@ export default {
           this.isConnected = true;
         }
         this.isWorking = false;
+        /** get-initial-status to be depcreated on next major version */
         this.$emit('get-initial-status', response);
+        this.$emit('sdk-loaded', {
+          isConnected: this.isConnected,
+          FB: window.FB
+        })
       });
   }
 }
