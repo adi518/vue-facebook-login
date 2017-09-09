@@ -22,7 +22,7 @@ export function loadFbSdk(appId, version) {
   });
 }
 
-export function getLoginStatus() {
+export function getFbLoginStatus() {
   return new Promise(resolve => {
     window.FB.getLoginStatus(responseStatus => {
       resolve(responseStatus);

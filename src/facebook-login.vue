@@ -92,16 +92,6 @@ export default {
         this.login()
       }
     },
-    logout() {
-      this.isWorking = true
-      fbLogout()
-        .then(response => {
-          this.isWorking = false
-          this.isConnected = false
-          this.$emit('logout', response)
-        }
-        )
-    },
     login() {
       this.isWorking = true
       fbLogin(this.loginOptions)
@@ -117,6 +107,16 @@ export default {
             FB: window.FB
           })
         })
+    },
+    logout() {
+      this.isWorking = true
+      fbLogout()
+        .then(response => {
+          this.isWorking = false
+          this.isConnected = false
+          this.$emit('logout', response)
+        }
+        )
     }
   }
 }
