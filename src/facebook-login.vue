@@ -78,11 +78,11 @@ export default {
     },
     logoutLabel: {
       type: String,
-      default: 'Logout from Facebook'
+      default: 'Log out from Facebook'
     },
     loginLabel: {
       type: String,
-      default: 'Login to Facebook'
+      default: 'Log in to Facebook'
     },
     loginOptions: {
       type: Object,
