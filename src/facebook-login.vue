@@ -1,73 +1,26 @@
 <template>
-  <div class="container">
+  <div class="facebook-login">
     <button @click="buttonClicked">
-      <div class="spinner"
-        v-if="isWorking"> </div>
-      <img :src="icon"
-        v-if="!isWorking"> {{getButtonText}}
+      <i class="spinner" v-if="isWorking"></i>
+      <img :src="icon" v-if="!isWorking">{{getButtonText}}
     </button>
   </div>
 </template>
+
 <script>
-import { loadFbSdk, getLoginStatus, fbLogout, fbLogin } from './helpers.js'
+// Helpers
+import {
+  loadFbSdk,
+  getFbLoginStatus,
+  fbLogout,
+  fbLogin
+} from './helpers.js'
+
+// Resources
 import icon from './icon.png'
+
 export default {
   name: 'facebook-login',
-  data() {
-    return {
-      isWorking: false,
-      isConnected: false,
-      icon
-    }
-  },
-  computed: {
-    getButtonText() {
-      switch (this.isConnected) {
-        case true:
-          return this.logoutLabel;
-        case false:
-          return this.loginLabel;
-        default:
-          return 'this is default';
-      }
-    }
-  },
-  methods: {
-    buttonClicked() {
-      this.$emit('click')
-      if (this.isConnected) {
-        this.logout();
-      } else {
-        this.login();
-      }
-    },
-    logout() {
-      this.isWorking = true;
-      fbLogout()
-        .then(response => {
-          this.isWorking = false;
-          this.isConnected = false;
-          this.$emit('logout', response)
-        }
-        );
-    },
-    login() {
-      this.isWorking = true;
-      fbLogin(this.loginOptions)
-        .then(response => {
-          if (response.status === 'connected') {
-            this.isConnected = true;
-          } else {
-            this.isConnected = false;
-          }
-          this.isWorking = false;
-          this.$emit('login', {
-            response,
-            FB: window.FB
-          })
-        });
-    }
-  },
   props: {
     appId: {
       type: String,
@@ -83,7 +36,7 @@ export default {
     },
     loginLabel: {
       type: String,
-      default: 'Log In To Facebook'
+      default: 'Log in to Facebook'
     },
     loginOptions: {
       type: Object,
@@ -94,61 +47,120 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      isWorking: false,
+      isConnected: false,
+      icon
+    }
+  },
   mounted() {
-    this.isWorking = true;
+    this.isWorking = true
     loadFbSdk(this.appId, this.version)
-      .then(loadingResult => {
-      })
-      .then(() => getLoginStatus())
+      .then(getFbLoginStatus)
       .then(response => {
         if (response.status === 'connected') {
-          this.isConnected = true;
+          this.isConnected = true
         }
-        this.isWorking = false;
-        /** get-initial-status to be depcreated on next major version */
-        this.$emit('get-initial-status', response);
+        this.isWorking = false
+        /** Event `get-initial-status` to be deprecated in next major version! */
+        this.$emit('get-initial-status', response)
         this.$emit('sdk-loaded', {
           isConnected: this.isConnected,
           FB: window.FB
         })
-      });
+      })
+  },
+  computed: {
+    getButtonText() {
+      switch (this.isConnected) {
+        case true:
+          return this.logoutLabel
+        case false:
+          return this.loginLabel
+        default:
+          return 'this is default'
+      }
+    }
+  },
+  methods: {
+    buttonClicked() {
+      this.$emit('click')
+      if (this.isConnected) {
+        this.logout()
+      } else {
+        this.login()
+      }
+    },
+    login() {
+      this.isWorking = true
+      fbLogin(this.loginOptions)
+        .then(response => {
+          if (response.status === 'connected') {
+            this.isConnected = true
+          } else {
+            this.isConnected = false
+          }
+          this.isWorking = false
+          this.$emit('login', {
+            response,
+            FB: window.FB
+          })
+        })
+    },
+    logout() {
+      this.isWorking = true
+      fbLogout()
+        .then(response => {
+          this.isWorking = false
+          this.isConnected = false
+          this.$emit('logout', response)
+        }
+        )
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-button {
-  position: relative;
-  padding: 0 15px 0px 46px;
-  border: none;
-  line-height: 34px;
-  font-size: 16px;
-  color: #FFF;
-  min-width: 225px;
-  background-image: linear-gradient(#4C69BA, #3B55A0);
+.facebook-login {
+  box-sizing: border-box;
 }
 
-.spinner {
-  box-sizing: border-box;
+.facebook-login * {
+  box-sizing: inherit;
+}
+
+.facebook-login button {
+  border: none;
+  color: #fff;
+  position: relative;
+  line-height: 34px;
+  min-width: 225px;
+  padding: 0 15px 0px 46px;
+  background-image: linear-gradient(#4c69ba, #3b55a0);
+}
+
+.facebook-login .spinner {
+  left: 5px;
   width: 30px;
   height: 90%;
+  display: block;
   border-radius: 50%;
-  border: 5px solid #f3f3f3;
-  border-top: 5px solid #3498db;
-  animation: spin 2s linear infinite;
   position: absolute;
-  left: 5px;
+  border: 5px solid #f3f3f3;
+  border-top-color: #3498db;
+  animation: facebook-login-spin 2s linear infinite;
 }
 
-img {
+.facebook-login img {
   position: absolute;
   top: 3px;
   left: 10px;
   width: 30px;
 }
 
-@keyframes spin {
+@keyframes facebook-login-spin {
   0% {
     transform: rotate(0deg);
   }
