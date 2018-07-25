@@ -6,12 +6,14 @@
   "main": "./dist/facebook-login.min.js",
   "private": false,
   "scripts": {
-    "start": "npm run example",
-    "example": "cd .\\example\\ && npm run dev",
+    "start": "cd ./example && npm start",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "link": "cd ./example && npm link facebook-login-vuejs",
+    "predocs": "npm run link",
+    "docs": "npm start --prefix ./example",
     "bundle:min": "cross-env MINIFY=true webpack --progress --config build/webpack.bundle.conf.js",
     "bundle:full": "cross-env MINIFY=false webpack --progress --config build/webpack.bundle.conf.js",
     "bundle": "npm run bundle:min && npm run bundle:full"
