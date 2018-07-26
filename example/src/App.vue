@@ -15,9 +15,9 @@
         @sdk-loaded="handleSdk">
       </v-facebook-login>
 
-      <!-- DEMO:PROFILE -->
+      <!-- DEMO:USER -->
       <div
-        class="docs-profile mb-3"
+        class="docs-user mb-3"
         :style="computed.picture && `background-image: url(${computed.picture})`">
         <template v-if="computed.nopicture">{{ computed.name }}</template>        
       </div>
@@ -68,23 +68,25 @@ export default {
       FB: {},
       model: {}
     },
-    profile: {}
+    user: {}
   }),
   computed: {
     computed() {
-      const name = this.profile.name
-      const picture = typy(this.profile, 'picture.data.url').safeString
+      const name = this.user.name
+      const picture = typy(this.user, 'picture.data.url').safeString
       const nopicture = !picture
       return { name, picture, nopicture }
     }
   },
   methods: {
     getUserData() {
-      this.facebook.FB.api(
-        '/me',
-        { fields: 'name, picture' },
-        response => (this.profile = response)
-      )
+      const { api } = this.facebook.FB
+      api('/me', { fields: 'id, name' }, response => {
+        this.user = response
+        api(`${this.user.id}/picture?width=9999&redirect=false`, response => {
+          this.$set(this.user, 'picture', response)
+        })
+      })
     },
     handleSdk({ FB, isConnected }) {
       this.facebook.FB = FB
@@ -215,9 +217,9 @@ p {
   }
 }
 
-.docs-profile {
-  width: 50px;
-  height: 50px;
+.docs-user {
+  width: 6rem;
+  height: 6rem;
   padding: 0.5rem;
   border-radius: 50%;
   background-color: rgba(28, 40, 76, 0.5);
