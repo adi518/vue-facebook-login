@@ -81,10 +81,10 @@ export default {
   methods: {
     getUserData() {
       const { api } = this.facebook.FB
-      api('/me', { fields: 'id, name' }, response => {
-        this.user = response
-        api(`${this.user.id}/picture?width=9999&redirect=false`, response => {
-          this.$set(this.user, 'picture', response)
+      api('/me', { fields: 'id, name' }, user => {
+        this.user = user
+        api(`${this.user.id}/picture?width=9999&redirect=false`, picture => {
+          this.$set(this.user, 'picture', picture)
         })
       })
     },
