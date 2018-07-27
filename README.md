@@ -2,8 +2,8 @@
 `npm install`
 
 # Development
-* Run `npm start` to for component source.
-* Run `npm run docs` to for documentation source.
+* Run `npm start` for component development.
+* Run `npm run docs` for documentation development.
 
 # Build
 `npm run build`
