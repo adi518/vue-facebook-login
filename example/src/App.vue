@@ -14,7 +14,6 @@
         app-id="326022817735322"
         @sdk-loaded="handleSdk">
       </v-facebook-login>
-
       <!-- DEMO:USER -->
       <div
         class="docs-user mb-3"
