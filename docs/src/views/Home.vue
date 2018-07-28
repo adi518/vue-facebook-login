@@ -1,58 +1,94 @@
 <template>
-  <div class="docs-demo">
-    <img class="docs-github-anchor" src="octocat.png">
-    <img class="vue-logo mb-1" style="width: 4rem" src="vue-fb.svg">
-    <h1>Vue Facebook Login</h1>
-    <p class="docs-tagline text-center mb-2">
-      Integrate Facebook into your application faster than the sun.
-    </p>
-    <!-- DEMO -->
-    <v-facebook-login
-      :value="facebook.model"
-      class="docs-facebook-button mb-3"
-      app-id="326022817735322"
-      @sdk-loaded="handleSdk">
-    </v-facebook-login>
-    <!-- DEMO:USER -->
-    <div
-      class="docs-user mb-3"
-      :style="computed.picture && `background-image: url(${computed.picture})`">
-      <template v-if="computed.nopicture">{{ computed.name }}</template>        
-    </div>
-    <!-- GITHUB STAR -->
-    <p class="mb-3">
-      <a
-        class="github-button"
-        href="https://github.com/iliran11/facebook-login-vue"
-        data-icon="octicon-star"
-        data-show-count="true"
-        aria-label="Star adi518/vue-breakpoint-component on GitHub"
-      >Star</a>
-    </p>
-    <!-- CREDIT -->
-    <div class="docs-credit">
-      <span class="docs-credit-made-by">Made by</span>
-      <div class="docs-credit-authors">
-        <a
-          class="docs-anchor--author"
-          href="https://github.com/iliran11"
-          target="_blank"
-        >🐙&nbsp; Liran Cohen</a>
-        <a
-          class="docs-anchor--author"
-          href="https://github.com/adi518"
-          target="_blank"
-        >🦊&nbsp;Adi Sahar</a>
+  <div class="docs">
+    <div class="docs-container docs-container--has-jumbotron docs-100vh">
+      <div class="docs-jumbotron p-0">
+
+        <!-- GITHUB RIBBON -->
+        <a :href="pkg.repository.url" target="_blank"><img class="docs-github-anchor" src="octocat.png" alt="Go to GitHub"></a>
+
+        <!-- HEADING -->
+        <div class="text-center">
+          <img class="vue-logo mb-1" style="width: 4rem" src="vue-fb.svg">
+          <h1>Vue Facebook Login</h1>
+          <p class="docs-tagline text-center mb-2">
+            Integrate it faster than the sun.
+          </p>
+        </div>
+
+        <!-- DEMO -->
+        <v-facebook-login
+          :value="facebook.model"
+          class="docs-facebook-button mx-auto mb-3"
+          app-id="326022817735322"
+          @sdk-loaded="handleSdk">
+        </v-facebook-login>
+
+        <!-- DEMO:USER -->
+        <div
+          class="docs-user mx-auto mb-3"
+          :style="computed.picture && `background-image: url(${computed.picture})`">
+          <template v-if="computed.nopicture">{{ computed.name }}</template>        
+        </div>
+
+        <!-- GITHUB STAR -->
+        <p class="mb-3 d-flex justify-content-center">
+          <a
+            class="github-button"
+            href="https://github.com/iliran11/facebook-login-vue"
+            data-icon="octicon-star"
+            data-show-count="true"
+            aria-label="Star adi518/vue-breakpoint-component on GitHub"
+          >Star</a>
+        </p>
+
+        <!-- CREDIT -->
+        <div class="d-flex justify-content-center">
+          <div class="docs-credit">
+            <span class="docs-credit-made-by">Made by</span>
+            <div class="docs-credit-authors">
+              <a
+                class="docs-anchor--author"
+                href="https://github.com/iliran11"
+                target="_blank"
+              >🐙&nbsp; Liran Cohen</a>
+              <a
+                class="docs-anchor--author"
+                href="https://github.com/adi518"
+                target="_blank"
+              >🦊&nbsp;Adi Sahar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCROLL DOWN -->
+        <div class="docs-scroll-down">
+          <div class="docs-arrow docs-bounce"></div>
+        </div>
+
+        <!-- VERSION -->
+        <div class="docs-version">{{ pkg.version }}</div>
+
       </div>
     </div>
-    <!-- VERSION -->
-    <div class="docs-version">{{ pkg.version }}</div>
+
+    <div class="docs-container docs-min-100vh">
+      <div class="container docs-clearfix p-0">
+        <div class="docs-markdown" v-html="markdowns.readme"></div>
+      </div>
+    </div>
+
   </div>
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
+import Prism from 'prismjs'
+
 import typy from 'typy'
-import VFacebookLogin from 'facebook-login-vuejs' // eslint-disable-next-line
+import VFacebookLogin from 'facebook-login-vuejs'
+
+import pkg from '../../../package.json'
+import readme from '../../../README.md'
 
 export default {
   name: 'app',
@@ -60,13 +96,22 @@ export default {
     VFacebookLogin
   },
   data: () => ({
-    pkg: { version: '2.0.0' },
+    pkg,
+
+    markdowns: {
+      readme
+    },
+
     facebook: {
       FB: {},
       model: {}
     },
+
     user: {}
   }),
+  mounted() {
+    window.setTimeout(Prism.highlightAll)
+  },
   computed: {
     computed() {
       const name = this.user.name
@@ -99,31 +144,73 @@ export default {
 // https://getemoji.com/
 // https://octodex.github.com/
 // http://www.color-hex.com/color/2f4480
+// https://www.tablesgenerator.com/markdown_tables
+// https://stackoverflow.com/questions/23571724/github-markdown-colspan
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
-.docs-demo {
-  height: 100vh;
-  margin-left: 1rem;
-  margin-right: 1rem;
+$app-min-width: 320px;
+
+/* Bootstrap */
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+/* Bootstrap end */
+
+/* Prismjs */
+@import '~prismjs/themes/prism.css';
+
+.docs {
+  pre[class*='language-'] {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  :not(pre) > code[class*='language-'],
+  pre[class*='language-'] {
+    margin-bottom: 1.5rem;
+    background: rgba(#f5f2f0, 0.9);
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    background: none;
+  }
+}
+/* Prismjs end */
+
+/* Common Layout */
+.docs {
+  min-width: $app-min-width;
+}
+
+.docs-container {
+  position: relative;
+}
+
+.docs-container--has-jumbotron {
   display: flex;
   align-items: center;
-  flex-direction: column;
   justify-content: center;
+  background-color: #2f4480;
 }
 
 .docs-tagline {
   line-height: 1.5;
 
-  @media (max-width: 576px) {
-    max-width: 16rem;
-  }
+  // @media (max-width: 576px) {
+  //   max-width: 16rem;
+  // }
 }
 
 .docs-credit {
   color: #8b9dc3;
   font-size: 0.8rem;
   line-height: 3.5;
+  display: inline-block;
 
   a {
     --transition-duration: 0.5s;
@@ -158,7 +245,6 @@ export default {
 
 .docs-credit-made-by {
   display: flex;
-  text-align: center;
 }
 
 .docs-credit-authors {
@@ -212,6 +298,65 @@ export default {
   position: fixed;
 }
 
+.docs-markdown {
+  h2 {
+    font-size: 1.5rem; // h4
+    margin-top: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem; // h5
+  }
+
+  table {
+    color: #2f4480;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: rgba(#f5f2f0, 0.9);
+  }
+
+  th {
+    width: 25%;
+    font-weight: bold;
+  }
+
+  td {
+    min-height: 2rem;
+    border-top: 1px solid;
+    border-right: 1px solid;
+  }
+
+  th,
+  td {
+    padding: 1rem;
+    vertical-align: top;
+  }
+}
+
+/* Utils */
+.docs-c-pointer {
+  cursor: pointer;
+}
+.docs-100vh {
+  height: 100vh;
+}
+.docs-min-100vh {
+  min-height: 100vh;
+}
+.docs-clearfix {
+  &::after,
+  &::before {
+    height: 0;
+    display: block;
+    content: '\0020';
+    overflow: hidden;
+  }
+  &::after {
+    clear: both;
+  }
+}
+/* Utils end */
+
 /* Bootstrap helpers */
 .mt-05 {
   margin-top: 0.5rem !important;
@@ -232,8 +377,39 @@ export default {
 .mb-3 {
   margin-bottom: 3rem !important;
 }
+</style>
 
-.text-center {
-  text-align: center;
-}
+<style lang="sass">
+// https://codepen.io/mfritsch/pen/VYdeEE
+
+.docs-scroll-down
+  bottom: 2.5rem
+  position: absolute
+  transform: translateX(-50%)
+  left: 50%
+  display: flex
+  align-items: center
+  flex-direction: column
+
+.docs-arrow
+  opacity: .5;
+  cursor: pointer
+  width: 1.25rem
+  height: 1.25rem
+  z-index: 99
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEycHgiIGhlaWdodD0iNTEycHgiIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yOTMuNzUxLDQ1NS44NjhjLTIwLjE4MSwyMC4xNzktNTMuMTY1LDE5LjkxMy03My42NzMtMC41OTVsMCwwYy0yMC41MDgtMjAuNTA4LTIwLjc3My01My40OTMtMC41OTQtNzMuNjcyICBsMTg5Ljk5OS0xOTBjMjAuMTc4LTIwLjE3OCw1My4xNjQtMTkuOTEzLDczLjY3MiwwLjU5NWwwLDBjMjAuNTA4LDIwLjUwOSwyMC43NzIsNTMuNDkyLDAuNTk1LDczLjY3MUwyOTMuNzUxLDQ1NS44Njh6Ii8+DQo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMjIwLjI0OSw0NTUuODY4YzIwLjE4LDIwLjE3OSw1My4xNjQsMTkuOTEzLDczLjY3Mi0wLjU5NWwwLDBjMjAuNTA5LTIwLjUwOCwyMC43NzQtNTMuNDkzLDAuNTk2LTczLjY3MiAgbC0xOTAtMTkwYy0yMC4xNzgtMjAuMTc4LTUzLjE2NC0xOS45MTMtNzMuNjcxLDAuNTk1bDAsMGMtMjAuNTA4LDIwLjUwOS0yMC43NzIsNTMuNDkyLTAuNTk1LDczLjY3MUwyMjAuMjQ5LDQ1NS44Njh6Ii8+DQo8L3N2Zz4=)
+  background-size: 100%
+  background-repeat: no-repeat
+  background-position: center
+
+.docs-bounce
+  animation: docs-bounce 4s infinite
+
+@keyframes docs-bounce
+  0%, 20%, 50%, 80%, 100%
+    transform: translateY(0)
+  40%
+    transform: translateY(-30px)
+  60%
+    transform: translateY(-15px)
 </style>
