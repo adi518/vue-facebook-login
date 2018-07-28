@@ -1,6 +1,7 @@
 module.exports = {
   chainWebpack: config => {
-    // Markdown Loader
+    config.output.publicPath('./')
+
     config.module
       .rule('markdown')
       .test(/\.md$/)
