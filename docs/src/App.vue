@@ -9,40 +9,14 @@
 </template>
 
 <style lang="scss">
-html {
-  @media (max-width: 576px) {
-    font-size: 90%;
-  }
-}
-
-// body {
-//   margin: 0;
-//   color: #ffffff;
-//   background-color: #2f4480;
-//   font-family: 'Roboto', sans-serif;
-// }
-
-// a {
-//   color: inherit;
-// }
-
-// h1 {
-//   color: #8b9dc3;
-//   font-weight: 400;
-//   margin-top: 0;
-//   margin-bottom: 1rem;
-// }
-
-// p {
-//   margin-top: 0;
-//   margin-bottom: 1.5rem;
-// }
-
 /* Bootstrap */
 $spacer: 1rem;
 $spacers: ();
+$spacers: map-merge((10: $spacer * 1), $spacers);
+$spacers: map-merge((15: $spacer * 1 + 0.5), $spacers);
 $spacers: map-merge((20: $spacer * 2), $spacers);
 $spacers: map-merge((25: $spacer * 2 + 0.5), $spacers);
+$spacers: map-merge((30: $spacer * 3), $spacers);
 
 $body-bg: #1c284c;
 $body-color: #ffffff;
@@ -63,6 +37,12 @@ $font-family-base: 'Roboto', sans-serif;
 @import '~bootstrap/scss/grid';
 @import '~bootstrap/scss/utilities';
 
+html {
+  @include media-breakpoint-down(xs) {
+    font-size: 90%;
+  }
+}
+
 pre,
 code,
 kbd,
@@ -74,8 +54,8 @@ samp {
 h1 {
   color: #8b9dc3;
   font-weight: 400;
+  font-size: 2rem; // Reset Bootstrap
   margin-top: 0;
-  font-size: 2em; // Reset Bootstrap
   margin-bottom: 1rem;
 }
 
@@ -101,8 +81,8 @@ pre[class*=language-] {
   &::before {
     position: absolute;
     z-index: 3;
-    top: 0.8rem;
-    right: 1rem;
+    top: 0;
+    right: 0;
     font-size: 0.75rem;
   }
 }
@@ -119,37 +99,37 @@ pre[class~='language-javascript'] {
   }
 }
 
-div[class~='language-typescript'] {
+pre[class~='language-typescript'] {
   &:before {
     content: 'ts';
   }
 }
 
-div[class~='language-markup'] {
+pre[class~='language-markup'] {
   &:before {
     content: 'html';
   }
 }
 
-div[class~='language-markdown'] {
+pre[class~='language-markdown'] {
   &:before {
     content: 'md';
   }
 }
 
-div[class~='language-json']:before {
+pre[class~='language-json']:before {
   content: 'json';
 }
 
-div[class~='language-ruby']:before {
+pre[class~='language-ruby']:before {
   content: 'rb';
 }
 
-div[class~='language-python']:before {
+pre[class~='language-python']:before {
   content: 'py';
 }
 
-div[class~='language-bash']:before {
+pre[class~='language-bash']:before {
   content: 'sh';
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="docs">
-    <div class="docs-container docs-container--has-jumbotron docs-100vh">
+    <div class="docs-container docs-container--has-jumbotron docs-100vh js-vh-fix">
       <div class="docs-jumbotron container" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
 
         <!-- GITHUB RIBBON -->
@@ -8,9 +8,9 @@
 
         <!-- HEADING -->
         <div class="text-center">
-          <img class="docs-vue-logo mb-1" src="vue-fb.svg">
+          <img class="docs-vue-logo mb-10" src="vue-fb.svg">
           <h1>Vue Facebook Login</h1>
-          <p class="docs-tagline text-center mb-2">
+          <p class="docs-tagline text-center mb-20">
             Integrate it faster than the sun.
           </p>
         </div>
@@ -18,28 +18,28 @@
         <!-- DEMO -->
         <v-facebook-login
           :value="facebook.model"
-          class="docs-facebook-button mx-auto mb-3"
+          class="docs-facebook-button mx-auto mb-30"
           app-id="326022817735322"
           @sdk-loaded="handleSdk">
         </v-facebook-login>
 
         <!-- DEMO:USER -->
         <div
-          class="docs-user mx-auto mb-3"
+          class="docs-user mx-auto mb-15"
           :style="computed.picture && `background-image: url(${computed.picture})`">
           <template v-if="computed.nopicture">{{ computed.name }}</template>        
         </div>
 
         <!-- GITHUB STAR -->
-        <p class="mb-3 d-flex justify-content-center">
+        <!-- <div class="mb-30 d-flex justify-content-center">
           <a
             class="github-button"
             href="https://github.com/iliran11/facebook-login-vue"
             data-icon="octicon-star"
             data-show-count="true"
-            aria-label="Star adi518/vue-breakpoint-component on GitHub"
+            aria-label="Star iliran11/facebook-login-vue on GitHub"
           >Star</a>
-        </p>
+        </div> -->
 
         <!-- CREDIT -->
         <div class="d-flex justify-content-center">
@@ -61,9 +61,9 @@
         </div>
 
         <!-- SCROLL DOWN -->
-        <div class="docs-scroll-down">
+        <!-- <div class="docs-scroll-down">
           <div class="docs-arrow docs-bounce"></div>
-        </div>
+        </div> -->
 
         <!-- VERSION -->
         <div class="docs-version">{{ pkg.version }}</div>
@@ -93,6 +93,7 @@ import VBreakpoint, { Model as Breakpoint } from 'vue-breakpoint-component'
 
 import pkg from '../../../package.json'
 import readme from '../../../README.md'
+import { VhChromeFix } from '@/assets/VhChromeFix'
 
 export default {
   name: 'Docs',
@@ -114,10 +115,25 @@ export default {
 
     user: {},
 
+    instances: {},
+
     breakpoint: new Breakpoint()
   }),
+  created() {
+    /**
+     * Initiate non-reactive properties.
+     */
+    this.instances.ChromeFix = undefined
+  },
   mounted() {
     window.setTimeout(Prism.highlightAll)
+
+    this.instances.vhChromeFix = new VhChromeFix([
+      { selector: '.js-vh-fix', vh: 100 }
+    ])
+  },
+  destroyed() {
+    this.instances.vhChromeFix.destroy()
   },
   computed: {
     computed() {
@@ -207,6 +223,10 @@ $app-min-width: 320px;
 
 .docs-vue-logo {
   width: 4rem;
+
+  @include media-breakpoint-down(xs) {
+    width: 3rem;
+  }
 }
 
 .docs-tagline {
@@ -288,6 +308,11 @@ $app-min-width: 320px;
   background-repeat: no-repeat;
   box-shadow: 0 0.1rem 0rem rgba(255, 255, 255, 0.2),
     inset 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.7);
+
+  @include media-breakpoint-down(xs) {
+    width: 4rem;
+    height: 4rem;
+  }
 }
 
 .docs-github {
@@ -402,27 +427,6 @@ $app-min-width: 320px;
   }
 }
 /* Utils end */
-
-/* Bootstrap helpers */
-.mt-05 {
-  margin-top: 0.5rem !important;
-}
-
-.mt-1 {
-  margin-top: 1rem !important;
-}
-
-.mb-1 {
-  margin-bottom: 1rem !important;
-}
-
-.mb-2 {
-  margin-bottom: 2rem !important;
-}
-
-.mb-3 {
-  margin-bottom: 3rem !important;
-}
 </style>
 
 <style lang="sass">

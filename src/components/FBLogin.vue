@@ -79,22 +79,23 @@ $color-chambray: #3b55a0;
   display: block;
   border-radius: 50%;
   border-style: solid;
-  border-width: 0.25rem;
+  border-width: 0.15rem;
   border-top-color: $color-nepal;
-  border-right-color: rgba($color-white, 0.9);
-  border-left-color: rgba($color-white, 0.9);
-  border-bottom-color: rgba($color-white, 0.9);
+  border-right-color: rgba($color-white, 1);
+  border-left-color: rgba($color-white, 1);
+  border-bottom-color: rgba($color-white, 1);
   animation: v-facebook-login-spin 2s linear infinite;
 }
 
-.token {
+.token,
+.spinner {
   opacity: 0.9;
 }
 
 .token,
 .spinner {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 24px;
+  height: 24px;
   margin-right: 0.5rem;
 }
 
