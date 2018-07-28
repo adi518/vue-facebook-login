@@ -1,14 +1,14 @@
 <template>
   <div class="docs">
     <div class="docs-container docs-container--has-jumbotron docs-100vh">
-      <div class="docs-jumbotron p-0">
+      <div class="docs-jumbotron container" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
 
         <!-- GITHUB RIBBON -->
-        <a :href="pkg.repository.url" target="_blank"><img class="docs-github-anchor" src="octocat.png" alt="Go to GitHub"></a>
+        <a class="docs-github" :href="pkg.repository.url" target="_blank"><img src="octocat.png" alt="Go to GitHub"></a>
 
         <!-- HEADING -->
         <div class="text-center">
-          <img class="vue-logo mb-1" style="width: 4rem" src="vue-fb.svg">
+          <img class="docs-vue-logo mb-1" src="vue-fb.svg">
           <h1>Vue Facebook Login</h1>
           <p class="docs-tagline text-center mb-2">
             Integrate it faster than the sun.
@@ -72,10 +72,12 @@
     </div>
 
     <div class="docs-container docs-min-100vh">
-      <div class="container docs-clearfix p-0">
+      <div class="container docs-clearfix" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
         <div class="docs-markdown" v-html="markdowns.readme"></div>
       </div>
     </div>
+
+    <v-breakpoint v-model="breakpoint"></v-breakpoint>
 
   </div>
 </template>
@@ -86,13 +88,15 @@ import Prism from 'prismjs'
 
 import typy from 'typy'
 import VFacebookLogin from 'facebook-login-vuejs'
+import VBreakpoint, { Model as Breakpoint } from 'vue-breakpoint-component'
 
 import pkg from '../../../package.json'
 import readme from '../../../README.md'
 
 export default {
-  name: 'app',
+  name: 'Docs',
   components: {
+    VBreakpoint,
     VFacebookLogin
   },
   data: () => ({
@@ -107,7 +111,9 @@ export default {
       model: {}
     },
 
-    user: {}
+    user: {},
+
+    breakpoint: new Breakpoint()
   }),
   mounted() {
     window.setTimeout(Prism.highlightAll)
@@ -198,12 +204,12 @@ $app-min-width: 320px;
   background-color: #2f4480;
 }
 
+.docs-vue-logo {
+  width: 4rem;
+}
+
 .docs-tagline {
   line-height: 1.5;
-
-  // @media (max-width: 576px) {
-  //   max-width: 16rem;
-  // }
 }
 
 .docs-credit {
@@ -283,12 +289,16 @@ $app-min-width: 320px;
     inset 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.7);
 }
 
-.docs-github-anchor {
-  width: 4rem;
+.docs-github {
   top: 1rem;
   right: 1rem;
-  opacity: 0.9;
-  position: fixed;
+  z-index: 1;
+  position: absolute;
+
+  img {
+    width: 4rem;
+    opacity: 0.9;
+  }
 }
 
 .docs-version {
@@ -309,14 +319,19 @@ $app-min-width: 320px;
   }
 
   table {
+    width: 100%;
+    max-width: 200%;
     color: #2f4480;
     margin-top: 2rem;
     margin-bottom: 2rem;
     background: rgba(#f5f2f0, 0.9);
+
+    @include media-breakpoint-down(xs) {
+      width: 200%;
+    }
   }
 
   th {
-    width: 25%;
     font-weight: bold;
   }
 
@@ -330,6 +345,24 @@ $app-min-width: 320px;
   td {
     padding: 1rem;
     vertical-align: top;
+  }
+}
+
+.docs-table-wrap {
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+#props-table-wrap,
+#events-table-wrap {
+  th:nth-child(1),
+  th:nth-child(2) {
+    width: 15%;
+  }
+
+  th:nth-child(3),
+  th:nth-child(4) {
+    width: 25%;
   }
 }
 

@@ -12,6 +12,7 @@
     "prismjs": "^1.15.0",
     "typy": "^2.0.1",
     "vue": "^2.5.16",
+    "vue-breakpoint-component": "^1.0.3",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
