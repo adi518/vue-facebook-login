@@ -63,7 +63,7 @@ export default {
 </div>
 
 ## Development
-Feel free to contribute. To do that, fork, clone and use the following scripts.
+Fork, clone and use the following scripts.
 
 For component:
 ```bash
@@ -72,6 +72,11 @@ npm start
 For documentation:
 ```bash
 npm run docs
+```
+
+For deploying documentation to github pages:
+```bash
+npm run deploy
 ```
 
 ## Support

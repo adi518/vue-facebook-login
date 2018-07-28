@@ -311,7 +311,7 @@ $app-min-width: 320px;
 .docs-markdown {
   h2 {
     font-size: 1.5rem; // h4
-    margin-top: 1.5rem;
+    margin-top: 2rem;
   }
 
   h3 {
@@ -322,8 +322,7 @@ $app-min-width: 320px;
     width: 100%;
     max-width: 200%;
     color: #2f4480;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     background: rgba(#f5f2f0, 0.9);
 
     @include media-breakpoint-down(xs) {
@@ -349,6 +348,8 @@ $app-min-width: 320px;
 }
 
 .docs-table-wrap {
+  @extend .docs-clearfix;
+
   @include media-breakpoint-down(xs) {
     overflow-x: scroll;
   }

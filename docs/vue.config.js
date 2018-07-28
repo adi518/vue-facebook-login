@@ -1,6 +1,9 @@
 module.exports = {
   chainWebpack: config => {
-    config.output.publicPath('./')
+
+    if (process.env.NODE_ENV === 'production') {
+      config.output.publicPath('./')
+    }
 
     config.module
       .rule('markdown')
