@@ -349,8 +349,9 @@ $app-min-width: 320px;
 }
 
 .docs-table-wrap {
-  overflow: hidden;
-  overflow-x: scroll;
+  @include media-breakpoint-down(xs) {
+    overflow-x: scroll;
+  }
 }
 
 #props-table-wrap,
