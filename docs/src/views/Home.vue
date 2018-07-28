@@ -74,8 +74,9 @@
     <div class="docs-container docs-min-100vh">
       <div class="container docs-clearfix" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
         <div class="docs-markdown" v-html="markdowns.readme"></div>
+        <footer style="min-height: 10rem"></footer>
       </div>
-    </div>
+    </div>   
 
     <v-breakpoint v-model="breakpoint"></v-breakpoint>
 
@@ -305,7 +306,7 @@ $app-min-width: 320px;
   top: 1rem;
   left: 1rem;
   opacity: 0.25;
-  position: fixed;
+  position: absolute;
 }
 
 .docs-markdown {
@@ -350,6 +351,10 @@ $app-min-width: 320px;
 .docs-table-wrap {
   @extend .docs-clearfix;
 
+  + h2 {
+    margin-top: 1rem;
+  }
+
   @include media-breakpoint-down(xs) {
     overflow-x: scroll;
   }
@@ -365,6 +370,12 @@ $app-min-width: 320px;
   th:nth-child(3),
   th:nth-child(4) {
     width: 25%;
+  }
+}
+
+#slots-table-wrap {
+  th:nth-child(1) {
+    width: 38%;
   }
 }
 
