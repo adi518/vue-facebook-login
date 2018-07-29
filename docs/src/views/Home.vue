@@ -27,7 +27,7 @@
         </v-facebook-login>
 
         <!-- DEMO:USER -->
-        <div class="docs-user mx-auto mb-30">
+        <div class="docs-user mx-auto mb-35">
           <div class="docs-user-picture"
             :class="{ 'docs-user-picture--is-visible': computed.picture }"
             :style="{ backgroundImage: `url(${connected && computed.picture || ''}` }"></div>
@@ -37,7 +37,7 @@
         </div>
 
         <!-- GITHUB STAR -->
-        <div class="mb-30 d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
           <a
             class="github-button"
             href="https://github.com/iliran11/facebook-login-vue"
