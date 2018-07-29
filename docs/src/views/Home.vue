@@ -9,7 +9,7 @@
         <!-- HEADING -->
         <div class="docs-clearfix text-center">
           <img class="docs-vue-logo mb-10" src="vue-fb.svg">
-          <h1>Vue.js Facebook Login</h1>
+          <h1>Facebook Login</h1>
           <p class="docs-tagline text-center mb-20">
             Integrate Facebook Login and <br v-if="breakpoint.noMatch"> access the benefits quickly and easily.
           </p>
@@ -17,8 +17,8 @@
 
         <!-- DEMO -->
         <v-facebook-login
-          v-model="facebook.model"
           class="docs-facebook-button mx-auto mb-35"
+          v-model="facebook.model"
           app-id="326022817735322"
           @sdk-load="handleSdkLoad"
           @connect="handleConnect"
@@ -37,7 +37,7 @@
         </div>
 
         <!-- GITHUB STAR -->
-        <!-- <div class="mb-30 d-flex justify-content-center">
+        <div class="mb-30 d-flex justify-content-center">
           <a
             class="github-button"
             href="https://github.com/iliran11/facebook-login-vue"
@@ -45,10 +45,10 @@
             data-show-count="true"
             aria-label="Star iliran11/facebook-login-vue on GitHub"
           >Star</a>
-        </div> -->
+        </div>
 
         <!-- CREDIT -->
-        <div class="d-flex justify-content-center">
+        <!-- <div class="d-flex justify-content-center"> -->
           <div class="docs-credit">
             <span class="docs-credit-made-by">Made by</span>
             <div class="docs-credit-authors">
@@ -64,7 +64,7 @@
               >🦊&nbsp;Adi Sahar</a>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
 
         <!-- SCROLL DOWN -->
         <!-- <div class="docs-scroll-down">
@@ -254,6 +254,9 @@ $app-min-width: 320px;
   color: #8b9dc3;
   line-height: 3.5;
   display: inline-block;
+  position: absolute;
+  left: 1rem;
+  bottom: 0;
 
   a {
     --transition-duration: 0.5s;
