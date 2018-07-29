@@ -20,8 +20,8 @@
           v-model="facebook.model"
           class="docs-facebook-button mx-auto mb-35"
           app-id="326022817735322"
-          @sdk-loaded="handleSdk"
-          @connected="handleConnected"
+          @sdk-load="handleSdkLoad"
+          @connect="handleConnect"
           @logout="handleLogout"
           @click="handleClick">
         </v-facebook-login>
@@ -162,10 +162,10 @@ export default {
         })
       })
     },
-    handleConnected() {
+    handleConnect() {
       this.getUserData()
     },
-    handleSdk({ FB }) {
+    handleSdkLoad({ FB }) {
       this.facebook.FB = FB
     },
     handleLogout() {

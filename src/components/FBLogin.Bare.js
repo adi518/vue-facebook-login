@@ -41,7 +41,7 @@ export default {
     isConnected(connected) {
       this.$emit('input', { connected })
       if (connected) {
-        this.$emit('connected')
+        this.$emit('connect')
       }
     }
   },
@@ -54,7 +54,7 @@ export default {
         } else { /* disconnected */ }
         this.isSdkLoaded = true
         this.isDisabled = false
-        this.$emit('sdk-loaded', { FB: window.FB })
+        this.$emit('sdk-load', { FB: window.FB })
       })
   },
   mounted() {

@@ -22,10 +22,10 @@ export default {
 
 ### Template
 ```html
-<v-facebook-login app-id="326022817735322" @sdk-loaded="handleSdk"></v-facebook-login>
+<v-facebook-login app-id="326022817735322" @sdk-load="handleSdk"></v-facebook-login>
 
 <!-- OR use the shorthand variation -->
-<v-facebook-login app-id="326022817735322" @sdk-loaded="handleSdk" />
+<v-facebook-login app-id="326022817735322" @sdk-load="handleSdk" />
 ```
 
 ## Props
@@ -54,8 +54,8 @@ export default {
 
 | Name               | Payload | Description                                          | Note |
 |--------------------|---------|------------------------------------------------------|------|
-| sdk-loaded         | Object  | Returns an object with <br> a Facebook API instance. | Returned keys: <br> `FB[Object]` <br> `isConnected[Boolean]`
-| connected          | Boolean | User is connected.
+| sdk-load           | Object  | Returns an object with <br> a Facebook API instance. | Returned keys: <br> `FB[Object]` <br> `isConnected[Boolean]`
+| connect            | Boolean | User is connected.
 | login              | Object  | User attempted login.                                | Returned keys: <br> `response[Object]`
 | logout             | Object  | User attempted logout.                               | Returned keys: <br> `response[Object]`
 | click              | None
