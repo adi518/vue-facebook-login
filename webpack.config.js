@@ -2,8 +2,6 @@ const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-const env = process.env.PRODUCTION || 'development'
-
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -29,7 +27,7 @@ module.exports = {
         options: {
           presets: [
             ['@babel/preset-env', {
-              forceAllTransforms: env === 'production',
+              forceAllTransforms: process.env === 'production',
             }]
           ],
           plugins: [
@@ -69,7 +67,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin()
   ],
-  mode: env
+  mode: process.env
 }
 
 if (process.env.ANALYZE) {
