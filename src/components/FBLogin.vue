@@ -2,7 +2,7 @@
   <v-facebook-login-bare v-model="vmodel" v-bind="$props" v-on="$listeners">
     <button slot-scope="scope" class="v-facebook-login" :disabled="scope.disabled">
       <span v-if="scope.enabled" class="event-capturer" @click="scope.handleClick()"></span>
-      <i class="spinner" v-if="scope.working"></i>
+      <i class="spinner" v-if="scope.disabled || scope.working"></i>
       <img class="token" :src="token" v-if="scope.idle">
       <slot name="login" v-if="scope.disconnected">
         Log in to Facebook

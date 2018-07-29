@@ -1,3 +1,5 @@
+// https://developers.facebook.com/docs/apps/versions/
+
 import {
   fbLogin,
   fbLogout,
@@ -10,7 +12,9 @@ export default {
   props: {
     value: {
       type: Object,
-      default: () => ({ connected: false })
+      default: () => ({
+        connected: false
+      })
     },
     appId: {
       type: String,
@@ -18,7 +22,7 @@ export default {
     },
     version: {
       type: String,
-      default: 'v2.10'
+      default: 'v3.1'
     },
     loginOptions: {
       type: Object,
@@ -28,8 +32,9 @@ export default {
     }
   },
   data: () => ({
-    isWorking: false,
+    isSdkLoaded: false,
     isDisabled: true,
+    isWorking: false,
     isConnected: false
   }),
   watch: {
@@ -46,9 +51,9 @@ export default {
       .then(response => {
         if (response.status === 'connected') {
           this.isConnected = true
-        }
+        } else { /* disconnected */ }
+        this.isSdkLoaded = true
         this.isDisabled = false
-        this.$emit('get-initial-status', response) // will be deprecated next major release
         this.$emit('sdk-loaded', { FB: window.FB })
       })
   },
@@ -61,7 +66,7 @@ export default {
   },
   computed: {
     isIdle() {
-      return this.isWorking === false
+      return this.isSdkLoaded && this.isWorking === false
     },
     isDisconnected() {
       return this.isConnected === false
@@ -102,10 +107,7 @@ export default {
             this.isConnected = false
           }
           this.isWorking = false
-          this.$emit('login', {
-            response,
-            FB: window.FB
-          })
+          this.$emit('login', response)
         })
     },
     logout() {
