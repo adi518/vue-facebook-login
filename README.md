@@ -54,10 +54,10 @@ export default {
 
 | Name               | Payload | Description                                          | Note |
 |--------------------|---------|------------------------------------------------------|------|
-| sdk-load           | Object  | Returns an object with <br> a Facebook API instance. | Returned keys: <br> `FB[Object]`
+| sdk-load           | Object  | Returns an object with <br> a Facebook API instance. | @Returns <br> `FB[Object]`
 | connect            | Boolean | User is connected.
-| login              | Object  | User attempted login.                                | Returned keys: <br> `response[Object]`
-| logout             | Object  | User attempted logout.                               | Returned keys: <br> `response[Object]`
+| login              | Object  | User attempted login.                                | @Returns <br> `response[Object]`
+| logout             | Object  | User attempted logout.                               | @Returns <br> `response[Object]`
 | click              | None
 
 </div>
