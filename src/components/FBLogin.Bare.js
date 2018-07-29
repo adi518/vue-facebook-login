@@ -71,9 +71,9 @@ export default {
     },
     scope() {
       return {
+        idle: this.isIdle,
         login: this.login,
         logout: this.logout,
-        idle: this.isIdle,
         working: this.isWorking,
         enabled: this.isEnabled,
         disabled: this.isDisabled,
