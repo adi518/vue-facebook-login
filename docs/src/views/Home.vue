@@ -27,7 +27,7 @@
         </v-facebook-login>
 
         <!-- DEMO:USER -->
-        <div class="docs-user mx-auto mb-10">
+        <div class="docs-user mx-auto mb-30">
           <div class="docs-user-picture"
             :class="{ 'docs-user-picture--is-visible': computed.picture }"
             :style="{ backgroundImage: `url(${connected && computed.picture || ''}` }"></div>
@@ -49,7 +49,7 @@
 
         <!-- CREDIT -->
         <!-- <div class="d-flex justify-content-center"> -->
-          <div class="docs-credit">
+          <!-- <div class="docs-credit">
             <span class="docs-credit-made-by">Made by</span>
             <div class="docs-credit-authors">
               <a
@@ -63,7 +63,7 @@
                 target="_blank"
               >🦊&nbsp;Adi Sahar</a>
             </div>
-          </div>
+          </div> -->
         <!-- </div> -->
 
         <!-- SCROLL DOWN -->
@@ -79,10 +79,29 @@
 
     <div class="docs-container docs-min-100vh">
       <div class="container docs-clearfix" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
-        <div class="docs-markdown" v-html="markdowns.readme"></div>
-        <footer style="min-height: 10rem"></footer>
+       <div class="docs-markdown" v-html="markdowns.readme"></div>
       </div>
-    </div>   
+    </div>
+
+    <footer class="docs-footer">
+      <div class="container" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
+        <div class="docs-credit">
+          <span class="docs-credit-made-by">Made by</span>
+          <div class="docs-credit-authors">
+            <a
+              class="docs-anchor--author"
+              href="https://github.com/iliran11"
+              target="_blank"
+            >🐙&nbsp; Liran Cohen</a>
+            <a
+              class="docs-anchor--author"
+              href="https://github.com/adi518"
+              target="_blank"
+            >🦊&nbsp;Adi Sahar</a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <v-breakpoint v-model="breakpoint"></v-breakpoint>
 
@@ -254,9 +273,9 @@ $app-min-width: 320px;
   color: #8b9dc3;
   line-height: 3.5;
   display: inline-block;
-  position: absolute;
-  left: 1rem;
-  bottom: 0;
+  // position: absolute;
+  // left: 1rem;
+  // bottom: 0;
 
   a {
     --transition-duration: 0.5s;
@@ -397,6 +416,13 @@ $app-min-width: 320px;
   left: 1rem;
   color: #8b9dc3;
   position: absolute;
+}
+
+.docs-footer {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  min-height: 20rem;
+  background-color: #2f4480;
 }
 
 .docs-markdown {
