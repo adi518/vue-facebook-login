@@ -47,32 +47,8 @@
           >Star</a>
         </div>
 
-        <!-- CREDIT -->
-        <!-- <div class="d-flex justify-content-center"> -->
-          <!-- <div class="docs-credit">
-            <span class="docs-credit-made-by">Made by</span>
-            <div class="docs-credit-authors">
-              <a
-                class="docs-anchor--author"
-                href="https://github.com/iliran11"
-                target="_blank"
-              >🐙&nbsp; Liran Cohen</a>
-              <a
-                class="docs-anchor--author"
-                href="https://github.com/adi518"
-                target="_blank"
-              >🦊&nbsp;Adi Sahar</a>
-            </div>
-          </div> -->
-        <!-- </div> -->
-
-        <!-- SCROLL DOWN -->
-        <!-- <div class="docs-scroll-down">
-          <div class="docs-arrow docs-bounce"></div>
-        </div> -->
-
         <!-- VERSION -->
-        <div class="docs-version">{{ pkg.version }}</div>
+        <div class="docs-version">{{ pkg.version }} - {{ docspkg.version }}</div>
 
       </div>
     </div>
@@ -116,6 +92,7 @@ import typy from 'typy'
 import VFacebookLogin from 'facebook-login-vuejs'
 import VBreakpoint, { Model as Breakpoint } from 'vue-breakpoint-component'
 
+import docspkg from '../../package.json'
 import pkg from '../../../package.json'
 import readme from '../../../README.md'
 import { VhChromeFix } from '@/assets/VhChromeFix'
@@ -128,6 +105,7 @@ export default {
   },
   data: () => ({
     pkg,
+    docspkg,
 
     markdowns: {
       readme
