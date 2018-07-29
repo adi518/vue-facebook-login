@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "predeploy": "npm version --no-git-tag-version && npm run build",
+    "predeploy": "npm version patch --no-git-tag-version && npm run build",
     "deploy": "node gh-pages"
   },
   "dependencies": {
