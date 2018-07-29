@@ -29,27 +29,27 @@ export default {
   },
   data: () => ({
     isWorking: false,
+    isDisabled: true,
     isConnected: false
   }),
   watch: {
     isConnected(connected) {
       this.$emit('input', { connected })
+      if (connected) {
+        this.$emit('connected')
+      }
     }
   },
   created() {
-    this.isWorking = true
     loadFbSdk(this.appId, this.version)
       .then(getFbLoginStatus)
       .then(response => {
         if (response.status === 'connected') {
           this.isConnected = true
         }
-        this.isWorking = false
+        this.isDisabled = false
         this.$emit('get-initial-status', response) // will be deprecated next major release
-        this.$emit('sdk-loaded', {
-          isConnected: this.isConnected,
-          FB: window.FB
-        })
+        this.$emit('sdk-loaded', { FB: window.FB })
       })
   },
   mounted() {
@@ -66,12 +66,17 @@ export default {
     isDisconnected() {
       return this.isConnected === false
     },
+    isEnabled() {
+      return this.isDisabled === false
+    },
     scope() {
       return {
         login: this.login,
         logout: this.logout,
         idle: this.isIdle,
         working: this.isWorking,
+        enabled: this.isEnabled,
+        disabled: this.isDisabled,
         connected: this.isConnected,
         handleClick: this.handleClick,
         disconnected: this.isDisconnected

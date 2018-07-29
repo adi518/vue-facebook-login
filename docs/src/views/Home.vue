@@ -7,27 +7,33 @@
         <a class="docs-github" :href="pkg.repository.url" target="_blank"><img src="octocat.png" alt="Go to GitHub"></a>
 
         <!-- HEADING -->
-        <div class="text-center">
+        <div class="docs-clearfix text-center">
           <img class="docs-vue-logo mb-10" src="vue-fb.svg">
-          <h1>Vue Facebook Login</h1>
+          <h1>Vue.js Facebook Login</h1>
           <p class="docs-tagline text-center mb-20">
-            Integrate it faster than the sun.
+            Integrate Facebook Login and <br v-if="breakpoint.noMatch"> access the benefits quickly and easily.
           </p>
         </div>
 
         <!-- DEMO -->
         <v-facebook-login
-          :value="facebook.model"
-          class="docs-facebook-button mx-auto mb-30"
+          v-model="facebook.model"
+          class="docs-facebook-button mx-auto mb-35"
           app-id="326022817735322"
-          @sdk-loaded="handleSdk">
+          @sdk-loaded="handleSdk"
+          @connected="handleConnected"
+          @logout="handleLogout"
+          @click="handleClick">
         </v-facebook-login>
 
         <!-- DEMO:USER -->
-        <div
-          class="docs-user mx-auto mb-15"
-          :style="computed.picture && `background-image: url(${computed.picture})`">
-          <template v-if="computed.nopicture">{{ computed.name }}</template>        
+        <div class="docs-user mx-auto mb-10">
+          <div class="docs-user-picture"
+            :class="{ 'docs-user-picture--is-visible': computed.picture }"
+            :style="{ backgroundImage: `url(${connected && computed.picture || ''}` }"></div>
+          <template v-if="connected && computed.nopicture">{{ computed.name }}</template>
+          <div class="docs-user-state-placeholder">Disconnected</div>
+          <div class="docs-user-state-indicator" :class="{ 'docs-user-state-indicator--green': connected }"></div>
         </div>
 
         <!-- GITHUB STAR -->
@@ -141,6 +147,9 @@ export default {
       const picture = typy(this.user, 'picture.data.url').safeString
       const nopicture = !picture
       return { name, picture, nopicture }
+    },
+    connected() {
+      return this.facebook.model.connected
     }
   },
   methods: {
@@ -153,11 +162,19 @@ export default {
         })
       })
     },
-    handleSdk({ FB, isConnected }) {
+    handleConnected() {
+      this.getUserData()
+    },
+    handleSdk({ FB }) {
       this.facebook.FB = FB
-      if (isConnected) {
-        this.getUserData()
-      }
+    },
+    handleLogout() {
+      // eslint-disable-next-line
+      console.info('[V-Facebook-Login info]: Logged `logout` event.')
+    },
+    handleClick() {
+      // eslint-disable-next-line
+      console.info('[V-Facebook-Login info]: Logged `click` event.')
     }
   }
 }
@@ -235,7 +252,6 @@ $app-min-width: 320px;
 
 .docs-credit {
   color: #8b9dc3;
-  font-size: 0.8rem;
   line-height: 3.5;
   display: inline-block;
 
@@ -291,27 +307,73 @@ $app-min-width: 320px;
 }
 
 .docs-user {
-  width: 6rem;
-  height: 6rem;
+  position: relative;
+  width: 7rem;
+  height: 7rem;
   padding: 0.5rem;
-  border-radius: 50%;
-  background-color: rgba(28, 40, 76, 0.5);
-  z-index: 1;
-  left: 1rem;
-  bottom: 1rem;
   font-size: 0.8rem;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  // background-color: rgba(28, 40, 76, 0.5);
   box-shadow: 0 0.1rem 0rem rgba(255, 255, 255, 0.2),
-    inset 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.7);
+    inset 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 
   @include media-breakpoint-down(xs) {
-    width: 4rem;
-    height: 4rem;
+    // width: 6rem;
+    // height: 6rem;
+  }
+}
+
+.docs-user-picture {
+  opacity: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: opacity 1s;
+
+  &--is-visible {
+    z-index: 1;
+    opacity: 1;
+  }
+}
+
+.docs-user-state-placeholder {
+  opacity: 0.9;
+}
+
+.docs-user-state-indicator {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: crimson;
+
+  &--green {
+    background-color: greenyellow;
+  }
+}
+
+@keyframes docs-fade-in {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  25% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -330,7 +392,7 @@ $app-min-width: 320px;
 .docs-version {
   top: 1rem;
   left: 1rem;
-  opacity: 0.25;
+  color: #8b9dc3;
   position: absolute;
 }
 
@@ -338,6 +400,7 @@ $app-min-width: 320px;
   h2 {
     font-size: 1.5rem; // h4
     margin-top: 2rem;
+    margin-bottom: 1rem;
   }
 
   h3 {
@@ -402,6 +465,14 @@ $app-min-width: 320px;
   th:nth-child(1) {
     width: 38%;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
 /* Utils */

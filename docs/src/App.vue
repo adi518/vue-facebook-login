@@ -17,6 +17,7 @@ $spacers: map-merge((15: $spacer * 1 + 0.5), $spacers);
 $spacers: map-merge((20: $spacer * 2), $spacers);
 $spacers: map-merge((25: $spacer * 2 + 0.5), $spacers);
 $spacers: map-merge((30: $spacer * 3), $spacers);
+$spacers: map-merge((35: $spacer * 3 + 0.5), $spacers);
 
 $body-bg: #1c284c;
 $body-color: #ffffff;
@@ -81,8 +82,8 @@ pre[class*=language-] {
   &::before {
     position: absolute;
     z-index: 3;
-    top: 0;
-    right: 0;
+    top: 0.8rem;
+    right: 1rem;
     font-size: 0.75rem;
   }
 }
