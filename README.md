@@ -22,10 +22,10 @@ export default {
 
 ### Template
 ```html
-<v-facebook-login app-id="326022817735322" @sdk-load="handleSdk"></v-facebook-login>
+<v-facebook-login app-id="326022817735322" @sdk-load="handleSdkLoad"></v-facebook-login>
 
 <!-- OR use the shorthand variation -->
-<v-facebook-login app-id="326022817735322" @sdk-load="handleSdk" />
+<v-facebook-login app-id="326022817735322" @sdk-load="handleSdkLoad" />
 ```
 
 ## Props

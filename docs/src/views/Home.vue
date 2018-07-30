@@ -481,18 +481,18 @@ $app-min-width: 320px;
 #events-table-wrap {
   th:nth-child(1),
   th:nth-child(2) {
-    width: 15%;
+    width: 20%;
   }
 
   th:nth-child(3),
   th:nth-child(4) {
-    width: 25%;
+    width: 30%;
   }
 }
 
 #slots-table-wrap {
   th:nth-child(1) {
-    width: 38%;
+    width: 20%;
   }
 }
 
