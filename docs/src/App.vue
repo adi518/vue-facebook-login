@@ -1,12 +1,36 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-    <router-view/>
+    <v-menu :routes="routes">
+      <!-- <template slot="last-child">
+        <a
+        class="github-button"
+        :href="flags.production && pkg.repository.url"
+        data-icon="octicon-star"
+        data-show-count="true"
+        aria-label="Star adi518/vue-stepper-component on GitHub">
+        Star
+      </a>
+      </template> -->
+    </v-menu>
+    <router-view></router-view>
   </div>
 </template>
+
+<script>
+import VMenu from '@/components/Menu'
+
+import { routes } from '@/router'
+
+export default {
+  name: 'app',
+  components: {
+    VMenu
+  },
+  data: () => ({
+    routes
+  })
+}
+</script>
 
 <style lang="scss">
 /* Bootstrap */
