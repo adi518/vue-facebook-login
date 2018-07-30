@@ -1,8 +1,8 @@
 <template>
   <v-facebook-login-bare v-model="vmodel" v-bind="$props" v-on="$listeners">
-    <button slot-scope="scope" class="v-facebook-login" :disabled="scope.disabled">
+    <button slot-scope="scope" class="v-facebook-login" :disabled="scope.disabled || scope.working">
       <span v-if="scope.enabled" class="event-capturer" @click="scope.handleClick()"></span>
-      <i class="spinner" v-if="scope.disabled || scope.working"></i>
+      <i class="spinner" v-if="scope.working"></i>
       <img class="token" :src="token" v-if="scope.idle">
       <slot name="login" v-if="scope.disconnected">
         Log in to Facebook
@@ -84,7 +84,7 @@ $color-chambray: #3b55a0;
   display: block;
   border-radius: 50%;
   border-style: solid;
-  border-width: 0.15rem;
+  border-width: 0.1rem;
   border-top-color: $color-nepal;
   border-right-color: rgba($color-white, 1);
   border-left-color: rgba($color-white, 1);

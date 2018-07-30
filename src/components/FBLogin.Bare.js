@@ -1,9 +1,9 @@
 // https://developers.facebook.com/docs/apps/versions/
 
 import {
+  getSdk,
   fbLogin,
   fbLogout,
-  loadFbSdk,
   getFbLoginStatus
 } from '@/modules/helpers.js'
 
@@ -32,9 +32,8 @@ export default {
     }
   },
   data: () => ({
-    isSdkLoaded: false,
-    isDisabled: true,
     isWorking: false,
+    isSdkLoaded: false,
     isConnected: false
   }),
   watch: {
@@ -46,33 +45,35 @@ export default {
     }
   },
   created() {
-    loadFbSdk(this.appId, this.version)
+    getSdk(this.appId, this.version)
       .then(getFbLoginStatus)
       .then(response => {
         if (response.status === 'connected') {
           this.isConnected = true
         } else { /* disconnected */ }
         this.isSdkLoaded = true
-        this.isDisabled = false
         this.$emit('sdk-load', { FB: window.FB })
       })
   },
-  mounted() {
+  updated() {
     if (this.$scopedSlots.default) {
       // OK
-    } else {
+    } else if (this.$slots.default) {
       console.error(`[V-Facebook-Login error]: Slot must be scoped.`)
     }
   },
   computed: {
     isIdle() {
-      return this.isSdkLoaded && this.isWorking === false
+      return this.isWorking === false
     },
     isDisconnected() {
       return this.isConnected === false
     },
     isEnabled() {
       return this.isDisabled === false
+    },
+    isDisabled() {
+      return this.isWorking || this.isSdkLoaded === false
     },
     scope() {
       return {
@@ -98,25 +99,27 @@ export default {
       }
     },
     login() {
-      this.isWorking = true
-      fbLogin(this.loginOptions)
+      const login = fbLogin(this.loginOptions)
         .then(response => {
           if (response.status === 'connected') {
             this.isConnected = true
           } else {
             this.isConnected = false
           }
-          this.isWorking = false
           this.$emit('login', response)
         })
+      return this.doAsync(login)
     },
     logout() {
-      this.isWorking = true
-      fbLogout().then(response => {
-        this.isWorking = false
+      const logout = fbLogout().then(response => {
         this.isConnected = false
         this.$emit('logout', response)
       })
+      return this.doAsync(logout)
+    },
+    doAsync(promise) {
+      this.isWorking = true
+      promise.then(() => (this.isWorking = false))
     }
   },
   render() {
