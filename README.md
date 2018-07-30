@@ -1,87 +1,86 @@
-[![npm](https://img.shields.io/npm/dm/facebook-login-vuejs.svg)](https://www.npmjs.com/package/facebook-login-vuejs)
-
-Description
-======
-Vue Component that  lets you drop it into your existing project and get the benefits of Facebook Login quickly.
-
-Example
-======
-source code of the example can be found in [example](https://github.com/iliran11/facebook-login-vue/tree/master/example) folder.
-the actual component is just the button (:
-![app preview](http://i.imgur.com/YhzfUkI.gif "")
-
-
-
-Installation
-======
-
-```
-npm i facebook-login-vuejs
+## Install
+```bash
+npm install --save facebook-login-vuejs
 ```
 
-Example Usage
-======
+## Usage
+To use the component in your template, simply import and register with your component.
 
-**my-component.vue**
+### Script
+```js
+import VFBLogin from 'facebook-login-vuejs'
 
-```javascript
-import facebookLogin from 'facebook-login-vuejs';
+// OR, use cherry-pick export (better consistency)
+import { VFBLogin } from 'facebook-login-vuejs'
 
-Vue.component('my-component', {
-    components: {
-        facebookLogin
-    }
-});
+export default {
+  components: {
+    VFBLogin
+  }
+}
 ```
 
-```xml
-    <facebook-login class="button"
-      appId="326022817735322"
-      @login="getUserData"
-      @logout="onLogout"
-      @get-initial-status="getUserData">
-    </facebook-login>
+### Template
+```html
+<v-facebook-login app-id="326022817735322" @sdk-load="handleSdk"></v-facebook-login>
+
+<!-- OR use the shorthand variation -->
+<v-facebook-login app-id="326022817735322" @sdk-load="handleSdk" />
 ```
 
-Props
-======
+## Props
+<div id="props-table-wrap" class="docs-table-wrap">
 
+| Name          | Type   | Default  | Note |
+|---------------|--------|----------|------|
+| app-id        | String | None     | **Required**
+| version 	    | String | `'v3.1'` | See [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for available values.
+| login-options | Object | `{ scope: 'email' }` | See [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/v2.9) for available values. Pass with Camel-case: <br> `{ returnScopes: false }`
 
-| Props 	| Type 	| Default 	| Notes 	|
-|---------------	|----------	|---------------------------------------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| appId 	| string 	| None.It is a required prop. 	|  	|
-| version 	| string 	| 'v2.9' 	| refer to [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for explanation on available values 	|
-| loginLabel 	| string 	| Log In To Facebook 	|  	|
-| loginOptions 	| object 	| {scope: 'email'} 	| all options listed on [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/v2.9) are passable with camelCase. e.g : {returnScopes: false} 	|
-| logoutLabel 	| string 	| Log out from Facebook 	|   	|
+</div>
 
-Events
-======
+## Slots
+<div id="slots-table-wrap" class="docs-table-wrap">
 
-| Event              | Output | Description                                                 |
-|--------------------|--------|-------------------------------------------------------------|
-| get-initial-status | Object | TO BE DEPRECATED. Initial Check to decide weather the user already connected. |
-| sdkLoaded | Object | returns an object with the following keys: <br> <b>isConnected</b>: Boolean. is the User conneted? <br> <b>FB:</b> the api object. |
-| click              |        | The Component has been clicked.                             |
-| login              | Object | User tried to login                                         |
-| logout             | Object | User tried to logout                                        |
+| Name   | Default |
+|--------|---------|
+| login  | Log in to Facebook
+| logout | Log out from Facebook
 
+</div>
 
-Development
-======
+## Events
+<div id="events-table-wrap" class="docs-table-wrap">
 
-- running the example on dev server `npm start`. this will run the example app.
+| Name               | Payload | Description                                          | Note |
+|--------------------|---------|------------------------------------------------------|------|
+| sdk-load           | Object  | Returns an object with <br> a Facebook API instance. | @Returns <br> `FB[Object]`
+| connect            | Boolean | User is connected.
+| login              | Object  | User attempted login.                                | @Returns <br> `response[Object]`
+| logout             | Object  | User attempted logout.                               | @Returns <br> `response[Object]`
+| click              | None
 
-Tests
-======
+</div>
 
-tests will be added hopefully soon.
+## Development
+Fork, clone and use the following scripts.
 
-Contribute
-======
-I welcome any kind of contributions/requests/questions/general feedback.
-possible methods to contact me:
+For component:
+```bash
+npm start
+```
+For documentation:
+```bash
+npm run docs
+```
 
-1. [open an Issue](https://github.com/iliran11/facebook-login-vue/issues)
-2. send me a mail: iliran11@gmail.com
-3. [contact me on facebook](https://www.facebook.com/Liran.Co.1984)
+For deploying documentation to github pages:
+```bash
+npm run deploy
+```
+
+## Support
+Please open an [issue](https://github.com/iliran11/facebook-login-vue/issues) for support.
+
+## License
+Copyright (c) 2018 by [MIT](https://opensource.org/licenses/MIT)

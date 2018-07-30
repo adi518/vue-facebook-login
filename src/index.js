@@ -1,7 +1,23 @@
-import facebookLogin from './facebook-login.vue'
-export const facebookLoginPlugin = {
-  install: function (Vue, options) {
-    Vue.component(facebookLogin.name, facebookLogin)
+import FBLogin from '@/components/FBLogin.vue'
+
+export { default as FBLogin } from '@/components/FBLogin.vue'
+export { default as FBLoginBare } from '@/components/FBLogin.Bare.js'
+
+export const Install = {
+  install(Vue, config) {
+    Vue.component(FBLogin.name, FBLogin)
   }
 }
-export default facebookLogin
+
+// Auto-install (Window/Node)
+let GlobalVue
+if (typeof window !== 'undefined') {
+  GlobalVue = window.Vue
+} else if (typeof global !== 'undefined') {
+  GlobalVue = global.Vue
+}
+if (GlobalVue) {
+  GlobalVue.use(Install)
+}
+
+export default FBLogin
