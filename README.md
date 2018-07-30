@@ -34,8 +34,8 @@ export default {
 | Name          | Type   | Default  | Note |
 |---------------|--------|----------|------|
 | app-id        | String | None     | **Required**
-| version 	    | String | `'v3.1'` | Refer to [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for all available values.
-| login-options | Object | `{ scope: 'email' }` | Refer to [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/v2.9) for all available values. <br><br> Pass with camel-case, like so: <br> `{ returnScopes: false }`
+| version 	    | String | `'v3.1'` | See [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for available values.
+| login-options | Object | `{ scope: 'email' }` | See [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/v2.9) for available values. Pass with Camel-case: <br> `{ returnScopes: false }`
 
 </div>
 
