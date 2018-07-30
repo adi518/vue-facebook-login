@@ -50,10 +50,15 @@
         <!-- VERSION -->
         <div class="docs-version">{{ pkg.version }} - {{ docspkg.version }}</div>
 
+        <!-- ABSOLUTE ANCHOR -->
+        <v-a
+          class="docs-fixed-anchor"
+          :scroll-to="$refs.docs">Install, Examples &amp; Documentation</v-a>
+
       </div>
     </div>
 
-    <div class="docs-container docs-min-100vh">
+    <div ref="docs" class="docs-container docs-min-100vh">
       <div class="container docs-clearfix" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
        <div class="docs-markdown" v-html="markdowns.readme"></div>
       </div>
@@ -97,9 +102,12 @@ import pkg from '../../../package.json'
 import readme from '../../../README.md'
 import { VhChromeFix } from '@/assets/VhChromeFix'
 
+import VA from '@/components/Anchor'
+
 export default {
   name: 'Docs',
   components: {
+    VA,
     VBreakpoint,
     VFacebookLogin
   },
@@ -394,6 +402,20 @@ $app-min-width: 320px;
   left: 1rem;
   color: #8b9dc3;
   position: absolute;
+}
+
+.docs-fixed-anchor {
+  font-size: 1.2rem;
+  color: #ffffff;
+  left: 50%;
+  bottom: 1rem;
+  position: absolute;
+  white-space: nowrap;
+  transform: translateX(-50%);
+
+  &:hover {
+    color: inherit;
+  }
 }
 
 .docs-footer {
