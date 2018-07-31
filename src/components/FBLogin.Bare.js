@@ -56,9 +56,7 @@ export default {
       })
   },
   updated() {
-    if (this.$scopedSlots.default) {
-      // OK
-    } else if (this.$slots.default && this.$slots.default.length) {
+    if (this.$slots.default && this.$slots.default.length) {
       console.error(`[V-Facebook-Login error]: Slot must be scoped.`)
     }
   },
