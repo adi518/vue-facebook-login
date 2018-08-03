@@ -19,7 +19,7 @@
         <v-facebook-login
           class="docs-facebook-button mx-auto mb-35"
           v-model="facebook.model"
-          app-id="326022817735322"
+          :app-id="appId"
           @sdk-load="handleSdkLoad"
           @connect="handleConnect"
           @logout="handleLogout"
@@ -51,8 +51,7 @@
         <div class="docs-version">{{ pkg.version }} - {{ docspkg.version }}</div>
 
         <!-- ABSOLUTE ANCHOR -->
-        <v-a
-          class="docs-fixed-anchor"
+        <v-a class="docs-fixed-anchor"
           :scroll-to="$refs.docs">Install, Examples &amp; Documentation</v-a>
 
       </div>
@@ -67,15 +66,15 @@
     <footer class="docs-footer">
       <div class="container" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
         <div class="docs-credit">
-          <span class="docs-credit-made-by">Made by</span>
-          <div class="docs-credit-authors">
+          <span class="d-flex">Made by</span>
+          <div class="d-flex">
             <a
-              class="docs-anchor--author"
+              class="docs-credit-anchor"
               href="https://github.com/iliran11"
               target="_blank"
-            >🐙&nbsp; Liran Cohen</a>
+            >🐙&nbsp;Liran Cohen</a>
             <a
-              class="docs-anchor--author"
+              class="docs-credit-anchor"
               href="https://github.com/adi518"
               target="_blank"
             >🦊&nbsp;Adi Sahar</a>
@@ -147,6 +146,12 @@ export default {
     this.instances.vhChromeFix.destroy()
   },
   computed: {
+    appId() {
+      if (process.env.NODE_ENV === 'production') {
+        return '2181039348841705'
+      }
+      return '326022817735322'
+    },
     computed() {
       const name = this.user.name
       const picture = typy(this.user, 'picture.data.url').safeString
@@ -294,12 +299,10 @@ $app-min-width: 320px;
   }
 }
 
-.docs-credit-made-by {
-  display: flex;
-}
-
-.docs-credit-authors {
-  display: flex;
+.docs-credit-anchor {
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .docs-facebook-button {
