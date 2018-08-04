@@ -1,14 +1,11 @@
 /* global window, document */
 
-export function loadFbSdk(appId, version) {
+export function loadFbSdk(appId, version, options) {
   return new Promise(resolve => {
     window.fbAsyncInit = function () {
-      window.FB.init({
-        appId,
-        xfbml: false,
-        version,
-        cookie: true
-      })
+      const defaults = { xfbml: false, cookie: true }
+      const $options = { ...defaults, ...options, appId, version }
+      window.FB.init($options)
       window.FB.AppEvents.logPageView()
       resolve('SDK Loaded')
     };

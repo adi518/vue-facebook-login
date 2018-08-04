@@ -96,28 +96,29 @@ export default {
         this.login()
       }
     },
-    login() {
+    async login() {
       const login = fbLogin(this.loginOptions)
-        .then(response => {
-          if (response.status === 'connected') {
-            this.isConnected = true
-          } else {
-            this.isConnected = false
-          }
-          this.$emit('login', response)
-        })
-      return this.doAsync(login)
-    },
-    logout() {
-      const logout = fbLogout().then(response => {
+      const response = await this.doAsync(login)
+      if (response.status === 'connected') {
+        this.isConnected = true
+      } else {
         this.isConnected = false
-        this.$emit('logout', response)
-      })
-      return this.doAsync(logout)
+      }
+      this.$emit('login', response)
+      return login
     },
-    doAsync(promise) {
+    async logout() {
+      const logout = fbLogout()
+      const response = await this.doAsync(logout)
+      this.isConnected = false
+      this.$emit('logout', response)
+      return logout
+    },
+    async doAsync(promise) {
       this.isWorking = true
-      promise.then(() => (this.isWorking = false))
+      await promise
+      this.isWorking = false
+      return promise
     }
   },
   render() {
