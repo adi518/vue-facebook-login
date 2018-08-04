@@ -46,8 +46,8 @@ export default {
   },
   async created() {
     await getSdk(this.appId, this.version)
-    const loginStatus = await getFbLoginStatus()
-    if (loginStatus.status === 'connected') {
+    const response = await getFbLoginStatus()
+    if (response.status === 'connected') {
       this.isConnected = true
     }
     this.isSdkLoaded = true
