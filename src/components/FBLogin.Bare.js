@@ -44,16 +44,14 @@ export default {
       }
     }
   },
-  created() {
-    getSdk(this.appId, this.version)
-      .then(getFbLoginStatus)
-      .then(response => {
-        if (response.status === 'connected') {
-          this.isConnected = true
-        } else { /* disconnected */ }
-        this.isSdkLoaded = true
-        this.$emit('sdk-load', { FB: window.FB })
-      })
+  async created() {
+    await getSdk(this.appId, this.version)
+    const loginStatus = await getFbLoginStatus()
+    if (loginStatus.status === 'connected') {
+      this.isConnected = true
+    }
+    this.isSdkLoaded = true
+    this.$emit('sdk-load', { FB: window.FB })
   },
   updated() {
     if (this.$slots.default && this.$slots.default.length) {
