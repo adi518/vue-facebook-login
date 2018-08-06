@@ -273,6 +273,7 @@ $app-min-width: 320px;
 
 .docs-vue-logo {
   width: 4rem;
+  opacity: 0.9;
 
   @include media-breakpoint-down(xs) {
     width: 3rem;
