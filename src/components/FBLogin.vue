@@ -7,7 +7,7 @@
       :disabled="scope.disabled || scope.working"
     >
       <span v-if="scope.enabled" class="event-capturer" @click="scope.handleClick()"></span>
-      <i class="spinner" v-if="scope.working" :style="spinnerStyle"></i>
+      <i class="loader" v-if="scope.working" :style="loaderStyle"></i>
       <img class="token" :src="token" v-if="scope.idle" :style="tokenStyle">
       <span :style="slotStyle">
         <slot name="login" v-if="scope.disconnected">
@@ -34,7 +34,7 @@ export default {
       type: Object,
       default: () => ({})
     },
-    spinnerStyle: {
+    loaderStyle: {
       type: Object,
       default: () => ({})
     },
@@ -107,7 +107,7 @@ $color-chambray: #3b55a0;
   );
 }
 
-.spinner {
+.loader {
   display: block;
   border-radius: 50%;
   border-style: solid;
@@ -120,12 +120,12 @@ $color-chambray: #3b55a0;
 }
 
 .token,
-.spinner {
+.loader {
   opacity: 0.9;
 }
 
 .token,
-.spinner {
+.loader {
   width: 24px;
   height: 24px;
   margin-right: 0.5rem;

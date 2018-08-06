@@ -36,6 +36,10 @@ export default {
 | app-id        | String | None     | **Required**
 | version 	    | String | `'v3.1'` | See [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for available values.
 | login-options | Object | `{ scope: 'email' }` | See [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/v2.9) for available values. Pass with Camel-case: <br> `{ returnScopes: false }`
+| button-style  | Object | None
+| loader-style  | Object | None
+| token-style   | Object | None
+| slot-style    | Object | None
 
 </div>
 
