@@ -74,14 +74,9 @@ For component:
 ```bash
 npm start
 ```
-For documentation:
+For documentation (includes a demo):
 ```bash
 npm run docs
-```
-
-For deploying documentation to github pages:
-```bash
-npm run deploy
 ```
 
 ## Support
