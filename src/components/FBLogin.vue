@@ -1,15 +1,22 @@
 <template>
   <v-facebook-login-bare v-model="vmodel" v-bind="$props" v-on="$listeners">
-    <button slot-scope="scope" class="v-facebook-login" :disabled="scope.disabled || scope.working">
+    <button
+      slot-scope="scope"
+      class="v-facebook-login"
+      :style="buttonStyle"
+      :disabled="scope.disabled || scope.working"
+    >
       <span v-if="scope.enabled" class="event-capturer" @click="scope.handleClick()"></span>
-      <i class="spinner" v-if="scope.working"></i>
-      <img class="token" :src="token" v-if="scope.idle">
-      <slot name="login" v-if="scope.disconnected">
-        Log in to Facebook
-      </slot>
-      <slot name="logout" v-if="scope.connected">
-        Log out from Facebook
-      </slot>
+      <i class="spinner" v-if="scope.working" :style="spinnerStyle"></i>
+      <img class="token" :src="token" v-if="scope.idle" :style="tokenStyle">
+      <span :style="slotStyle">
+        <slot name="login" v-if="scope.disconnected">
+          Log in to Facebook
+        </slot>
+        <slot name="logout" v-if="scope.connected">
+          Log out from Facebook
+        </slot>
+      </span>
     </button>
   </v-facebook-login-bare>
 </template>
@@ -21,8 +28,28 @@ import token from '@/assets/images/iconmonstr-facebook-1.svg'
 export default {
   name: 'v-facebook-login',
   components: { [Bare.name]: Bare },
-  props: Bare.props,
-  data: () => ({ token }),
+  props: {
+    ...Bare.props,
+    buttonStyle: {
+      type: Object,
+      default: () => ({})
+    },
+    spinnerStyle: {
+      type: Object,
+      default: () => ({})
+    },
+    tokenStyle: {
+      type: Object,
+      default: () => ({})
+    },
+    slotStyle: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  data: () => ({
+    token
+  }),
   computed: {
     vmodel: {
       get() {
