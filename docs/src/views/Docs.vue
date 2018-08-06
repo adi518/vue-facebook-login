@@ -41,6 +41,7 @@
         <!-- GITHUB STAR -->
         <v-hide-at no-match>
           <div class="d-flex justify-content-center">
+            <!-- Do not remove global class `github-button`! -->
             <a
               class="github-button"
               :href="pkg.repository.url"

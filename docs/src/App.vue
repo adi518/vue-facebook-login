@@ -3,6 +3,7 @@
     <v-menu :routes="routes">
       <template slot="last-child">
         <v-show-at no-match>
+          <!-- Do not remove global class `github-button`! -->
           <a
             class="github-button"
             :href="pkg.repository.url"
