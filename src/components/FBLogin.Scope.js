@@ -8,7 +8,7 @@ import {
 } from '@/modules/helpers.js'
 
 export default {
-  name: 'v-facebook-login-bare',
+  name: 'v-facebook-login-scope',
   props: {
     value: {
       type: Object,

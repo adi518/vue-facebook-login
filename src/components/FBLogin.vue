@@ -1,5 +1,5 @@
 <template>
-  <v-facebook-login-bare v-model="vmodel" v-bind="$props" v-on="$listeners">
+  <v-facebook-login-scope v-model="vmodel" v-bind="$props" v-on="$listeners">
     <button
       slot-scope="scope"
       class="v-facebook-login"
@@ -21,18 +21,18 @@
         </slot>
       </span>
     </button>
-  </v-facebook-login-bare>
+  </v-facebook-login-scope>
 </template>
 
 <script>
-import Bare from './FBLogin.Bare.js'
+import Scope from './FBLogin.Scope.js'
 import token from '@/assets/images/iconmonstr-facebook-1.svg'
 
 export default {
   name: 'v-facebook-login',
-  components: { [Bare.name]: Bare },
+  components: { [Scope.name]: Scope },
   props: {
-    ...Bare.props,
+    ...Scope.props,
     buttonStyle: {
       type: Object,
       default: () => ({})
