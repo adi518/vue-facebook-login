@@ -457,6 +457,8 @@ $app-min-width: 320px;
 
   h3 {
     font-size: 1.25rem; // h5
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
 
   table {
@@ -477,7 +479,6 @@ $app-min-width: 320px;
   }
 
   td {
-    min-height: 2rem;
     border-top: 1px solid;
 
     &:first-child {
@@ -507,21 +508,27 @@ $app-min-width: 320px;
 }
 
 #props-table-wrap,
-#events-table-wrap {
-  th:nth-child(1),
-  th:nth-child(2) {
+#events-table-wrap,
+#slots-table-wrap,
+#scope-table-wrap {
+  th:nth-child(1) {
     width: 20%;
-  }
-
-  th:nth-child(3),
-  th:nth-child(4) {
-    width: 30%;
   }
 }
 
-#slots-table-wrap {
-  th:nth-child(1) {
+#props-table-wrap,
+#events-table-wrap,
+#scope-table-wrap {
+  th:nth-child(2) {
     width: 20%;
+  }
+}
+
+#props-table-wrap,
+#events-table-wrap {
+  th:nth-child(3),
+  th:nth-child(4) {
+    width: 30%;
   }
 }
 

@@ -22,24 +22,22 @@ export default {
 
 ### Template
 ```html
-<v-facebook-login app-id="326022817735322" @sdk-load="handleSdkLoad"></v-facebook-login>
-
-<!-- OR use the shorthand variation -->
-<v-facebook-login app-id="326022817735322" @sdk-load="handleSdkLoad" />
+<v-facebook-login app-id="966242223397117" @sdk-load="handleSdkLoad"></v-facebook-login>
 ```
 
 ## Props
 <div id="props-table-wrap" class="docs-table-wrap">
 
-| Name          | Type   | Default  | Note |
-|---------------|--------|----------|------|
-| app-id        | String | None     | **Required**
-| version 	    | String | `'v3.1'` | See [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for available values.
-| login-options | Object | `{ scope: 'email' }` | See [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/v2.9) for available values. Pass with Camel-case: <br> `{ returnScopes: false }`
-| button-style  | Object | None
-| loader-style  | Object | None
-| token-style   | Object | None
-| slot-style    | Object | None
+| Name          | Type   | Default                | Note |
+|---------------|--------|------------------------|------|
+| value         | Object | `{ connected: false }` | **Scope-component prop**.<br><br>Used for one-way V-model.
+| app-id        | String | None                   | **Scope-component prop**.<br><br>**Required prop**.
+| version 	    | String | `'v3.1'`               | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for available values.
+| login-options | Object | `{ scope: 'email' }`   | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/v2.9) for available values.<br><br>**Properties should be camel-case**.
+| button-style  | Object | `{}`                   | **Properties should be camel-case.**
+| loader-style  | Object | `{}`                   | **Properties should be camel-case.**
+| token-style   | Object | `{}`                   | **Properties should be camel-case.**
+| text-style    | Object | `{}`                   | **Properties should be camel-case.**
 
 </div>
 
@@ -59,11 +57,56 @@ export default {
 
 | Name               | Payload | Description                                          | Note |
 |--------------------|---------|------------------------------------------------------|------|
-| sdk-load           | Object  | Returns an object with <br> a Facebook API instance. | @Returns <br> `FB[Object]`
-| connect            | Boolean | User is connected.
-| login              | Object  | User attempted login.                                | @Returns <br> `response[Object]`
-| logout             | Object  | User attempted logout.                               | @Returns <br> `response[Object]`
-| click              | None
+| sdk-load           | (sdk[Object])  | Returns an object with <br> a Facebook API instance. | **Scope-component event**
+| login              | (response[Object])  | User attempted login.                                | **Scope-component event**.
+| logout             | (response[Object])  | User attempted logout.                               | **Scope-component event**.
+| connect            | Boolean | User is connected.                                   | **Scope-component event**.<br><br>
+| click              | None    | &nbsp;                                               | **Scope-component event**.<br><br>
+
+</div>
+
+## Advanced Customization (Scope component)
+If props, slots and events do not satisfy your customization needs, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it doesn't not render **any** html or css, hence it has no added-value on its own. It only exposes a scoped-slot with attributes and methods that are committed as API. Advise the table below for reference.
+
+Short example how to use it (for a full example see [source](https://github.com/iliran11/facebook-login-vue/blob/3.x/src/components/FBLogin.vue)).
+
+```html
+<template>
+  <v-facebook-login-scope>
+    <template slot-scope="scope">
+      <!-- Compose HTML/CSS here, otherwise nothing will rendered! -->
+    </template>
+  </v-facebook-login-scope>
+</template>
+
+<script>
+import { VFBLoginScope } from 'facebook-login-vuejs'
+
+export default {
+  components: {
+    VFBLoginScope
+  }
+}
+</script>
+```
+
+### Scope Component Props/Events
+Refer to the tables above for scope-component **specific** props/events.
+
+### Scope Component Scoped-Slot Scope (Attributes and Methods)
+<div id="scope-table-wrap" class="docs-table-wrap">
+
+| Name         | Type     | Description                                                  |
+|--------------|----------|--------------------------------------------------------------|
+| idle         | Boolean  | No loading is currently occurring.                           |
+| login        | Function | Login handler.                                               |
+| logout       | Function | Logout handler.                                              |
+| loading      | Boolean  | Component initialization/login/logout is currently taking place. |
+| enabled      | Boolean  | Component is idle or SDK was loaded.                         |
+| disabled     | Boolean  | Component is loading or SDK is loading.                      |
+| connected    | Boolean  | User was logged in.                                          |
+| disconnected | Boolean  | User was logged out.                                         |
+| handleClick  | Function | Toggles login/logout.                                        |
 
 </div>
 

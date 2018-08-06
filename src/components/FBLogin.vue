@@ -9,7 +9,7 @@
       <span v-if="scope.enabled" class="event-capturer" @click="scope.handleClick()"></span>
       <i class="loader" v-if="scope.loading" :style="loaderStyle"></i>
       <img class="token" :src="token" v-if="scope.idle" :style="tokenStyle">
-      <span :style="slotStyle">
+      <span :style="textStyle">
         <slot name="login" v-if="scope.idle && scope.disconnected">
           Log in to Facebook
         </slot>
@@ -45,7 +45,7 @@ export default {
       type: Object,
       default: () => ({})
     },
-    slotStyle: {
+    textStyle: {
       type: Object,
       default: () => ({})
     }
