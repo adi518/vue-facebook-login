@@ -77,9 +77,24 @@ $color-nepal: #8b9dc3;
 $color-chambray: #3b55a0;
 
 .v-facebook-login {
+  min-width: 14rem;
   position: relative;
+  color: $color-white;
   box-sizing: border-box;
   transition: background-image 2s;
+  border: 1px solid rgba($color-white, 0.05);
+  margin: 0;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(
+    darken($color-chambray, 10%),
+    $color-chambray
+  );
 
   *,
   *::before,
@@ -90,24 +105,6 @@ $color-chambray: #3b55a0;
   &[disabled] {
     opacity: 0.75;
   }
-}
-
-.v-facebook-login {
-  color: $color-white;
-  border: 1px solid rgba($color-white, 0.05);
-  min-width: 14rem;
-  padding-top: 0.5rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-bottom: 0.5rem;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: linear-gradient(
-    darken($color-chambray, 10%),
-    $color-chambray
-  );
 }
 
 .loader {
