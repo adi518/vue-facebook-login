@@ -41,14 +41,20 @@
         <!-- GITHUB STAR -->
         <v-hide-at no-match>
           <div class="d-flex justify-content-center">
-            <!-- Do not remove global class `github-button`! -->
-            <a
-              class="github-button"
-              :href="pkg.repository.url"
-              data-icon="octicon-star"
-              data-show-count="true"
-              aria-label="Star iliran11/facebook-login-vue on GitHub"
-            >Star</a>
+            <!--
+              Do not remove global class `github-button`!
+              We need to wrap `.github-button` because
+              GitHub buttons looks for a parent element.
+            -->
+            <span>
+              <a
+                class="github-button"
+                :href="pkg.repository.url"
+                data-icon="octicon-star"
+                data-show-count="true"
+                aria-label="Star iliran11/facebook-login-vue on GitHub"
+              >Star</a>
+            </span>
           </div>
         </v-hide-at>
 
