@@ -5,6 +5,7 @@
         <div class="docs-markdown" v-html="markdowns.readme"></div>
       </div>
     </div>
+    <v-breakpoint v-model="breakpoint"></v-breakpoint>
   </div>
 </template>
 
