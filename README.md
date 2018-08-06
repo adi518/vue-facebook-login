@@ -55,13 +55,13 @@ export default {
 ## Events
 <div id="events-table-wrap" class="docs-table-wrap">
 
-| Name               | Payload | Description                                          | Note |
-|--------------------|---------|------------------------------------------------------|------|
-| sdk-load           | (sdk[Object])  | Returns an object with <br> a Facebook API instance. | **Scope-component event**
-| login              | (response[Object])  | User attempted login.                                | **Scope-component event**.
-| logout             | (response[Object])  | User attempted logout.                               | **Scope-component event**.
-| connect            | Boolean | User is connected.                                   | **Scope-component event**.<br><br>
-| click              | None    | &nbsp;                                               | **Scope-component event**.<br><br>
+| Name               | Payload            | Description                                          | Note |
+|--------------------|--------------------|------------------------------------------------------|------|
+| sdk-load           | (sdk[Object])      | Returns an object with <br> a Facebook API instance. | **Scope-component event**
+| login              | (response[Object]) | User attempted login.                                | **Scope-component event**.
+| logout             | (response[Object]) | User attempted logout.                               | **Scope-component event**.
+| connect            | Boolean            | User is connected.                                   | **Scope-component event**.
+| click              | None               | &nbsp;                                               | **Scope-component event**.
 
 </div>
 
