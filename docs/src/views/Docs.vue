@@ -8,7 +8,7 @@
 
         <!-- HEADING -->
         <div class="docs-clearfix text-center">
-          <img class="docs-vue-logo mb-10" src="vue-fb.svg">
+          <img class="docs-vue-logo mb-10" :src="assets.vueLogo">
           <h1>Facebook Login</h1>
           <p class="docs-tagline text-center mb-20">
             Integrate Facebook Login and <br v-if="breakpoint.noMatch"> access the benefits quickly and easily.
@@ -96,10 +96,12 @@ import typy from 'typy'
 import VFacebookLogin from 'facebook-login-vuejs'
 import VBreakpoint, { Model as Breakpoint } from 'vue-breakpoint-component'
 
+import vueLogo from '@/assets/vue-logo-facebook.svg'
+
 import docspkg from '../../package.json'
 import pkg from '../../../package.json'
 import readme from '../../../README.md'
-import { VhChromeFix } from '@/assets/VhChromeFix'
+import { VhChromeFix } from '@/modules/VhChromeFix'
 
 import VA from '@/components/Anchor'
 
@@ -113,6 +115,10 @@ export default {
   data: () => ({
     pkg,
     docspkg,
+
+    assets: {
+      vueLogo
+    },
 
     markdowns: {
       readme
@@ -394,6 +400,10 @@ $app-min-width: 320px;
   z-index: 1;
   position: absolute;
 
+  &:hover {
+    animation: docs-shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+
   img {
     width: 4rem;
     opacity: 0.9;
@@ -444,7 +454,7 @@ $app-min-width: 320px;
     max-width: 200%;
     color: #2f4480;
     margin-bottom: 1.5rem;
-    background: rgba(#f5f2f0, 0.9);
+    background-color: rgba(#f5f2f0, 0.9);
 
     @include media-breakpoint-down(xs) {
       width: 200%;
@@ -453,18 +463,24 @@ $app-min-width: 320px;
 
   th {
     font-weight: bold;
+    background-color: rgba(#8b9dc3, 0.9);
   }
 
   td {
     min-height: 2rem;
     border-top: 1px solid;
-    border-right: 1px solid;
+
+    &:first-child {
+      background-color: rgba(lighten(#8b9dc3, 20%), 0.9);
+    }
   }
 
   th,
   td {
     padding: 1rem;
     vertical-align: top;
+    vertical-align: middle;
+    border-right: 1px solid;
   }
 }
 
@@ -530,6 +546,28 @@ $app-min-width: 320px;
   }
 }
 /* Utils end */
+
+/* Animations */
+@keyframes docs-shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-3px);
+  }
+  40%,
+  60% {
+    transform: translateX(3px);
+  }
+}
+/* Animations end */
 </style>
 
 <style lang="sass">

@@ -138,7 +138,7 @@ export default {
   background-repeat: no-repeat;
   background-size: 1.2rem 1.2rem;
   transform: translate(-1.4rem, 1.4rem);
-  background-image: url('~@/assets/vue-fb.svg');
+  background-image: url('~@/assets/vue-logo-facebook.svg');
 }
 
 .menu {
