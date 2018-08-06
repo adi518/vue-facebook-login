@@ -66,7 +66,7 @@ export default {
 </div>
 
 ## Advanced Customization (Scope component)
-If props, slots and events do not satisfy your customization needs, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it doesn't not render **any** html or css, hence it has no added-value on its own. It only exposes a scoped-slot with attributes and methods that are committed as API. Advise the table below for reference.
+If props, slots and events do not satisfy your customization needs, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** html or css, hence it has no added-value on its own. It only exposes a scoped-slot with attributes and methods that are committed as API. Advise the table below for reference.
 
 Short example how to use it (for a full example see [source](https://github.com/iliran11/facebook-login-vue/blob/3.x/src/components/FBLogin.vue)).
 
