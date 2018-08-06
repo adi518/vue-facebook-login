@@ -96,17 +96,17 @@ Refer to the tables above for scope-component **specific** props/events.
 ### Scope Component Scoped-Slot Scope (Attributes and Methods)
 <div id="scope-table-wrap" class="docs-table-wrap">
 
-| Name         | Type     | Description                                                  |
-|--------------|----------|--------------------------------------------------------------|
-| idle         | Boolean  | No loading is currently occurring.                           |
-| login        | Function | Login handler.                                               |
-| logout       | Function | Logout handler.                                              |
+| Name         | Type     | Description                                                      |
+|--------------|----------|------------------------------------------------------------------|
+| idle         | Boolean  | No loading is currently taking place.                            |
+| login        | Function | Login handler.                                                   |
+| logout       | Function | Logout handler.                                                  |
 | loading      | Boolean  | Component initialization/login/logout is currently taking place. |
-| enabled      | Boolean  | Component is idle or SDK was loaded.                         |
-| disabled     | Boolean  | Component is loading or SDK is loading.                      |
-| connected    | Boolean  | User was logged in.                                          |
-| disconnected | Boolean  | User was logged out.                                         |
-| handleClick  | Function | Toggles login/logout.                                        |
+| enabled      | Boolean  | Component is idle or SDK was loaded.                             |
+| disabled     | Boolean  | Component is loading.                                            |
+| connected    | Boolean  | User was logged in.                                              |
+| disconnected | Boolean  | User was logged out.                                             |
+| handleClick  | Function | Toggles login/logout.                                            |
 
 </div>
 

@@ -33,7 +33,6 @@ export default {
   },
   data: () => ({
     isLoading: true,
-    isSdkLoaded: false,
     isConnected: false
   }),
   watch: {
@@ -51,7 +50,6 @@ export default {
       if (fbLoginStatus.status === 'connected') {
         this.isConnected = true
       }
-      this.isSdkLoaded = true
       this.$emit('sdk-load', { FB: sdk })
       resolve()
     })
@@ -73,7 +71,7 @@ export default {
       return this.isDisabled === false
     },
     isDisabled() {
-      return this.isLoading || this.isSdkLoaded === false
+      return this.isLoading
     },
     scope() {
       return {
