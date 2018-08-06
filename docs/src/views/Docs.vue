@@ -42,6 +42,7 @@
         <v-hide-at no-match>
           <div class="d-flex justify-content-center">
             <a
+              class="github-button"
               :href="pkg.repository.url"
               data-icon="octicon-star"
               data-show-count="true"

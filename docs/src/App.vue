@@ -4,6 +4,7 @@
       <template slot="last-child">
         <v-show-at no-match>
           <a
+            class="github-button"
             :href="pkg.repository.url"
             data-icon="octicon-star"
             data-show-count="true"
