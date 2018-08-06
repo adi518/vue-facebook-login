@@ -1,32 +1,37 @@
 <template>
   <div id="app">
     <v-menu :routes="routes">
-      <!-- <template slot="last-child">
-        <a
-        class="github-button"
-        :href="flags.production && pkg.repository.url"
-        data-icon="octicon-star"
-        data-show-count="true"
-        aria-label="Star adi518/vue-stepper-component on GitHub">
-        Star
-      </a>
-      </template> -->
+      <template slot="last-child">
+        <v-show-at no-match>
+          <a
+            :href="pkg.repository.url"
+            data-icon="octicon-star"
+            data-show-count="true"
+            aria-label="Star iliran11/facebook-login-vue on GitHub"
+          >Star</a>
+        </v-show-at>
+      </template>
     </v-menu>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import pkg from '../../package.json'
+
 import VMenu from '@/components/Menu'
+import { VShowAt } from 'vue-breakpoint-component'
 
 import { routes } from '@/router'
 
 export default {
   name: 'app',
   components: {
-    VMenu
+    VMenu,
+    VShowAt
   },
   data: () => ({
+    pkg,
     routes
   })
 }
@@ -64,7 +69,7 @@ $font-family-base: 'Roboto', sans-serif;
 
 html {
   @include media-breakpoint-down(xs) {
-    font-size: 90%;
+    font-size: 80%;
   }
 }
 

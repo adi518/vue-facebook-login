@@ -8,7 +8,9 @@
 
         <!-- HEADING -->
         <div class="docs-clearfix text-center">
-          <img class="docs-vue-logo mb-10" :src="assets.vueLogo">
+          <v-hide-at no-match>
+            <img class="docs-vue-logo mb-10" :src="assets.vueLogo">
+          </v-hide-at>
           <h1>Facebook Login</h1>
           <p class="docs-tagline text-center mb-20">
             Integrate Facebook Login and <br v-if="breakpoint.noMatch"> access the benefits quickly and easily.
@@ -27,7 +29,7 @@
         </v-facebook-login>
 
         <!-- DEMO:USER -->
-        <div class="docs-user mx-auto mb-35">
+        <div class="docs-user mx-auto" :class="breakpoint.noMatch ? null : 'mb-35'">
           <div class="docs-user-picture"
             :class="{ 'docs-user-picture--is-visible': computed.picture }"
             :style="{ backgroundImage: `url(${connected && computed.picture || ''}` }"></div>
@@ -37,15 +39,16 @@
         </div>
 
         <!-- GITHUB STAR -->
-        <div class="d-flex justify-content-center">
-          <a
-            class="github-button"
-            href="https://github.com/iliran11/facebook-login-vue"
-            data-icon="octicon-star"
-            data-show-count="true"
-            aria-label="Star iliran11/facebook-login-vue on GitHub"
-          >Star</a>
-        </div>
+        <v-hide-at no-match>
+          <div class="d-flex justify-content-center">
+            <a
+              :href="pkg.repository.url"
+              data-icon="octicon-star"
+              data-show-count="true"
+              aria-label="Star iliran11/facebook-login-vue on GitHub"
+            >Star</a>
+          </div>
+        </v-hide-at>
 
         <!-- VERSION -->
         <div class="docs-version">{{ pkg.version }} - {{ docspkg.version }}</div>
@@ -94,7 +97,10 @@ import Prism from 'prismjs'
 
 import typy from 'typy'
 import VFacebookLogin from 'facebook-login-vuejs'
-import VBreakpoint, { Model as Breakpoint } from 'vue-breakpoint-component'
+import VBreakpoint, {
+  VHideAt,
+  Model as Breakpoint
+} from 'vue-breakpoint-component'
 
 import vueLogo from '@/assets/vue-logo-facebook.svg'
 
@@ -109,6 +115,7 @@ export default {
   name: 'Docs',
   components: {
     VA,
+    VHideAt,
     VBreakpoint,
     VFacebookLogin
   },
@@ -347,11 +354,6 @@ $app-min-width: 320px;
   // background-color: rgba(28, 40, 76, 0.5);
   box-shadow: 0 0.1rem 0rem rgba(255, 255, 255, 0.2),
     inset 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
-
-  @include media-breakpoint-down(xs) {
-    // width: 6rem;
-    // height: 6rem;
-  }
 }
 
 .docs-user-picture {
@@ -431,7 +433,7 @@ $app-min-width: 320px;
   font-size: 1.2rem;
   color: #ffffff;
   left: 50%;
-  bottom: 1rem;
+  bottom: 0.8rem;
   position: absolute;
   white-space: nowrap;
   transform: translateX(-50%);
