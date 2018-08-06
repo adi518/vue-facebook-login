@@ -20,11 +20,12 @@ export function loadFbSdk(appId, version, options) {
 }
 
 export function getSdk(appId, version) {
-  return new Promise(resolve => {
+  return new Promise(async resolve => {
     if (window.FB) {
       resolve(window.FB)
     } else {
-      resolve(loadFbSdk(appId, version))
+      await loadFbSdk(appId, version)
+      resolve(window.FB)
     }
   })
 }

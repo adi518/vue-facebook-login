@@ -172,11 +172,11 @@ export default {
         })
       })
     },
-    handleConnect() {
-      this.getUserData()
-    },
     handleSdkLoad({ FB }) {
       this.facebook.FB = FB
+    },
+    handleConnect() {
+      this.getUserData()
     },
     handleLogout() {
       // eslint-disable-next-line

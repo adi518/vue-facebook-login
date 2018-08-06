@@ -4,17 +4,20 @@
       slot-scope="scope"
       class="v-facebook-login"
       :style="buttonStyle"
-      :disabled="scope.disabled || scope.working"
+      :disabled="scope.disabled || scope.loading"
     >
       <span v-if="scope.enabled" class="event-capturer" @click="scope.handleClick()"></span>
-      <i class="loader" v-if="scope.working" :style="loaderStyle"></i>
+      <i class="loader" v-if="scope.loading" :style="loaderStyle"></i>
       <img class="token" :src="token" v-if="scope.idle" :style="tokenStyle">
       <span :style="slotStyle">
-        <slot name="login" v-if="scope.disconnected">
+        <slot name="login" v-if="scope.idle && scope.disconnected">
           Log in to Facebook
         </slot>
-        <slot name="logout" v-if="scope.connected">
+        <slot name="logout" v-if="scope.idle && scope.connected">
           Log out from Facebook
+        </slot>
+        <slot name="loading" v-if="scope.loading">
+          Please wait...
         </slot>
       </span>
     </button>

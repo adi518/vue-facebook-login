@@ -32,7 +32,7 @@ export default {
     }
   },
   data: () => ({
-    isWorking: false,
+    isLoading: true,
     isSdkLoaded: false,
     isConnected: false
   }),
@@ -45,13 +45,17 @@ export default {
     }
   },
   async created() {
-    await getSdk(this.appId, this.version)
-    const response = await getFbLoginStatus()
-    if (response.status === 'connected') {
-      this.isConnected = true
-    }
-    this.isSdkLoaded = true
-    this.$emit('sdk-load', { FB: window.FB })
+    const created = new Promise(async resolve => {
+      const sdk = await getSdk(this.appId, this.version)
+      const fbLoginStatus = await getFbLoginStatus()
+      if (fbLoginStatus.status === 'connected') {
+        this.isConnected = true
+      }
+      this.isSdkLoaded = true
+      this.$emit('sdk-load', { FB: sdk })
+      resolve()
+    })
+    this.doAsync(created)
   },
   updated() {
     if (this.$slots.default && this.$slots.default.length) {
@@ -60,7 +64,7 @@ export default {
   },
   computed: {
     isIdle() {
-      return this.isWorking === false
+      return this.isLoading === false
     },
     isDisconnected() {
       return this.isConnected === false
@@ -69,14 +73,14 @@ export default {
       return this.isDisabled === false
     },
     isDisabled() {
-      return this.isWorking || this.isSdkLoaded === false
+      return this.isLoading || this.isSdkLoaded === false
     },
     scope() {
       return {
         idle: this.isIdle,
         login: this.login,
         logout: this.logout,
-        working: this.isWorking,
+        loading: this.isLoading,
         enabled: this.isEnabled,
         disabled: this.isDisabled,
         connected: this.isConnected,
@@ -113,9 +117,9 @@ export default {
       return logout
     },
     async doAsync(promise) {
-      this.isWorking = true
+      this.isLoading = true
       await promise
-      this.isWorking = false
+      this.isLoading = false
       return promise
     }
   },

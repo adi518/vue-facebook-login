@@ -46,10 +46,11 @@ export default {
 ## Slots
 <div id="slots-table-wrap" class="docs-table-wrap">
 
-| Name   | Default |
-|--------|---------|
-| login  | Log in to Facebook
-| logout | Log out from Facebook
+| Name    | Default |
+|---------|---------|
+| login   | Log in to Facebook
+| logout  | Log out from Facebook
+| loading | Please wait...
 
 </div>
 
