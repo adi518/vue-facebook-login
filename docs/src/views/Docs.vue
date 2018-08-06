@@ -31,8 +31,8 @@
           <div class="docs-user-picture"
             :class="{ 'docs-user-picture--is-visible': computed.picture }"
             :style="{ backgroundImage: `url(${connected && computed.picture || ''}` }"></div>
-          <template v-if="connected && computed.nopicture">{{ computed.name }}</template>
-          <div class="docs-user-state-placeholder">Disconnected</div>
+          <template v-if="connected && flags.nopicture">{{ computed.name }}</template>
+          <div v-if="disconnected" class="docs-user-state-placeholder">Disconnected</div>
           <div class="docs-user-state-indicator" :class="{ 'docs-user-state-indicator--green': connected }"></div>
         </div>
 
@@ -129,6 +129,10 @@ export default {
       model: {}
     },
 
+    flags: {
+      nopicture: false
+    },
+
     user: {},
 
     instances: {},
@@ -151,6 +155,16 @@ export default {
   destroyed() {
     this.instances.vhChromeFix.destroy()
   },
+
+  watch: {
+    'computed.picture'(picture) {
+      if (picture) {
+        //
+      } else {
+        this.flags.nopicture = false
+      }
+    }
+  },
   computed: {
     appId() {
       if (process.env.NODE_ENV === 'production') {
@@ -161,11 +175,13 @@ export default {
     computed() {
       const name = this.user.name
       const picture = typy(this.user, 'picture.data.url').safeString
-      const nopicture = !picture
-      return { name, picture, nopicture }
+      return { name, picture }
     },
     connected() {
       return this.facebook.model.connected
+    },
+    disconnected() {
+      return !this.connected
     }
   },
   methods: {
