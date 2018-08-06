@@ -48,9 +48,9 @@ export default {
 
 | Name    | Default |
 |---------|---------|
-| login   | Log in to Facebook
-| logout  | Log out from Facebook
-| loading | Please wait...
+| login   | "Log in to Facebook"
+| logout  | "Log out from Facebook"
+| loading | "Please wait..."
 
 </div>
 

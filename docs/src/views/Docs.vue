@@ -155,16 +155,6 @@ export default {
   destroyed() {
     this.instances.vhChromeFix.destroy()
   },
-
-  watch: {
-    'computed.picture'(picture) {
-      if (picture) {
-        //
-      } else {
-        this.flags.nopicture = false
-      }
-    }
-  },
   computed: {
     appId() {
       if (process.env.NODE_ENV === 'production') {
@@ -190,7 +180,11 @@ export default {
       api('/me', { fields: 'id, name' }, user => {
         this.user = user
         api(`${this.user.id}/picture?width=9999&redirect=false`, picture => {
-          this.$set(this.user, 'picture', picture)
+          if (picture) {
+            this.$set(this.user, 'picture', picture)
+          } else {
+            this.flags.nopicture = true
+          }
         })
       })
     },
