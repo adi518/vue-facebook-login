@@ -80,7 +80,6 @@ $color-chambray: #3b55a0;
   min-width: 14rem;
   color: $color-white;
   box-sizing: border-box;
-  transition: background-image 2s;
   border: 1px solid rgba($color-white, 0.05);
   margin: 0; // Normalize Flex-box
   padding-top: 0.5rem;
