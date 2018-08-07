@@ -1,6 +1,6 @@
 // https://developers.facebook.com/docs/apps/versions/
 // https://developers.facebook.com/docs/javascript/quickstart/
-// https://developers.facebook.com/docs/javascript/reference/FB.init/v3.1
+// https://developers.facebook.com/docs/javascript/reference/FB.init/
 
 /* global window, document */
 
