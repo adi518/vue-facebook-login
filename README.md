@@ -33,8 +33,8 @@ export default {
 | value         | Object | `{ connected: false }` | **Scope-component prop**.<br><br>Used for one-way V-model.
 | app-id        | String | None                   | **Scope-component prop**.<br><br>**Required prop**.
 | version 	    | String | `'v3.1'`               | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for available values.
-| options       | Object | `{}`                   | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/javascript/reference/FB.init) for available values.<br><br>**Properties should be camel-case**.
-| login-options | Object | `{ scope: 'email' }`   | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login) for available values.<br><br>**Properties should be camel-case**.
+| options       | Object | `{}`                   | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/javascript/reference/FB.init/) for available values.<br><br>**Properties should be camel-case**.
+| login-options | Object | `{ scope: 'email' }`   | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/) for available values.<br><br>**Properties should be camel-case**.
 | button-style  | Object | `{}`                   | **Properties should be camel-case.**
 | loader-style  | Object | `{}`                   | **Properties should be camel-case.**
 | token-style   | Object | `{}`                   | **Properties should be camel-case.**
