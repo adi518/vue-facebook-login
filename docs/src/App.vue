@@ -1,32 +1,45 @@
 <template>
   <div id="app">
     <v-menu :routes="routes">
-      <!-- <template slot="last-child">
-        <a
-        class="github-button"
-        :href="flags.production && pkg.repository.url"
-        data-icon="octicon-star"
-        data-show-count="true"
-        aria-label="Star adi518/vue-stepper-component on GitHub">
-        Star
-      </a>
-      </template> -->
+      <template slot="last-child">
+        <v-show-at no-match>
+          <!--
+            Do not remove global class `github-button`!
+            We need to wrap `.github-button` because
+            GitHub buttons looks for a parent element.
+          -->
+          <span>
+            <a
+              class="github-button"
+              :href="pkg.repository.url"
+              data-icon="octicon-star"
+              data-show-count="true"
+              aria-label="Star iliran11/facebook-login-vue on GitHub"
+            >Star</a>
+          </span>
+        </v-show-at>
+      </template>
     </v-menu>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import pkg from '../../package.json'
+
 import VMenu from '@/components/Menu'
+import { VShowAt } from 'vue-breakpoint-component'
 
 import { routes } from '@/router'
 
 export default {
   name: 'app',
   components: {
-    VMenu
+    VMenu,
+    VShowAt
   },
   data: () => ({
+    pkg,
     routes
   })
 }
@@ -64,7 +77,7 @@ $font-family-base: 'Roboto', sans-serif;
 
 html {
   @include media-breakpoint-down(xs) {
-    font-size: 90%;
+    font-size: 80%;
   }
 }
 
@@ -88,73 +101,11 @@ p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
+
+@import '~@/styles/Docs.scss';
+@import '~@/styles/Docs.sass';
 </style>
 
 <style lang="stylus">
-// https://github.com/vuejs/vuepress/blob/fd46a26d3a884b62092581451028121fd0daf654/lib/default-theme/styles/code.styl
-for lang in js ts html md vue css sass scss less stylus go java c sh yaml {
-  pre{'[class~="language-' + lang + '"]'} {
-    &:before {
-      content: '' + lang;
-    }
-  }
-}
-
-pre[class*=language-] {
-  position: relative;
-
-  &::before {
-    position: absolute;
-    z-index: 3;
-    top: 0.8rem;
-    right: 1rem;
-    font-size: 0.75rem;
-  }
-}
-
-pre[class~='language-bash'] {
-  &:before {
-    content: 'bash';
-  }
-}
-
-pre[class~='language-javascript'] {
-  &:before {
-    content: 'js';
-  }
-}
-
-pre[class~='language-typescript'] {
-  &:before {
-    content: 'ts';
-  }
-}
-
-pre[class~='language-markup'] {
-  &:before {
-    content: 'html';
-  }
-}
-
-pre[class~='language-markdown'] {
-  &:before {
-    content: 'md';
-  }
-}
-
-pre[class~='language-json']:before {
-  content: 'json';
-}
-
-pre[class~='language-ruby']:before {
-  content: 'rb';
-}
-
-pre[class~='language-python']:before {
-  content: 'py';
-}
-
-pre[class~='language-bash']:before {
-  content: 'sh';
-}
+@import '~@/styles/prism-language-tags.stylus';
 </style>

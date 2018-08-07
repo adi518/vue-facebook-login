@@ -1,14 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Docs from './views/Docs.vue'
+import Docs2x from './views/Docs-2.x.vue'
 
 Vue.use(Router)
 
 export const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Documentation',
+    component: Docs
+  },
+  {
+    path: '/documentation-2.x',
+    name: 'Documentation 2.x',
+    component: Docs2x
   },
   {
     path: '/privacy-policy',

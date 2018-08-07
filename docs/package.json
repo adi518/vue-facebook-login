@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "1.0.8",
+  "version": "1.0.21",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -8,7 +8,7 @@
     "lint": "vue-cli-service lint",
     "predeploy": "npm version patch --no-git-tag-version && npm run build",
     "deploy": "node gh-pages",
-    "postdeploy": "git add package.json package-lock.json && git commit -m Docs v%npm_package_version%"
+    "postdeploy": "node ./post-deploy"
   },
   "dependencies": {
     "bootstrap": "^4.1.3",

@@ -1,7 +1,7 @@
 import FBLogin from '@/components/FBLogin.vue'
 
-export { default as FBLogin } from '@/components/FBLogin.vue'
-export { default as FBLoginBare } from '@/components/FBLogin.Bare.js'
+export { default as VFBLogin } from '@/components/FBLogin.vue'
+export { default as VFBLoginScope } from '@/components/FBLogin.Scope.js'
 
 export const Install = {
   install(Vue, config) {
