@@ -75,7 +75,7 @@ Short example how to use it (for a full example see [source](https://github.com/
 <template>
   <v-facebook-login-scope>
     <template slot-scope="scope">
-      <!-- Compose HTML/CSS here, otherwise nothing will rendered! -->
+      <!-- Compose HTML/CSS here, otherwise nothing will be rendered! -->
     </template>
   </v-facebook-login-scope>
 </template>
