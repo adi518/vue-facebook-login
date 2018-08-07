@@ -1,5 +1,3 @@
-// https://developers.facebook.com/docs/apps/versions/
-
 import {
   getSdk,
   fbLogin,
@@ -24,6 +22,10 @@ export default {
       type: String,
       default: 'v3.1'
     },
+    options: {
+      type: Object,
+      default: () => ({})
+    },
     loginOptions: {
       type: Object,
       default: () => ({
@@ -45,19 +47,21 @@ export default {
   },
   async created() {
     const created = new Promise(async resolve => {
-      const sdk = await getSdk(this.appId, this.version)
+      const { appId, version, options } = this
+      const sdk = await getSdk({ appId, version, options })
+      console.log(sdk)
       const fbLoginStatus = await getFbLoginStatus()
       if (fbLoginStatus.status === 'connected') {
         this.isConnected = true
       }
-      this.$emit('sdk-load', { FB: sdk })
+      this.$emit('sdk-init', { FB: sdk })
       resolve()
     })
     this.doAsync(created)
   },
   updated() {
     if (this.$slots.default && this.$slots.default.length) {
-      console.error(`[V-Facebook-Login error]: Slot must be scoped.`)
+      console.error('[V-Facebook-Login-Scope error]: Slot must be scoped.')
     }
   },
   computed: {
@@ -82,13 +86,13 @@ export default {
         enabled: this.isEnabled,
         disabled: this.isDisabled,
         connected: this.isConnected,
-        handleClick: this.handleClick,
+        toggleState: this.toggleState,
         disconnected: this.isDisconnected
       }
     }
   },
   methods: {
-    handleClick() {
+    toggleState() {
       this.$emit('click')
       if (this.isConnected) {
         this.logout()

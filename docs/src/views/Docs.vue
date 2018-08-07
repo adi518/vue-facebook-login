@@ -22,11 +22,11 @@
           class="docs-facebook-button mx-auto mb-35"
           v-model="facebook.model"
           :app-id="appId"
-          @sdk-load="handleSdkLoad"
+          @sdk-init="handleSdkInit"
           @connect="handleConnect"
           @logout="handleLogout"
-          @click="handleClick">
-        </v-facebook-login>
+          @click="handleClick"
+        ></v-facebook-login>
 
         <!-- DEMO:USER -->
         <div class="docs-user mx-auto" :class="breakpoint.noMatch ? null : 'mb-35'">
@@ -83,12 +83,12 @@
               class="docs-credit-anchor"
               href="https://github.com/iliran11"
               target="_blank"
-            >🐙&nbsp;Liran Cohen</a>
+            >🐙&nbsp;@iliran11</a>
             <a
               class="docs-credit-anchor"
               href="https://github.com/adi518"
               target="_blank"
-            >🦊&nbsp;Adi Sahar</a>
+            >🦊&nbsp;@adi518</a>
           </div>
         </div>
       </div>
@@ -202,7 +202,7 @@ export default {
         })
       })
     },
-    handleSdkLoad({ FB }) {
+    handleSdkInit({ FB }) {
       this.facebook.FB = FB
     },
     handleConnect() {

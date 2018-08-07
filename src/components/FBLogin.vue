@@ -5,8 +5,8 @@
       class="v-facebook-login"
       :style="buttonStyle"
       :disabled="scope.disabled || scope.loading"
+      @click="scope.toggleState"
     >
-      <span v-if="scope.enabled" class="event-capturer" @click="scope.handleClick()"></span>
       <i class="loader" v-if="scope.loading" :style="loaderStyle"></i>
       <img class="token" :src="token" v-if="scope.idle" :style="tokenStyle">
       <span :style="textStyle">
@@ -78,12 +78,11 @@ $color-chambray: #3b55a0;
 
 .v-facebook-login {
   min-width: 14rem;
-  position: relative;
   color: $color-white;
   box-sizing: border-box;
   transition: background-image 2s;
   border: 1px solid rgba($color-white, 0.05);
-  margin: 0;
+  margin: 0; // Normalize Flex-box
   padding-top: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -119,23 +118,17 @@ $color-chambray: #3b55a0;
   animation: v-facebook-login-spin 2s linear infinite;
 }
 
+.loader {
+  height: 1.5rem;
+}
+
 .token,
 .loader {
   opacity: 0.9;
-}
-
-.token,
-.loader {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;  
   margin-right: 0.5rem;
 }
 
-.event-capturer {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
 
 @keyframes v-facebook-login-spin {
   0% {

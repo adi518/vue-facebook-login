@@ -1,30 +1,35 @@
+// https://developers.facebook.com/docs/apps/versions/
+// https://developers.facebook.com/docs/javascript/quickstart/
+// https://developers.facebook.com/docs/javascript/reference/FB.init/v3.1
+
 /* global window, document */
 
-export function loadFbSdk(appId, version, options) {
+export function initFbSdk(options) {
   return new Promise(resolve => {
     window.fbAsyncInit = function () {
-      const defaults = { xfbml: false, cookie: true }
-      const $options = { ...defaults, ...options, appId, version }
-      window.FB.init($options)
-      window.FB.AppEvents.logPageView()
-      resolve('SDK Loaded')
+      const defaults = { cookie: true }
+      options = { ...defaults, ...options }
+      window.FB.init(options)
+      resolve()
     };
+    /* eslint-disable */
     (function (d, s, id) {
       const fjs = d.getElementsByTagName(s)[0]
-      if (d.getElementById(id)) { return; } // eslint-disable-line
+      if (d.getElementById(id)) { return; }
       const js = d.createElement(s); js.id = id
       js.src = '//connect.facebook.net/en_US/sdk.js'
       fjs.parentNode.insertBefore(js, fjs)
     }(document, 'script', 'facebook-jssdk'))
+    /* eslint-enable */
   })
 }
 
-export function getSdk(appId, version) {
+export function getSdk(options) {
   return new Promise(async resolve => {
     if (window.FB) {
       resolve(window.FB)
     } else {
-      await loadFbSdk(appId, version)
+      await initFbSdk(options)
       resolve(window.FB)
     }
   })
