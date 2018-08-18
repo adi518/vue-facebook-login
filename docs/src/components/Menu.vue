@@ -8,7 +8,12 @@
       <li v-for="(route, index) in computedRoutes" :key="index">
         <router-link v-if="route.name" :to="{ name: route.name }" v-html="route.name" />
       </li>
-      <li>
+      <template v-for="(item, index) in computedItems">
+        <li :key="`item-${index}`" v-if="$slots[`item-${index + 1}`]">
+          <slot :name="`item-${index + 1}`"></slot>
+        </li>
+      </template>
+      <li v-if="$slots['last-child']">
         <slot name="last-child"></slot>
       </li>
     </ul>
@@ -29,6 +34,10 @@ import { flattenRoutes } from 'vue-flatten-routes'
 export default {
   name: 'VMenu',
   props: {
+    items: {
+      type: String,
+      default: '0'
+    },
     routes: {
       type: Array,
       default: () => []
@@ -70,6 +79,11 @@ export default {
     },
     computedRoutes() {
       return flattenRoutes(this.routes)
+    },
+    computedItems() {
+      return Array.from(Array(Number(this.items))).map(
+        (item, index) => index + 1
+      )
     }
   },
   methods: {

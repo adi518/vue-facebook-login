@@ -49,7 +49,7 @@ export default {
 |---------|---------|
 | login   | `'Log in to Facebook'`
 | logout  | `'Log out from Facebook'`
-| loading | `'Please wait...'`
+| working | `'Please wait...'`
 
 </div>
 
@@ -99,15 +99,14 @@ Refer to the tables above for scope-component **specific** props/events.
 
 | Name         | Type     | Description                                                      |
 |--------------|----------|------------------------------------------------------------------|
-| idle         | Boolean  | No loading is currently taking place.                            |
 | login        | Function | Login handler.                                                   |
 | logout       | Function | Logout handler.                                                  |
-| loading      | Boolean  | Component initialization/login/logout is currently taking place. |
-| enabled      | Boolean  | Component is idle or SDK was loaded.                             |
-| disabled     | Boolean  | Component is loading.                                            |
+| working      | Boolean  | SDK-initialization/login/logout is currently taking place.       |
+| enabled      | Boolean  | Button is enabled.                                               |
+| disabled     | Boolean  | Button is disabled.                                              |
 | connected    | Boolean  | User was logged in.                                              |
 | disconnected | Boolean  | User was logged out.                                             |
-| toggleState  | Function | Toggles login/logout.                                            |
+| toggleLogin  | Function | Toggles login/logout.                                            |
 
 </div>
 
