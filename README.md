@@ -101,12 +101,12 @@ Refer to the tables above for scope-component **specific** props/events.
 |--------------|----------|------------------------------------------------------------------|
 | login        | Function | Login handler.                                                   |
 | logout       | Function | Logout handler.                                                  |
+| toggleLogin  | Function | Toggles login/logout.                                            |
 | working      | Boolean  | SDK-initialization/login/logout is currently taking place.       |
-| enabled      | Boolean  | Button is enabled.                                               |
-| disabled     | Boolean  | Button is disabled.                                              |
 | connected    | Boolean  | User was logged in.                                              |
 | disconnected | Boolean  | User was logged out.                                             |
-| toggleLogin  | Function | Toggles login/logout.                                            |
+| enabled      | Boolean  | Button is enabled.                                               |
+| disabled     | Boolean  | Button is disabled.                                              |
 
 </div>
 
