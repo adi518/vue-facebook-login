@@ -15,7 +15,7 @@
     "predocs": "npm link && npm run link",
     "docs": "npm run serve --prefix ./docs",
     "deploy": "cd ./docs && npm run deploy",
-    "deploy-rebase": "cd ./docs && npm run deploy-rebase",
+    "deploy-first": "cd ./docs && npm run deploy-first",
     "prerelease-patch": "npm run build && npm version patch",
     "prerelease-minor": "npm run build && npm version minor",
     "prerelease-major": "npm run build && npm version major",
