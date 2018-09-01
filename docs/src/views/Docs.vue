@@ -52,7 +52,7 @@
                 :href="pkg.repository.url"
                 data-icon="octicon-star"
                 data-show-count="true"
-                aria-label="Star adi518/vue-facebook-login on GitHub"
+                aria-label="Star adi518/vue-facebook-login-component on GitHub"
               >Star</a>
             </span>
           </div>

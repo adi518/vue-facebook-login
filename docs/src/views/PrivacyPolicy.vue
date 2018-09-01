@@ -2,9 +2,9 @@
   <div class="container privacy-policy" style="margin-top: 4rem; margin-bottom: 4rem">
     <h1>Privacy Policy</h1>
     <p>Effective date: July 30, 2018</p>
-    <p>Vue-Facebook-Login ("us", "we", or "our") operates the https://adi518.github.io/vue-facebook-login/#/ website (the "Service").</p>
-    <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. This Privacy Policy  for Vue-Facebook-Login is powered by <a href="https://www.freeprivacypolicy.com/free-privacy-policy-generator.php">FreePrivacyPolicy.com</a>.</p>
-    <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from https://adi518.github.io/vue-facebook-login/#/</p>
+    <p>Vue-Facebook-Login-Component ("us", "we", or "our") operates the https://adi518.github.io/vue-facebook-login-component/#/ website (the "Service").</p>
+    <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. This Privacy Policy  for Vue-Facebook-Login-Component is powered by <a href="https://www.freeprivacypolicy.com/free-privacy-policy-generator.php">FreePrivacyPolicy.com</a>.</p>
+    <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from https://adi518.github.io/vue-facebook-login-component/#/</p>
     <h2>Information Collection And Use</h2>
     <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
     <h3>Types of Data Collected</h3>
@@ -28,7 +28,7 @@
       <li><strong>Security Cookies.</strong> We use Security Cookies for security purposes.</li>
     </ul>
     <h2>Use of Data</h2>
-    <p>Vue-Facebook-Login uses the collected data for various purposes:</p>
+    <p>Vue-Facebook-Login-Component uses the collected data for various purposes:</p>
     <ul>
       <li>To provide and maintain the Service</li>
       <li>To notify you about changes to our Service</li>
@@ -42,13 +42,13 @@
     <p>Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.</p>
     <p>If you are located outside Israel and choose to provide information to us, please note that we transfer the data, including Personal Data, to Israel and process it there.</p>
     <p>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>
-    <p>Vue-Facebook-Login will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
+    <p>Vue-Facebook-Login-Component will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
     <h2>Disclosure Of Data</h2>
     <h3>Legal Requirements</h3>
-    <p>Vue-Facebook-Login may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
+    <p>Vue-Facebook-Login-Component may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
     <ul>
       <li>To comply with a legal obligation</li>
-      <li>To protect and defend the rights or property of Vue-Facebook-Login</li>
+      <li>To protect and defend the rights or property of Vue-Facebook-Login-Component</li>
       <li>To prevent or investigate possible wrongdoing in connection with the Service</li>
       <li>To protect the personal safety of users of the Service or the public</li>
       <li>To protect against legal liability</li>
@@ -71,7 +71,7 @@
     <h2>Contact Us</h2>
     <p>If you have any questions about this Privacy Policy, please contact us:</p>
     <ul>
-      <li>By visiting this page on our website: https://github.com/adi518/vue-facebook-login/issues</li>
+      <li>By visiting this page on our website: https://github.com/adi518/vue-facebook-login-component/issues</li>
     </ul>
   </div>
 </template>

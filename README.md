@@ -58,7 +58,7 @@ export default {
 
 | Name               | Payload            | Description                                          | Note |
 |--------------------|--------------------|------------------------------------------------------|------|
-| sdk-init           | (sdk[Object])      | Returns an object with <br> a Facebook API instance. | **Scope-component event**
+| sdk-init           | (sdk[Object])      | Returns an object with <br> a Facebook SDK instance. | **Scope-component event**
 | login              | (response[Object]) | User attempted login.                                | **Scope-component event**.
 | logout             | (response[Object]) | User attempted logout.                               | **Scope-component event**.
 | connect            | Boolean            | User is connected.                                   | **Scope-component event**.
@@ -69,7 +69,7 @@ export default {
 ## Advanced Customization (Scope component)
 If props, slots and events do not satisfy your customization needs, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** html or css, hence it has no added-value on its own. It only exposes a scoped-slot with attributes and methods that are committed as API. Advise the table below for reference.
 
-Short example how to use it (for a full example see [source](https://github.com/adi518/vue-facebook-login/blob/3.x/src/components/FBLogin.vue)).
+Short example how to use it (for a full example see [source](https://github.com/adi518/vue-facebook-login-component/blob/master/src/components/FBLogin.vue)).
 
 ```html
 <template>
@@ -123,7 +123,7 @@ npm run docs
 ```
 
 ## Support
-Please open an [issue](https://github.com/adi518/vue-facebook-login/issues) for support.
+Please open an [issue](https://github.com/adi518/vue-facebook-login-component/issues) for support.
 
 ## License
 Copyright (c) 2018 by [MIT](https://opensource.org/licenses/MIT)

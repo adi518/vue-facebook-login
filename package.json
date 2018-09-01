@@ -28,10 +28,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adi518/vue-facebook-login"
+    "url": "https://github.com/adi518/vue-facebook-login-component"
   },
   "bugs": {
-    "url": "https://github.com/adi518/vue-facebook-login/issues"
+    "url": "https://github.com/adi518/vue-facebook-login-component/issues"
   },
   "peerDependencies": {
     "vue": "^2.x"
