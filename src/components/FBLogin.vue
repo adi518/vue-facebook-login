@@ -4,19 +4,19 @@
       slot-scope="scope"
       class="v-facebook-login"
       :style="buttonStyle"
-      :disabled="scope.disabled || scope.loading"
-      @click="scope.toggleState"
+      :disabled="scope.disabled"
+      @click="scope.toggleLogin"
     >
-      <i class="loader" v-if="scope.loading" :style="loaderStyle"></i>
-      <img class="token" :src="token" v-if="scope.idle" :style="tokenStyle">
+      <i class="loader" v-if="scope.working" :style="loaderStyle"></i>
+      <img class="token" :src="token" v-if="scope.enabled" :style="tokenStyle">
       <span :style="textStyle">
-        <slot name="login" v-if="scope.idle && scope.disconnected">
+        <slot name="login" v-if="scope.enabled && scope.disconnected">
           Log in to Facebook
         </slot>
-        <slot name="logout" v-if="scope.idle && scope.connected">
+        <slot name="logout" v-if="scope.enabled && scope.connected">
           Log out from Facebook
         </slot>
-        <slot name="loading" v-if="scope.loading">
+        <slot name="working" v-if="scope.working">
           Please wait...
         </slot>
       </span>
@@ -31,8 +31,7 @@ import token from '@/assets/images/iconmonstr-facebook-1.svg'
 export default {
   name: 'v-facebook-login',
   components: { [Scope.name]: Scope },
-  props: {
-    ...Scope.props,
+  props: Object.assign({}, Scope.props, {
     buttonStyle: {
       type: Object,
       default: () => ({})
@@ -49,7 +48,7 @@ export default {
       type: Object,
       default: () => ({})
     }
-  },
+  }),
   data: () => ({
     token
   }),
@@ -124,10 +123,9 @@ $color-chambray: #3b55a0;
 .token,
 .loader {
   opacity: 0.9;
-  width: 1.5rem;  
+  width: 1.5rem;
   margin-right: 0.5rem;
 }
-
 
 @keyframes v-facebook-login-spin {
   0% {

@@ -1,6 +1,6 @@
 <template>
   <div class="docs">
-    <div class="docs-container docs-container--has-jumbotron docs-100vh js-vh-fix">
+    <div class="docs-container docs-container--has-jumbotron" :style="{ height: `${breakpoint.innerHeight}px` }">
       <div class="docs-jumbotron container" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
 
         <!-- GITHUB RIBBON -->
@@ -68,7 +68,7 @@
       </div>
     </div>
 
-    <div ref="docs" class="docs-container docs-min-100vh">
+    <div ref="docs" class="docs-container">
       <div class="container docs-clearfix" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
        <div class="docs-markdown" v-html="markdowns.readme"></div>
       </div>
@@ -114,7 +114,6 @@ import vueLogo from '@/assets/vue-logo-facebook.svg'
 import docspkg from '../../package.json'
 import pkg from '../../../package.json'
 import readme from '../../../README.md'
-import { VhChromeFix } from '@/modules/VhChromeFix'
 
 import VA from '@/components/Anchor'
 
@@ -149,25 +148,10 @@ export default {
 
     user: {},
 
-    instances: {},
-
     breakpoint: new Breakpoint()
   }),
-  created() {
-    /**
-     * Initiate non-reactive properties.
-     */
-    this.instances.ChromeFix = undefined
-  },
   mounted() {
     window.setTimeout(Prism.highlightAll)
-
-    this.instances.vhChromeFix = new VhChromeFix([
-      { selector: '.js-vh-fix', vh: 100 }
-    ])
-  },
-  destroyed() {
-    this.instances.vhChromeFix.destroy()
   },
   computed: {
     appId() {

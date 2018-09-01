@@ -34,7 +34,7 @@ export default {
     }
   },
   data: () => ({
-    isLoading: true,
+    isWorking: true,
     isConnected: false
   }),
   watch: {
@@ -49,7 +49,6 @@ export default {
     const created = new Promise(async resolve => {
       const { appId, version, options } = this
       const sdk = await getSdk({ appId, version, options })
-      console.log(sdk)
       const fbLoginStatus = await getFbLoginStatus()
       if (fbLoginStatus.status === 'connected') {
         this.isConnected = true
@@ -65,9 +64,6 @@ export default {
     }
   },
   computed: {
-    isIdle() {
-      return this.isLoading === false
-    },
     isDisconnected() {
       return this.isConnected === false
     },
@@ -75,24 +71,24 @@ export default {
       return this.isDisabled === false
     },
     isDisabled() {
-      return this.isLoading
+      return this.isWorking === true
     },
     scope() {
       return {
         idle: this.isIdle,
         login: this.login,
         logout: this.logout,
-        loading: this.isLoading,
+        working: this.isWorking,
         enabled: this.isEnabled,
         disabled: this.isDisabled,
         connected: this.isConnected,
-        toggleState: this.toggleState,
+        toggleLogin: this.toggleLogin,
         disconnected: this.isDisconnected
       }
     }
   },
   methods: {
-    toggleState() {
+    toggleLogin() {
       this.$emit('click')
       if (this.isConnected) {
         this.logout()
@@ -119,9 +115,9 @@ export default {
       return logout
     },
     async doAsync(promise) {
-      this.isLoading = true
+      this.isWorking = true
       await promise
-      this.isLoading = false
+      this.isWorking = false
       return promise
     }
   },
