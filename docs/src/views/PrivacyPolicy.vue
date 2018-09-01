@@ -2,9 +2,9 @@
   <div class="container privacy-policy" style="margin-top: 4rem; margin-bottom: 4rem">
     <h1>Privacy Policy</h1>
     <p>Effective date: July 30, 2018</p>
-    <p>Vue-Facebook-Login ("us", "we", or "our") operates the https://iliran11.github.io/facebook-login-vue/#/ website (the "Service").</p>
+    <p>Vue-Facebook-Login ("us", "we", or "our") operates the https://adi518.github.io/vue-facebook-login/#/ website (the "Service").</p>
     <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data. This Privacy Policy  for Vue-Facebook-Login is powered by <a href="https://www.freeprivacypolicy.com/free-privacy-policy-generator.php">FreePrivacyPolicy.com</a>.</p>
-    <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from https://iliran11.github.io/facebook-login-vue/#/</p>
+    <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from https://adi518.github.io/vue-facebook-login/#/</p>
     <h2>Information Collection And Use</h2>
     <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
     <h3>Types of Data Collected</h3>
@@ -71,7 +71,7 @@
     <h2>Contact Us</h2>
     <p>If you have any questions about this Privacy Policy, please contact us:</p>
     <ul>
-      <li>By visiting this page on our website: https://github.com/iliran11/facebook-login-vue/issues</li>
+      <li>By visiting this page on our website: https://github.com/adi518/vue-facebook-login/issues</li>
     </ul>
   </div>
 </template>

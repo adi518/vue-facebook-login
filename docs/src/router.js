@@ -11,11 +11,11 @@ export const routes = [
     name: 'Documentation',
     component: Docs
   },
-  {
-    path: '/documentation-2.x',
-    name: 'Documentation 2.x',
-    component: Docs2x
-  },
+  // {
+  //   path: '/documentation-2.x',
+  //   name: 'Documentation 2.x',
+  //   component: Docs2x
+  // },
   {
     path: '/privacy-policy',
     name: 'Privacy Policy',

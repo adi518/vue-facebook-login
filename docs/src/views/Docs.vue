@@ -52,7 +52,7 @@
                 :href="pkg.repository.url"
                 data-icon="octicon-star"
                 data-show-count="true"
-                aria-label="Star iliran11/facebook-login-vue on GitHub"
+                aria-label="Star adi518/vue-facebook-login on GitHub"
               >Star</a>
             </span>
           </div>
@@ -78,17 +78,17 @@
       <div class="container" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
         <div class="docs-credit">
           <span class="d-flex">Made by</span>
-          <div class="d-flex">
-            <a
-              class="docs-credit-anchor"
-              href="https://github.com/iliran11"
-              target="_blank"
-            >🐙&nbsp;@iliran11</a>
+          <div class="d-flex">            
             <a
               class="docs-credit-anchor"
               href="https://github.com/adi518"
               target="_blank"
             >🦊&nbsp;@adi518</a>
+            <a
+              class="docs-credit-anchor"
+              href="https://github.com/iliran11"
+              target="_blank"
+            >🐙&nbsp;@iliran11</a>
           </div>
         </div>
       </div>
