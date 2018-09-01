@@ -1,87 +1,129 @@
-[![npm](https://img.shields.io/npm/dm/facebook-login-vuejs.svg)](https://www.npmjs.com/package/facebook-login-vuejs)
-
-Description
-======
-Vue Component that  lets you drop it into your existing project and get the benefits of Facebook Login quickly.
-
-Example
-======
-source code of the example can be found in [example](https://github.com/iliran11/facebook-login-vue/tree/master/example) folder.
-the actual component is just the button (:
-![app preview](http://i.imgur.com/YhzfUkI.gif "")
-
-
-
-Installation
-======
-
-```
-npm i facebook-login-vuejs
+## Install
+```bash
+npm install --save vue-facebook-login-component
 ```
 
-Example Usage
-======
+## Usage
+To use the component in your template, simply import and register with your component.
 
-**my-component.vue**
+### Script
+```js
+import VFBLogin from 'vue-facebook-login-component'
 
-```javascript
-import facebookLogin from 'facebook-login-vuejs';
+// OR, use cherry-pick export (better consistency)
+import { VFBLogin } from 'vue-facebook-login-component'
 
-Vue.component('my-component', {
-    components: {
-        facebookLogin
-    }
-});
+export default {
+  components: {
+    VFBLogin
+  }
+}
 ```
 
-```xml
-    <facebook-login class="button"
-      appId="326022817735322"
-      @login="getUserData"
-      @logout="onLogout"
-      @get-initial-status="getUserData">
-    </facebook-login>
+### Template
+```html
+<v-facebook-login app-id="966242223397117"></v-facebook-login>
 ```
 
-Props
-======
+## Props
+<div id="props-table-wrap" class="docs-table-wrap">
 
+| Name          | Type   | Default                | Note |
+|---------------|--------|------------------------|------|
+| value         | Object | `{ connected: false }` | **Scope-component prop**.<br><br>Used for one-way V-model.
+| app-id        | String | None                   | **Scope-component prop**.<br><br>**Required prop**.
+| version 	    | String | `'v3.1'`               | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for available values.
+| options       | Object | `{}`                   | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/javascript/reference/FB.init/) for available values.<br><br>**Properties should be camel-case**.
+| login-options | Object | `{ scope: 'email' }`   | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/) for available values.<br><br>**Properties should be camel-case**.
+| button-style  | Object | `{}`                   | **Properties should be camel-case.**
+| loader-style  | Object | `{}`                   | **Properties should be camel-case.**
+| token-style   | Object | `{}`                   | **Properties should be camel-case.**
+| text-style    | Object | `{}`                   | **Properties should be camel-case.**
 
-| Props 	| Type 	| Default 	| Notes 	|
-|---------------	|----------	|---------------------------------------------	|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
-| appId 	| string 	| None.It is a required prop. 	|  	|
-| version 	| string 	| 'v2.9' 	| refer to [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for explanation on available values 	|
-| loginLabel 	| string 	| Log In To Facebook 	|  	|
-| loginOptions 	| object 	| {scope: 'email'} 	| all options listed on [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/v2.9) are passable with camelCase. e.g : {returnScopes: false} 	|
-| logoutLabel 	| string 	| Log out from Facebook 	|   	|
+</div>
 
-Events
-======
+## Slots
+<div id="slots-table-wrap" class="docs-table-wrap">
 
-| Event              | Output | Description                                                 |
-|--------------------|--------|-------------------------------------------------------------|
-| get-initial-status | Object | TO BE DEPRECATED. Initial Check to decide weather the user already connected. |
-| sdkLoaded | Object | returns an object with the following keys: <br> <b>isConnected</b>: Boolean. is the User conneted? <br> <b>FB:</b> the api object. |
-| click              |        | The Component has been clicked.                             |
-| login              | Object | User tried to login                                         |
-| logout             | Object | User tried to logout                                        |
+| Name    | Default |
+|---------|---------|
+| login   | `'Log in to Facebook'`
+| logout  | `'Log out from Facebook'`
+| working | `'Please wait...'`
 
+</div>
 
-Development
-======
+## Events
+<div id="events-table-wrap" class="docs-table-wrap">
 
-- running the example on dev server `npm start`. this will run the example app.
+| Name               | Payload            | Description                                          | Note |
+|--------------------|--------------------|------------------------------------------------------|------|
+| sdk-init           | (sdk[Object])      | Returns an object with <br> a Facebook API instance. | **Scope-component event**
+| login              | (response[Object]) | User attempted login.                                | **Scope-component event**.
+| logout             | (response[Object]) | User attempted logout.                               | **Scope-component event**.
+| connect            | Boolean            | User is connected.                                   | **Scope-component event**.
+| click              | None               | &nbsp;                                               | **Scope-component event**.
 
-Tests
-======
+</div>
 
-tests will be added hopefully soon.
+## Advanced Customization (Scope component)
+If props, slots and events do not satisfy your customization needs, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** html or css, hence it has no added-value on its own. It only exposes a scoped-slot with attributes and methods that are committed as API. Advise the table below for reference.
 
-Contribute
-======
-I welcome any kind of contributions/requests/questions/general feedback.
-possible methods to contact me:
+Short example how to use it (for a full example see [source](https://github.com/adi518/vue-facebook-login/blob/3.x/src/components/FBLogin.vue)).
 
-1. [open an Issue](https://github.com/iliran11/facebook-login-vue/issues)
-2. send me a mail: iliran11@gmail.com
-3. [contact me on facebook](https://www.facebook.com/Liran.Co.1984)
+```html
+<template>
+  <v-facebook-login-scope>
+    <template slot-scope="scope">
+      <!-- Compose HTML/CSS here, otherwise nothing will be rendered! -->
+    </template>
+  </v-facebook-login-scope>
+</template>
+
+<script>
+import { VFBLoginScope } from 'vue-facebook-login-component'
+
+export default {
+  components: {
+    VFBLoginScope
+  }
+}
+</script>
+```
+
+### Scope Component Props/Events
+Refer to the tables above for scope-component **specific** props/events.
+
+### Scope Component Scoped-Slot Scope (Attributes and Methods)
+<div id="scope-table-wrap" class="docs-table-wrap">
+
+| Name         | Type     | Description                                                      |
+|--------------|----------|------------------------------------------------------------------|
+| login        | Function | Login handler.                                                   |
+| logout       | Function | Logout handler.                                                  |
+| toggleLogin  | Function | Toggles login/logout.                                            |
+| working      | Boolean  | SDK-initialization/login/logout is currently taking place.       |
+| connected    | Boolean  | User was logged in.                                              |
+| disconnected | Boolean  | User was logged out.                                             |
+| enabled      | Boolean  | Button is enabled.                                               |
+| disabled     | Boolean  | Button is disabled.                                              |
+
+</div>
+
+## Development
+Fork, clone and use the following scripts.
+
+For component:
+```bash
+npm start
+```
+For documentation (includes a demo):
+```bash
+npm run docs
+```
+
+## Support
+Please open an [issue](https://github.com/adi518/vue-facebook-login/issues) for support.
+
+## License
+Copyright (c) 2018 by [MIT](https://opensource.org/licenses/MIT)
