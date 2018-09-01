@@ -1,14 +1,17 @@
 {
   "name": "docs",
-  "version": "1.0.24",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve --https",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "predeploy": "npm version patch --no-git-tag-version && npm run build",
+    "predeploy-major": "npm version patch --no-git-tag-version && npm run build",
     "deploy": "node gh-pages",
-    "postdeploy": "node ./post-deploy"
+    "deploy-major": "node gh-pages",
+    "postdeploy": "node ./post-deploy",
+    "postdeploy-major": "node ./post-deploy"
   },
   "dependencies": {
     "bootstrap": "^4.1.3",
