@@ -1,6 +1,6 @@
 ## Install
 ```bash
-npm install --save facebook-login-vuejs
+npm install --save vue-facebook-login-component
 ```
 
 ## Usage
@@ -8,10 +8,10 @@ To use the component in your template, simply import and register with your comp
 
 ### Script
 ```js
-import VFBLogin from 'facebook-login-vuejs'
+import VFBLogin from 'vue-facebook-login-component'
 
 // OR, use cherry-pick export (better consistency)
-import { VFBLogin } from 'facebook-login-vuejs'
+import { VFBLogin } from 'vue-facebook-login-component'
 
 export default {
   components: {
@@ -81,7 +81,7 @@ Short example how to use it (for a full example see [source](https://github.com/
 </template>
 
 <script>
-import { VFBLoginScope } from 'facebook-login-vuejs'
+import { VFBLoginScope } from 'vue-facebook-login-component'
 
 export default {
   components: {

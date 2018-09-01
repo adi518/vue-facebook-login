@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <v-menu :routes="routes" items="2">
-      <!-- <template slot="item-1">        
-        <a href="https://www.npmjs.com/package/facebook-login-vuejs"><img src="https://img.shields.io/npm/dm/facebook-login-vuejs.svg" alt="npm"></a>
+      <!-- <template slot="item-1">
+        <a href="https://www.npmjs.com/package/vue-facebook-login-component">
+          <img src="https://img.shields.io/npm/dm/vue-facebook-login-component.svg" alt="npm">
+        </a>
       </template> -->
       <template slot="item-2">
         <v-show-at no-match>

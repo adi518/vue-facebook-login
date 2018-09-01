@@ -21,7 +21,7 @@
         <v-facebook-login
           class="docs-facebook-button mx-auto mb-35"
           v-model="facebook.model"
-          :app-id="appId"
+          :app-id="facebook.appId"
           @sdk-init="handleSdkInit"
           @connect="handleConnect"
           @logout="handleLogout"
@@ -103,7 +103,7 @@
 import Prism from 'prismjs'
 
 import typy from 'typy'
-import VFacebookLogin from 'facebook-login-vuejs'
+import VFacebookLogin from 'vue-facebook-login-component'
 import VBreakpoint, {
   VHideAt,
   Model as Breakpoint
@@ -139,7 +139,8 @@ export default {
 
     facebook: {
       FB: {},
-      model: {}
+      model: {},
+      appId: '2146252248983683'
     },
 
     flags: {
@@ -154,12 +155,6 @@ export default {
     window.setTimeout(Prism.highlightAll)
   },
   computed: {
-    appId() {
-      if (process.env.NODE_ENV === 'production') {
-        return '2181039348841705'
-      }
-      return '326022817735322'
-    },
     computed() {
       const name = this.user.name
       const picture = typy(this.user, 'picture.data.url').safeString
