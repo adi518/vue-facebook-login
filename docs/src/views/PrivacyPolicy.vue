@@ -1,5 +1,5 @@
 <template>
-  <div class="container privacy-policy" style="margin-top: 4rem; margin-bottom: 4rem">
+  <div class="container mt-20 mb-20">
     <h1>Privacy Policy</h1>
     <p>Effective date: July 30, 2018</p>
     <p>Vue-Facebook-Login-Component ("us", "we", or "our") operates the {{ location.href }} website (the "Service").</p>
