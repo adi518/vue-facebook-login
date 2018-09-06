@@ -82,7 +82,7 @@ $font-family-base: 'Roboto', sans-serif;
 
 html {
   @include media-breakpoint-down(xs) {
-    font-size: 80%;
+    font-size: 90%;
   }
 }
 
