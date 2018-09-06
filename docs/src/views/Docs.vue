@@ -140,7 +140,7 @@ export default {
     facebook: {
       FB: {},
       model: {},
-      appId: '2146252248983683'
+      appId: process.env.NODE_ENV === 'development' ? '852858511574509':  '2146252248983683'
     },
 
     flags: {

@@ -1,5 +1,5 @@
 import {
-  getSdk,
+  getFbSdk,
   fbLogin,
   fbLogout,
   getFbLoginStatus
@@ -48,7 +48,7 @@ export default {
   async created() {
     const created = new Promise(async resolve => {
       const { appId, version, options } = this
-      const sdk = await getSdk({ appId, version, options })
+      const sdk = await getFbSdk({ appId, version, options })
       const fbLoginStatus = await getFbLoginStatus()
       if (fbLoginStatus.status === 'connected') {
         this.isConnected = true

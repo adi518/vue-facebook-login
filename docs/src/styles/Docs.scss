@@ -156,7 +156,7 @@ $app-min-width: 320px;
   transition: opacity 1s;
 
   &--is-visible {
-    z-index: 1;
+    z-index: 2; // Fix Chrome 69 bug (replace `z-index: 1` with `z-index: 2`)
     opacity: 1;
   }
 }

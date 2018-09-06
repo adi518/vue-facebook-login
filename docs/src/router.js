@@ -15,14 +15,11 @@ export const routes = [
   //   name: 'Documentation 2.x',
   //   component: () => import('./views/Docs-2.x.vue')
   // },
-  // {
-  //   path: '/privacy-policy',
-  //   name: 'Privacy Policy',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ './views/PrivacyPolicy.vue')
-  // }
+  {
+    path: '/privacy-policy',
+    name: 'Privacy Policy',
+    component: () => import('./views/PrivacyPolicy.vue')
+  }
 ]
 
 export default new Router({ routes })

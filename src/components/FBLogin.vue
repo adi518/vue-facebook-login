@@ -88,6 +88,7 @@ $color-chambray: #3b55a0;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent; // Fix Chrome 69 bug
   background-image: linear-gradient(
     darken($color-chambray, 10%),
     $color-chambray
