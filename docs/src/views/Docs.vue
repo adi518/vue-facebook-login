@@ -8,12 +8,12 @@
 
         <!-- HEADING -->
         <div class="docs-clearfix text-center">
-          <v-hide-at no-match>
-            <img class="docs-vue-logo mb-10" :src="assets.vueLogo">
-          </v-hide-at>
-          <h1>Facebook Login</h1>
-          <p class="docs-tagline text-center mb-20">
-            Integrate Facebook Login and <br v-if="breakpoint.noMatch"> access the benefits quickly and easily.
+          <img class="docs-vue-logo mb-10" :src="assets.vueLogo">
+          <h1>Vue Facebook Login</h1>
+          <p class="docs-tagline text-center ml-auto mr-auto mb-20"
+            :style="{ width: breakpoint.noMatch ? '71%' : 'auto' }"
+          >
+            {{ pkg.description }}
           </p>
         </div>
 
@@ -140,7 +140,10 @@ export default {
     facebook: {
       FB: {},
       model: {},
-      appId: process.env.NODE_ENV === 'development' ? '852858511574509':  '2146252248983683'
+      appId:
+        process.env.NODE_ENV === 'development'
+          ? '852858511574509'
+          : '2146252248983683'
     },
 
     flags: {
