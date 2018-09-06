@@ -45,11 +45,11 @@ export default {
 ## Slots
 <div id="slots-table-wrap" class="docs-table-wrap">
 
-| Name    | Default |
-|---------|---------|
-| login   | `'Log in to Facebook'`
-| logout  | `'Log out from Facebook'`
-| working | `'Please wait...'`
+| Name    | Default                   |
+|---------|-------------------------- |
+| login   | `'Log in to Facebook'`    |
+| logout  | `'Log out from Facebook'` |
+| working | `'Please wait...'`        |
 
 </div>
 
@@ -97,16 +97,16 @@ Refer to the tables above for scope-component **specific** props/events.
 ### Scope Component Scoped-Slot Scope (Attributes and Methods)
 <div id="scope-table-wrap" class="docs-table-wrap">
 
-| Name         | Type     | Description                                                      |
-|--------------|----------|------------------------------------------------------------------|
-| login        | Function | Login handler.                                                   |
-| logout       | Function | Logout handler.                                                  |
-| toggleLogin  | Function | Toggles login/logout.                                            |
-| working      | Boolean  | SDK-initialization/login/logout is currently taking place.       |
-| connected    | Boolean  | User was logged in.                                              |
-| disconnected | Boolean  | User was logged out.                                             |
-| enabled      | Boolean  | Button is enabled.                                               |
-| disabled     | Boolean  | Button is disabled.                                              |
+| Name         | Type     | Description                                                |
+|--------------|----------|------------------------------------------------------------|
+| login        | Function | Login handler.                                             |
+| logout       | Function | Logout handler.                                            |
+| toggleLogin  | Function | Toggles login/logout.                                      |
+| working      | Boolean  | SDK-initialization/login/logout is currently taking place. |
+| connected    | Boolean  | User is logged in.                                         |
+| disconnected | Boolean  | User is logged out.                                        |
+| enabled      | Boolean  | Button is enabled.                                         |
+| disabled     | Boolean  | Button is disabled.                                        |
 
 </div>
 
