@@ -66,35 +66,13 @@ export default {
 
 </div>
 
-## Advanced Customization (Scope component)
-If props, slots and events do not satisfy your customization needs, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** html or css, hence it has no added-value on its own. It only exposes a scoped-slot with attributes and methods that are committed as API. Advise the table below for reference.
+## Scope component (Advanced Customization)
+If props, slots and events do not satisfy your customization needs, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** html or css, hence it has no added-value on its own. It only exposes a scoped-slot with attributes and methods that are committed as API.
 
-Short example how to use it (for a full example see [source](https://github.com/adi518/vue-facebook-login-component/blob/master/src/components/FBLogin.vue)).
+### Props/Events
+Refer to the [tables](#props-table-wrap) above for scope-component **specific** props/events.
 
-```html
-<template>
-  <v-facebook-login-scope>
-    <template slot-scope="scope">
-      <!-- Compose HTML/CSS here, otherwise nothing will be rendered! -->
-    </template>
-  </v-facebook-login-scope>
-</template>
-
-<script>
-import { VFBLoginScope } from 'vue-facebook-login-component'
-
-export default {
-  components: {
-    VFBLoginScope
-  }
-}
-</script>
-```
-
-### Scope Component Props/Events
-Refer to the tables above for scope-component **specific** props/events.
-
-### Scope Component Scoped-Slot Scope (Attributes and Methods)
+### Scoped-Slot Scope (Attributes and Methods)
 <div id="scope-table-wrap" class="docs-table-wrap">
 
 | Name         | Type     | Description                                                |
@@ -109,6 +87,28 @@ Refer to the tables above for scope-component **specific** props/events.
 | disabled     | Boolean  | Button is disabled.                                        |
 
 </div>
+
+### Scope component example (for a full example see [source](https://github.com/adi518/vue-facebook-login-component/blob/master/src/components/FBLogin.vue)).
+
+```html
+<template>
+  <v-facebook-login-scope>
+    <button slot-scope="scope">
+      <!-- Compose HTML/CSS here, otherwise nothing will be rendered! -->
+    </button>
+  </v-facebook-login-scope>
+</template>
+
+<script>
+import { VFBLoginScope } from 'vue-facebook-login-component'
+
+export default {
+  components: {
+    VFBLoginScope
+  }
+}
+</script>
+```
 
 ## Development
 Fork, clone and use the following scripts.
