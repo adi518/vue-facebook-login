@@ -137,6 +137,7 @@ export default {
 }
 
 .token {
+  user-select: none; // Fix Firefox
   opacity: 0.5;
   width: 4rem;
   height: 4rem;
