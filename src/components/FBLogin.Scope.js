@@ -34,24 +34,24 @@ export default {
     }
   },
   data: () => ({
-    isWorking: true,
-    isConnected: false
+    working: true,
+    connected: false
   }),
   watch: {
-    isConnected(connected) {
+    connected(connected) {
       this.$emit('input', { connected })
       if (connected) {
         this.$emit('connect')
       }
     }
   },
-  async created() {
+  created() {
     const created = new Promise(async resolve => {
       const { appId, version, options } = this
       const sdk = await getFbSdk({ appId, version, options })
       const fbLoginStatus = await getFbLoginStatus()
       if (fbLoginStatus.status === 'connected') {
-        this.isConnected = true
+        this.connected = true
       }
       this.$emit('sdk-init', { FB: sdk })
       resolve()
@@ -64,33 +64,32 @@ export default {
     }
   },
   computed: {
-    isDisconnected() {
-      return this.isConnected === false
+    disconnected() {
+      return this.connected === false
     },
-    isEnabled() {
-      return this.isDisabled === false
+    enabled() {
+      return this.disabled === false
     },
-    isDisabled() {
-      return this.isWorking === true
+    disabled() {
+      return this.working === true
     },
     scope() {
       return {
-        idle: this.isIdle,
         login: this.login,
         logout: this.logout,
-        working: this.isWorking,
-        enabled: this.isEnabled,
-        disabled: this.isDisabled,
-        connected: this.isConnected,
+        working: this.working,
+        enabled: this.enabled,
+        disabled: this.disabled,
+        connected: this.connected,
         toggleLogin: this.toggleLogin,
-        disconnected: this.isDisconnected
+        disconnected: this.disconnected
       }
     }
   },
   methods: {
     toggleLogin() {
       this.$emit('click')
-      if (this.isConnected) {
+      if (this.connected) {
         this.logout()
       } else {
         this.login()
@@ -100,9 +99,9 @@ export default {
       const login = fbLogin(this.loginOptions)
       const response = await this.doAsync(login)
       if (response.status === 'connected') {
-        this.isConnected = true
+        this.connected = true
       } else {
-        this.isConnected = false
+        this.connected = false
       }
       this.$emit('login', response)
       return login
@@ -110,14 +109,14 @@ export default {
     async logout() {
       const logout = fbLogout()
       const response = await this.doAsync(logout)
-      this.isConnected = false
+      this.connected = false
       this.$emit('logout', response)
       return logout
     },
     async doAsync(promise) {
-      this.isWorking = true
+      this.working = true
       await promise
-      this.isWorking = false
+      this.working = false
       return promise
     }
   },
