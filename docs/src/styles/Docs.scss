@@ -114,15 +114,13 @@ $app-min-width: 320px;
 }
 
 .docs-facebook-button {
-  // --box-shadow-opacity: 0.25;
+  --box-shadow-opacity: 0.25;
   font-family: inherit;
   transition: box-shadow 0.5s;
-  // box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, var(--box-shadow-opacity));
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, var(--box-shadow-opacity));
 
   &:hover {
-    // --box-shadow-opacity: 0.16;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.125);
+    --box-shadow-opacity: 0.125;
   }
 }
 

@@ -18,15 +18,19 @@
         </div>
 
         <!-- DEMO -->
-        <v-facebook-login
-          class="docs-facebook-button mx-auto mb-35"
-          v-model="facebook.model"
-          :app-id="facebook.appId"
-          @sdk-init="handleSdkInit"
-          @connect="handleConnect"
-          @logout="handleLogout"
-          @click="handleClick"
-        ></v-facebook-login>
+        <div class="d-flex mb-35">
+          <div class="docs-facebook-button d-inline-flex mx-auto">
+            <v-facebook-login
+              class="foo"
+              v-model="facebook.model"
+              :app-id="facebook.appId"
+              @sdk-init="handleSdkInit"
+              @connect="handleConnect"
+              @logout="handleLogout"
+              @click="handleClick"
+            ></v-facebook-login>
+          </div>
+        </div>
 
         <!-- DEMO:USER -->
         <div class="docs-user mx-auto" :class="breakpoint.noMatch ? null : 'mb-35'">
