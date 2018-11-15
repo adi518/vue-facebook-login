@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-menu :routes="routes" items="2">
+    <v-menu :routes="routes" items="2" :token-style="{ backgroundImage: `url(${menuToken})` }">
       <!-- <template slot="item-1">
         <a href="https://www.npmjs.com/package/vue-facebook-login-component">
           <img src="https://img.shields.io/npm/dm/vue-facebook-login-component.svg" alt="npm">
@@ -36,6 +36,7 @@ import VMenu from '@/components/Menu'
 import { VShowAt } from 'vue-breakpoint-component'
 
 import { routes } from '@/router'
+import menuToken from '@/assets/vue-logo-facebook.svg'
 
 export default {
   name: 'app',
@@ -45,7 +46,8 @@ export default {
   },
   data: () => ({
     pkg,
-    routes
+    routes,
+    menuToken
   })
 }
 </script>
@@ -67,17 +69,14 @@ $spacers: map-merge(
   ),
   $spacers
 );
-
 $body-bg: #1c284c;
 $body-color: rgba(#ffffff, 0.9);
 $link-color: #8b9dc3;
 $font-family-base: 'Roboto', sans-serif;
-
 // Required
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/mixins';
-
 // Optional
 @import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/type';
@@ -86,13 +85,11 @@ $font-family-base: 'Roboto', sans-serif;
 @import '~bootstrap/scss/buttons';
 @import '~bootstrap/scss/grid';
 @import '~bootstrap/scss/utilities';
-
 html {
   @include media-breakpoint-down(xs) {
     font-size: 90%;
   }
 }
-
 pre,
 code,
 kbd,
@@ -100,7 +97,6 @@ samp {
   font-size: 1rem;
 }
 /* Bootstrap end */
-
 h1 {
   color: #8b9dc3;
   font-weight: 400;
@@ -109,12 +105,10 @@ h1 {
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
-
 p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
-
 @import '~@/styles/Docs.scss';
 @import '~@/styles/Docs.sass';
 </style>
