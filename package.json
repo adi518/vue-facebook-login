@@ -1,6 +1,6 @@
 {
   "name": "vue-facebook-login-component",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A renderless component for composing Facebook login",
   "author": "Adi Sahar",
   "private": false,
