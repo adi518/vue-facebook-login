@@ -56,15 +56,20 @@ export default {
 /* Bootstrap */
 $spacer: 1rem;
 $spacers: ();
-$spacers: map-merge((10: $spacer * 1), $spacers);
-$spacers: map-merge((15: $spacer * 1 + 0.5), $spacers);
-$spacers: map-merge((20: $spacer * 2), $spacers);
-$spacers: map-merge((25: $spacer * 2 + 0.5), $spacers);
-$spacers: map-merge((30: $spacer * 3), $spacers);
-$spacers: map-merge((35: $spacer * 3 + 0.5), $spacers);
+$spacers: map-merge(
+  (
+    10: $spacer * 1,
+    15: $spacer * 1 + 0.5,
+    20: $spacer * 2,
+    25: $spacer * 2 + 0.5,
+    30: $spacer * 3,
+    35: $spacer * 3 + 0.5
+  ),
+  $spacers
+);
 
 $body-bg: #1c284c;
-$body-color: #ffffff;
+$body-color: rgba(#ffffff, 0.9);
 $link-color: #8b9dc3;
 $font-family-base: 'Roboto', sans-serif;
 
@@ -99,9 +104,10 @@ samp {
 h1 {
   color: #8b9dc3;
   font-weight: 400;
-  font-size: 2rem; // Reset Bootstrap
+  font-size: 1.6rem;
   margin-top: 0;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 p {

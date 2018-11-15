@@ -47,12 +47,12 @@ $app-min-width: 320px;
 }
 
 .docs-container--has-jumbotron {
-  display: flex;
-  align-items: center;
-  flex-direction: column; // Fix IE
-  justify-content: center;
-  background-color: #2f4480;
-}
+    display: flex;
+    align-items: center;
+    flex-direction: column; // Fix IE
+    justify-content: center;
+    background-color: darken(#2f4480, 5%);
+  }
 
 .docs-vue-logo {
   width: 4rem;
@@ -72,9 +72,6 @@ $app-min-width: 320px;
   color: #8b9dc3;
   line-height: 3.5;
   display: inline-block;
-  // position: absolute;
-  // left: 1rem;
-  // bottom: 0;
 
   a {
     --transition-duration: 0.5s;
@@ -114,10 +111,10 @@ $app-min-width: 320px;
 }
 
 .docs-facebook-button {
-  --box-shadow-opacity: 0.25;
+  --box-shadow-opacity: 0.15;
   font-family: inherit;
   transition: box-shadow 0.5s;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, var(--box-shadow-opacity));
+  box-shadow: 0 0.25rem 0.15rem rgba(0, 0, 0, var(--box-shadow-opacity));
 
   &:hover {
     --box-shadow-opacity: 0.125;

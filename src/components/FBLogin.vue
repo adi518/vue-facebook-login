@@ -87,12 +87,10 @@ $color-chambray: #3b55a0;
   padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
+  border-radius: 0.25rem;
   justify-content: center;
-  background-color: transparent; // Fix Chrome 69 bug
-  background-image: linear-gradient(
-    darken($color-chambray, 10%),
-    $color-chambray
-  );
+  background-color: lighten($color-chambray, 1%);
+  transition: background-color 0.15s ease-in-out; // Bootstrap 4 (`.btn`)
 
   *,
   *::before,
@@ -103,6 +101,20 @@ $color-chambray: #3b55a0;
   &[disabled] {
     opacity: 0.75;
   }
+
+  &:hover {
+    background-color: lighten($color-chambray, 5%);
+  }
+
+  &:focus {
+    outline-width: 0;
+    box-shadow: 0 0 0 1px rgba($color-nepal, 0.5);
+  }
+}
+
+.token {
+  margin-right: 0.2rem;
+  transform: translateX(-0.3rem);
 }
 
 .loader {
@@ -119,13 +131,13 @@ $color-chambray: #3b55a0;
 
 .loader {
   height: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .token,
 .loader {
   opacity: 0.9;
   width: 1.5rem;
-  margin-right: 0.5rem;
 }
 
 @keyframes v-facebook-login-spin {

@@ -1,9 +1,9 @@
 <template>
   <div :class="['v-menu', 'clearfix', classes]">
     <!-- We need to wrap token to fix Desktop Safari 5 -->
-    <div class="token" @touchstart.passive="toggle" @click.stop.prevent="toggle"></div>
+    <div :class="['token', { 'is-open': classes['is-open'] }]" @touchstart.passive="toggle" @click.stop.prevent="toggle"></div>
     <!-- <div class="token" @touchstart.stop.prevent="toggle" @click.stop.prevent="toggle"></div> -->
-    <ul ref="menu" class="menu" @touchstart.passive="() => {}" :style="menuStyle">
+    <ul ref="menu" :class="['menu', { 'is-open': classes['is-open'] }]" @touchstart.passive="() => {}" :style="menuStyle">
     <!-- <ul ref="menu" class="menu" @touchstart.stop> -->
       <li v-for="(route, index) in computedRoutes" :key="index">
         <router-link v-if="route.name" :to="{ name: route.name }" v-html="route.name" />
@@ -45,7 +45,7 @@ export default {
     menuStyle: {
       type: Object,
       default: () => ({
-        backgroundColor: 'rgba(28, 40, 76, 0.8)'
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
       })
     }
   },
@@ -98,14 +98,18 @@ export default {
     dismiss() {
       this.toggle(false)
     },
-    emitToggle(value) {
-      this.$emit(value ? 'open' : 'close', { width: this.getWidth() })
+    async emitToggle(value) {
+      this.$emit(value ? 'open' : 'close', { width: await this.getWidth() })
     },
     handleResize() {
       this.emitToggle(this.flags.open)
     },
     getWidth() {
-      return this.$refs.menu.getBoundingClientRect().width
+      return new Promise(resolve => {
+        window.requestAnimationFrame(() => {
+          resolve(this.$refs.menu.getBoundingClientRect().width)
+        })
+      })
     }
   }
 }
@@ -120,20 +124,6 @@ export default {
   z-index: 999999;
   flex-direction: column;
   justify-content: flex-end;
-
-  &.is-open {
-    .token {
-      left: auto;
-      right: 2rem;
-      opacity: 1;
-      position: fixed;
-      transform: translate(1.4rem, 1.4rem);
-    }
-
-    .menu {
-      transform: translateX(0);
-    }
-  }
 }
 
 .token {
@@ -152,8 +142,17 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 1.2rem 1.2rem;
+  transition: transform 0.3s ease;
   transform: translate(-1.4rem, 1.4rem);
   background-image: url('~@/assets/vue-logo-facebook.svg');
+
+  &.is-open {
+    left: auto;
+    right: 2rem;
+    opacity: 1;
+    position: fixed;
+    transform: translate(1.4rem, 1.4rem);
+  }
 }
 
 .menu {
@@ -172,6 +171,10 @@ export default {
   transform: translateX(-100%);
   transition: transform 0.3s ease;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  &.is-open {
+    transform: translateX(0);
+  }
 }
 
 .clearfix {
