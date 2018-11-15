@@ -70,7 +70,7 @@ $spacers: map-merge(
   $spacers
 );
 $body-bg: #1c284c;
-$body-color: rgba(#ffffff, 0.9);
+$body-color: rgba(#ffffff, 0.8);
 $link-color: #8b9dc3;
 $font-family-base: 'Roboto', sans-serif;
 // Required
@@ -87,7 +87,7 @@ $font-family-base: 'Roboto', sans-serif;
 @import '~bootstrap/scss/utilities';
 html {
   @include media-breakpoint-down(xs) {
-    font-size: 90%;
+    font-size: 87.5%;
   }
 }
 pre,

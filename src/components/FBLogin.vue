@@ -7,6 +7,7 @@
       :disabled="scope.disabled"
       @click="scope.toggleLogin"
     >
+      <slot name="before"></slot>
       <i class="loader" v-if="scope.working" :style="loaderStyle"></i>
       <img class="token" :src="token" v-if="scope.enabled" :style="tokenStyle">
       <span :style="textStyle">
@@ -18,8 +19,9 @@
         </slot>
         <slot name="working" v-if="scope.working">
           Please wait...
-        </slot>
+        </slot>        
       </span>
+      <slot name="after"></slot>
     </button>
   </v-facebook-login-scope>
 </template>
@@ -76,21 +78,22 @@ $color-nepal: #8b9dc3;
 $color-chambray: #3b55a0;
 
 .v-facebook-login {
+  cursor: default; // Normalize IE 11
   min-width: 14rem;
   color: $color-white;
   box-sizing: border-box;
   border: 1px solid rgba($color-white, 0.05);
   margin: 0; // Normalize Flex-box
   padding-top: 0.5rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
   padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
   border-radius: 0.25rem;
   justify-content: center;
   background-color: lighten($color-chambray, 1%);
-  transition: background-color 0.15s ease-in-out; // Bootstrap 4 (`.btn`)
+  transition: background-color 0.15s ease-in-out, border-radius 0.15s ease-in-out; // Bootstrap 4 (`.btn`)
 
   *,
   *::before,

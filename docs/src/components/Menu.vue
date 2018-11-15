@@ -7,7 +7,12 @@
       @touchstart.passive="toggle"
       @click.stop.prevent="toggle"
     ></div>
-    <ul ref="menu" :class="['menu', { 'is-open': classes['is-open'] }]" :style="menuStyle" @touchstart.passive="() => {}">    
+    <ul
+      ref="menu"
+      :class="['menu', { 'is-open': classes['is-open'] }]"
+      :style="computedMenuStyle"
+      @touchstart.passive="() => {}"
+    >    
       <li v-for="(route, index) in computedRoutes" :key="index" v-if="route.name">
         <router-link v-if="route.name" :to="{ name: route.name }" v-html="route.name"></router-link>
       </li>
@@ -51,9 +56,7 @@ export default {
     },
     menuStyle: {
       type: Object,
-      default: () => ({
-        backgroundColor: 'rgba(0, 0, 0, 0.5)'
-      })
+      default: () => ({})
     }
   },
   data: () => ({
@@ -100,6 +103,15 @@ export default {
           backgroundImage: `url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTYuMzIgMTcwLjAyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzQyYjg4Mzt9LmNscy0ye2ZpbGw6IzM1NDk1ZTt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmxvZ288L3RpdGxlPjxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIxMjAuODMgMCA5OC4xNiAzOS4yNiA3NS40OSAwIDAgMCA5OC4xNiAxNzAuMDIgMTk2LjMyIDAgMTIwLjgzIDAiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMTIwLjgzIDAgOTguMTYgMzkuMjYgNzUuNDkgMCAzOS4yNiAwIDk4LjE2IDEwMi4wMSAxNTcuMDYgMCAxMjAuODMgMCIvPjwvc3ZnPg==)`
         },
         this.tokenStyle
+      )
+    },
+    computedMenuStyle() {
+      return Object.assign(
+        {},
+        {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)'
+        },
+        this.menuStyle
       )
     }
   },

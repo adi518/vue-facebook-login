@@ -18,28 +18,31 @@
         </div>
 
         <!-- DEMO -->
-        <div class="d-flex mb-35">
+        <div class="d-flex mb-25">
           <div class="docs-facebook-button d-inline-flex mx-auto">
             <v-facebook-login
-              class="foo"
               v-model="facebook.model"
-              :app-id="facebook.appId"
+              :app-id="facebook.appId"              
+              :button-style="
+                connected && computed.picture ? {
+                  paddingRight: '3.375rem',
+                  position: 'relative'
+                } : {}
+              "
               @sdk-init="handleSdkInit"
               @connect="handleConnect"
               @logout="handleLogout"
               @click="handleClick"
-            ></v-facebook-login>
+            >
+              <template slot="after" slot-scope="{}">
+                <div class="docs-user" v-if="connected && computed.picture">
+                  <div class="docs-user-picture"
+                  :class="{ 'docs-user-picture--is-visible': computed.picture }"
+                  :style="{ backgroundImage: `url(${connected && computed.picture || ''}` }"></div>
+                </div>
+              </template>
+            </v-facebook-login>            
           </div>
-        </div>
-
-        <!-- DEMO:USER -->
-        <div class="docs-user mx-auto" :class="breakpoint.noMatch ? null : 'mb-35'">
-          <div class="docs-user-picture"
-            :class="{ 'docs-user-picture--is-visible': computed.picture }"
-            :style="{ backgroundImage: `url(${connected && computed.picture || ''}` }"></div>
-          <template v-if="connected && flags.nopicture">{{ computed.name }}</template>
-          <div v-if="disconnected" class="docs-user-state-placeholder">Disconnected</div>
-          <div class="docs-user-state-indicator" :class="{ 'docs-user-state-indicator--green': connected }"></div>
         </div>
 
         <!-- GITHUB STAR -->
@@ -63,9 +66,9 @@
         </v-hide-at>
 
         <!-- VERSION -->
-        <div class="docs-version">{{ pkg.version }} - {{ docspkg.version }}</div>
+        <div class="docs-version">{{ pkg.version }} - {{ docs.version }}</div>
 
-        <!-- ABSOLUTE ANCHOR -->
+        <!-- INSTALL ANCHOR -->
         <v-a class="docs-fixed-anchor"
           :scroll-to="$refs.docs">Install, Examples &amp; Documentation</v-a>
 
@@ -115,7 +118,7 @@ import VBreakpoint, {
 
 import vueLogo from '@/assets/vue-logo-facebook.svg'
 
-import docspkg from '../../package.json'
+import docs from '../../package.json'
 import pkg from '../../../package.json'
 import readme from '../../../README.md'
 
@@ -131,7 +134,7 @@ export default {
   },
   data: () => ({
     pkg,
-    docspkg,
+    docs,
 
     assets: {
       vueLogo

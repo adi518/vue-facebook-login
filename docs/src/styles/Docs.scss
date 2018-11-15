@@ -122,53 +122,24 @@ $app-min-width: 320px;
 }
 
 .docs-user {
-  position: relative;
-  width: 7rem;
-  height: 7rem;
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  // background-color: rgba(28, 40, 76, 0.5);
-  box-shadow: 0 0.1rem 0rem rgba(255, 255, 255, 0.2),
-    inset 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+  right: 0;
+  position: absolute;  
+  transform: translateX(-1px);
 }
 
 .docs-user-picture {
   opacity: 0;
   z-index: -1;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  border-radius: 50%;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: 0.25rem;
+  transition: opacity 1s;
   background-size: cover;
   background-repeat: no-repeat;
-  transition: opacity 1s;
 
   &--is-visible {
-    z-index: 2; // Fix Chrome 69 bug (replace `z-index: 1` with `z-index: 2`)
     opacity: 1;
-  }
-}
-
-.docs-user-state-placeholder {
-  opacity: 0.9;
-}
-
-.docs-user-state-indicator {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background-color: crimson;
-
-  &--green {
-    background-color: greenyellow;
+    z-index: 2; // Fix Chrome 69 bug (replace `z-index: 1` with `z-index: 2`)
   }
 }
 
@@ -208,6 +179,7 @@ $app-min-width: 320px;
   left: 1rem;
   color: #8b9dc3;
   position: absolute;
+  // display: none;
 }
 
 .docs-fixed-anchor {
@@ -280,10 +252,6 @@ $app-min-width: 320px;
 
 .docs-table-wrap {
   @extend .docs-clearfix;
-
-  + h2 {
-    margin-top: 1rem;
-  }
 
   @include media-breakpoint-down(xs) {
     overflow-x: scroll;

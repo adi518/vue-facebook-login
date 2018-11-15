@@ -30,26 +30,32 @@ export default {
 
 | Name          | Type   | Default                | Note |
 |---------------|--------|------------------------|------|
-| value         | Object | `{ connected: false }` | **Scope-component prop**.<br><br>Used for one-way V-model.
-| app-id        | String | None                   | **Scope-component prop**.<br><br>**Required prop**.
-| version 	    | String | `'v3.1'`               | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/apps/changelog/) for available values.
-| options       | Object | `{}`                   | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/javascript/reference/FB.init/) for available values.<br><br>**Properties should be camel-case**.
-| login-options | Object | `{ scope: 'email' }`   | **Scope-component prop**.<br><br>See [Facebook Docs](https://developers.facebook.com/docs/reference/javascript/FB.login/) for available values.<br><br>**Properties should be camel-case**.
-| button-style  | Object | `{}`                   | **Properties should be camel-case.**
-| loader-style  | Object | `{}`                   | **Properties should be camel-case.**
-| token-style   | Object | `{}`                   | **Properties should be camel-case.**
-| text-style    | Object | `{}`                   | **Properties should be camel-case.**
+| value         | Object | `{ connected: false }` | Used for one-way V-Model. [ &ast;&ast;&ast; ]
+| app-id        | String | None                   | Required. [ &ast;&ast;&ast; ]
+| version 	    | String | `'v3.1'`               | [ &ast;&ast;, &ast;&ast;&ast; ]
+| options       | Object | `{}`                   | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]
+| login-options | Object | `{ scope: 'email' }`   | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]
+| button-style  | Object | `{}`                   | [ &ast; ]
+| loader-style  | Object | `{}`                   | [ &ast; ]
+| token-style   | Object | `{}`                   | [ &ast; ]
+| text-style    | Object | `{}`                   | [ &ast; ]
 
 </div>
+
+[ &ast; ] - Properties should be camel-case.<br>
+[ &ast;&ast; ] - See [Facebook](https://developers.facebook.com/docs/javascript/reference/FB.init/) for available values.<br>
+[ &ast;&ast;&ast; ] - Scope-component property.
 
 ## Slots
 <div id="slots-table-wrap" class="docs-table-wrap">
 
-| Name    | Default                   |
-|---------|-------------------------- |
+| Name    | Default                   | Description
+|---------|---------------------------|------------------------------------------------------|
 | login   | `'Log in to Facebook'`    |
 | logout  | `'Log out from Facebook'` |
 | working | `'Please wait...'`        |
+| before  | `NONE`                    | Before all nested elements.
+| after   | `NONE`                    | After all nested elements.
 
 </div>
 
@@ -58,13 +64,15 @@ export default {
 
 | Name               | Payload            | Description                                          | Note |
 |--------------------|--------------------|------------------------------------------------------|------|
-| sdk-init           | (sdk[Object])      | Returns an object with <br> a Facebook SDK instance. | **Scope-component event**
-| login              | (response[Object]) | User attempted login.                                | **Scope-component event**.
-| logout             | (response[Object]) | User attempted logout.                               | **Scope-component event**.
-| connect            | Boolean            | User is connected.                                   | **Scope-component event**.
-| click              | None               | &nbsp;                                               | **Scope-component event**.
+| sdk-init           | (sdk[Object])      | Returns an object with <br> a Facebook SDK instance. | [ &ast; ]
+| login              | (response[Object]) | User attempted login.                                | [ &ast; ]
+| logout             | (response[Object]) | User attempted logout.                               | [ &ast; ]
+| connect            | Boolean            | User is connected.                                   | [ &ast; ]
+| click              | None               | &nbsp;                                               | [ &ast; ]
 
 </div>
+
+[ &ast; ] - Scope-component event.
 
 ## Scope component (Advanced Customization)
 If props, slots and events do not satisfy your customization needs, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** html or css, hence it has no added-value on its own. It only exposes a scoped-slot with attributes and methods that are committed as API.
