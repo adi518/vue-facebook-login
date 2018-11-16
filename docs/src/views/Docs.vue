@@ -24,6 +24,7 @@
               v-model="facebook.model"
               :app-id="facebook.appId"              
               :button-style="buttonStyle"
+              :transition="[ 'padding-right 0.15s ease-in-out' ]"
               @sdk-init="handleSdkInit"
               @connect="handleConnect"
               @logout="handleLogout"
@@ -174,8 +175,7 @@ export default {
     },
     buttonStyle() {
       const rules = {
-        position: 'relative',
-        transition: 'background-color 0.15s ease-in-out, padding-right 0.15s ease-in-out'
+        position: 'relative'
       }
       if (this.connected && this.computed.picture) {
         rules.paddingRight = '3.375rem'

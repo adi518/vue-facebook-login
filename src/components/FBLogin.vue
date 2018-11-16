@@ -3,7 +3,7 @@
     <button
       slot-scope="scope"
       class="v-facebook-login"
-      :style="buttonStyle"
+      :style="computedButtonStyle"
       :disabled="scope.disabled"
       @click="scope.toggleLogin"
     >
@@ -49,6 +49,10 @@ export default {
     textStyle: {
       type: Object,
       default: () => ({})
+    },
+    transition: {
+      type: Array,
+      default: () => []
     }
   }),
   data: () => ({
@@ -62,6 +66,17 @@ export default {
       set(value) {
         this.$emit('input', value)
       }
+    },
+    computedTransition() {
+      const transition = ['background-color 0.15s ease-in-out'].concat(
+        this.transition
+      )
+      return {
+        transition: [...new Set(transition)].join(', ')
+      } // Bootstrap 4 (`.btn`)
+    },
+    computedButtonStyle() {
+      return Object.assign({}, this.buttonStyle, this.computedTransition)
     }
   }
 }
@@ -93,7 +108,6 @@ $color-chambray: #3b55a0;
   border-radius: 0.25rem;
   justify-content: center;
   background-color: lighten($color-chambray, 1%);
-  transition: background-color 0.15s ease-in-out; // Bootstrap 4 (`.btn`)
 
   *,
   *::before,

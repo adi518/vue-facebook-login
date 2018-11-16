@@ -39,6 +39,7 @@ export default {
 | loader-style  | Object | `{}`                   | [ &ast; ]
 | token-style   | Object | `{}`                   | [ &ast; ]
 | text-style    | Object | `{}`                   | [ &ast; ]
+| transition    | Array  | `[]`                   | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`.
 
 </div>
 
