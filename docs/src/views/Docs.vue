@@ -23,23 +23,17 @@
             <v-facebook-login
               v-model="facebook.model"
               :app-id="facebook.appId"              
-              :button-style="
-                connected && computed.picture ? {
-                  paddingRight: '3.375rem',
-                  position: 'relative'
-                } : {}
-              "
+              :button-style="buttonStyle"
               @sdk-init="handleSdkInit"
               @connect="handleConnect"
               @logout="handleLogout"
               @click="handleClick"
             >
               <template slot="after" slot-scope="{}">
-                <div class="docs-user" v-if="connected && computed.picture">
-                  <div class="docs-user-picture"
-                  :class="{ 'docs-user-picture--is-visible': computed.picture }"
-                  :style="{ backgroundImage: `url(${connected && computed.picture || ''}` }"></div>
-                </div>
+                <span class="docs-avatar"
+                  :class="{ 'docs-avatar--is-visible': connected && computed.picture }"
+                  :style="{ backgroundImage: `url(${computed.picture}` }"
+                ></span>
               </template>
             </v-facebook-login>            
           </div>
@@ -175,6 +169,16 @@ export default {
     },
     disconnected() {
       return !this.connected
+    },
+    buttonStyle() {
+      const rules = {
+        position: 'relative',
+        transition: 'padding-right 0.15s ease-in-out'
+      }
+      if (this.connected) {
+        rules.paddingRight = '3.375rem'
+      }
+      return rules
     }
   },
   methods: {
@@ -184,7 +188,11 @@ export default {
         this.user = user
         api(`${this.user.id}/picture?width=9999&redirect=false`, picture => {
           if (picture) {
-            this.$set(this.user, 'picture', picture)
+            if (picture === this.user.picture) {
+              // Do not update
+            } else {
+              this.$set(this.user, 'picture', picture)
+            }
           } else {
             this.flags.nopicture = true
           }

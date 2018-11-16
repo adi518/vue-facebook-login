@@ -121,21 +121,18 @@ $app-min-width: 320px;
   }
 }
 
-.docs-user {
+.docs-avatar {
   right: 0;
-  position: absolute;  
-  transform: translateX(-1px);
-}
-
-.docs-user-picture {
   opacity: 0;
   z-index: -1;
   width: 2.375rem;
-  height: 2.375rem;
+  height: 2.375rem;  
+  position: absolute;  
+  transform: translateX(-1px);
   border-radius: 0.25rem;
-  transition: opacity 1s;
   background-size: cover;
   background-repeat: no-repeat;
+  transition: opacity 1s ease-in-out;
 
   &--is-visible {
     opacity: 1;
