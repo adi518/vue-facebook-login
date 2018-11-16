@@ -175,7 +175,7 @@ export default {
     buttonStyle() {
       const rules = {
         position: 'relative',
-        transition: 'padding-right 0.15s ease-in-out'
+        transition: 'background-color 0.15s ease-in-out, padding-right 0.15s ease-in-out'
       }
       if (this.connected && this.computed.picture) {
         rules.paddingRight = '3.375rem'

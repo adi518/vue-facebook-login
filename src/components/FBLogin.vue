@@ -93,7 +93,7 @@ $color-chambray: #3b55a0;
   border-radius: 0.25rem;
   justify-content: center;
   background-color: lighten($color-chambray, 1%);
-  transition: background-color 0.15s ease-in-out, border-radius 0.15s ease-in-out; // Bootstrap 4 (`.btn`)
+  transition: background-color 0.15s ease-in-out; // Bootstrap 4 (`.btn`)
 
   *,
   *::before,
