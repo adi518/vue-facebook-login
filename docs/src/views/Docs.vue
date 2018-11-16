@@ -151,7 +151,9 @@ export default {
       nopicture: false
     },
 
-    user: {},
+    user: {
+      picture: { data: { url: '' } }
+    },
 
     breakpoint: new Breakpoint()
   }),
@@ -175,7 +177,7 @@ export default {
         position: 'relative',
         transition: 'padding-right 0.15s ease-in-out'
       }
-      if (this.connected) {
+      if (this.connected && this.computed.picture) {
         rules.paddingRight = '3.375rem'
       }
       return rules
@@ -185,10 +187,10 @@ export default {
     getUserData() {
       const { api } = this.facebook.FB
       api('/me', { fields: 'id, name' }, user => {
-        this.user = user
+        this.user = Object.assign({}, this.user, user)
         api(`${this.user.id}/picture?width=9999&redirect=false`, picture => {
           if (picture) {
-            if (picture === this.user.picture) {
+            if (picture.data.url === this.user.picture.data.url) {
               // Do not update
             } else {
               this.$set(this.user, 'picture', picture)

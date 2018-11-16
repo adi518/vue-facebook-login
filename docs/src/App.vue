@@ -104,6 +104,7 @@ h1 {
   margin-top: 0;
   margin-bottom: 1rem;
   text-transform: uppercase;
+  text-shadow: 0rem 0.15rem 0.15rem rgba(0, 0, 0, 1);
 }
 p {
   font-size: 1.1rem;
