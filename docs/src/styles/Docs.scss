@@ -121,6 +121,7 @@ $app-min-width: 320px;
 }
 
 .docs-avatar {
+  top: 0; // Fix IE 11
   right: 0;
   opacity: 0;
   z-index: -1;

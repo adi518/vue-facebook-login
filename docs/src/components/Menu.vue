@@ -37,6 +37,7 @@
 // https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing
 // https://stackoverflow.com/questions/39589911/svg-image-not-working-in-safari-5-1-7-windows
 
+import reject from 'lodash.reject'
 import { flattenRoutes } from 'vue-flatten-routes'
 
 export default {
@@ -47,6 +48,10 @@ export default {
       default: '0'
     },
     routes: {
+      type: Array,
+      default: () => []
+    },
+    exclude: {
       type: Array,
       default: () => []
     },
@@ -88,7 +93,9 @@ export default {
       }
     },
     computedRoutes() {
-      return flattenRoutes(this.routes)
+      return reject(flattenRoutes(this.routes), route =>
+        this.exclude.includes(route.name || route.path)
+      )
     },
     computedItems() {
       return Array.from(Array(Number(this.items))).map(
