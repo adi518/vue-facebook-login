@@ -33,7 +33,7 @@
               <template slot="after" slot-scope="{}">
                 <span class="docs-avatar"
                   :class="{ 'docs-avatar--is-visible': connected && computed.picture }"
-                  :style="{ backgroundImage: `url(${computed.picture}` }"
+                  :style="avatarStyle"
                 ></span>
               </template>
             </v-facebook-login>            
@@ -181,6 +181,11 @@ export default {
         rules.paddingRight = '3.375rem'
       }
       return rules
+    },
+    avatarStyle() {
+      return {
+        backgroundImage: `url(${this.computed.picture}`
+      }
     }
   },
   methods: {
