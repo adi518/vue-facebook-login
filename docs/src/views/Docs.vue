@@ -184,7 +184,7 @@ export default {
     },
     avatarStyle() {
       return {
-        backgroundImage: `url(${this.computed.picture}`
+        backgroundImage: `url(${this.computed.picture})`
       }
     }
   },
