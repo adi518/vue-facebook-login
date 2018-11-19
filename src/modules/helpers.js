@@ -43,7 +43,7 @@ export function fbLogin(options) {
 
 export function getFbLoginStatus() {
   return new Promise(resolve => {
-    window.FB.getLoginStatus(responseStatus => resolve(responseStatus))
+    window.FB.getLoginStatus(response => resolve(response))
   })
 }
 

@@ -8,14 +8,14 @@ To use the component in your template, simply import and register with your comp
 
 ### Script
 ```js
-import VFBLogin from 'vue-facebook-login-component'
+import VFacebookLogin from 'vue-facebook-login-component'
 
 // OR, use cherry-pick export (better consistency)
-import { VFBLogin } from 'vue-facebook-login-component'
+import { VFBLogin as VFacebookLogin } from 'vue-facebook-login-component'
 
 export default {
   components: {
-    VFBLogin
+    VFacebookLogin
   }
 }
 ```
