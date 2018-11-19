@@ -131,7 +131,7 @@ $color-chambray: #3b55a0;
 
 .token {
   margin-right: 0.2rem;
-  transform: translateX(-0.3rem);
+  transform: translateX(-0.5rem);
 }
 
 .loader {
