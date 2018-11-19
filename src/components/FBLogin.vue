@@ -12,10 +12,10 @@
       <img class="token" :src="token" v-if="scope.enabled" :style="tokenStyle">
       <span :style="textStyle">
         <slot name="login" v-if="scope.enabled && scope.disconnected">
-          Log in to Facebook
+          Sign in with Facebook
         </slot>
         <slot name="logout" v-if="scope.enabled && scope.connected">
-          Log out from Facebook
+          Sign out with Facebook
         </slot>
         <slot name="working" v-if="scope.working">
           Please wait...
@@ -94,14 +94,14 @@ $color-chambray: #3b55a0;
 
 .v-facebook-login {
   cursor: default; // Normalize IE 11
-  min-width: 14rem;
+  min-width: 15rem;
   color: $color-white;
   box-sizing: border-box;
   border: 1px solid rgba($color-white, 0.05);
   margin: 0; // Normalize Flex-box
   padding-top: 0.5rem;
-  padding-left: 0.875rem;
-  padding-right: 0.875rem;
+  padding-left: 1.275rem;
+  padding-right: 1.275rem;
   padding-bottom: 0.5rem;
   display: flex;
   align-items: center;

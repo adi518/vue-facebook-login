@@ -50,13 +50,13 @@ export default {
 ## Slots
 <div id="slots-table-wrap" class="docs-table-wrap">
 
-| Name    | Default                   | Description
-|---------|---------------------------|------------------------------------------------------|
-| login   | `'Log in to Facebook'`    |
-| logout  | `'Log out from Facebook'` |
-| working | `'Please wait...'`        |
-| before  | `NONE`                    | Before all nested elements.
-| after   | `NONE`                    | After all nested elements.
+| Name    | Default                    | Description
+|---------|----------------------------|------------------------------------------------------|
+| login   | `'Sign in with Facebook'`  |
+| logout  | `'Sign out with Facebook'` |
+| working | `'Please wait...'`         |
+| before  | `NONE`                     | Before all nested elements.
+| after   | `NONE`                     | After all nested elements.
 
 </div>
 
