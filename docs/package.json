@@ -1,6 +1,9 @@
 {
   "name": "docs",
   "version": "1.0.24",
+  "description": "",
+  "author": "Adi Sahar",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --https",
