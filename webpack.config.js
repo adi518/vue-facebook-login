@@ -1,10 +1,10 @@
 const path = require('path')
+const args = require('optimist').argv
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
-const env = process.env.PRODUCTION || 'development'
-
 module.exports = {
+  mode: args.mode,
   entry: ['babel-polyfill', './src/index.js'],
   output: {
     filename: 'index.js',
@@ -29,7 +29,7 @@ module.exports = {
         options: {
           presets: [
             ['@babel/preset-env', {
-              forceAllTransforms: env === 'production',
+              forceAllTransforms: args.mode === 'production',
             }]
           ],
           plugins: [
@@ -68,8 +68,7 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin()
-  ],
-  mode: env
+  ]
 }
 
 if (process.env.ANALYZE) {

@@ -8,8 +8,8 @@
   "private": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/.bin/webpack --config webpack.config.js",
-    "start": "node_modules/.bin/webpack --config webpack.config.js --watch",
+    "build": "node_modules/.bin/webpack --config webpack.config.js --mode production",
+    "start": "node_modules/.bin/webpack --config webpack.config.js --mode development --watch",
     "link": "cd ./docs && npm link vue-facebook-login-component",
     "unlink": "npm unlink",
     "unlink-docs": "cd ./docs && npm unlink --no-save vue-facebook-login-component",
@@ -55,6 +55,7 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
     "node-sass": "^4.9.2",
+    "optimist": "^0.6.1",
     "sass-loader": "^7.0.3",
     "url-loader": "^1.0.1",
     "vue-loader": "^15.2.4",
