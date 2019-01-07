@@ -8,7 +8,7 @@
 
         <!-- HEADING -->
         <div class="docs-clearfix text-center">
-          <img class="docs-vue-logo mb-10" :src="assets.vueLogo">
+          <img class="docs-vue-logo mb-10" :src="assets.logo">
           <h1>Vue Facebook Login</h1>
           <p class="docs-tagline text-center ml-auto mr-auto mb-20"
             :style="{ width: breakpoint.noMatch ? '71%' : 'auto' }"
@@ -111,7 +111,7 @@ import VBreakpoint, {
   Model as Breakpoint
 } from 'vue-breakpoint-component'
 
-import vueLogo from '@/assets/vue-logo-facebook.svg'
+import logo from '@/assets/vue-logo-facebook.svg'
 
 import docs from '../../package.json'
 import pkg from '../../../package.json'
@@ -132,7 +132,7 @@ export default {
     docs,
 
     assets: {
-      vueLogo
+      logo
     },
 
     markdowns: {
