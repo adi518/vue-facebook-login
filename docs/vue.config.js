@@ -3,7 +3,7 @@ const config = {}
 
 config.chainWebpack = config => {
   if (isProduction) {
-    config.publicPath = './'
+    config.output.publicPath = './'
   }
   config.module
     .rule('markdown')
