@@ -7,9 +7,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --https",
-    "build": "vue-cli-service build",
+    "build": "cross-env NODE_OPTIONS=--max_old_space_size=8192 vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "predeploy": "npm version patch --no-git-tag-version && npm run build",
+    "predeploy": "npm install & npm version patch --no-git-tag-version && npm run build",
     "predeploy-initial": "npm version 1.0.0 --allow-same-version --no-git-tag-version && npm run build",
     "deploy": "node gh-pages",
     "deploy-initial": "node gh-pages",
@@ -17,26 +17,28 @@
     "postdeploy-initial": "node ./post-deploy"
   },
   "dependencies": {
-    "bootstrap": "^4.1.3",
+    "bootstrap": "^4.3.1",
     "lodash.reject": "^4.6.0",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.16.0",
     "typy": "^2.0.1",
-    "vue": "^2.5.16",
-    "vue-analytics": "^5.16.0",
-    "vue-breakpoint-component": "^1.0.3",
-    "vue-flatten-routes": "^1.0.2",
-    "vue-router": "^3.0.1"
+    "vue": "^2.6.10",
+    "vue-analytics": "^5.17.0",
+    "vue-breakpoint-component": "^1.2.2",
+    "vue-facebook-login-component": "^1.3.6",
+    "vue-flatten-routes": "^1.1.0",
+    "vue-router": "^3.0.7"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-rc.8",
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.8",
-    "@vue/cli-service": "^3.0.0-rc.8",
+    "@vue/cli-plugin-babel": "^3.9.2",
+    "@vue/cli-plugin-eslint": "^3.9.2",
+    "@vue/cli-service": "^3.9.2",
+    "cross-env": "^5.2.0",
     "gh-pages": "^1.2.0",
     "html-loader": "^0.5.5",
     "markdown-loader": "^3.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,
