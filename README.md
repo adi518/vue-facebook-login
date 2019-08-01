@@ -130,6 +130,10 @@ Refer to the [tables](#props-table-wrap) above for scope-component **specific** 
 </script>
 ```
 
+## IE support
+
+Add [babel-polyfill](https://babeljs.io/docs/en/babel-polyfill) to your app dependencies.
+
 ## Development
 
 Fork, clone and use the following scripts.
