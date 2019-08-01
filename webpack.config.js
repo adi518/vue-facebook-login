@@ -1,11 +1,12 @@
 const path = require('path')
 const args = require('optimist').argv
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
 module.exports = {
   mode: args.mode,
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: ['./src/index.js'],
   output: {
     filename: 'index.js',
     path: path.join(__dirname, 'dist'),
@@ -28,20 +29,21 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           presets: [
-            ['@babel/preset-env', {
-              forceAllTransforms: args.mode === 'production',
-            }]
+            [
+              '@babel/preset-env',
+              {
+                forceAllTransforms: args.mode === 'production'
+              }
+            ]
           ],
-          plugins: [
-            'babel-plugin-transform-vue-jsx'
-          ]
+          plugins: ['babel-plugin-transform-vue-jsx']
         }
       },
       {
         test: /\.scss$/,
         use: [
           {
-            loader: 'vue-style-loader',
+            loader: 'vue-style-loader'
           },
           {
             loader: 'css-loader'
@@ -49,10 +51,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: [
-                './src/sass',
-                './node_modules'
-              ]
+              includePaths: ['./src/sass', './node_modules']
             }
           }
         ]
@@ -66,9 +65,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new VueLoaderPlugin()
-  ]
+  plugins: [new VueLoaderPlugin()]
 }
 
 if (process.env.ANALYZE) {
