@@ -1,11 +1,11 @@
-const path = require('path')
-const args = require('optimist').argv
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const path = require('path');
+const args = require('optimist').argv;
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
   mode: args.mode,
-  entry: ['babel-polyfill', './src/index.js'],
+  entry: ['idempotent-babel-polyfill', './src/index.js'],
   output: {
     filename: 'index.js',
     path: path.join(__dirname, 'dist'),
@@ -69,8 +69,8 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin()
   ]
-}
+};
 
 if (process.env.ANALYZE) {
-  module.exports.plugins.push(new BundleAnalyzerPlugin())
+  module.exports.plugins.push(new BundleAnalyzerPlugin());
 }
