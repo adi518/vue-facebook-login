@@ -64,5 +64,8 @@
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.6"
   },
-  "dependencies": {}
+  "dependencies": {
+    "core-js": "3.2.0",
+    "regenerator-runtime": "0.13.3"
+  }
 }

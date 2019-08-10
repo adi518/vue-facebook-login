@@ -1,4 +1,5 @@
 import FBLogin from '@/components/FBLogin.vue'
+import regeneratorRuntime from "regenerator-runtime";
 
 export { default as VFBLogin } from '@/components/FBLogin.vue'
 export { default as VFBLoginScope } from '@/components/FBLogin.Scope.js'
