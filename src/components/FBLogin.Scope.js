@@ -46,6 +46,7 @@ export default {
     }
   },
   created() {
+    // eslint-disable-next-line no-async-promise-executor
     const created = new Promise(async resolve => {
       const { appId, version, options } = this
       const sdk = await getFbSdk({ appId, version, ...options })

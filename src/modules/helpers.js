@@ -25,6 +25,7 @@ export function initFbSdk(options) {
 }
 
 export function getFbSdk(options) {
+  // eslint-disable-next-line no-async-promise-executor
   return new Promise(async resolve => {
     if (window.FB) {
       resolve(window.FB)
@@ -36,19 +37,13 @@ export function getFbSdk(options) {
 }
 
 export function fbLogin(options) {
-  return new Promise(resolve => {
-    window.FB.login(response => resolve(response), options)
-  })
+  return new Promise(resolve => window.FB.login(resolve, options))
 }
 
 export function getFbLoginStatus() {
-  return new Promise(resolve => {
-    window.FB.getLoginStatus(response => resolve(response))
-  })
+  return new Promise(resolve => window.FB.getLoginStatus(resolve))
 }
 
 export function fbLogout() {
-  return new Promise(resolve => {
-    window.FB.logout(response => resolve(response))
-  })
+  return new Promise(resolve => window.FB.logout(resolve))
 }
