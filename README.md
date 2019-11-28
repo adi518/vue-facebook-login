@@ -63,6 +63,7 @@ export default {
 | working | `'Please wait...'`         |
 | before  | `NONE`                     | Before all nested elements. |
 | after   | `NONE`                     | After all nested elements.  |
+| error   | ⛔ Network Error           | Shown on SDK load failure.  |
 
 </div>
 
@@ -129,6 +130,10 @@ Refer to the [tables](#props-table-wrap) above for scope-component **specific** 
   }
 </script>
 ```
+
+## Loading Facebook SDK
+
+This component embeds the [Facebook SDK snippet](https://developers.facebook.com/docs/javascript/quickstart/), so you don't have to do it yourself. However, if you want to embed it yourself, you can do so and the component will pick up the SDK instance instead.
 
 ## IE support
 

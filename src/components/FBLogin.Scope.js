@@ -1,7 +1,8 @@
 import {
-  getFbSdk,
+  getFbSdk as getFbSdkHelper,
   fbLogin,
   fbLogout,
+  removeFbSdkScript,
   getFbLoginStatus
 } from '@/modules/helpers.js'
 
@@ -34,7 +35,9 @@ export default {
     }
   },
   data: () => ({
+    error: null,
     working: true,
+    hasError: false,
     connected: false
   }),
   watch: {
@@ -45,19 +48,22 @@ export default {
       }
     }
   },
+  beforeCreate() {
+    removeFbSdkScript()
+  },
   created() {
     // eslint-disable-next-line no-async-promise-executor
-    const created = new Promise(async resolve => {
-      const { appId, version, options } = this
-      const sdk = await getFbSdk({ appId, version, ...options })
-      const fbLoginStatus = await getFbLoginStatus()
-      if (fbLoginStatus.status === 'connected') {
-        this.connected = true
-      }
-      this.$emit('sdk-init', { FB: sdk })
-      resolve()
-    })
-    this.doAsync(created)
+    const created = async () => {
+      try {
+        const sdk = await this.getFbSdk()
+        const fbLoginStatus = await getFbLoginStatus()
+        if (fbLoginStatus.status === 'connected') {
+          this.connected = true
+        }
+        this.$emit('sdk-init', { FB: sdk })
+      } catch (error) {}
+    }
+    this.doAsync(created())
   },
   updated() {
     if (this.$slots.default && this.$slots.default.length) {
@@ -66,21 +72,23 @@ export default {
   },
   computed: {
     disconnected() {
-      return this.connected === false
+      return !this.connected
     },
     enabled() {
-      return this.disabled === false
+      return !this.disabled
     },
     disabled() {
-      return this.working === true
+      return this.working || this.hasError
     },
     scope() {
       return {
+        error: this.error,
         login: this.login,
         logout: this.logout,
         working: this.working,
         enabled: this.enabled,
         disabled: this.disabled,
+        hasError: this.hasError,
         connected: this.connected,
         toggleLogin: this.toggleLogin,
         disconnected: this.disconnected
@@ -94,6 +102,18 @@ export default {
         this.logout()
       } else {
         this.login()
+      }
+    },
+    async getFbSdk() {
+      try {
+        const { appId, version, options } = this
+        const fbSdk = await getFbSdkHelper({ appId, version, ...options })
+        return fbSdk
+      } catch (error) {
+        console.log(error)
+        this.error = error
+        this.hasError = true
+        throw error
       }
     },
     async login() {
@@ -116,7 +136,9 @@ export default {
     },
     async doAsync(promise) {
       this.working = true
-      await promise
+      try {
+        await promise
+      } catch (error) {}
       this.working = false
       return promise
     }

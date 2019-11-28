@@ -18,6 +18,8 @@ config.chainWebpack = config => {
     .use('markdown-loader')
     .loader('markdown-loader')
     .end()
+  // https://stackoverflow.com/questions/56906896/cannot-use-vue-component-library-with-npm-link
+  config.resolve.symlinks(false)
 }
 
 module.exports = config

@@ -9,17 +9,12 @@
     >
       <slot name="before"></slot>
       <i class="loader" v-if="scope.working" :style="loaderStyle"></i>
-      <img class="token" :src="token" v-if="scope.enabled" :style="tokenStyle">
+      <img class="token" :src="token" v-if="scope.enabled" :style="tokenStyle" />
       <span :style="textStyle">
-        <slot name="login" v-if="scope.enabled && scope.disconnected">
-          Sign in with Facebook
-        </slot>
-        <slot name="logout" v-if="scope.enabled && scope.connected">
-          Sign out with Facebook
-        </slot>
-        <slot name="working" v-if="scope.working">
-          Please wait...
-        </slot>        
+        <slot name="login" v-if="scope.enabled && scope.disconnected">Sign in with Facebook</slot>
+        <slot name="logout" v-if="scope.enabled && scope.connected">Sign out with Facebook</slot>
+        <slot name="working" v-if="scope.working">Please wait...</slot>
+        <slot name="error" v-if="scope.hasError">⛔ Network Error</slot>
       </span>
       <slot name="after"></slot>
     </button>
