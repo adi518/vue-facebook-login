@@ -63,7 +63,7 @@ export default {
 | working | `'Please wait...'`         |
 | before  | `NONE`                     | Before all nested elements. |
 | after   | `NONE`                     | After all nested elements.  |
-| error   | `⛔ Network Error`         | Shown on SDK load failure.  |
+| error   | `'⛔ Network Error'`       | Shown on SDK load failure.  |
 
 </div>
 
