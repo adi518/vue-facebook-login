@@ -110,7 +110,6 @@ export default {
         const fbSdk = await getFbSdkHelper({ appId, version, ...options })
         return fbSdk
       } catch (error) {
-        console.log(error)
         this.error = error
         this.hasError = true
         throw error
