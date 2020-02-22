@@ -82,7 +82,7 @@ export default {
 
 ### ⚠️ [Sdk-Init Event](#sdk-init-event)
 
-You can use this event to grab the Facebook SDK instance, but **also** the underlying component `scope` object. Using this object, you can control the component empirically, similarly to how you would with `this.$ref`. See example:
+You can use this event to grab the Facebook SDK instance, but **also** the underlying component `scope` object. Using this object, you can control the component empirically, similarly to how you would with `ref`. See example:
 
 ```html
 <template>

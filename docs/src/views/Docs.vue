@@ -67,7 +67,9 @@
           </div>
         </v-hide-at>
         <DevOnly>
-          <button v-if="facebook.scope.logout" @click="facebook.scope.logout">logout</button>
+          <form v-if="facebook.scope.logout" @submit="facebook.scope.logout">
+            <button>logout</button>
+          </form>
         </DevOnly>
 
         <!-- VERSION -->
