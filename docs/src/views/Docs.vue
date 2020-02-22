@@ -1,20 +1,26 @@
 <template>
   <div class="docs">
-    <div class="docs-container docs-container--has-jumbotron" :style="{ height: `${breakpoint.innerHeight}px` }">
-      <div class="docs-jumbotron container" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
-
+    <div
+      class="docs-container docs-container--has-jumbotron"
+      :style="{ height: `${breakpoint.innerHeight}px` }"
+    >
+      <div
+        class="docs-jumbotron container"
+        :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'"
+      >
         <!-- GITHUB RIBBON -->
-        <a class="docs-github" :href="pkg.repository.url" target="_blank"><img src="octocat.png" alt="Go to GitHub"></a>
+        <a class="docs-github" :href="pkg.repository.url" target="_blank">
+          <img src="octocat.png" alt="Go to GitHub" />
+        </a>
 
         <!-- HEADING -->
         <div class="docs-clearfix text-center">
-          <img class="docs-vue-logo mb-10" :src="assets.logo">
+          <img class="docs-vue-logo mb-10" :src="assets.logo" />
           <h1>Vue Facebook Login</h1>
-          <p class="docs-tagline text-center ml-auto mr-auto mb-20"
+          <p
+            class="docs-tagline text-center ml-auto mr-auto mb-20"
             :style="{ width: breakpoint.noMatch ? '71%' : 'auto' }"
-          >
-            {{ pkg.description }}
-          </p>
+          >{{ pkg.description }}</p>
         </div>
 
         <!-- DEMO -->
@@ -22,7 +28,7 @@
           <div class="docs-facebook-button d-inline-flex mx-auto">
             <v-facebook-login
               v-model="facebook.model"
-              :app-id="facebook.appId"              
+              :app-id="facebook.appId"
               :button-style="buttonStyle"
               :transition="[ 'padding-right 0.15s ease-in-out' ]"
               @sdk-init="handleSdkInit"
@@ -31,12 +37,13 @@
               @click="handleClick"
             >
               <template slot="after" slot-scope="{}">
-                <span class="docs-avatar"
+                <span
+                  class="docs-avatar"
                   :class="{ 'docs-avatar--is-visible': connected && computed.picture }"
                   :style="avatarStyle"
                 ></span>
               </template>
-            </v-facebook-login>            
+            </v-facebook-login>
           </div>
         </div>
 
@@ -59,20 +66,21 @@
             </span>
           </div>
         </v-hide-at>
+        <DevOnly>
+          <button v-if="facebook.scope.logout" @click="facebook.scope.logout">logout</button>
+        </DevOnly>
 
         <!-- VERSION -->
         <div class="docs-version">{{ pkg.version }} - {{ docs.version }}</div>
 
         <!-- INSTALL ANCHOR -->
-        <v-a class="docs-fixed-anchor"
-          :scroll-to="$refs.docs">Install, Examples &amp; Documentation</v-a>
-
+        <v-a class="docs-fixed-anchor" :scroll-to="$refs.docs">Install, Examples &amp; Documentation</v-a>
       </div>
     </div>
 
     <div ref="docs" class="docs-container">
       <div class="container docs-clearfix" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
-       <div class="docs-markdown" v-html="markdowns.readme"></div>
+        <div class="docs-markdown" v-html="markdowns.readme"></div>
       </div>
     </div>
 
@@ -80,7 +88,7 @@
       <div class="container" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
         <div class="docs-credit">
           <span class="d-flex">Made by</span>
-          <div class="d-flex">            
+          <div class="d-flex">
             <a
               class="docs-credit-anchor"
               href="https://github.com/adi518"
@@ -97,7 +105,6 @@
     </footer>
 
     <v-breakpoint v-model="breakpoint"></v-breakpoint>
-
   </div>
 </template>
 
@@ -118,11 +125,13 @@ import pkg from '../../../package.json'
 import readme from '../../../README.md'
 
 import VA from '@/components/Anchor'
+import DevOnly from '@/components/DevOnly'
 
 export default {
   name: 'Docs',
   components: {
     VA,
+    DevOnly,
     VHideAt,
     VBreakpoint,
     VFacebookLogin
@@ -130,32 +139,19 @@ export default {
   data: () => ({
     pkg,
     docs,
-
-    assets: {
-      logo
-    },
-
-    markdowns: {
-      readme
-    },
-
+    assets: { logo },
+    markdowns: { readme },
     facebook: {
       FB: {},
       model: {},
+      scope: {},
       appId:
         process.env.NODE_ENV === 'development'
           ? '852858511574509'
           : '2146252248983683'
     },
-
-    flags: {
-      nopicture: false
-    },
-
-    user: {
-      picture: { data: { url: '' } }
-    },
-
+    flags: { nopicture: false },
+    user: { picture: { data: { url: '' } } },
     breakpoint: new Breakpoint()
   }),
   mounted() {
@@ -206,7 +202,8 @@ export default {
         })
       })
     },
-    handleSdkInit({ FB }) {
+    handleSdkInit({ FB, scope }) {
+      this.facebook.scope = scope
       this.facebook.FB = FB
     },
     handleConnect() {

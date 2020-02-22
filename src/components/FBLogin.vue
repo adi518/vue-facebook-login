@@ -28,28 +28,31 @@ import token from '@/assets/images/iconmonstr-facebook-1.svg'
 export default {
   name: 'v-facebook-login',
   components: { [Scope.name]: Scope },
-  props: Object.assign({}, Scope.props, {
-    buttonStyle: {
-      type: Object,
-      default: () => ({})
-    },
-    loaderStyle: {
-      type: Object,
-      default: () => ({})
-    },
-    tokenStyle: {
-      type: Object,
-      default: () => ({})
-    },
-    textStyle: {
-      type: Object,
-      default: () => ({})
-    },
-    transition: {
-      type: Array,
-      default: () => []
+  props: {
+    ...Scope.props,
+    ...{
+      buttonStyle: {
+        type: Object,
+        default: () => ({})
+      },
+      loaderStyle: {
+        type: Object,
+        default: () => ({})
+      },
+      tokenStyle: {
+        type: Object,
+        default: () => ({})
+      },
+      textStyle: {
+        type: Object,
+        default: () => ({})
+      },
+      transition: {
+        type: Array,
+        default: () => []
+      }
     }
-  }),
+  },
   data: () => ({
     token
   }),

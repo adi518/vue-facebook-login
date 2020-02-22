@@ -68,17 +68,47 @@ export default {
 
 <div id="events-table-wrap" class="docs-table-wrap">
 
-| Name     | Payload            | Description                                          | Note      |
-| -------- | ------------------ | ---------------------------------------------------- | --------- |
-| sdk-init | (sdk[Object])      | Returns an object with <br> a Facebook SDK instance. | [ &ast; ] |
-| login    | (response[Object]) | User attempted login.                                | [ &ast; ] |
-| logout   | (response[Object]) | User attempted logout.                               | [ &ast; ] |
-| connect  | Boolean            | User is connected.                                   | [ &ast; ] |
-| click    | None               | &nbsp;                                               | [ &ast; ] |
+| Name     | Payload            | Description                                                                               | Note      |
+| -------- | ------------------ | ----------------------------------------------------------------------------------------- | --------- |
+| sdk-init | (sdk[Object])      | Returns an object with <br> Facebook SDK instance and [`scope`](#-sdk-init-event) object. | [ &ast; ] |
+| login    | (response[Object]) | User attempted login.                                                                     | [ &ast; ] |
+| logout   | (response[Object]) | User attempted logout.                                                                    | [ &ast; ] |
+| connect  | Boolean            | User is connected.                                                                        | [ &ast; ] |
+| click    | None               | &nbsp;                                                                                    | [ &ast; ] |
 
 </div>
 
 [ &ast; ] - Scope-component event.
+
+### ⚠️ [Sdk-Init Event](#sdk-init-event)
+
+You can use this event to grab the Facebook SDK instance, but **also** the underlying component `scope` object. Using this object, you can control the component empirically, similarly to how you would with `this.$ref`. See example:
+
+```html
+<template>
+  <v-facebook-login @sdk-init="handleSdkInit" />
+  <button v-if="facebook.scope.logout" @click="facebook.scope.logout">
+    Logout
+  </button>
+</template>
+
+<script>
+  export default = {
+    data: () => ({
+      facebook: {
+        FB: {},
+        scope: {},
+      }
+    }),
+    methods: {
+      handleSdkInit({ FB, scope }) {
+        this.facebook.scope = scope
+        this.facebook.FB = FB
+      }
+    }
+  }
+</script>
+```
 
 ## Scope component (Advanced Customization)
 
@@ -134,13 +164,13 @@ This component embeds the [Facebook SDK snippet](https://developers.facebook.com
 
 ## Uncaught ReferenceError: regeneratorRuntime is not defined
 
-This packge uses `async/await` syntax, which is based on [generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators). In short, if you target old browsers (think about that carefully) you'll have to add [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) to your dependencies. See this [issue](https://github.com/adi518/vue-facebook-login-component/issues/17) for more details.
+This package uses `async/await` syntax, which is based on [generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators). In short, if you target old browsers (think about that carefully) you'll have to add [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) to your dependencies. See this [issue](https://github.com/adi518/vue-facebook-login-component/issues/17) for more details.
 
 ```console
 npm install --save regenerator-runtime
 ```
 
-Then, import it at the topmost of your `main.js` (or similar entrypoint).
+Then, import it at the topmost of your `main.js` (or similar entry-point).
 
 ```js
 import 'regenerator-runtime'
