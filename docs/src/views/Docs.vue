@@ -6,7 +6,7 @@
     >
       <div
         class="docs-jumbotron container"
-        :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'"
+        :class="(breakpoint.noMatch && ['pl-3', 'pr-3']) || 'p-0'"
       >
         <!-- GITHUB RIBBON -->
         <a class="docs-github" :href="pkg.repository.url" target="_blank">
@@ -20,7 +20,9 @@
           <p
             class="docs-tagline text-center ml-auto mr-auto mb-20"
             :style="{ width: breakpoint.noMatch ? '71%' : 'auto' }"
-          >{{ pkg.description }}</p>
+          >
+            {{ pkg.description }}
+          </p>
         </div>
 
         <!-- DEMO -->
@@ -30,7 +32,7 @@
               v-model="facebook.model"
               :app-id="facebook.appId"
               :button-style="buttonStyle"
-              :transition="[ 'padding-right 0.15s ease-in-out' ]"
+              :transition="['padding-right 0.15s ease-in-out']"
               @sdk-init="handleSdkInit"
               @connect="handleConnect"
               @logout="handleLogout"
@@ -39,7 +41,9 @@
               <template slot="after" slot-scope="{}">
                 <span
                   class="docs-avatar"
-                  :class="{ 'docs-avatar--is-visible': connected && computed.picture }"
+                  :class="{
+                    'docs-avatar--is-visible': connected && computed.picture
+                  }"
                   :style="avatarStyle"
                 ></span>
               </template>
@@ -62,30 +66,41 @@
                 data-icon="octicon-star"
                 data-show-count="true"
                 aria-label="Star adi518/vue-facebook-login-component on GitHub"
-              >Star</a>
+                >Star</a
+              >
             </span>
           </div>
         </v-hide-at>
         <DevOnly>
-          <button v-if="facebook.scope.logout" @click="facebook.scope.logout">Logout</button>
+          <button v-if="facebook.scope.logout" @click="facebook.scope.logout">
+            Logout
+          </button>
         </DevOnly>
 
         <!-- VERSION -->
         <div class="docs-version">{{ pkg.version }} - {{ docs.version }}</div>
 
         <!-- INSTALL ANCHOR -->
-        <v-a class="docs-fixed-anchor" :scroll-to="$refs.docs">Install, Examples &amp; Documentation</v-a>
+        <v-a class="docs-fixed-anchor" :scroll-to="$refs.docs"
+          >Install, Examples &amp; Documentation</v-a
+        >
       </div>
     </div>
 
     <div ref="docs" class="docs-container">
-      <div class="container docs-clearfix" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
+      <div
+        class="container docs-clearfix"
+        :class="(breakpoint.noMatch && ['pl-3', 'pr-3']) || 'p-0'"
+      >
         <div class="docs-markdown" v-html="markdowns.readme"></div>
       </div>
     </div>
 
     <footer class="docs-footer">
-      <div class="container" :class="breakpoint.noMatch && ['pl-3', 'pr-3'] || 'p-0'">
+      <div
+        class="container"
+        :class="(breakpoint.noMatch && ['pl-3', 'pr-3']) || 'p-0'"
+      >
         <div class="docs-credit">
           <span class="d-flex">Made by</span>
           <div class="d-flex">
@@ -93,12 +108,14 @@
               class="docs-credit-anchor"
               href="https://github.com/adi518"
               target="_blank"
-            >🦊&nbsp;@adi518</a>
+              >🦊&nbsp;@adi518</a
+            >
             <a
               class="docs-credit-anchor"
               href="https://github.com/iliran11"
               target="_blank"
-            >🐙&nbsp;@iliran11</a>
+              >🐙&nbsp;@iliran11</a
+            >
           </div>
         </div>
       </div>
