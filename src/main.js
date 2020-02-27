@@ -4,7 +4,7 @@ export { default as VFBLogin } from '@/components/FBLogin.vue'
 export { default as VFBLoginScope } from '@/components/FBLogin.Scope.js'
 
 export const Install = {
-  install(Vue, config) {
+  install(Vue) {
     Vue.component(FBLogin.name, FBLogin)
   }
 }

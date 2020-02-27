@@ -54,14 +54,12 @@ export default {
   created() {
     // eslint-disable-next-line no-async-promise-executor
     const created = async () => {
-      try {
-        const sdk = await this.getFbSdk()
-        const fbLoginStatus = await getFbLoginStatus()
-        if (fbLoginStatus.status === 'connected') {
-          this.connected = true
-        }
-        this.$emit('sdk-init', { FB: sdk, scope: this.scope })
-      } catch (error) {}
+      const sdk = await this.getFbSdk().catch(console.error)
+      const fbLoginStatus = await getFbLoginStatus().catch(console.error)
+      if (fbLoginStatus.status === 'connected') {
+        this.connected = true
+      }
+      this.$emit('sdk-init', { FB: sdk, scope: this.scope })
     }
     this.doAsync(created())
   },
@@ -135,9 +133,7 @@ export default {
     },
     async doAsync(promise) {
       this.working = true
-      try {
-        await promise
-      } catch (error) {}
+      await promise.catch(console.error)
       this.working = false
       return promise
     }

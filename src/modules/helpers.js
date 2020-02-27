@@ -3,8 +3,6 @@
 // https://developers.facebook.com/docs/javascript/reference/FB.init/
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement
 
-/* global window, document */
-
 export const FACEBOOK_SCRIPT_ID = 'facebook-jssdk'
 
 function loadError(oError) {

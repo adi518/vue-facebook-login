@@ -4,12 +4,16 @@
   "description": "A renderless component for composing Facebook login",
   "author": "Adi Sahar",
   "license": "MIT",
-  "main": "dist",
+  "main": "dist/vue-facebook-login-component.umd.min.js",
   "private": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node_modules/.bin/webpack --config webpack.config.js --mode production",
-    "start": "node_modules/.bin/webpack --config webpack.config.js --mode development --watch",
+    "start": "npm run build:watch",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --name %npm_package_name% ./src/main.js",
+    "build:watch": "npm run build -- --watch",
+    "build:stats": "vue-cli-service build --report",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
     "link": "cd ./docs && npm link %npm_package_name%",
     "unlink": "npm unlink",
     "unlink-docs": "cd ./docs && npm unlink --no-save %npm_package_name%",
@@ -35,34 +39,39 @@
     "url": "https://github.com/adi518/vue-facebook-login-component/issues"
   },
   "peerDependencies": {
-    "vue": "^2.x"
+    "vue": "^2.x",
+    "core-js": "^3.x"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/helper-module-imports": "^7.0.0",
-    "@babel/plugin-syntax-jsx": "^7.2.0",
-    "@babel/preset-env": "^7.5.5",
-    "babel-helper-vue-jsx-merge-props": "^2.0.3",
-    "babel-loader": "^8.0.6",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-vue-jsx": "^3.7.0",
-    "css-loader": "^3.2.0",
-    "eslint": "^6.2.2",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "node-sass": "^4.12.0",
-    "optimist": "^0.6.1",
-    "sass-loader": "^7.3.1",
-    "url-loader": "^2.1.0",
-    "vue-loader": "^15.7.1",
-    "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "^2.6.10",
-    "webpack": "^4.39.3",
-    "webpack-bundle-analyzer": "^3.4.1",
-    "webpack-cli": "^3.3.7"
+    "@vue/cli-plugin-babel": "^4.2.3",
+    "@vue/cli-plugin-eslint": "^4.2.3",
+    "@vue/cli-service": "^4.2.3",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.1",
+    "sass": "^1.26.1",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
   },
-  "dependencies": {}
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "space-before-function-paren": 0,
+      "comma-dangle": 0
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
 }
