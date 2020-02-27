@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
+    "start": "npm run serve",
     "serve": "vue-cli-service serve --https",
     "build": "cross-env NODE_OPTIONS=--max_old_space_size=8192 vue-cli-service build",
     "lint": "vue-cli-service lint",
@@ -25,7 +26,7 @@
     "vue": "^2.6.10",
     "vue-analytics": "^5.17.0",
     "vue-breakpoint-component": "^1.0.3",
-    "vue-facebook-login-component": "^1.5.0",
+    "vue-facebook-login-component": "^1.5.1",
     "vue-flatten-routes": "^1.1.0",
     "vue-router": "^3.0.7"
   },
