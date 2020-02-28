@@ -59,6 +59,11 @@ $app-min-width: 320px;
   height: 4rem; // Fix IE
   opacity: 0.9;
 
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+
   @include media-breakpoint-down(xs) {
     width: 3rem;
   }
@@ -211,8 +216,7 @@ $app-min-width: 320px;
 }
 
 .docs-downloads {
-  line-height: normal;
-  border-radius: 0.25rem;
+  box-shadow: 0 0.25rem 0.15rem rgba(0, 0, 0, 0.25);
 
   img {
     display: block;
@@ -222,6 +226,7 @@ $app-min-width: 320px;
 .github-star {
   font-size: 0;
   margin-left: 1rem;
+  box-shadow: 0 0.25rem 0.15rem rgba(0, 0, 0, 0.25);
 }
 
 .docs-markdown {

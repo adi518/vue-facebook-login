@@ -15,12 +15,16 @@
 
         <!-- HEADING -->
         <div class="docs-clearfix text-center">
-          <img class="docs-vue-logo mb-10" :src="assets.logo" />
+          <div class="d-inline-flex docs-vue-logo mb-10">
+            <VueFacebookLogo />
+          </div>
           <h1>Vue Facebook Login</h1>
           <p
             class="docs-tagline text-center ml-auto mr-auto mb-20"
             :style="{ width: breakpoint.noMatch ? '71%' : 'auto' }"
-          >{{ pkg.description }}</p>
+          >
+            {{ pkg.description }}
+          </p>
         </div>
 
         <!-- DEMO -->
@@ -53,7 +57,10 @@
         <v-hide-at no-match>
           <div class="d-flex justify-content-center">
             <span class="docs-downloads">
-              <img alt="npm" src="https://img.shields.io/npm/dt/vue-facebook-login-component" />
+              <img
+                alt="npm"
+                src="https://img.shields.io/npm/dt/vue-facebook-login-component"
+              />
             </span>
             <!--
               Do not remove global class `github-button`!
@@ -67,7 +74,8 @@
                 data-icon="octicon-star"
                 data-show-count="true"
                 aria-label="Star adi518/vue-facebook-login-component on GitHub"
-              >Star</a>
+                >Star</a
+              >
             </div>
           </div>
         </v-hide-at>
@@ -80,7 +88,8 @@
               class="docs-button docs-logout"
               v-if="facebook.scope.logout"
               @click="facebook.scope.logout"
-            >logout</span>
+              >logout</span
+            >
           </DevOnly>
           <!-- <span class="docs-downloads ml-10">
             <img alt="npm" src="https://img.shields.io/npm/dt/vue-facebook-login-component" />
@@ -88,7 +97,9 @@
         </div>
 
         <!-- INSTALL ANCHOR -->
-        <v-a class="docs-fixed-anchor" :scroll-to="$refs.docs">Install, Examples &amp; Documentation</v-a>
+        <v-a class="docs-fixed-anchor" :scroll-to="$refs.docs"
+          >Install, Examples &amp; Documentation</v-a
+        >
       </div>
     </div>
 
@@ -102,7 +113,10 @@
     </div>
 
     <footer class="docs-footer">
-      <div class="container" :class="(breakpoint.noMatch && ['pl-3', 'pr-3']) || 'p-0'">
+      <div
+        class="container"
+        :class="(breakpoint.noMatch && ['pl-3', 'pr-3']) || 'p-0'"
+      >
         <div class="docs-credit">
           <span class="d-flex">Made by</span>
           <div class="d-flex">
@@ -110,12 +124,14 @@
               class="docs-credit-anchor"
               href="https://github.com/adi518"
               target="_blank"
-            >🦊&nbsp;@adi518</a>
+              >🦊&nbsp;@adi518</a
+            >
             <a
               class="docs-credit-anchor"
               href="https://github.com/iliran11"
               target="_blank"
-            >🐙&nbsp;@iliran11</a>
+              >🐙&nbsp;@iliran11</a
+            >
           </div>
         </div>
       </div>
@@ -143,6 +159,7 @@ import readme from '../../../README.md'
 
 import VA from '@/components/Anchor'
 import DevOnly from '@/components/DevOnly'
+import VueFacebookLogo from '@/components/VueFacebookLogo'
 
 export default {
   name: 'Docs',
@@ -151,7 +168,8 @@ export default {
     DevOnly,
     VHideAt,
     VBreakpoint,
-    VFacebookLogin
+    VFacebookLogin,
+    VueFacebookLogo
   },
   data: () => ({
     pkg,
