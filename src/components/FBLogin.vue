@@ -9,12 +9,7 @@
     >
       <slot name="before"></slot>
       <i class="loader" v-if="scope.working" :style="loaderStyle"></i>
-      <img
-        class="token"
-        :src="token"
-        v-if="scope.enabled"
-        :style="tokenStyle"
-      />
+      <FBLogo v-if="scope.enabled" class="token" :style="tokenStyle"></FBLogo>
       <span :style="textStyle">
         <slot name="login" v-if="scope.enabled && scope.disconnected"
           >Sign in with Facebook</slot
@@ -31,12 +26,13 @@
 </template>
 
 <script>
+import FBLogo from './FBLogo'
 import Scope from './FBLogin.Scope.js'
 import token from '@/assets/images/iconmonstr-facebook-1.svg'
 
 export default {
   name: 'v-facebook-login',
-  components: { [Scope.name]: Scope },
+  components: { [Scope.name]: Scope, FBLogo },
   props: {
     ...Scope.props,
     ...{
