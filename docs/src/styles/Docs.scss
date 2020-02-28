@@ -47,12 +47,12 @@ $app-min-width: 320px;
 }
 
 .docs-container--has-jumbotron {
-    display: flex;
-    align-items: center;
-    flex-direction: column; // Fix IE
-    justify-content: center;
-    background-color: darken(#2f4480, 5%);
-  }
+  display: flex;
+  align-items: center;
+  flex-direction: column; // Fix IE
+  justify-content: center;
+  background-color: darken(#2f4480, 5%);
+}
 
 .docs-vue-logo {
   width: 4rem;
@@ -126,7 +126,7 @@ $app-min-width: 320px;
   opacity: 0;
   z-index: -1;
   width: 2.375rem;
-  height: 2.375rem;  
+  height: 2.375rem;
   position: absolute;
   transform: translate(-1px, 1px);
   border-radius: 0.25rem;
@@ -176,7 +176,6 @@ $app-min-width: 320px;
   left: 1rem;
   color: #8b9dc3;
   position: absolute;
-  // display: none;
 }
 
 .docs-fixed-anchor {
@@ -198,6 +197,31 @@ $app-min-width: 320px;
   padding-top: 2rem;
   min-height: 20rem;
   background-color: #2f4480;
+}
+
+.docs-button {
+  border-width: 0;
+  font-family: inherit;
+  border-radius: 0.25rem;
+}
+
+.docs-logout {
+  margin-left: 1ch;
+  text-transform: uppercase;
+}
+
+.docs-downloads {
+  line-height: normal;
+  border-radius: 0.25rem;
+
+  img {
+    display: block;
+  }
+}
+
+.github-star {
+  font-size: 0;
+  margin-left: 1rem;
 }
 
 .docs-markdown {

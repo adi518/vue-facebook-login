@@ -1,15 +1,11 @@
 <template>
   <div id="app">
-    <v-menu
-      :items="2"
-      :routes="routes"
-      :token-style="{ backgroundImage: `url(${menuToken})` }"
-    >
+    <v-menu :items="2" :routes="routes" :token-style="{ backgroundImage: `url(${menuToken})` }">
       <!-- <template slot="item-1">
         <a href="https://www.npmjs.com/package/vue-facebook-login-component">
           <img src="https://img.shields.io/npm/dm/vue-facebook-login-component.svg" alt="npm">
         </a>
-      </template> -->
+      </template>-->
       <template slot="item-2">
         <v-show-at no-match>
           <!--
@@ -24,8 +20,7 @@
               data-icon="octicon-star"
               data-show-count="true"
               aria-label="Star adi518/vue-facebook-login-component on GitHub"
-              >Star</a
-            >
+            >Star</a>
           </span>
         </v-show-at>
       </template>
@@ -103,13 +98,12 @@ samp {
 }
 /* Bootstrap end */
 h1 {
+  margin-top: 0;
   color: #8b9dc3;
   font-weight: 400;
-  font-size: 1.6rem;
-  margin-top: 0;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
   text-transform: uppercase;
-  text-shadow: 0rem 0.15rem 0.15rem rgba(0, 0, 0, 1);
 }
 p {
   font-size: 1.1rem;

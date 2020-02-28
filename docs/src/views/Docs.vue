@@ -20,9 +20,7 @@
           <p
             class="docs-tagline text-center ml-auto mr-auto mb-20"
             :style="{ width: breakpoint.noMatch ? '71%' : 'auto' }"
-          >
-            {{ pkg.description }}
-          </p>
+          >{{ pkg.description }}</p>
         </div>
 
         <!-- DEMO -->
@@ -54,36 +52,43 @@
         <!-- GITHUB STAR -->
         <v-hide-at no-match>
           <div class="d-flex justify-content-center">
+            <span class="docs-downloads">
+              <img alt="npm" src="https://img.shields.io/npm/dt/vue-facebook-login-component" />
+            </span>
             <!--
               Do not remove global class `github-button`!
               We need to wrap `.github-button` because
               GitHub buttons looks for a parent element.
             -->
-            <span>
+            <div class="github-star ml-10">
               <a
                 class="github-button"
                 :href="pkg.repository.url"
                 data-icon="octicon-star"
                 data-show-count="true"
                 aria-label="Star adi518/vue-facebook-login-component on GitHub"
-                >Star</a
-              >
-            </span>
+              >Star</a>
+            </div>
           </div>
         </v-hide-at>
-        <DevOnly>
-          <button v-if="facebook.scope.logout" @click="facebook.scope.logout">
-            Logout
-          </button>
-        </DevOnly>
 
         <!-- VERSION -->
-        <div class="docs-version">{{ pkg.version }} - {{ docs.version }}</div>
+        <div class="docs-version">
+          {{ pkg.version }} - {{ docs.version }}
+          <DevOnly>
+            <span
+              class="docs-button docs-logout"
+              v-if="facebook.scope.logout"
+              @click="facebook.scope.logout"
+            >logout</span>
+          </DevOnly>
+          <!-- <span class="docs-downloads ml-10">
+            <img alt="npm" src="https://img.shields.io/npm/dt/vue-facebook-login-component" />
+          </span>-->
+        </div>
 
         <!-- INSTALL ANCHOR -->
-        <v-a class="docs-fixed-anchor" :scroll-to="$refs.docs"
-          >Install, Examples &amp; Documentation</v-a
-        >
+        <v-a class="docs-fixed-anchor" :scroll-to="$refs.docs">Install, Examples &amp; Documentation</v-a>
       </div>
     </div>
 
@@ -97,10 +102,7 @@
     </div>
 
     <footer class="docs-footer">
-      <div
-        class="container"
-        :class="(breakpoint.noMatch && ['pl-3', 'pr-3']) || 'p-0'"
-      >
+      <div class="container" :class="(breakpoint.noMatch && ['pl-3', 'pr-3']) || 'p-0'">
         <div class="docs-credit">
           <span class="d-flex">Made by</span>
           <div class="d-flex">
@@ -108,14 +110,12 @@
               class="docs-credit-anchor"
               href="https://github.com/adi518"
               target="_blank"
-              >🦊&nbsp;@adi518</a
-            >
+            >🦊&nbsp;@adi518</a>
             <a
               class="docs-credit-anchor"
               href="https://github.com/iliran11"
               target="_blank"
-              >🐙&nbsp;@iliran11</a
-            >
+            >🐙&nbsp;@iliran11</a>
           </div>
         </div>
       </div>
