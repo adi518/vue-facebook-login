@@ -9,19 +9,24 @@
     ></div>
     <ul
       ref="menu"
-      :class="['menu', { 'is-open': classes['is-open'] }]"
       :style="computedMenuStyle"
       @touchstart.passive="() => {}"
-    >    
-      <li v-for="(route, index) in computedRoutes" :key="index" v-if="route.name">
-        <router-link v-if="route.name" :to="{ name: route.name }" v-html="route.name"></router-link>
-      </li>
+      :class="['menu', { 'is-open': classes['is-open'] }]"
+    >
+      <template v-for="(route, index) in computedRoutes">
+        <li :key="index" v-if="route.name">
+          <router-link
+            :to="{ name: route.name }"
+            v-html="route.name"
+          ></router-link>
+        </li>
+      </template>
       <template v-for="(item, index) in computedItems">
         <li :key="`item-${index}`" v-if="$slots[`item-${index + 1}`]">
           <slot :name="`item-${index + 1}`"></slot>
         </li>
       </template>
-      <li v-if="$slots['last-child']">
+      <li :key="`item-last-child-${index}`" v-if="$slots['last-child']">
         <slot name="last-child"></slot>
       </li>
     </ul>
@@ -44,8 +49,8 @@ export default {
   name: 'VMenu',
   props: {
     items: {
-      type: String,
-      default: '0'
+      type: Number,
+      default: 0
     },
     routes: {
       type: Array,
@@ -98,28 +103,20 @@ export default {
       )
     },
     computedItems() {
-      return Array.from(Array(Number(this.items))).map(
-        (item, index) => index + 1
-      )
+      return Array.from(Array(this.items)).map((item, index) => index + 1)
     },
     computedTokenStyle() {
-      return Object.assign(
-        {},
-        {
-          // <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196.32 170.02"><defs><style>.cls-1{fill:#42b883;}.cls-2{fill:#35495e;}</style></defs><title>logo</title><polygon class="cls-1" points="120.83 0 98.16 39.26 75.49 0 0 0 98.16 170.02 196.32 0 120.83 0"/><polygon class="cls-2" points="120.83 0 98.16 39.26 75.49 0 39.26 0 98.16 102.01 157.06 0 120.83 0"/></svg>
-          backgroundImage: `url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTYuMzIgMTcwLjAyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzQyYjg4Mzt9LmNscy0ye2ZpbGw6IzM1NDk1ZTt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmxvZ288L3RpdGxlPjxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIxMjAuODMgMCA5OC4xNiAzOS4yNiA3NS40OSAwIDAgMCA5OC4xNiAxNzAuMDIgMTk2LjMyIDAgMTIwLjgzIDAiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMTIwLjgzIDAgOTguMTYgMzkuMjYgNzUuNDkgMCAzOS4yNiAwIDk4LjE2IDEwMi4wMSAxNTcuMDYgMCAxMjAuODMgMCIvPjwvc3ZnPg==)`
-        },
-        this.tokenStyle
-      )
+      return {
+        // <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196.32 170.02"><defs><style>.cls-1{fill:#42b883;}.cls-2{fill:#35495e;}</style></defs><title>logo</title><polygon class="cls-1" points="120.83 0 98.16 39.26 75.49 0 0 0 98.16 170.02 196.32 0 120.83 0"/><polygon class="cls-2" points="120.83 0 98.16 39.26 75.49 0 39.26 0 98.16 102.01 157.06 0 120.83 0"/></svg>
+        backgroundImage: `url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTYuMzIgMTcwLjAyIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzQyYjg4Mzt9LmNscy0ye2ZpbGw6IzM1NDk1ZTt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmxvZ288L3RpdGxlPjxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIxMjAuODMgMCA5OC4xNiAzOS4yNiA3NS40OSAwIDAgMCA5OC4xNiAxNzAuMDIgMTk2LjMyIDAgMTIwLjgzIDAiLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMTIwLjgzIDAgOTguMTYgMzkuMjYgNzUuNDkgMCAzOS4yNiAwIDk4LjE2IDEwMi4wMSAxNTcuMDYgMCAxMjAuODMgMCIvPjwvc3ZnPg==)`,
+        ...this.tokenStyle
+      }
     },
     computedMenuStyle() {
-      return Object.assign(
-        {},
-        {
-          backgroundColor: 'rgba(0, 0, 0, 0.5)'
-        },
-        this.menuStyle
-      )
+      return {
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        ...this.menuStyle
+      }
     }
   },
   methods: {

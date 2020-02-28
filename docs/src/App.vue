@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <v-menu :routes="routes" items="2" :token-style="{ backgroundImage: `url(${menuToken})` }">
+    <v-menu
+      :items="2"
+      :routes="routes"
+      :token-style="{ backgroundImage: `url(${menuToken})` }"
+    >
       <!-- <template slot="item-1">
         <a href="https://www.npmjs.com/package/vue-facebook-login-component">
           <img src="https://img.shields.io/npm/dm/vue-facebook-login-component.svg" alt="npm">
@@ -20,7 +24,8 @@
               data-icon="octicon-star"
               data-show-count="true"
               aria-label="Star adi518/vue-facebook-login-component on GitHub"
-            >Star</a>
+              >Star</a
+            >
           </span>
         </v-show-at>
       </template>

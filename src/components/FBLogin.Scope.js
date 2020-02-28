@@ -4,7 +4,7 @@ import {
   fbLogout,
   removeFbSdkScript,
   getFbLoginStatus
-} from '@/modules/helpers.js'
+} from '@/helpers'
 
 export default {
   name: 'v-facebook-login-scope',
