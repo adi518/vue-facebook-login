@@ -11,12 +11,8 @@
       <i class="loader" v-if="scope.working" :style="loaderStyle"></i>
       <FBLogo v-if="scope.enabled" class="token" :style="tokenStyle"></FBLogo>
       <span :style="textStyle">
-        <slot name="login" v-if="scope.enabled && scope.disconnected"
-          >Sign in with Facebook</slot
-        >
-        <slot name="logout" v-if="scope.enabled && scope.connected"
-          >Sign out with Facebook</slot
-        >
+        <slot name="login" v-if="scope.enabled && scope.disconnected">Sign in with Facebook</slot>
+        <slot name="logout" v-if="scope.enabled && scope.connected">Sign out with Facebook</slot>
         <slot name="working" v-if="scope.working">Please wait...</slot>
         <slot name="error" v-if="scope.hasError">⛔ Network Error</slot>
       </span>
@@ -28,7 +24,6 @@
 <script>
 import FBLogo from './FBLogo'
 import Scope from './FBLogin.Scope.js'
-import token from '@/assets/images/iconmonstr-facebook-1.svg'
 
 export default {
   name: 'v-facebook-login',
@@ -58,9 +53,6 @@ export default {
       }
     }
   },
-  data: () => ({
-    token
-  }),
   computed: {
     vModel: {
       get() {
@@ -133,6 +125,7 @@ $color-chambray: #3b55a0;
 }
 
 .token {
+  height: auto;
   margin-right: 0.2rem;
   transform: translateX(-0.5rem);
 }
