@@ -26,7 +26,7 @@
     "vue": "^2.6.11",
     "vue-analytics": "^5.22.1",
     "vue-breakpoint-component": "^1.2.6",
-    "vue-facebook-login-component": "^1.5.2",
+    "vue-facebook-login-component": "^1.5.3",
     "vue-flatten-routes": "^1.1.0",
     "vue-router": "^3.1.6"
   },
