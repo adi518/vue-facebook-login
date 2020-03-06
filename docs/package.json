@@ -11,7 +11,7 @@
     "update": "npm install vue-facebook-login-component@latest",
     "build": "cross-env NODE_OPTIONS=--max_old_space_size=8192 vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "predeploy": "npm install & npm version patch --no-git-tag-version && npm run build",
+    "predeploy": "npm install & npm run update & npm version patch --no-git-tag-version && npm run build",
     "predeploy:initial": "npm version 1.0.0 --allow-same-version --no-git-tag-version && npm run build",
     "deploy": "node gh-pages",
     "deploy:initial": "node gh-pages",
