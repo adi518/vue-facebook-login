@@ -9,7 +9,14 @@
     >
       <slot name="before"></slot>
       <i class="loader" v-if="scope.working" :style="loaderStyle"></i>
-      <FBLogo v-if="scope.enabled" class="token" :style="tokenStyle"></FBLogo>
+      <slot name="logo" v-if="scope.enabled">
+        <template v-if="useAlternateLogo">
+          <FBLogoAlternate class="token" :style="tokenStyle" />
+        </template>
+        <template v-else>
+          <FBLogo class="token" :style="tokenStyle" />
+        </template>
+      </slot>
       <span :style="textStyle">
         <slot name="login" v-if="scope.enabled && scope.disconnected">Sign in with Facebook</slot>
         <slot name="logout" v-if="scope.enabled && scope.connected">Sign out with Facebook</slot>
@@ -24,10 +31,15 @@
 <script>
 import FBLogo from './FBLogo'
 import Scope from './FBLogin.Scope.js'
+import FBLogoAlternate from './FBLogoAlternate'
 
 export default {
   name: 'v-facebook-login',
-  components: { [Scope.name]: Scope, FBLogo },
+  components: {
+    FBLogo,
+    FBLogoAlternate,
+    [Scope.name]: Scope
+  },
   props: {
     ...Scope.props,
     ...{
@@ -50,6 +62,10 @@ export default {
       transition: {
         type: Array,
         default: () => []
+      },
+      useAlternateLogo: {
+        type: Boolean,
+        default: false
       }
     }
   },

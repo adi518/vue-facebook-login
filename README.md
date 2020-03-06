@@ -30,18 +30,19 @@ export default {
 
 <div id="props-table-wrap" class="docs-table-wrap">
 
-| Name          | Type   | Default                | Note                                                                                                                          |
-| ------------- | ------ | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| value         | Object | `{ connected: false }` | Used for one-way V-Model. [ &ast;&ast;&ast; ]                                                                                 |
-| app-id        | String | None                   | Required. [ &ast;&ast;&ast; ]                                                                                                 |
-| version       | String | `'v3.1'`               | [ &ast;&ast;, &ast;&ast;&ast; ]                                                                                               |
-| options       | Object | `{}`                   | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
-| login-options | Object | `{ scope: 'email' }`   | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
-| button-style  | Object | `{}`                   | [ &ast; ]                                                                                                                     |
-| loader-style  | Object | `{}`                   | [ &ast; ]                                                                                                                     |
-| token-style   | Object | `{}`                   | [ &ast; ]                                                                                                                     |
-| text-style    | Object | `{}`                   | [ &ast; ]                                                                                                                     |
-| transition    | Array  | `[]`                   | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`. |
+| Name               | Type    | Default                | Note                                                                                                                          |
+| ------------------ | ------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| value              | Object  | `{ connected: false }` | Used for one-way V-Model. [ &ast;&ast;&ast; ]                                                                                 |
+| app-id             | String  | None                   | Required. [ &ast;&ast;&ast; ]                                                                                                 |
+| version            | String  | `'v3.1'`               | [ &ast;&ast;, &ast;&ast;&ast; ]                                                                                               |
+| options            | Object  | `{}`                   | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
+| login-options      | Object  | `{ scope: 'email' }`   | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
+| button-style       | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| loader-style       | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| token-style        | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| text-style         | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| transition         | Array   | `[]`                   | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`. |
+| use-alternate-logo | Boolean | `false`                | Use [Iconmonstr alternate Facebook logo](https://iconmonstr.com/facebook-6-svg/).                                             |
 
 </div>
 
@@ -53,14 +54,15 @@ export default {
 
 <div id="slots-table-wrap" class="docs-table-wrap">
 
-| Name    | Default                    | Description                 |
-| ------- | -------------------------- | --------------------------- |
-| login   | `'Sign in with Facebook'`  |
-| logout  | `'Sign out with Facebook'` |
-| working | `'Please wait...'`         |
-| before  | `NONE`                     | Before all nested elements. |
-| after   | `NONE`                     | After all nested elements.  |
-| error   | `'⛔ Network Error'`       | Shown on SDK load failure.  |
+| Name    | Default                                                          | Description                                                            |
+| ------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| login   | `'Sign in with Facebook'`                                        |
+| logout  | `'Sign out with Facebook'`                                       |
+| working | `'Please wait...'`                                               |
+| logo    | [Iconmonstr Facebook 1](https://iconmonstr.com/facebook-1-svg/). | See [Iconmonstr](https://iconmonstr.com/?s=facebook) for more options. |
+| before  | `NONE`                                                           | Before all nested elements.                                            |
+| after   | `NONE`                                                           | After all nested elements.                                             |
+| error   | `'⛔ Network Error'`                                             | Shown on SDK load failure.                                             |
 
 </div>
 

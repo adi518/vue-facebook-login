@@ -1,4 +1,5 @@
 <template>
+  <!-- iconmonstr-facebook-1.svg -->
   <svg
     width="24"
     height="24"
