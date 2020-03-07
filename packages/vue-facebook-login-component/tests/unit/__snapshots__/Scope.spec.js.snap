@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Scope render with scoped-slot 1`] = `
+<div>
+  disconnected
+</div>
+`;
+
+exports[`Scope render with scoped-slot 2`] = `
+<div>
+  connected
+</div>
+`;

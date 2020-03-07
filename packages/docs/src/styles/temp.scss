@@ -1,0 +1,36 @@
+.docs-vue-logo {
+  width: 4rem;
+  height: 4rem; // Fix IE
+  opacity: 0.9;
+  display: inline-flex;
+
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+
+  @include media-breakpoint-down(xs) {
+    width: 3rem;
+  }
+}
+
+.docs-tagline {
+  line-height: 1.5;
+}
+
+.docs-avatar2 {
+  opacity: 0;
+  margin: auto;
+  width: 5.375rem;
+  height: 5.375rem;
+  border-radius: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: translate(-1px, 1px);
+  transition: opacity 1s ease-in-out;
+  box-shadow: 0 0.25rem 0.15rem rgba(0, 0, 0, var(--box-shadow-opacity));
+
+  &.docs-avatar--is-visible {
+    opacity: 1;
+  }
+}

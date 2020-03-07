@@ -1,81 +1,19 @@
 {
-  "name": "vue-facebook-login-component",
-  "version": "1.6.0",
-  "description": "A renderless component for composing Facebook login",
+  "name": "vue-facebook-login-component-root",
   "author": "Adi Sahar",
   "license": "MIT",
-  "files": [
-    "dist"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "main": "dist/vue-facebook-login-component.umd.min.js",
-  "private": false,
   "scripts": {
-    "start": "npm run build:watch",
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name %npm_package_name% ./src/main.js",
-    "build:watch": "npm run build -- --watch",
-    "build:stats": "vue-cli-service build --report",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint",
-    "link": "cd ./docs && npm link %npm_package_name%",
-    "unlink": "npm unlink",
-    "unlink:docs": "cd ./docs && npm unlink --no-save %npm_package_name%",
-    "predocs": "npm link && npm run link",
-    "docs": "npm run serve --prefix ./docs",
-    "docs:update": "cd ./docs && npm run update",
-    "deploy": "cd ./docs && npm run deploy",
-    "deploy:initial": "cd ./docs && npm run deploy:initial",
-    "prerelease": "npm run build && npm version patch",
-    "prerelease:minor": "npm run build && npm version minor",
-    "prerelease:major": "npm run build && npm version major",
-    "postrelease": "git push --follow-tags",
-    "postrelease:minor": "git push --follow-tags",
-    "postrelease:major": "git push --follow-tags",
-    "release": "npm publish",
-    "release:minor": "npm publish",
-    "release:major": "npm publish"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adi518/vue-facebook-login-component"
-  },
-  "bugs": {
-    "url": "https://github.com/adi518/vue-facebook-login-component/issues"
-  },
-  "peerDependencies": {
-    "vue": "^2.x",
-    "core-js": "^3.x"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.2.3",
-    "@vue/cli-plugin-eslint": "^4.2.3",
-    "@vue/cli-service": "^4.2.3",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.2.1",
-    "sass": "^1.26.1",
-    "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {
-      "space-before-function-paren": 0,
-      "comma-dangle": 0
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+    "start": "yarn build:watch",
+    "start:docs": "yarn --cwd ./packages/docs start",
+    "docs:update": "yarn --cwd ./packages/docs update",
+    "docs:deploy": "yarn --cwd ./packages/docs deploy",
+    "docs:deploy:initial": "yarn --cwd ./packages/docs deploy:initial",
+    "build": "yarn --cwd ./packages/vue-facebook-login-component build",
+    "build:watch": "yarn --cwd ./packages/vue-facebook-login-component build:watch",
+    "build:stats": "yarn --cwd ./packages/vue-facebook-login-component build:stats"
+  }
 }

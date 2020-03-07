@@ -1,0 +1,66 @@
+/* Bootstrap */
+$spacer: 1rem;
+$spacers: ();
+$spacers: map-merge(
+  (
+    10: $spacer * 1,
+    15: $spacer * 1 + 0.5,
+    20: $spacer * 2,
+    25: $spacer * 2 + 0.5,
+    30: $spacer * 3,
+    35: $spacer * 3 + 0.5
+  ),
+  $spacers
+);
+$body-bg: #1c284c;
+$link-color: #8b9dc3;
+// $font-size-base: 0.825rem;
+$body-color: rgba(#ffffff, 0.8);
+$font-family-base: 'Roboto', 'Montserrat', -apple-system, BlinkMacSystemFont,
+  'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+  'Helvetica Neue', sans-serif;
+
+@import '@/styles/bootstrap-required';
+// Optionals
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/images';
+@import '~bootstrap/scss/button-group';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/utilities';
+
+// Reset defaults
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 1rem;
+}
+
+h1,
+.h1 {
+  font-size: 2rem;
+}
+h2,
+.h2 {
+  font-size: 1.5rem;
+}
+h3,
+.h3 {
+  font-size: 1.25rem;
+}
+h4,
+.h4 {
+  font-size: 1rem;
+}
+h5,
+.h5 {
+  font-size: 0.85rem;
+}
+h6,
+.h6 {
+  font-size: 0.6rem;
+}

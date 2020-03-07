@@ -1,0 +1,96 @@
+{
+  "name": "vue-facebook-login-component",
+  "version": "1.6.0",
+  "description": "A renderless Vue.js component for composing Facebook login",
+  "author": "Adi Sahar",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/vue-facebook-login-component.umd.min.js",
+  "private": false,
+  "scripts": {
+    "start": "yarn build:watch",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --name %npm_package_name% ./src/main.js",
+    "build:watch": "yarn build --watch",
+    "build:stats": "vue-cli-service build --report",
+    "test:unit": "vue-cli-service test:unit --watch",
+    "lint": "vue-cli-service lint",
+    "prerelease": "yarn build && yarn version patch",
+    "prerelease:minor": "yarn build && yarn version minor",
+    "prerelease:major": "yarn build && yarn version major",
+    "postrelease": "git push --follow-tags",
+    "postrelease:minor": "git push --follow-tags",
+    "postrelease:major": "git push --follow-tags",
+    "release": "yarn publish",
+    "release:minor": "yarn publish",
+    "release:major": "yarn publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adi518/vue-facebook-login-component"
+  },
+  "bugs": {
+    "url": "https://github.com/adi518/vue-facebook-login-component/issues"
+  },
+  "peerDependencies": {
+    "core-js": "^3.x",
+    "vue": "^2.x"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.2.3",
+    "@vue/cli-plugin-eslint": "^4.2.3",
+    "@vue/cli-plugin-unit-jest": "~4.2.0",
+    "@vue/cli-service": "^4.2.3",
+    "@vue/test-utils": "1.0.0-beta.31",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.1",
+    "flush-promises": "^1.0.2",
+    "jest-serializer-vue": "^2.0.2",
+    "sass": "^1.26.1",
+    "sass-loader": "^8.0.2",
+    "sinon": "^9.0.1",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "space-before-function-paren": 0,
+      "comma-dangle": 0
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "jest": {
+    "preset": "@vue/cli-plugin-unit-jest",
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ]
+  }
+}

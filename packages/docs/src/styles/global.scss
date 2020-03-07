@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,700');
+@import '@/styles/bootstrap';
+@import '~animate.css/animate.min.css';
+
+:root {
+  --color-gray: #999999;
+  --common-transition-time: 0.5s;
+}
+
+html {
+  font-size: 120%;
+
+  @include media-breakpoint-down(xs) {
+    font-size: 110%;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 2;
+}
+
+a {
+  transition: color var(--common-transition-time);
+}
+
+p,
+ol,
+ul,
+dl {
+  margin-bottom: 2rem;
+}
+
+li {
+  line-height: 2;
+}
