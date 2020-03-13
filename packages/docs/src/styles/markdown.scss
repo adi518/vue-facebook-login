@@ -1,3 +1,10 @@
+.markdown {
+  h1,
+  h1 + blockquote {
+    display: none;
+  }
+}
+
 .docs-table-wrap {
   @extend .clearfix;
 

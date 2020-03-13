@@ -1,29 +1,23 @@
 <template>
   <div>
+    <!-- NAV -->
     <v-nav>
-      <template>
-        <v-title :pkg="pkg" :docsPkg="docs"></v-title>
-        <v-button
-          is-icon
-          title="Alternate Logo"
-          @click="toggleAlternateLogo"
-          v-if="facebook.model.enabled && disconnected"
-        >
-          💋
-        </v-button>
-        <v-button is-icon title="Invert Colors" @click="toggleInvert">
-          🍭
-        </v-button>
-        <v-button
-          title="Logout"
-          @click="facebook.scope.logout"
-          v-if="facebook.scope.logout && connected"
-        >
-          logout
-        </v-button>
-        <v-social :pkg="pkg"></v-social>
-      </template>
+      <v-title :pkg="pkg" :docsPkg="docs"></v-title>
+      <v-button
+        is-icon
+        title="Alternate Logo"
+        @click="toggleAlternateLogo"
+        v-if="facebook.model.enabled && disconnected"
+      >💋</v-button>
+      <v-button is-icon title="Invert Colors" @click="toggleInvert">🍭</v-button>
+      <v-button
+        title="Logout"
+        @click="facebook.scope.logout"
+        v-if="facebook.scope.logout && connected"
+      >logout</v-button>
+      <v-social :pkg="pkg"></v-social>
     </v-nav>
+    <!-- NAV end -->
 
     <v-hero>
       <vue-logo class="mb-25"></vue-logo>
@@ -47,10 +41,7 @@
       </v-facebook-login>
       <!-- DEMO end -->
 
-      <v-install-anchor
-        class="mt-25"
-        :to="$refs.readme ? $refs.readme.$el : null"
-      ></v-install-anchor>
+      <v-install-anchor class="mt-25" :to="$refs.readme ? $refs.readme.$el : null"></v-install-anchor>
     </v-hero>
 
     <!-- README -->
@@ -131,13 +122,11 @@ export default {
   },
   methods: {
     getUserData() {
-      const { api } = this.facebook.FB
-      api('/me', { fields: 'id, name' }, user => {
-        this.user = user
-        api(`${this.user.id}/picture?width=9999&redirect=false`, picture =>
-          this.$set(this.user, 'picture', picture)
-        )
-      })
+      this.facebook.FB.api(
+        '/me',
+        { fields: 'id, name, picture' },
+        user => (this.user = user)
+      )
     },
     toggleAlternateLogo() {
       this.facebook.useAlternateLogo = !this.facebook.useAlternateLogo

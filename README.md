@@ -30,9 +30,17 @@ To use the component in your template, simply import and register with your comp
 </script>
 ```
 
+## [Features](#features)
+
+- Zero dependencies (gzipped: 22.1K)
+- Handpicked Facebook SVG logos ([Iconmonstr](<(https://iconmonstr.com/facebook-1-svg/)>))
+- Button component with production-ready CSS.
+- Customizable through props and scoped-slots.
+- Scope component (renderless/render-props pattern)
+
 ## [What's New in Version 2.0](#whats-new-in-version-20)
 
-The API has been simplified to clear up some confusion, alongside some newly added and updated features:
+Simpler API, alongside some newly added and updated features:
 
 - Added test coverage. 🧪
 - Improved documentation. 👌
