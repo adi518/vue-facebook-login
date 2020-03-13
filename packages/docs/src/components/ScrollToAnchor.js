@@ -63,6 +63,8 @@ const scrollToAnchor = (anchorElOrId, offsetY = 0) => {
     window.requestAnimationFrame(() => {
       let anchorEl
       if (anchorElOrId instanceof HTMLAnchorElement) {
+        // derive id from anchor `href` and look for an
+        // element with that id, otherwise fallback to anchor.
         const hrefAsId = anchorElOrId.getAttribute('href').substr(1)
         if (document.getElementById(hrefAsId)) {
           anchorEl = document.getElementById(hrefAsId)
@@ -82,8 +84,8 @@ const scrollToAnchor = (anchorElOrId, offsetY = 0) => {
   })
 }
 
-const GlobalAnchorClickListener = (paths, offsetY = 0) => {
-  const handleClick = async event => {
+function GlobalAnchorClickListener(paths, offsetY = 0) {
+  async function handleClick(event) {
     const anchorEl = event.target
     const path = anchorEl.hash?.substr(1)
     if (
@@ -97,9 +99,8 @@ const GlobalAnchorClickListener = (paths, offsetY = 0) => {
       window.location.hash = `?a=${path}`
     }
   }
-  const add = () => document.addEventListener('click', handleClick, true)
-  const remove = () => document.removeEventListener('click', handleClick)
-  return { add, remove }
+  this.add = () => document.addEventListener('click', handleClick, true)
+  this.remove = () => document.removeEventListener('click', handleClick)
 }
 
 export default ScrollToAnchor

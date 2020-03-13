@@ -12,9 +12,7 @@
 import VBreakpoint from 'vue-breakpoint-component'
 
 export default {
-  components: {
-    VBreakpoint
-  },
+  components: { VBreakpoint },
   data: () => ({ breakpoint: {} })
 }
 </script>
@@ -30,7 +28,6 @@ export default {
   align-items: center;
   flex-direction: column; // Fix IE
   justify-content: center;
-  // background-color: darken(#2f4480, 25%);
   background: rgb(13, 18, 35);
   background: linear-gradient(
     180deg,

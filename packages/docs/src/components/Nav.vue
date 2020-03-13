@@ -5,17 +5,29 @@
 </template>
 
 <script>
+import { inject } from '@vue/composition-api'
 import { useWindowScrollPosition } from 'vue-use-web'
 import { provide, computed } from '@vue/composition-api'
 
-export const IsStickySymbol = Symbol()
+export const NavSymbol = Symbol()
 export const NAV_STICKY_HEIGHT = 65.3125
+
+export const VNavProvider = {
+  setup() {
+    const context = inject(NavSymbol)
+    return { context }
+  },
+  render() {
+    if (this.$scopedSlots.default)
+      return this.$scopedSlots.default(this.context)
+  }
+}
 
 export default {
   setup() {
     const { y: scrollYPosition } = useWindowScrollPosition()
     const isSticky = computed(() => scrollYPosition.value > 0)
-    provide(IsStickySymbol, isSticky)
+    provide(NavSymbol, { isSticky })
     return { isSticky }
   }
 }
@@ -38,7 +50,6 @@ export default {
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
     background-color: #1c284c;
-    // background-color: darken(#3c57a4, 25%);
   }
 }
 </style>

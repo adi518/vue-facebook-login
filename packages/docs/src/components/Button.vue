@@ -1,5 +1,10 @@
 <template>
-  <button class="button" :class="{ 'is-icon': isIcon }" v-on="$listeners">
+  <button
+    class="button"
+    v-on="$listeners"
+    @click="toggleActive"
+    :class="{ 'is-icon': isIcon, 'is-active': active }"
+  >
     <slot></slot>
   </button>
 </template>
@@ -10,6 +15,12 @@ export default {
     isIcon: {
       type: Boolean,
       default: false
+    }
+  },
+  data: () => ({ active: false }),
+  methods: {
+    toggleActive() {
+      this.active = !this.active
     }
   }
 }
@@ -35,7 +46,8 @@ export default {
     padding-right: 0.5rem;
   }
 
-  &:hover {
+  &:hover,
+  &.is-active {
     color: white;
     background-color: transparent;
     border-color: rgba(255, 255, 255, 0.25);

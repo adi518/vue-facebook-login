@@ -65,7 +65,7 @@ export default {
     getElementByRef(ref, refs) {
       refs = refs || this.$refs
       // eslint-disable-next-line no-console
-      if (!refs) return console.error(`[getElementByRef warn]: No refs found.`)
+      if (!refs) return console.error('No refs found.')
       let element = refs[ref]
       // Is from element?
       if (element instanceof Element) return element
@@ -75,7 +75,7 @@ export default {
         if (element instanceof Element) return element
       }
       // eslint-disable-next-line no-console
-      console.error(`[getElementByRef warn]: No such ref as "${ref}".`)
+      console.error(`No such ref as "${ref}".`)
     },
     scrollTo(ref) {
       const element =

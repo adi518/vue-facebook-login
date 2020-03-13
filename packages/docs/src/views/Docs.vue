@@ -72,9 +72,8 @@ import VNav from '@/components/Nav'
 import VPage from '@/components/Page'
 import VHero from '@/components/Hero'
 import VTitle from '@/components/Title'
-import VFBLogo from '@/components/FBLogo'
 import VAvatar from '@/components/Avatar'
-import VueLogo from '@/components/VueLogo' // eslint-disable-line
+import VueLogo from '@/components/VueLogo'
 import VSocial from '@/components/Social'
 import VButton from '@/components/Button'
 import VInstallAnchor from '@/components/InstallAnchor'
@@ -91,7 +90,6 @@ export default {
     VTitle,
     VAvatar,
     VueLogo,
-    VFBLogo, // eslint-disable-line
     VHideAt, // eslint-disable-line
     VShowAt, // eslint-disable-line
     VSocial,

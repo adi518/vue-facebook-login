@@ -16,5 +16,3 @@ export default {
   data: () => ({ breakpoint: {} })
 }
 </script>
-
-<style lang="scss"></style>

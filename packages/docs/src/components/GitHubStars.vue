@@ -3,15 +3,22 @@
     class="github-stars"
     data-show-count="true"
     data-icon="octicon-star"
-    href="https://github.com/adi518/vue-facebook-login-component"
-    aria-label="Star adi518/vue-facebook-login-component on GitHub"
-  >Star</v-github-button>
+    :href="pkg.repository.url"
+    :aria-label="`Star ${pkg.author}/${pkg.name} on GitHub`"
+    >Star</v-github-button
+  >
 </template>
 
 <script>
 import VGithubButton from 'vue-github-button'
 
 export default {
+  props: {
+    pkg: {
+      type: Object,
+      required: true
+    }
+  },
   components: {
     VGithubButton
   }

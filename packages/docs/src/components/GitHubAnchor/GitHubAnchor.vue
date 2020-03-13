@@ -1,15 +1,15 @@
 <template>
   <v-a
-    :href="href"
     :style="style"
     target="_blank"
     title="Go to GitHub"
     class="github-anchor"
     rel="noopener noreferrer"
+    :href="pkg.repository.url"
   >
-    <v-octocat />
+    <v-octocat class="octocat"></v-octocat>
     <!-- https://octodex.github.com/nyantocat/ -->
-    <img :src="nyantocat" />
+    <div class="nyantocat" :style="{ backgroundImage: `url(${nyantocat})` }" />
   </v-a>
 </template>
 
@@ -20,8 +20,8 @@ import nyantocat from './nyantocat.gif'
 
 export default {
   props: {
-    href: {
-      type: String,
+    pkg: {
+      type: Object,
       required: true
     },
     size: {
@@ -44,30 +44,28 @@ export default {
 
 <style lang="scss" scoped>
 .github-anchor {
-  font-size: 0;
-  display: flex;
   position: relative;
-  align-items: center;
   transition: width var(--common-transition-time),
     height var(--common-transition-time);
 
   &:hover {
-    img {
+    .nyantocat {
       opacity: 1;
-      z-index: 1;
     }
   }
 
-  svg,
-  img {
+  .octocat,
+  .nyantocat {
     width: inherit;
     height: inherit;
   }
 
-  img {
+  .nyantocat {
+    top: 0;
     opacity: 0;
     position: absolute;
     border-radius: 50%;
+    background-size: 100%;
     transition: opacity var(--common-transition-time);
   }
 }

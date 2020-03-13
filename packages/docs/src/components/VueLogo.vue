@@ -2,7 +2,7 @@
   <!-- https://www.color-hex.com/color/41b883 -->
   <!-- https://www.schemecolor.com/vue-js-logo-colors.php -->
   <!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Gradients -->
-  <a href="#" class="animated fadeInDown">
+  <a href="#/" class="animated fadeInDown">
     <svg
       version="1.1"
       class="vue-logo"

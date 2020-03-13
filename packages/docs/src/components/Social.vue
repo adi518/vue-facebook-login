@@ -1,36 +1,30 @@
 <template>
   <div class="social">
     <v-hide-at no-match>
-      <v-downloads></v-downloads>
+      <v-downloads :pkg="pkg"></v-downloads>
     </v-hide-at>
     <v-hide-at no-match>
-      <v-github-stars></v-github-stars>
+      <v-github-stars :pkg="pkg"></v-github-stars>
     </v-hide-at>
-    <v-github-anchor
-      :href="pkg.repository.url"
-      :size="githubAnchorSize"
-    ></v-github-anchor>
+    <v-nav-provider>
+      <v-github-anchor
+        :pkg="pkg"
+        slot-scope="{ isSticky }"
+        :size="isSticky.value ? '1.625rem' : '2rem'"
+      ></v-github-anchor>
+    </v-nav-provider>
   </div>
 </template>
 
 <script>
 import { VHideAt } from 'vue-breakpoint-component'
-import { inject, computed } from '@vue/composition-api'
 
+import { VNavProvider } from '@/components/Nav'
 import VDownloads from '@/components/Downloads'
 import VGithubStars from '@/components/GitHubStars'
 import VGithubAnchor from '@/components/GitHubAnchor/GitHubAnchor'
 
-import { IsStickySymbol } from '@/components/Nav'
-
 export default {
-  setup() {
-    const isSticky = inject(IsStickySymbol)
-    const githubAnchorSize = computed(() =>
-      isSticky.value ? '1.625rem' : '2rem'
-    )
-    return { githubAnchorSize }
-  },
   props: {
     pkg: {
       type: Object,
@@ -40,6 +34,7 @@ export default {
   components: {
     VHideAt,
     VDownloads,
+    VNavProvider,
     VGithubStars,
     VGithubAnchor
   }
