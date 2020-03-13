@@ -1,0 +1,33 @@
+.docs-table-wrap {
+  @extend .clearfix;
+
+  @include media-breakpoint-down(xs) {
+    overflow-x: scroll;
+  }
+}
+
+#props-table-wrap,
+#events-table-wrap,
+#slots-table-wrap,
+#scope-table-wrap,
+#notes-table-wrap {
+  th:nth-child(1) {
+    width: 20%;
+  }
+}
+
+#props-table-wrap,
+#events-table-wrap,
+#scope-table-wrap {
+  th:nth-child(2) {
+    width: 20%;
+  }
+}
+
+#props-table-wrap,
+#events-table-wrap {
+  th:nth-child(3),
+  th:nth-child(4) {
+    width: 30%;
+  }
+}
