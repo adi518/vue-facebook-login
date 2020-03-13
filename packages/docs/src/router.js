@@ -21,13 +21,13 @@ export const routes = [
         path: '/v1.x',
         component: ReadmeV1,
         name: 'Documentation v1.x'
+      },
+      {
+        name: 'Privacy Policy',
+        path: '/privacy-policy',
+        component: PrivacyPolicy
       }
     ]
-  },
-  {
-    name: 'Privacy Policy',
-    path: '/privacy-policy',
-    component: PrivacyPolicy
   }
 ]
 

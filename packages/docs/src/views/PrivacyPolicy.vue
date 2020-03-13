@@ -1,5 +1,5 @@
 <template>
-  <v-page>
+  <div>
     <h1>Privacy Policy</h1>
     <p>Effective date: July 30, 2018</p>
     <p>
@@ -210,16 +210,11 @@
         https://github.com/adi518/vue-facebook-login-component/issues
       </li>
     </ul>
-  </v-page>
+  </div>
 </template>
 
 <script>
-import VPage from '@/components/Page'
-
 export default {
-  components: {
-    VPage
-  },
   computed: {
     location() {
       return window.location
