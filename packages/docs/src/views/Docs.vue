@@ -174,39 +174,40 @@ export default {
 @import '~bootstrap/scss/grid';
 @import '@/styles/markdown';
 
+// https://tobiasahlin.com/blog/how-to-animate-box-shadow/
 .docs-facebook-login-button {
-  font-family: inherit;
   min-width: auto !important;
   padding-left: 1rem !important;
   padding-right: 1rem !important;
-  box-shadow: 0rem 12rem 1.825rem -0.125rem rgba(0, 0, 0, 0.2);
+  font-family: inherit !important;
+  box-shadow: 0rem 12rem 1.825rem -0.125rem rgba(0, 0, 0, 0.2) !important;
 
   &.is-inverted {
-    color: #3b55a0;
-    background-color: white;
+    color: #3b55a0 !important;
+    background-color: white !important;
 
     &.is-connected {
-      color: white;
+      color: white !important;
     }
 
     &[disabled] {
-      color: #3b55a0;
-      background: #cccccc;
+      color: #3b55a0 !important;
+      background: #cccccc !important;
     }
 
     &:hover {
-      color: white;
-      background-color: #3b55a0;
+      color: white !important;
+      background-color: #3b55a0 !important;
     }
   }
 
-  &.is-connected {
-    background-color: transparent;
-    border-color: rgba(255, 255, 255, 0.25);
+  &.is-connected:not(:hover) {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
   }
 
   @include media-breakpoint-up(sm) {
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
   }
 
   @at-root {

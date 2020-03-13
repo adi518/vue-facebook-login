@@ -11,7 +11,6 @@
     "start:docs": "yarn --cwd ./packages/docs start",
     "docs:update": "yarn --cwd ./packages/docs update",
     "docs:deploy": "yarn --cwd ./packages/docs deploy",
-    "docs:deploy:initial": "yarn --cwd ./packages/docs deploy:initial",
     "build": "yarn --cwd ./packages/vue-facebook-login-component build",
     "build:watch": "yarn --cwd ./packages/vue-facebook-login-component build:watch",
     "build:stats": "yarn --cwd ./packages/vue-facebook-login-component build:stats"
