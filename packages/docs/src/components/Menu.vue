@@ -1,33 +1,26 @@
 <template>
   <div :class="['v-menu', 'clearfix', classes]">
     <!-- We need to wrap token to fix Desktop Safari 5 -->
+    <!-- https://developers.google.com/web/tools/lighthouse/audits/passive-event-listeners -->
     <div
-      :class="['token', { 'is-open': classes['is-open'] }]"
+      ref="token"
+      @click="toggle"
       :style="computedTokenStyle"
-      @touchstart.passive="toggle"
-      @click.stop.prevent="toggle"
+      :class="['token', { 'is-open': classes['is-open'] }]"
     ></div>
-    <ul
-      ref="menu"
-      :style="computedMenuStyle"
-      @touchstart.passive="() => {}"
-      :class="['menu', { 'is-open': classes['is-open'] }]"
-    >
+    <ul ref="menu" :style="computedMenuStyle" :class="['menu', { 'is-open': classes['is-open'] }]">
       <template v-for="(route, index) in computedRoutes">
         <li :key="index" v-if="route.name && route.name !== route.parentName">
-          <router-link
-            :to="{ name: route.name }"
-            v-html="route.name"
-          ></router-link>
+          <router-link :to="{ name: route.name }" v-html="route.name"></router-link>
         </li>
       </template>
       <slot v-if="false"></slot>
       <!-- https://forum.vuejs.org/t/loop-with-v-for-slots-default/20646/7 -->
       <v-wrap-node
-        v-for="(node, index) of $slots.default"
         tag="li"
         :value="node"
         :key="`node-${index}`"
+        v-for="(node, index) of $slots.default"
       ></v-wrap-node>
       <li :key="`item-last-child-${index}`" v-if="$slots['last-child']">
         <slot name="last-child"></slot>
@@ -71,30 +64,19 @@ export default {
     }
   },
   components: { VWrapNode },
-  data: () => ({
-    flags: {
-      open: false
-    }
-  }),
-  watch: {
-    'flags.open'(value) {
-      this.emitToggle(value)
-    }
-  },
+  data: () => ({ open: false }),
   mounted() {
     document.addEventListener('click', this.dismiss)
-    document.addEventListener('touchstart', this.dismiss)
     window.addEventListener('resize', this.handleResize)
   },
   beforeDestroy() {
     document.removeEventListener('click', this.dismiss)
-    document.removeEventListener('touchstart', this.dismiss)
     window.removeEventListener('resize', this.handleResize)
   },
   computed: {
     classes() {
       return {
-        'is-open': this.flags.open
+        'is-open': this.open
       }
     },
     computedRoutes() {
@@ -118,23 +100,20 @@ export default {
   },
   methods: {
     toggle(state) {
-      if ([true, false].includes(state)) {
-        this.flags.open = state
-      } else {
-        this.flags.open = !this.flags.open
-      }
-      this.$emit('toggle', this.flags.open)
+      this.open = typeof state === 'boolean' ? state : !this.open
+      this.$emit('toggle', this.open)
+      this.emitState()
     },
-    dismiss() {
-      if (this.flags.open) {
-        this.toggle(false)
-      }
+    dismiss(event) {
+      if (event.target === this.$refs.token) return
+      if (this.open) this.toggle(false)
     },
-    async emitToggle(value) {
-      this.$emit(value ? 'open' : 'close', { width: await this.getWidth() })
+    async emitState(state = this.open) {
+      const width = await this.getWidth()
+      this.$emit(state ? 'open' : 'close', { width })
     },
     handleResize() {
-      this.emitToggle(this.flags.open)
+      this.emitState(this.open)
     },
     getWidth() {
       return new Promise(resolve => {

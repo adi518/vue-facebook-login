@@ -20,7 +20,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+li {
   line-height: 2;
 }
 
@@ -33,8 +34,4 @@ ol,
 ul,
 dl {
   margin-bottom: 2rem;
-}
-
-li {
-  line-height: 2;
 }
