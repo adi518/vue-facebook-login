@@ -234,7 +234,7 @@ yarn start:docs
 
 ## Support
 
-Please open an [issue](https://github.com/adi518/vue-facebook-login-component/issues) for support, but search existing issues before starting a new one. 🙌
+Please search existing issues (including closed ones) before starting a new [issue](https://github.com/adi518/vue-facebook-login-component/issues). 🙌
 
 ## [Related Links](#related-links)
 
