@@ -9,6 +9,7 @@
   "scripts": {
     "start": "yarn build:watch",
     "start:docs": "yarn --cwd ./packages/docs start",
+    "test": "yarn --cwd ./packages/vue-facebook-login-component test:unit",
     "update:docs": "yarn --cwd ./packages/docs update",
     "deploy": "yarn --cwd ./packages/docs deploy",
     "build": "yarn --cwd ./packages/vue-facebook-login-component build",

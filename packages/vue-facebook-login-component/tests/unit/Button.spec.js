@@ -9,22 +9,14 @@ beforeEach(() => {
 
 jest.mock('@/helpers', () => ({
   __esModule: true,
-  removeSdkScript: async () => undefined,
   getSdk: jest.fn().mockResolvedValue({}),
+  removeSdkScript: jest.fn().mockResolvedValue(),
+  getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
   login: jest.fn().mockResolvedValue({ status: 'connected' }),
-  logout: jest.fn().mockResolvedValue(),
-  getLoginStatus: jest
-    .fn()
-    .mockResolvedValueOnce({ status: 'unknown' })
-    .mockResolvedValueOnce({ status: 'unknown' })
-    .mockResolvedValueOnce({ status: 'connected' })
-    .mockResolvedValueOnce({ status: 'unknown' })
-    .mockResolvedValueOnce({ status: 'unknown' })
-    .mockResolvedValueOnce({ status: 'unknown' })
-    .mockResolvedValueOnce({ status: 'unknown' })
-    .mockResolvedValueOnce({ status: 'connected' })
-    .mockResolvedValueOnce({ status: 'connected' })
+  logout: jest.fn().mockResolvedValue()
 }))
+
+const { getLoginStatus } = require('@/helpers')
 
 describe('Button', () => {
   test('initial render (disabled)', async () => {
@@ -43,6 +35,7 @@ describe('Button', () => {
   })
 
   test('initial render (connected)', async () => {
+    getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = mount(Button, {
       propsData: { appId: '966242223397117' }
     })
@@ -135,6 +128,7 @@ describe('Button', () => {
   })
 
   test('logout slot', async () => {
+    getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = mount(Button, {
       propsData: { appId: '966242223397117' },
       slots: { logout: '<div class="logout"></div>' }
@@ -144,6 +138,7 @@ describe('Button', () => {
   })
 
   test('logout scoped-slot', async () => {
+    getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = mount(Button, {
       propsData: { appId: '966242223397117' },
       scopedSlots: {

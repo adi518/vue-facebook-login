@@ -4,27 +4,14 @@ import Scope from '@/components/Scope'
 
 jest.mock('@/helpers', () => ({
   __esModule: true,
-  getSdk: jest
-    .fn()
-    .mockResolvedValueOnce({})
-    .mockResolvedValueOnce({})
-    .mockRejectedValueOnce('sdk error')
-    .mockResolvedValueOnce({})
-    .mockResolvedValueOnce({})
-    .mockResolvedValueOnce({})
-    .mockResolvedValueOnce({}),
-  removeSdkScript: async () => undefined,
+  getSdk: jest.fn().mockResolvedValue({}),
+  removeSdkScript: jest.fn().mockResolvedValue(),
+  getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
   login: jest.fn().mockResolvedValue({ status: 'connected' }),
-  logout: jest.fn().mockResolvedValue(),
-  getLoginStatus: jest
-    .fn()
-    .mockResolvedValueOnce({ status: 'unknown' })
-    .mockResolvedValueOnce({ status: 'connected' })
-    .mockResolvedValueOnce({ status: 'unknown' })
-    .mockResolvedValueOnce({ status: 'unknown' })
-    .mockResolvedValueOnce({ status: 'unknown' })
-    .mockResolvedValueOnce({ status: 'unknown' })
+  logout: jest.fn().mockResolvedValue()
 }))
+
+const { getSdk, getLoginStatus } = require('@/helpers')
 
 describe('Scope', () => {
   test('initial state and events (disconnected)', async () => {
@@ -46,6 +33,7 @@ describe('Scope', () => {
   })
 
   test('initial state and events (connected)', async () => {
+    getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = shallowMount(Scope, {
       propsData: { appId: '966242223397117' }
     })
@@ -59,6 +47,7 @@ describe('Scope', () => {
   })
 
   test('initial state with sdk error', async () => {
+    getSdk.mockRejectedValueOnce('sdk error')
     const wrapper = shallowMount(Scope, {
       propsData: { appId: '966242223397117' }
     })
