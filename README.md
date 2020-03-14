@@ -49,7 +49,7 @@ Simpler API, alongside newly added and updated features:
 - Added new prop `useAlternateLogo`, enabling an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo).
 - Fixed `disabled` state when `app-id` is not provided.
 - Updated all slots to [scoped-slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
-- Updated Error slot to appear on all errors. You can pick up the error object from `scope` and customize further.
+- Updated error slot to appear on all errors. You can pick up the error object from `scope` and customize further.
 - Updated labels to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
 - Replaced logo to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
 - Replaced `connect` event with `login` event.
