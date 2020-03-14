@@ -34,26 +34,26 @@ To use the component in your template, simply import and register with your comp
 
 - Zero dependencies (gzipped: 22.1K)
 - Handpicked Facebook SVG logos ([Iconmonstr](<(https://iconmonstr.com/facebook-1-svg/)>))
-- Button component with production-ready CSS.
-- Customizable through props and scoped-slots.
+- Customizable through props and scoped-slots
 - Scope component (renderless/render-props pattern)
+- Button component with production-ready CSS (scales well with `rem` and `font-size`)
 
 ## [What's New in Version 2.0](#whats-new-in-version-20)
 
-Simpler API, alongside some newly added and updated features:
+Simpler API, alongside newly added and updated features:
 
-- Added test coverage. 🧪
 - Improved documentation. 👌
+- Added test coverage. 🧪
 - Added `idle` field to `scope`.
-- Updated all slots to [scoped-slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
-- Error slot is now applicable to all errors. You can pick up the error object from `scope` and decide what to display based on that.
-- Replaced `connect` event with `login` event.
-- Fixed `disabled` state when `app-id` is not provided.
-- Replaced logo to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
-- Updated labels to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
-- Removed redundant key `hasError` from scope (`error` is sufficient).
 - Added new prop `logoClass` for manipulating logo style easily.
 - Added new prop `useAlternateLogo`, enabling an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo).
+- Fixed `disabled` state when `app-id` is not provided.
+- Updated all slots to [scoped-slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
+- Updated Error slot to appear on all errors. You can pick up the error object from `scope` and customize further.
+- Updated labels to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
+- Replaced logo to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
+- Replaced `connect` event with `login` event.
+- Removed redundant key `hasError` from scope (`error` is sufficient).
 
 ## [Props](#props)
 
