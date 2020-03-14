@@ -7,16 +7,25 @@ beforeEach(() => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
 })
 
-jest.mock('@/helpers', () => ({
-  __esModule: true,
-  getSdk: jest.fn().mockResolvedValue({}),
-  removeSdkScript: jest.fn().mockResolvedValue(),
-  getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
-  login: jest.fn().mockResolvedValue({ status: 'connected' }),
-  logout: jest.fn().mockResolvedValue()
-}))
+jest.mock('@/sdk', () => {
+  const { Sdk } = jest.requireActual('@/sdk')
+  return {
+    __esModule: true,
+    ...jest.requireActual('@/sdk'),
+    Sdk: {
+      isConnected: Sdk.isConnected,
+      subscribe: jest.fn().mockResolvedValue({}),
+      unsubscribe: jest.fn().mockResolvedValue()
+    },
+    getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
+    login: jest.fn().mockResolvedValue({ status: 'connected' }),
+    logout: jest.fn().mockResolvedValue()
+  }
+})
 
-const { getLoginStatus } = require('@/helpers')
+const { getLoginStatus } = require('@/sdk')
+
+const commonProps = { appId: '966242223397117' }
 
 describe('Button', () => {
   test('initial render (disabled)', async () => {
@@ -28,7 +37,7 @@ describe('Button', () => {
 
   test('initial render (disconnected)', async () => {
     const wrapper = mount(Button, {
-      propsData: { appId: '966242223397117' }
+      propsData: commonProps
     })
     await flushPromises()
     expect(wrapper.element).toMatchSnapshot()
@@ -37,7 +46,7 @@ describe('Button', () => {
   test('initial render (connected)', async () => {
     getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = mount(Button, {
-      propsData: { appId: '966242223397117' }
+      propsData: commonProps
     })
     await flushPromises()
     expect(wrapper.element).toMatchSnapshot()
@@ -46,24 +55,24 @@ describe('Button', () => {
   test('login and click event', async () => {
     const onClick = jest.fn()
     const wrapper = mount(Button, {
-      propsData: { appId: '966242223397117' },
+      propsData: commonProps,
       listeners: { click: onClick }
     })
-    wrapper.get('button').trigger('click')
-    await wrapper.vm.$nextTick()
     await flushPromises()
-    // expect(onClick).toHaveBeenCalled()
-    // expect(wrapper.emitted().input.slice(-1)[0]).toEqual([
-    //   {
-    //     connected: true,
-    //     disabled: false,
-    //     disconnected: false,
-    //     enabled: true,
-    //     error: null,
-    //     idle: true,
-    //     working: false
-    //   }
-    // ])
+    wrapper.trigger('click')
+    await flushPromises()
+    expect(onClick).toHaveBeenCalled()
+    expect(wrapper.emitted().input.slice(-1)[0]).toEqual([
+      {
+        idle: true,
+        error: null,
+        enabled: true,
+        working: false,
+        disabled: false,
+        connected: true,
+        disconnected: false
+      }
+    ])
   })
 
   test('props', async () => {
@@ -109,7 +118,7 @@ describe('Button', () => {
 
   test('scoped-slots', async () => {
     const wrapper = mount(Button, {
-      propsData: { appId: '966242223397117' },
+      propsData: commonProps,
       scopedSlots: {
         logo: '<div class="logo" slot-scope="scope">{{scope}}</div>',
         after: '<div class="after" slot-scope="scope">{{scope}}</div>',
@@ -130,7 +139,7 @@ describe('Button', () => {
   test('logout slot', async () => {
     getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = mount(Button, {
-      propsData: { appId: '966242223397117' },
+      propsData: commonProps,
       slots: { logout: '<div class="logout"></div>' }
     })
     await flushPromises()
@@ -140,7 +149,7 @@ describe('Button', () => {
   test('logout scoped-slot', async () => {
     getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = mount(Button, {
-      propsData: { appId: '966242223397117' },
+      propsData: commonProps,
       scopedSlots: {
         logout: '<div class="logout" slot-scope="scope">{{scope}}</div>'
       }

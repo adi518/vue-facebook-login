@@ -36,7 +36,7 @@ To use the component in your template, simply import and register with your comp
 - Handpicked Facebook SVG logos ([Iconmonstr](<(https://iconmonstr.com/facebook-1-svg/)>))
 - Customizable through props and scoped-slots
 - Scope component (renderless/render-props pattern)
-- Button component with production-ready CSS (scales well with `rem` and `font-size`)
+- Button component with flex-box CSS and `rem` sizing
 
 ## [What's New in Version 2.0](#whats-new-in-version-20)
 
@@ -48,6 +48,7 @@ Simpler API, alongside newly added and updated features:
 - Added new prop `logoClass` for manipulating logo style easily.
 - Added new prop `useAlternateLogo`, enabling an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo).
 - Fixed `disabled` state when `app-id` is not provided.
+- Updated CSS to be slightly leaner.
 - Updated all slots to [scoped-slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
 - Updated error slot to appear on all errors. You can pick up the error object from `scope` and customize further.
 - Updated labels to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).

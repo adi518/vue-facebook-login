@@ -29,8 +29,8 @@
         v-model="facebook.model"
         :app-id="facebook.appId"
         @sdk-init="handleSdkInit"
-        class="docs-facebook-login-button mx-auto"
-        logo-class="docs-facebook-login-button-logo"
+        class="docs-v-facebook-login mx-auto"
+        logo-class="docs-v-facebook-login-logo"
         :useAlternateLogo="facebook.useAlternateLogo"
         :transition="['padding-right 0.15s ease-in-out']"
         :class="{ 'is-connected': connected, 'is-inverted': inverted }"
@@ -162,10 +162,8 @@ export default {
 @import '@/styles/markdown';
 
 // https://tobiasahlin.com/blog/how-to-animate-box-shadow/
-.docs-facebook-login-button {
+.docs-v-facebook-login {
   min-width: auto !important;
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
   font-family: inherit !important;
   box-shadow: 0rem 12rem 1.825rem -0.125rem rgba(0, 0, 0, 0.2) !important;
 
@@ -198,7 +196,7 @@ export default {
   }
 
   @at-root {
-    .docs-facebook-login-button-logo {
+    .docs-v-facebook-login-logo {
       width: 1.75rem !important;
     }
   }

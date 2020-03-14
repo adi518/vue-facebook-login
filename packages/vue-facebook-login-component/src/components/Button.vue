@@ -3,47 +3,46 @@
   <scope
     v-model="model"
     v-bind="$props"
-    v-on="scopeListeners"
+    v-on="$listeners"
     @sdk-init="handleSdkInit"
   >
     <button
       slot-scope="scope"
-      @click="handleClick"
+      v-on:click="handleClick"
       class="v-facebook-login"
       :disabled="scope.disabled"
       :style="computedButtonStyle"
     >
       <slot name="before" v-bind="scope"></slot>
       <slot name="loader" v-bind="scope">
-        <span class="loader" v-if="scope.working" :style="loaderStyle"></span>
+        <span
+          :class="['loader', loaderClass]"
+          v-if="scope.working"
+          :style="loaderStyle"
+        ></span>
       </slot>
       <slot name="logo" v-bind="scope" v-if="scope.idle && scope.disconnected">
         <template v-if="useAlternateLogo">
           <v-facebook-logo-alt
-            class="logo"
-            :class="logoClass"
+            :class="['logo', logoClass]"
             :style="logoStyle"
           ></v-facebook-logo-alt>
         </template>
         <template v-else>
           <v-facebook-logo
-            class="logo"
-            :class="logoClass"
+            :class="['logo', logoClass]"
             :style="logoStyle"
           ></v-facebook-logo>
         </template>
       </slot>
-      <span :style="textStyle">
+      <span :class="textClass" :style="textStyle">
         <slot
           name="login"
           v-bind="scope"
           v-if="scope.idle && scope.disconnected"
           >Continue with Facebook</slot
         >
-        <slot
-          name="logout"
-          v-bind="scope"
-          v-if="scope.idle && scope.enabled && scope.connected"
+        <slot name="logout" v-bind="scope" v-if="scope.idle && scope.connected"
           >Logout</slot
         >
         <slot name="working" v-bind="scope" v-if="scope.working"
@@ -71,20 +70,26 @@ export default {
   props: {
     ...Scope.props,
     ...{
-      logoClass: {
-        type: String
-      },
       buttonStyle: {
         type: Object,
         default: () => ({})
+      },
+      loaderClass: {
+        type: String
       },
       loaderStyle: {
         type: Object,
         default: () => ({})
       },
+      logoClass: {
+        type: String
+      },
       logoStyle: {
         type: Object,
         default: () => ({})
+      },
+      textClass: {
+        type: String
       },
       textStyle: {
         type: Object,
@@ -100,11 +105,7 @@ export default {
       }
     }
   },
-  data() {
-    // eslint-disable-next-line no-unused-vars
-    const { click, ...scopeListeners } = this.$listeners
-    return { scope: {}, scopeListeners }
-  },
+  data: () => ({ scope: {} }),
   computed: {
     model: {
       get() {
@@ -118,9 +119,7 @@ export default {
       const transition = ['background-color 0.15s ease-in-out'].concat(
         this.transition
       )
-      return {
-        transition: [...new Set(transition)].join(', ')
-      } // Bootstrap 4 (`.btn`)
+      return { transition: [...new Set(transition)].join(', ') }
     },
     computedButtonStyle() {
       return { ...this.buttonStyle, ...this.computedTransition }
@@ -144,29 +143,21 @@ export default {
 // http://www.color-hex.com/color-palette/185
 // https://icons8.com/icon/set/facebook-f/all
 
+$token-size: 1.5rem;
 $color-white: #ffffff;
 $color-nepal: #8b9dc3;
 $color-chambray: #3b55a0;
 
 .v-facebook-login {
-  margin: 0; // Normalize Flex-box
   display: flex;
-  cursor: default; // Normalize IE 11
-  min-width: 15rem;
+  cursor: default; // normalize IE 11
   color: $color-white;
   align-items: center;
-  box-sizing: border-box;
+  padding: 0.5rem 1rem;
   border-radius: 0.25rem;
   justify-content: center;
-  padding: 0.5rem 1.275rem;
   border: 1px solid rgba($color-white, 0.05);
   background-color: lighten($color-chambray, 1%);
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
 
   &[disabled] {
     opacity: 0.75;
@@ -206,14 +197,14 @@ $color-chambray: #3b55a0;
 }
 
 .loader {
-  height: 1.5rem;
+  height: $token-size;
   margin-right: 1ch;
 }
 
 .logo,
 .loader {
-  opacity: 0.9;
-  width: 1.5rem;
+  opacity: 0.925;
+  width: $token-size;
 }
 
 @keyframes spin {

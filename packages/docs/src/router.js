@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import Docs from '@/views/Docs'
+import Demo from '@/views/Demo'
 import Readme from '@/views/Readme'
 import ReadmeV1 from '@/views/ReadmeV1'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
@@ -21,6 +22,11 @@ export const routes = [
         path: '/v1.x',
         component: ReadmeV1,
         name: 'Documentation v1.x'
+      },
+      {
+        name: 'Demo',
+        path: '/demo',
+        component: Demo
       },
       {
         name: 'Privacy Policy',

@@ -1,10 +1,4 @@
-import {
-  getSdk,
-  login,
-  logout,
-  getLoginStatus,
-  removeSdkScript
-} from '@/helpers'
+import { Sdk, login, logout, getLoginStatus } from '@/sdk'
 
 export default {
   name: 'v-facebook-login-scope',
@@ -37,30 +31,25 @@ export default {
   }),
   watch: {
     // eslint-disable-next-line no-unused-vars
-    scope({ login, logout, toggleLogin, ...restScope }, _prevValue) {
+    scope({ login, logout, toggleLogin, ...restScope }) {
       this.$emit('input', restScope)
     }
   },
   async beforeCreate() {
-    await removeSdkScript()
+    await Sdk.unsubscribe()
   },
   async created() {
     const created = async () => {
-      const sdk = await this.getSdk()
+      const sdk = await this.initSdk()
       if (this.error) return void 0
       this.$emit('sdk-init', { FB: sdk, scope: this.scope })
       const { status } = await getLoginStatus()
-      if (status === 'connected') {
+      if (Sdk.isConnected(status)) {
         this.connected = true
         this.$emit('login')
       }
     }
     this.async(created())
-  },
-  updated() {
-    if (this.$slots.default?.length) {
-      console.error('Slot must be scoped.')
-    }
   },
   computed: {
     idle() {
@@ -94,40 +83,39 @@ export default {
     toggleLogin() {
       this.connected ? this.logout() : this.login()
     },
-    async getSdk() {
+    async initSdk() {
       const { appId, version, options } = this
-      const promise = getSdk({ appId, version, ...options })
-      const sdk = await this.catchAsync(promise)
+      const promise = Sdk.subscribe({ appId, version, ...options })
+      const sdk = await this.catch(promise)
       return sdk
     },
     async login() {
       const promise = login(this.loginOptions)
       const { status } = await this.async(promise)
-      if (status === 'connected') {
+      if (Sdk.isConnected(status)) {
         this.connected = true
         this.$emit('login', status)
       }
       return promise
     },
     async logout() {
-      await this.async(logout())
+      const { status } = await getLoginStatus()
+      if (Sdk.isConnected(status)) await this.async(logout())
       this.connected = false
       this.$emit('logout')
       return logout
     },
-    async catchAsync(promise) {
+    async catch(promise) {
       return promise.catch(error => {
-        if (error) {
-          this.error = error
-          console.error(this.error)
-        }
+        this.error = error
+        console.error(this.error)
       })
     },
     async async(promise) {
       this.working = true
-      const handled = await this.catchAsync(promise)
+      promise = await this.catch(promise)
       this.working = false
-      return handled
+      return promise
     }
   },
   render() {

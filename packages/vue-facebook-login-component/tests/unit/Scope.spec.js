@@ -2,22 +2,29 @@ import { shallowMount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import Scope from '@/components/Scope'
 
-jest.mock('@/helpers', () => ({
-  __esModule: true,
-  getSdk: jest.fn().mockResolvedValue({}),
-  removeSdkScript: jest.fn().mockResolvedValue(),
-  getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
-  login: jest.fn().mockResolvedValue({ status: 'connected' }),
-  logout: jest.fn().mockResolvedValue()
-}))
+jest.mock('@/sdk', () => {
+  const { Sdk } = jest.requireActual('@/sdk')
+  return {
+    __esModule: true,
+    ...jest.requireActual('@/sdk'),
+    Sdk: {
+      isConnected: Sdk.isConnected,
+      subscribe: jest.fn().mockResolvedValue({}),
+      unsubscribe: jest.fn().mockResolvedValue()
+    },
+    getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
+    login: jest.fn().mockResolvedValue({ status: 'connected' }),
+    logout: jest.fn().mockResolvedValue()
+  }
+})
 
-const { getSdk, getLoginStatus } = require('@/helpers')
+const { Sdk, getLoginStatus } = require('@/sdk')
+
+const commonProps = { appId: '966242223397117' }
 
 describe('Scope', () => {
   test('initial state and events (disconnected)', async () => {
-    const wrapper = shallowMount(Scope, {
-      propsData: { appId: '966242223397117' }
-    })
+    const wrapper = shallowMount(Scope, { propsData: commonProps })
     await flushPromises()
     const emitted = wrapper.emitted()
     expect(emitted['input']).toBeTruthy()
@@ -34,9 +41,7 @@ describe('Scope', () => {
 
   test('initial state and events (connected)', async () => {
     getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
-    const wrapper = shallowMount(Scope, {
-      propsData: { appId: '966242223397117' }
-    })
+    const wrapper = shallowMount(Scope, { propsData: commonProps })
     await flushPromises()
     const emitted = wrapper.emitted()
     expect(emitted['login']).toBeTruthy()
@@ -47,10 +52,9 @@ describe('Scope', () => {
   })
 
   test('initial state with sdk error', async () => {
-    getSdk.mockRejectedValueOnce('sdk error')
-    const wrapper = shallowMount(Scope, {
-      propsData: { appId: '966242223397117' }
-    })
+    Sdk.subscribe = jest.fn().mockRejectedValue('sdk error')
+    Sdk.unsubscribe = jest.fn().mockImplementation()
+    const wrapper = shallowMount(Scope, { propsData: commonProps })
     await flushPromises()
     expect(wrapper.vm.error).toBe('sdk error')
     expect(wrapper.isEmpty()).toBe(true)
@@ -59,7 +63,7 @@ describe('Scope', () => {
   test('login', async () => {
     const login = jest.fn()
     const wrapper = shallowMount(Scope, {
-      propsData: { appId: '966242223397117' },
+      propsData: commonProps,
       listeners: { login }
     })
     wrapper.vm.login()
@@ -72,7 +76,7 @@ describe('Scope', () => {
   test('logout', async () => {
     const logout = jest.fn()
     const wrapper = shallowMount(Scope, {
-      propsData: { appId: '966242223397117' },
+      propsData: commonProps,
       listeners: { logout }
     })
     wrapper.vm.logout()
@@ -84,7 +88,7 @@ describe('Scope', () => {
 
   test('empty render with regular slot', async () => {
     const wrapper = shallowMount(Scope, {
-      propsData: { appId: '966242223397117' },
+      propsData: commonProps,
       slots: { default: '<div></div>' }
     })
     await flushPromises()
@@ -94,7 +98,7 @@ describe('Scope', () => {
   test('render with scoped-slot', async () => {
     let scope
     const wrapper = shallowMount(Scope, {
-      propsData: { appId: '966242223397117' },
+      propsData: commonProps,
       scopedSlots: {
         default(props) {
           scope = props
