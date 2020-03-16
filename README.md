@@ -4,9 +4,25 @@
 
 ## [Install](#install)
 
+### Using NPM:
+
 ```console
-npm install --save vue-facebook-login-component
+$ npm install react-ryo-cli
 ```
+
+### Using Yarn:
+
+```console
+$ yarn add react-ryo-cli
+```
+
+### Embed Directly as a Script
+
+```html
+<script src="https://unpkg.com/vue-facebook-login-component/dist/vue-facebook-login-component.umd.min.js"></script>
+```
+
+> When embedding, the script automatically registers itself as a Vue plugin.
 
 ## [Usage](#usage)
 
@@ -44,23 +60,34 @@ See [JS Fiddle](https://jsfiddle.net/adi518/jfa0gys8/30/) for an interactive liv
 
 ## [What's New in Version 2.0](#whats-new-in-version-20)
 
-Simpler API, alongside newly added and updated features:
+Simpler API, alongside newly added and updated features (mind breaking-changes).
 
-- Improved documentation. 👌
-- Added test coverage. 🧪
+### Added
+
+- Added test coverage.
 - Added `idle` field to `scope`.
-- Added new prop `logoClass` for manipulating logo style easily.
-- Added new prop `textClass` for manipulating text style easily.
-- Added new prop `loaderClass` for manipulating loader style easily.
-- Added new prop `useAltLogo`, enabling an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo).
-- Fixed `disabled` state when `app-id` is not provided.
-- Updated styled with leaner CSS.
+- Added multiple instance support.
+- Added new prop `logoClass`.
+- Added new prop `textClass`.
+- Added new prop `loaderClass`.
+- Added new prop [`useAltLogo`](#usealtlogo-prop).
+
+### Updated
+
+- Updated style with leaner CSS.
 - Updated all slots to [scoped-slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
-- Updated error slot to appear on all errors. You can pick up the error object from `scope` and customize further.
+- Updated error slot to appear on all errors.
+- Updated logo to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
 - Updated labels to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
-- Replaced logo to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
-- Replaced `connect` event with `login` event.
-- Removed redundant key `hasError` from scope (`error` is sufficient).
+
+### Fixed
+
+- Fixed `disabled` state when `app-id` is not provided.
+
+### Removed
+
+- Removed `connect` event (use `login` event instead).
+- Removed `hasError` from scope (use `error` field instead).
 
 ## [Props](#props)
 
@@ -93,6 +120,10 @@ Simpler API, alongside newly added and updated features:
 | \*\*\* | Scope-component property.                                                                                |
 
 </div>
+
+### [useAltLogo Prop](#use-alt-logo-prop)
+
+Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo). This prop was released as `useAlternateLogo` in `2.0.0` but shortened to `useAltLogo` in `2.1.0`. This is a one-off breaking change. This package follows [semver](https://semver.org/) in this package.
 
 ## [Slots](#slots)
 
@@ -169,16 +200,16 @@ Refer to the [tables](#props) above for scope-component **specific** props/event
 
 <div id="scope-table-wrap" class="docs-table-wrap">
 
-| Name         | Type     | Description                                                |
-| ------------ | -------- | ---------------------------------------------------------- |
-| login        | Function | Login handler.                                             |
-| logout       | Function | Logout handler.                                            |
-| toggleLogin  | Function | Toggles login/logout.                                      |
-| working      | Boolean  | SDK-initialization/login/logout is currently taking place. |
-| connected    | Boolean  | User is logged in.                                         |
-| disconnected | Boolean  | User is logged out.                                        |
-| enabled      | Boolean  | Button is enabled.                                         |
-| disabled     | Boolean  | Button is disabled.                                        |
+| Name         | Type     | Description                             |
+| ------------ | -------- | --------------------------------------- |
+| login        | Function | Login handler.                          |
+| logout       | Function | Logout handler.                         |
+| toggleLogin  | Function | Toggles login/logout.                   |
+| working      | Boolean  | Asynchronous operation is taking place. |
+| connected    | Boolean  | User is logged in.                      |
+| disconnected | Boolean  | User is logged out.                     |
+| enabled      | Boolean  | Button is enabled.                      |
+| disabled     | Boolean  | Button is disabled.                     |
 
 </div>
 

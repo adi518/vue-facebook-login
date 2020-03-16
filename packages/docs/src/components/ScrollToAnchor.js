@@ -86,7 +86,7 @@ const scrollToAnchor = (anchorElOrId, offsetY = 0) => {
 
 function GlobalAnchorClickListener(paths, offsetY = 0) {
   async function handleClick(event) {
-    const anchorEl = event.target
+    const anchorEl = event.target.closest('a') || event.target
     if (!(anchorEl instanceof HTMLAnchorElement)) return
     if (!/^#/.test(anchorEl.hash)) return
     const path = anchorEl.hash?.substr(1)
