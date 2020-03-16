@@ -1,6 +1,6 @@
 import flushPromises from 'flush-promises'
 import { mount } from '@vue/test-utils'
-import Button from '@/components/Button'
+import Button from '@/components/Composed'
 import Scope from '@/components/Scope'
 
 beforeEach(() => {
@@ -81,16 +81,19 @@ describe('Button', () => {
       version: 'mock-version',
       value: { connected: false },
       options: { option1: 1, option2: 2, option3: 3 },
-      textStyle: { textStyle1: 1, textStyle2: 2, textStyle3: 3 },
-      logoStyle: { logoStyle1: 1, logoStyle2: 2, logoStyle3: 3 },
-      loaderStyle: { loaderStyle1: 1, loaderStyle2: 2, loaderStyle3: 3 },
-      buttonStyle: { buttonStyle1: 1, buttonStyle2: 2, buttonStyle3: 3 },
       loginOptions: { loginOption1: 1, loginOption2: 2, loginOption3: 3 },
-      useAlternateLogo: true,
+      scope: {},
+      logoClass: 'logo-class',
+      logoStyle: { logoStyle1: 1, logoStyle2: 2, logoStyle3: 3 },
+      textClass: 'text-class',
+      textStyle: { textStyle1: 1, textStyle2: 2, textStyle3: 3 },
+      loaderClass: 'loader-class',
+      loaderStyle: { loaderStyle1: 1, loaderStyle2: 2, loaderStyle3: 3 },
       transition: [
         'background-color 0.15s ease-in-out',
         'padding 0.15s ease-in-out'
-      ]
+      ],
+      useAltLogo: true
     }
     const wrapper = mount(Button, { propsData })
     expect(wrapper.vm.$props).toEqual(propsData)

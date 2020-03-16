@@ -4,6 +4,7 @@
       :routes="routes"
       :token-style="{ backgroundImage: `url(${menuToken})` }"
     >
+      <!-- <a href="https://jsfiddle.net/adi518/jfa0gys8">JS Fiddle</a> -->
       <template v-if="breakpoint.noMatch">
         <v-github-stars></v-github-stars>
         <v-downloads></v-downloads>

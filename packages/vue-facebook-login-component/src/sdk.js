@@ -16,7 +16,7 @@ export function initSdk(options) {
   return new Promise((resolve, reject) => {
     // prettier-ignore
     window.fbAsyncInit = function() {
-      const defaults = { cookie: true, xfbml: true, autoLogAppEvents: true, }
+      const defaults = { cookie: true, xfbml: true }
       options = { ...defaults, ...options }
       window.FB.init(options)
       resolve(window.FB)
@@ -54,37 +54,6 @@ export function removeScript() {
     window.setTimeout(resolve)
   })
 }
-
-export const sdk = (function() {
-  const state = { pending: null, isExternal: false, consumers: 0 }
-  function init(options) {
-    if (state.isExternal) return window.FB
-    if (window.FB) {
-      state.isExternal = true
-      return window.FB
-    }
-    if (state.pending) return state.pending
-    state.pending = initSdk(options)
-    return state.pending
-  }
-  function reset() {
-    state.consumers = 0
-    state.pending = null
-    state.isExternal = false
-  }
-  return {
-    subscribe(...args) {
-      state.consumers++
-      return init(...args)
-    },
-    unsubscribe() {
-      state.consumers--
-      if (state.isExternal || state.consumers) return
-      reset()
-      return removeScript()
-    }
-  }
-})()
 
 export class Sdk {
   static state = Object.seal({ isExternal: false, pending: null, consumers: 0 })

@@ -2,13 +2,8 @@
 
 exports[`Button initial render (connected) 1`] = `
 <button
-  buttonstyle="[object Object]"
   class="v-facebook-login"
-  loaderstyle="[object Object]"
-  logostyle="[object Object]"
   style="transition: background-color 0.15s ease-in-out;"
-  textstyle="[object Object]"
-  transition=""
 >
    
   <!---->
@@ -28,14 +23,9 @@ exports[`Button initial render (connected) 1`] = `
 
 exports[`Button initial render (disabled) 1`] = `
 <button
-  buttonstyle="[object Object]"
   class="v-facebook-login"
   disabled="disabled"
-  loaderstyle="[object Object]"
-  logostyle="[object Object]"
   style="transition: background-color 0.15s ease-in-out;"
-  textstyle="[object Object]"
-  transition=""
 >
    
   <!---->
@@ -67,13 +57,8 @@ exports[`Button initial render (disabled) 1`] = `
 
 exports[`Button initial render (disconnected) 1`] = `
 <button
-  buttonstyle="[object Object]"
   class="v-facebook-login"
-  loaderstyle="[object Object]"
-  logostyle="[object Object]"
   style="transition: background-color 0.15s ease-in-out;"
-  textstyle="[object Object]"
-  transition=""
 >
    
   <!---->
@@ -105,13 +90,8 @@ exports[`Button initial render (disconnected) 1`] = `
 
 exports[`Button logout scoped-slot 1`] = `
 <button
-  buttonstyle="[object Object]"
   class="v-facebook-login"
-  loaderstyle="[object Object]"
-  logostyle="[object Object]"
   style="transition: background-color 0.15s ease-in-out;"
-  textstyle="[object Object]"
-  transition=""
 >
    
   <!---->
@@ -145,13 +125,8 @@ exports[`Button logout scoped-slot 1`] = `
 
 exports[`Button logout slot 1`] = `
 <button
-  buttonstyle="[object Object]"
   class="v-facebook-login"
-  loaderstyle="[object Object]"
-  logostyle="[object Object]"
   style="transition: background-color 0.15s ease-in-out;"
-  textstyle="[object Object]"
-  transition=""
 >
    
   <!---->
@@ -175,14 +150,9 @@ exports[`Button logout slot 1`] = `
 
 exports[`Button scoped-slots 1`] = `
 <button
-  buttonstyle="[object Object]"
   class="v-facebook-login"
   disabled="disabled"
-  loaderstyle="[object Object]"
-  logostyle="[object Object]"
   style="transition: background-color 0.15s ease-in-out;"
-  textstyle="[object Object]"
-  transition=""
 >
   <div
     class="before"
@@ -266,14 +236,9 @@ exports[`Button scoped-slots 1`] = `
 
 exports[`Button slots 1`] = `
 <button
-  buttonstyle="[object Object]"
   class="v-facebook-login"
   disabled="disabled"
-  loaderstyle="[object Object]"
-  logostyle="[object Object]"
   style="transition: background-color 0.15s ease-in-out;"
-  textstyle="[object Object]"
-  transition=""
 >
   <div
     class="before"

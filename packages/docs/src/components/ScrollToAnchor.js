@@ -39,7 +39,7 @@ const ScrollToAnchor = (router, { offsetY = 0 } = {}) => {
     },
     methods: {
       async scrollToLocalAnchor() {
-        if (!this.isMounted) return void 0
+        if (!this.isMounted) return
         // https://stackoverflow.com/a/901144/4106263
         // https://stackoverflow.com/a/11662717/4106263
         // https://stackoverflow.com/a/56895999/4106263
@@ -87,13 +87,10 @@ const scrollToAnchor = (anchorElOrId, offsetY = 0) => {
 function GlobalAnchorClickListener(paths, offsetY = 0) {
   async function handleClick(event) {
     const anchorEl = event.target
+    if (!(anchorEl instanceof HTMLAnchorElement)) return
+    if (!/^#/.test(anchorEl.hash)) return
     const path = anchorEl.hash?.substr(1)
-    if (
-      !paths[path] &&
-      window.location.host === anchorEl.host &&
-      anchorEl instanceof HTMLAnchorElement &&
-      /^#/.test(anchorEl.hash)
-    ) {
+    if (!paths[path] && window.location.host === anchorEl.host) {
       event.preventDefault()
       await scrollToAnchor(anchorEl, offsetY)
       window.location.hash = `?a=${path}`

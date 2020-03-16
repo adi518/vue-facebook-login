@@ -6,15 +6,19 @@
       <v-button
         is-icon
         title="Alternate Logo"
-        @click="toggleAlternateLogo"
+        @click="toggleAltLogo"
         v-if="facebook.model.enabled && disconnected"
-      >💋</v-button>
-      <v-button is-icon title="Invert Colors" @click="toggleInvert">🍭</v-button>
+        >💋</v-button
+      >
+      <v-button is-icon title="Invert Colors" @click="toggleInvert"
+        >🍭</v-button
+      >
       <v-button
         title="Logout"
         @click="facebook.scope.logout"
         v-if="facebook.scope.logout && connected"
-      >logout</v-button>
+        >logout</v-button
+      >
       <v-social :pkg="pkg"></v-social>
     </v-nav>
     <!-- NAV end -->
@@ -29,10 +33,9 @@
         v-model="facebook.model"
         :app-id="facebook.appId"
         @sdk-init="handleSdkInit"
+        :useAltLogo="facebook.useAltLogo"
         class="docs-v-facebook-login mx-auto"
         logo-class="docs-v-facebook-login-logo"
-        :useAlternateLogo="facebook.useAlternateLogo"
-        :transition="['padding-right 0.15s ease-in-out']"
         :class="{ 'is-connected': connected, 'is-inverted': inverted }"
       >
         <template slot="after">
@@ -41,7 +44,10 @@
       </v-facebook-login>
       <!-- DEMO end -->
 
-      <v-install-anchor class="mt-25" :to="$refs.readme ? $refs.readme.$el : null"></v-install-anchor>
+      <v-install-anchor
+        class="mt-25"
+        :to="$refs.readme ? $refs.readme.$el : null"
+      ></v-install-anchor>
     </v-hero>
 
     <!-- README -->
@@ -100,7 +106,7 @@ export default {
         process.env.NODE_ENV === 'development'
           ? '852858511574509'
           : '2146252248983683',
-      useAlternateLogo: false
+      useAltLogo: false
     },
     user: {},
     breakpoint: {},
@@ -128,8 +134,8 @@ export default {
         user => (this.user = user)
       )
     },
-    toggleAlternateLogo() {
-      this.facebook.useAlternateLogo = !this.facebook.useAlternateLogo
+    toggleAltLogo() {
+      this.facebook.useAltLogo = !this.facebook.useAltLogo
     },
     handleSdkInit({ FB, scope }) {
       this.facebook.scope = scope
@@ -163,7 +169,6 @@ export default {
 
 // https://tobiasahlin.com/blog/how-to-animate-box-shadow/
 .docs-v-facebook-login {
-  min-width: auto !important;
   font-family: inherit !important;
   box-shadow: 0rem 12rem 1.825rem -0.125rem rgba(0, 0, 0, 0.2) !important;
 

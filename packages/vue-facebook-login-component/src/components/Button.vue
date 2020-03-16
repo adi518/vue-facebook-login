@@ -1,134 +1,102 @@
 <template>
   <!-- https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign -->
-  <scope
-    v-model="model"
-    v-bind="$props"
-    v-on="$listeners"
-    @sdk-init="handleSdkInit"
+  <button
+    :style="inlineStyle"
+    v-on:click="handleClick"
+    :disabled="scope.disabled"
+    class="v-facebook-login"
   >
-    <button
-      slot-scope="scope"
-      v-on:click="handleClick"
-      class="v-facebook-login"
-      :disabled="scope.disabled"
-      :style="computedButtonStyle"
-    >
-      <slot name="before" v-bind="scope"></slot>
-      <slot name="loader" v-bind="scope">
-        <span
-          :class="['loader', loaderClass]"
-          v-if="scope.working"
-          :style="loaderStyle"
-        ></span>
-      </slot>
-      <slot name="logo" v-bind="scope" v-if="scope.idle && scope.disconnected">
-        <template v-if="useAlternateLogo">
-          <v-facebook-logo-alt
-            :class="['logo', logoClass]"
-            :style="logoStyle"
-          ></v-facebook-logo-alt>
-        </template>
-        <template v-else>
-          <v-facebook-logo
-            :class="['logo', logoClass]"
-            :style="logoStyle"
-          ></v-facebook-logo>
-        </template>
-      </slot>
-      <span :class="textClass" :style="textStyle">
-        <slot
-          name="login"
-          v-bind="scope"
-          v-if="scope.idle && scope.disconnected"
-          >Continue with Facebook</slot
-        >
-        <slot name="logout" v-bind="scope" v-if="scope.idle && scope.connected"
-          >Logout</slot
-        >
-        <slot name="working" v-bind="scope" v-if="scope.working"
-          >Please wait...</slot
-        >
-        <slot name="error" v-bind="scope" v-if="scope.error">⛔ Error</slot>
-      </span>
-      <slot name="after" v-bind="scope"></slot>
-    </button>
-  </scope>
+    <slot name="before" v-bind="scope"></slot>
+    <slot name="loader" v-bind="scope">
+      <span
+        :class="['loader', loaderClass]"
+        v-if="scope.working"
+        :style="loaderStyle"
+      ></span>
+    </slot>
+    <slot name="logo" v-bind="scope" v-if="scope.idle && scope.disconnected">
+      <v-facebook-logo-alt
+        :style="logoStyle"
+        v-if="useAltLogo"
+        :class="['logo', logoClass]"
+      ></v-facebook-logo-alt>
+      <v-facebook-logo
+        v-else
+        :style="logoStyle"
+        :class="['logo', logoClass]"
+      ></v-facebook-logo>
+    </slot>
+    <span :class="textClass" :style="textStyle">
+      <slot name="login" v-bind="scope" v-if="scope.idle && scope.disconnected"
+        >Continue with Facebook</slot
+      >
+      <slot name="logout" v-bind="scope" v-if="scope.idle && scope.connected"
+        >Logout</slot
+      >
+      <slot name="working" v-bind="scope" v-if="scope.working"
+        >Please wait...</slot
+      >
+      <slot name="error" v-bind="scope" v-if="scope.error">⛔ Error</slot>
+    </span>
+    <slot name="after" v-bind="scope"></slot>
+  </button>
 </template>
 
 <script>
 import Logo from './Logo'
-import Scope from './Scope'
 import LogoAlt from './LogoAlt'
 
 export default {
-  name: 'v-facebook-login',
+  inheritAttrs: false,
+  name: 'v-facebook-login-button',
   components: {
-    Scope,
     VFacebookLogo: Logo,
     VFacebookLogoAlt: LogoAlt
   },
   props: {
-    ...Scope.props,
-    ...{
-      buttonStyle: {
-        type: Object,
-        default: () => ({})
-      },
-      loaderClass: {
-        type: String
-      },
-      loaderStyle: {
-        type: Object,
-        default: () => ({})
-      },
-      logoClass: {
-        type: String
-      },
-      logoStyle: {
-        type: Object,
-        default: () => ({})
-      },
-      textClass: {
-        type: String
-      },
-      textStyle: {
-        type: Object,
-        default: () => ({})
-      },
-      transition: {
-        type: Array,
-        default: () => []
-      },
-      useAlternateLogo: {
-        type: Boolean,
-        default: false
-      }
+    scope: {
+      type: Object,
+      default: () => ({})
+    },
+    logoClass: {
+      type: String
+    },
+    logoStyle: {
+      type: Object,
+      default: () => ({})
+    },
+    textClass: {
+      type: String
+    },
+    textStyle: {
+      type: Object,
+      default: () => ({})
+    },
+    loaderClass: {
+      type: String
+    },
+    loaderStyle: {
+      type: Object,
+      default: () => ({})
+    },
+    transition: {
+      type: Array,
+      default: () => []
+    },
+    useAltLogo: {
+      type: Boolean,
+      default: false
     }
   },
-  data: () => ({ scope: {} }),
   computed: {
-    model: {
-      get() {
-        return this.value
-      },
-      set(value) {
-        this.$emit('input', value)
-      }
-    },
-    computedTransition() {
-      const transition = ['background-color 0.15s ease-in-out'].concat(
-        this.transition
-      )
-      return { transition: [...new Set(transition)].join(', ') }
-    },
-    computedButtonStyle() {
-      return { ...this.buttonStyle, ...this.computedTransition }
+    inlineStyle() {
+      const CSSTransition = 'background-color 0.15s ease-in-out'
+      let transition = [CSSTransition].concat(this.transition)
+      transition = [...new Set(transition)].join(', ')
+      return { transition }
     }
   },
   methods: {
-    handleSdkInit({ scope }) {
-      this.scope = scope
-    },
     handleClick() {
       this.$emit('click')
       this.scope.toggleLogin()
@@ -190,9 +158,9 @@ $color-chambray: #3b55a0;
   border-style: solid;
   border-width: 0.1rem;
   border-top-color: $color-nepal;
-  border-right-color: rgba($color-white, 1);
-  border-left-color: rgba($color-white, 1);
-  border-bottom-color: rgba($color-white, 1);
+  border-left-color: $color-white;
+  border-right-color: $color-white;
+  border-bottom-color: $color-white;
   animation: spin 2s linear infinite;
 }
 

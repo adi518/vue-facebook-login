@@ -38,6 +38,10 @@ To use the component in your template, simply import and register with your comp
 - Scope component (renderless/render-props pattern)
 - Button component with flex-box CSS and `rem` sizing
 
+## [JS Fiddle](#js-fiddle)
+
+See [JS Fiddle](https://jsfiddle.net/adi518/jfa0gys8/30/) for an interactive live example.
+
 ## [What's New in Version 2.0](#whats-new-in-version-20)
 
 Simpler API, alongside newly added and updated features:
@@ -46,9 +50,11 @@ Simpler API, alongside newly added and updated features:
 - Added test coverage. 🧪
 - Added `idle` field to `scope`.
 - Added new prop `logoClass` for manipulating logo style easily.
-- Added new prop `useAlternateLogo`, enabling an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo).
+- Added new prop `textClass` for manipulating text style easily.
+- Added new prop `loaderClass` for manipulating loader style easily.
+- Added new prop `useAltLogo`, enabling an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo).
 - Fixed `disabled` state when `app-id` is not provided.
-- Updated CSS to be slightly leaner.
+- Updated styled with leaner CSS.
 - Updated all slots to [scoped-slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
 - Updated error slot to appear on all errors. You can pick up the error object from `scope` and customize further.
 - Updated labels to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
@@ -60,19 +66,19 @@ Simpler API, alongside newly added and updated features:
 
 <div id="props-table-wrap" class="docs-table-wrap">
 
-| Name               | Type    | Default                | Note                                                                                                                          |
-| ------------------ | ------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| value              | Object  | `{ connected: false }` | Used for one-way V-Model. [ &ast;&ast;&ast; ]                                                                                 |
-| app-id             | String  | None                   | Required. [ &ast;&ast;&ast; ]                                                                                                 |
-| version            | String  | `'v6.0'`               | [ &ast;&ast;, &ast;&ast;&ast; ]                                                                                               |
-| options            | Object  | `{}`                   | SDK Options. [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                           |
-| login-options      | Object  | `{ scope: 'email' }`   | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
-| button-style       | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| loader-style       | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| logo-style         | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| text-style         | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| transition         | Array   | `[]`                   | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`. |
-| use-alternate-logo | Boolean | `false`                | Use [Iconmonstr alternate Facebook logo](https://iconmonstr.com/facebook-6-svg/).                                             |
+| Name          | Type    | Default                | Note                                                                                                                          |
+| ------------- | ------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| value         | Object  | `{ connected: false }` | Used for one-way V-Model. [ &ast;&ast;&ast; ]                                                                                 |
+| app-id        | String  | None                   | Required. [ &ast;&ast;&ast; ]                                                                                                 |
+| version       | String  | `'v6.0'`               | [ &ast;&ast;, &ast;&ast;&ast; ]                                                                                               |
+| options       | Object  | `{}`                   | SDK Options. [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                           |
+| login-options | Object  | `{ scope: 'email' }`   | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
+| button-style  | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| loader-style  | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| logo-style    | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| text-style    | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| transition    | Array   | `[]`                   | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`. |
+| use-alt-logo  | Boolean | `false`                | Use [Iconmonstr alternate Facebook logo](https://iconmonstr.com/facebook-6-svg/).                                             |
 
 </div>
 
@@ -153,7 +159,7 @@ You can use this event to grab the Facebook SDK instance, but **also** the under
 
 ## [Advanced Customization (Scope Component)](#advanced-customization-scope-component)
 
-If props, slots and events do not provide enough customization, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** html or css, hence it has no added-value on its own. It only exposes a scoped-slot with attributes and methods that are committed as API. Read more about [scoped slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
+If props, slots and events do not provide enough customization, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** HTML or CSS, but rather only expose a scoped-slot with attributes and methods that are committed as API. Read more about [scoped slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
 
 ### Props and Events
 
@@ -247,9 +253,9 @@ Please search existing issues (including closed ones) before starting a new [iss
 
 ## [Related Links](#related-links)
 
-- You'll probably need to utilize the [Facebook API](https://developers.facebook.com/docs/reference/javascript/FB.login/v6.0).
-- Fonts and colors used by Facebook, article by [Sitepoint](https://www.sitepoint.com/fonts-colors-used-facebook-twitter-google/).
-- Facebook provides a neat [guideline](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign) for best user experience.
+- Facebook API [documentation](https://developers.facebook.com/docs/reference/javascript/FB.login/v6.0).
+- Facebook user experience [guideline](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
+- Facebook fonts and colors, article by [Sitepoint](https://www.sitepoint.com/fonts-colors-used-facebook-twitter-google/).
 
 ## License
 

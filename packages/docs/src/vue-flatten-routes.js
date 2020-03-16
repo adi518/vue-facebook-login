@@ -6,10 +6,11 @@ export default function flattenRoutes(
 ) {
   if (Array.isArray(routes)) {
     return routes.reduce(
-      (acc, { name, name: currParentName, path, children }) => {
+      (acc, { name, name: currParentName, path, children, ...restRoute }) => {
         const root = level === 0
         const nested = !root
         acc.push({
+          ...restRoute,
           name,
           path,
           level,

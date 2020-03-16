@@ -1,6 +1,7 @@
 import { Sdk, login, logout, getLoginStatus } from '@/sdk'
 
 export default {
+  inheritAttrs: false,
   name: 'v-facebook-login-scope',
   props: {
     value: {
@@ -41,7 +42,7 @@ export default {
   async created() {
     const created = async () => {
       const sdk = await this.initSdk()
-      if (this.error) return void 0
+      if (this.error) return
       this.$emit('sdk-init', { FB: sdk, scope: this.scope })
       const { status } = await getLoginStatus()
       if (Sdk.isConnected(status)) {
@@ -105,7 +106,7 @@ export default {
       this.$emit('logout')
       return logout
     },
-    async catch(promise) {
+    catch(promise) {
       return promise.catch(error => {
         this.error = error
         console.error(this.error)
