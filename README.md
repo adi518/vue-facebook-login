@@ -65,12 +65,12 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 ### Added
 
 - Added test coverage.
-- Added `idle` field to `scope`.
 - Added multiple instance support.
-- Added new prop `logoClass`.
-- Added new prop `textClass`.
-- Added new prop `loaderClass`.
-- Added new prop [`useAltLogo`](#usealtlogo-prop).
+- Added scope field `idle`.
+- Added prop `logoClass`.
+- Added prop `textClass`.
+- Added prop `loaderClass`.
+- Added prop [`useAltLogo`](#usealtlogo-prop).
 
 ### Updated
 
@@ -86,8 +86,9 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 ### Removed
 
-- Removed `connect` event (use `login` event instead).
-- Removed `hasError` from scope (use `error` field instead).
+- Removed event `connect` (use `login` instead).
+- Removed prop `buttonStyle` (use `style` instead).
+- Removed scope field `hasError` (use `error` instead).
 
 ## [Props](#props)
 
@@ -100,10 +101,12 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 | version       | String  | `'v6.0'`               | [ &ast;&ast;, &ast;&ast;&ast; ]                                                                                               |
 | options       | Object  | `{}`                   | SDK Options. [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                           |
 | login-options | Object  | `{ scope: 'email' }`   | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
-| button-style  | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| loader-style  | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| logo-class    | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
 | logo-style    | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| text-class    | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
 | text-style    | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| loader-class  | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
+| loader-style  | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
 | transition    | Array   | `[]`                   | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`. |
 | use-alt-logo  | Boolean | `false`                | Use [Iconmonstr alternate Facebook logo](https://iconmonstr.com/facebook-6-svg/).                                             |
 
@@ -123,7 +126,7 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 ### [useAltLogo Prop](#use-alt-logo-prop)
 
-Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo). This prop was released as `useAlternateLogo` in `2.0.0` but shortened to `useAltLogo` in `2.1.0`. This is a one-off breaking change. This package follows [semver](https://semver.org/) in this package.
+Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo). This prop was released as `useAlternateLogo` in `2.0.0` but shortened to `useAltLogo` in `2.1.0`, a one-off breaking change. Versioning in this package follows [semver](https://semver.org/).
 
 ## [Slots](#slots)
 

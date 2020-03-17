@@ -6,7 +6,7 @@
   "license": "MIT",
   "files": [
     "dist",
-    "README.md"
+    "../../README.md"
   ],
   "main": "dist/vue-facebook-login-component.umd.min.js",
   "private": false,
