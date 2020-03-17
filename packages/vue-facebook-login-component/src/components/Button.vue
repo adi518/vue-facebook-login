@@ -8,34 +8,20 @@
   >
     <slot name="before" v-bind="scope"></slot>
     <slot name="loader" v-bind="scope">
-      <span
-        :class="['loader', loaderClass]"
-        v-if="scope.working"
-        :style="loaderStyle"
-      ></span>
+      <span :class="['loader', loaderClass]" v-if="scope.working" :style="loaderStyle"></span>
     </slot>
     <slot name="logo" v-bind="scope" v-if="scope.idle && scope.disconnected">
-      <v-facebook-logo-alt
-        :style="logoStyle"
-        v-if="useAltLogo"
-        :class="['logo', logoClass]"
-      ></v-facebook-logo-alt>
-      <v-facebook-logo
-        v-else
-        :style="logoStyle"
-        :class="['logo', logoClass]"
-      ></v-facebook-logo>
+      <v-facebook-logo-alt :style="logoStyle" v-if="useAltLogo" :class="['logo', logoClass]"></v-facebook-logo-alt>
+      <v-facebook-logo v-else :style="logoStyle" :class="['logo', logoClass]"></v-facebook-logo>
     </slot>
     <span :class="textClass" :style="textStyle">
-      <slot name="login" v-bind="scope" v-if="scope.idle && scope.disconnected"
-        >Continue with Facebook</slot
-      >
-      <slot name="logout" v-bind="scope" v-if="scope.idle && scope.connected"
-        >Logout</slot
-      >
-      <slot name="working" v-bind="scope" v-if="scope.working"
-        >Please wait...</slot
-      >
+      <slot
+        name="login"
+        v-bind="scope"
+        v-if="scope.idle && scope.disconnected"
+      >Continue with Facebook</slot>
+      <slot name="logout" v-bind="scope" v-if="scope.idle && scope.connected">Logout</slot>
+      <slot name="working" v-bind="scope" v-if="scope.working">Please wait...</slot>
       <slot name="error" v-bind="scope" v-if="scope.error">⛔ Error</slot>
     </span>
     <slot name="after" v-bind="scope"></slot>
@@ -123,9 +109,16 @@ $color-chambray: #3b55a0;
   align-items: center;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
+  box-sizing: border-box;
   justify-content: center;
   border: 1px solid rgba($color-white, 0.05);
   background-color: lighten($color-chambray, 1%);
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
 
   &[disabled] {
     opacity: 0.75;

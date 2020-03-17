@@ -8,17 +8,13 @@
         title="Alternate Logo"
         @click="toggleAltLogo"
         v-if="facebook.model.enabled && disconnected"
-        >💋</v-button
-      >
-      <v-button is-icon title="Invert Colors" @click="toggleInvert"
-        >🍭</v-button
-      >
+      >💋</v-button>
+      <v-button is-icon title="Invert Colors" @click="toggleInvert">🍭</v-button>
       <v-button
         title="Logout"
         @click="facebook.scope.logout"
         v-if="facebook.scope.logout && connected"
-        >logout</v-button
-      >
+      >logout</v-button>
       <v-social :pkg="pkg"></v-social>
     </v-nav>
     <!-- NAV end -->
@@ -44,10 +40,7 @@
       </v-facebook-login>
       <!-- DEMO end -->
 
-      <v-install-anchor
-        class="mt-25"
-        :to="$refs.readme ? $refs.readme.$el : null"
-      ></v-install-anchor>
+      <v-install-anchor class="mt-25" :to="$refs.readme ? $refs.readme.$el : null"></v-install-anchor>
     </v-hero>
 
     <!-- README -->

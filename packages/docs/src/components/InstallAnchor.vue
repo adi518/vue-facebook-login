@@ -1,7 +1,5 @@
 <template>
-  <v-a class="install-anchor" :to="$attrs.to">
-    Install, Examples & Documentation
-  </v-a>
+  <v-a class="install-anchor" :to="$attrs.to">Install, Examples & Documentation</v-a>
 </template>
 
 <script>
@@ -26,7 +24,8 @@ export default {
   transform: translateX(-50%);
 
   &:hover {
-    color: inherit;
+    color: #8b9dc3;
+    text-decoration: none;
   }
 
   @include media-breakpoint-down(sm) {

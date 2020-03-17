@@ -4,19 +4,19 @@
 
 ## [Install](#install)
 
-### Using NPM:
+### NPM
 
 ```console
 npm install vue-facebook-login-component
 ```
 
-### Using Yarn:
+### Yarn
 
 ```console
 yarn add vue-facebook-login-component
 ```
 
-### Embed Directly as a Script
+### Embed Directly
 
 ```html
 <script src="https://unpkg.com/vue-facebook-login-component/dist/vue-facebook-login-component.umd.min.js"></script>
@@ -93,14 +93,14 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 ## [Props](#props)
 
-<div id="props-table-wrap" class="docs-table-wrap">
+<div class="table table-cols-4"></div>
 
 | Name          | Type    | Default                                                 | Note                                                                                                                          |
 | ------------- | ------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| value         | Object  | `{ connected: false }`                                  | Used for one-way V-Model. [ &ast;&ast;&ast; ]                                                                                 |
+| value         | Object  | `{}`                                                    | Used for one-way V-Model. [ &ast;&ast;&ast; ]                                                                                 |
 | app-id        | String  | `NONE`                                                  | Required. [ &ast;&ast;&ast; ]                                                                                                 |
 | version       | String  | `'v6.0'`                                                | [ &ast;&ast;, &ast;&ast;&ast; ]                                                                                               |
-| options       | Object  | `{ cookie: true, xfbml: true, autoLogAppEvents: true }` | SDK Options. [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                           |
+| options       | Object  | `{ cookie: true, xfbml: true, autoLogAppEvents: true }` | SDK options. [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                           |
 | login-options | Object  | `{ scope: 'email' }`                                    | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
 | logo-class    | String  | `NONE`                                                  | [ &ast; ]                                                                                                                     |
 | logo-style    | Object  | `{}`                                                    | [ &ast; ]                                                                                                                     |
@@ -115,23 +115,21 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 ### Note Asterisks Legend
 
-<div id="notes-table-wrap" class="docs-table-wrap">
+<div class="table"></div>
 
 | Type   | Description                                                                                              |
 | ------ | -------------------------------------------------------------------------------------------------------- |
 | \*     | Properties should be camel-case. Example: `login-options` → `loginOptions`.                              |
 | \*\*   | See [Facebook](https://developers.facebook.com/docs/javascript/reference/FB.init/) for available values. |
-| \*\*\* | Scope-component property.                                                                                |
-
-</div>
+| \*\*\* | Scope component property.                                                                                |
 
 ### [useAltLogo Prop](#use-alt-logo-prop)
 
-Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo). This prop was released as `useAlternateLogo` in `2.0.0` but shortened to `useAltLogo` in `2.1.0`, a one-off breaking change. Versioning in this package follows [semver](https://semver.org/).
+Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo). This prop was released as `useAlternateLogo` in `2.0.0` but shortened to `useAltLogo` in `2.1.0`, a one-off breaking change.
 
 ## [Slots](#slots)
 
-<div id="slots-table-wrap" class="docs-table-wrap">
+<div class="table table-cols-3"></div>
 
 | Name    | Default                                                         | Description                                                            |
 | ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------- |
@@ -143,11 +141,9 @@ Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1
 | after   | `NONE`                                                          | After all nested elements.                                             |
 | error   | `'⛔ Error'`                                                    | Shown on error (e.g., SDK load failure).                               |
 
-</div>
-
 ## [Events](#events)
 
-<div id="events-table-wrap" class="docs-table-wrap">
+<div class="table table-cols-4"></div>
 
 | Name     | Payload            | Description                                                                               | Note      |
 | -------- | ------------------ | ----------------------------------------------------------------------------------------- | --------- |
@@ -156,9 +152,7 @@ Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1
 | logout   | (response[Object]) | User logged out.                                                                          | [ &ast; ] |
 | click    | [Void]             | &nbsp;                                                                                    | [ &ast; ] |
 
-</div>
-
-[ &ast; ] - Scope-component event.
+[ &ast; ] - Scope component event.
 
 ### [Sdk-Init Event](#sdk-init-event)
 
@@ -197,32 +191,31 @@ You can use this event to grab the Facebook SDK instance, but **also** the under
 
 ## [Scope Component (Advanced Customization)](#scope-component-advanced-customization)
 
-If props, slots and events do not provide enough customization, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** HTML or CSS, but rather expose a scoped-slot with attributes and methods that are committed as API. Read more about [scoped slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
+If props, slots and events do not provide enough customization, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** HTML or CSS, but rather expose a scoped-slot with attributes and methods that are committed as API. [Read more](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots) about scoped slots.
 
 ### Props and Events
 
-Refer to the [tables](#props) above for scope-component **specific** props/events.
+Refer to the [tables](#props) above for scope component **specific** props/events.
 
-### Scoped-Slot Scope (Attributes and Methods)
+### [Scoped-Slot Scope (Attributes and Methods)](#scoped-slot-scope-attributes-and-methods)
 
-<div id="scope-table-wrap" class="docs-table-wrap">
+<div class="table table-cols-3"></div>
 
-| Name         | Type     | Description                             |
-| ------------ | -------- | --------------------------------------- |
-| login        | Function | Login handler.                          |
-| logout       | Function | Logout handler.                         |
-| toggleLogin  | Function | Toggles login/logout.                   |
-| working      | Boolean  | Asynchronous operation is taking place. |
-| connected    | Boolean  | User is logged in.                      |
-| disconnected | Boolean  | User is logged out.                     |
-| enabled      | Boolean  | Button is enabled.                      |
-| disabled     | Boolean  | Button is disabled.                     |
+| Name         | Type     | Description                                |
+| ------------ | -------- | ------------------------------------------ |
+| login        | Function | Login handler.                             |
+| logout       | Function | Logout handler.                            |
+| toggleLogin  | Function | Toggles login/logout.                      |
+| idle         | Boolean  | No asynchronous operation is taking place. |
+| working      | Boolean  | Asynchronous operation is taking place.    |
+| connected    | Boolean  | User is logged in.                         |
+| disconnected | Boolean  | User is logged out.                        |
+| enabled      | Boolean  | Button is enabled.                         |
+| disabled     | Boolean  | Button is disabled.                        |
 
-</div>
+### [Scope Component Example](#scope-component-example)
 
-### Scope Component Example
-
-The following snippet is a minimal usage example, see [source](https://github.com/adi518/vue-facebook-login-component/blob/master/src/components/FBLogin.vue) for a full, real-word example.
+The following snippet is a minimal usage example, see [source](https://github.com/adi518/vue-facebook-login-component/blob/master/src/components/Scoped.vue) for a full, real-word example.
 
 ```html
 <template>
@@ -249,7 +242,7 @@ The following snippet is a minimal usage example, see [source](https://github.co
 
 This component embeds the [Facebook SDK snippet](https://developers.facebook.com/docs/javascript/quickstart/), so you don't have to do it yourself. However, if you do want to embed it yourself, you can do so and the component will pick up your SDK instance instead.
 
-## "Uncaught ReferenceError: regeneratorRuntime is not defined"
+## ["Uncaught ReferenceError: regeneratorRuntime is not defined"](#uncaught-referenceerror-regeneratorruntime-is-not-defined)
 
 This package uses `async/await` syntax, which is based on [generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators). In short, if you target old browsers (think about that carefully) you'll have to add [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) to your dependencies. See this [issue](https://github.com/adi518/vue-facebook-login-component/issues/17) for more details.
 

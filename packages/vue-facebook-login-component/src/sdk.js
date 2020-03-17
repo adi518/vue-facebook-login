@@ -1,9 +1,17 @@
 // https://developers.facebook.com/docs/apps/versions/
+// https://developers.facebook.com/docs/javascript/quickstart/
 // https://developers.facebook.com/docs/javascript/reference/
 // https://developers.facebook.com/docs/javascript/reference/FB.init/
-// https://developers.facebook.com/docs/javascript/quickstart/
+// https://stackoverflow.com/questions/43445301/access-token-warning-when-logging-in-using-facebook-javascript-sdk
 
 export const FACEBOOK_SCRIPT_ID = 'facebook-jssdk'
+
+// https://developers.facebook.com/docs/reference/javascript/FB.getLoginStatus
+export const LOGIN_STATUSES = {
+  UNKNOWN: 'unknown',
+  CONNECTED: 'connected',
+  NOT_AUTHORIZED: 'not_authorized'
+}
 
 function handleLoadError(error) {
   console.error(
@@ -86,6 +94,6 @@ export class Sdk {
   }
 
   static isConnected(status) {
-    return status === 'connected'
+    return status === LOGIN_STATUSES.CONNECTED
   }
 }

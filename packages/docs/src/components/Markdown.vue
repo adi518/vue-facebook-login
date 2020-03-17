@@ -24,13 +24,13 @@ export default {
 .markdown {
   pre[class*='language-'] {
     margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 2em;
   }
 
   code[class*='language-'],
   pre[class*='language-'] {
     line-height: 2;
-    font-size: 1rem;
+    font-size: 1em;
     color: #767693;
     // https://www.colorhexa.com/1c284c
     // https://www.colorhexa.com/0c1121
@@ -39,8 +39,8 @@ export default {
 
   :not(pre) > code[class*='language-'],
   pre[class*='language-'] {
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
 
     @include media-breakpoint-down(xs) {
       padding-top: 3em;
@@ -53,20 +53,25 @@ export default {
     position: relative;
   }
 
-  .toolbar > div {
+  .toolbar {
+    right: 0;
+    bottom: 100%;
+    display: flex;
     position: absolute;
+    margin-bottom: 0.5em;
+  }
+
+  .toolbar-item {
+    margin-left: 0.5em;
   }
 
   /* show-language */
-  .toolbar > div:nth-child(1) {
-    top: 0;
-    right: 0;
+  .toolbar-item:nth-child(1) {
+    cursor: default;
     color: #666666;
-    margin-top: 1rem;
-    font-size: 0.6rem;
+    font-size: 0.6em;
     font-weight: bold;
-    margin-right: 1rem;
-    letter-spacing: 0.05rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     transition: color var(--common-transition-time);
 
@@ -76,29 +81,22 @@ export default {
   }
 
   /* copy-to-clipboard */
-  .toolbar > div:nth-child(2) {
-    right: 0;
-    bottom: 0;
-    margin-right: 1rem;
-    margin-bottom: 0.825rem;
-
+  .toolbar-item:nth-child(2) {
     button {
       padding: 0;
       display: block;
       border-width: 0;
-      font-size: 0.6rem;
+      font-size: 0.6em;
+      font-weight: 700;
       color: var(--color-gray);
-      letter-spacing: 0.05rem;
-      border-radius: 0.325rem;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       background-color: transparent;
       transition: background-color var(--common-transition-time),
         padding var(--common-transition-time);
 
       &:hover {
-        color: #1d1f21;
-        padding: 0.05rem 1rem;
-        background-color: rgba(245, 242, 240, 0.9);
+        color: #8b9dc3;
       }
     }
   }
@@ -107,8 +105,8 @@ export default {
     margin: 0;
 
     p {
-      padding-left: 1rem;
-      border-left: 0.125rem solid #8b9dc3;
+      padding-left: 1em;
+      border-left: 0.125em solid #8b9dc3;
 
       img {
         display: block;
@@ -119,10 +117,10 @@ export default {
   a {
     code {
       word-break: break-word;
-      padding-top: 0.125rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      padding-bottom: 0.125rem;
+      padding-top: 0.125em;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+      padding-bottom: 0.125em;
       background-color: #0c1121;
     }
   }
@@ -152,7 +150,7 @@ export default {
     width: 100%;
     max-width: 200%;
     color: #2f4480;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5em;
     background-color: rgba(#f5f2f0, 0.9);
 
     code {
@@ -181,7 +179,7 @@ export default {
 
   th,
   td {
-    padding: 1rem;
+    padding: 1em;
     border-right: 1px solid;
 
     a {

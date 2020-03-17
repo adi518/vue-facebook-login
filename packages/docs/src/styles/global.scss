@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,700');
+@import url('https://fonts.googleapis.com/css?family=Inter:300,700&display=swap');
+
 @import '@/styles/bootstrap';
 @import '~animate.css/animate.min.css';
 
@@ -8,7 +9,9 @@
 }
 
 html {
-  font-size: 120%;
+  font-size: 115%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   @include media-breakpoint-down(xs) {
     font-size: 110%;
@@ -27,6 +30,10 @@ li {
 
 a {
   transition: color var(--common-transition-time);
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 p,

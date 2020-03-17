@@ -6,7 +6,7 @@ export default {
   props: {
     value: {
       type: Object,
-      default: () => ({ connected: false })
+      default: () => ({})
     },
     appId: {
       type: String,
