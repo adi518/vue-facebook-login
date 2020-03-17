@@ -166,10 +166,12 @@ export default {
 
   th {
     font-weight: bold;
+    vertical-align: middle;
     background-color: rgba(#8b9dc3, 0.9);
   }
 
   td {
+    vertical-align: top;
     border-top: 1px solid;
 
     &:first-child {
@@ -180,8 +182,6 @@ export default {
   th,
   td {
     padding: 1rem;
-    vertical-align: top;
-    vertical-align: middle;
     border-right: 1px solid;
   }
 }

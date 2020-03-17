@@ -191,7 +191,7 @@ You can use this event to grab the Facebook SDK instance, but **also** the under
 </script>
 ```
 
-## [Advanced Customization (Scope Component)](#advanced-customization-scope-component)
+## [Scope Component (Advanced Customization)](#scope-component-advanced-customization)
 
 If props, slots and events do not provide enough customization, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** HTML or CSS, but rather only expose a scoped-slot with attributes and methods that are committed as API. Read more about [scoped slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
 
@@ -245,7 +245,7 @@ The following snippet is a minimal usage example, see [source](https://github.co
 
 This component embeds the [Facebook SDK snippet](https://developers.facebook.com/docs/javascript/quickstart/), so you don't have to do it yourself. However, if you do want to embed it yourself, you can do so and the component will pick up your SDK instance instead.
 
-## Uncaught ReferenceError: regeneratorRuntime is not defined
+## "Uncaught ReferenceError: regeneratorRuntime is not defined"
 
 This package uses `async/await` syntax, which is based on [generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators). In short, if you target old browsers (think about that carefully) you'll have to add [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) to your dependencies. See this [issue](https://github.com/adi518/vue-facebook-login-component/issues/17) for more details.
 
