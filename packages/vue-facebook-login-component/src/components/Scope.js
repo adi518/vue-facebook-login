@@ -18,7 +18,7 @@ export default {
     },
     options: {
       type: Object,
-      default: () => ({})
+      default: () => ({ cookie: true, xfbml: true, autoLogAppEvents: true }) // https://developers.facebook.com/docs/javascript/quickstart
     },
     loginOptions: {
       type: Object,

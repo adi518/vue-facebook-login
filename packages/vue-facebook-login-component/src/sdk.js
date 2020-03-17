@@ -16,8 +16,6 @@ export function initSdk(options) {
   return new Promise((resolve, reject) => {
     // prettier-ignore
     window.fbAsyncInit = function() {
-      const defaults = { cookie: true, xfbml: true }
-      options = { ...defaults, ...options }
       window.FB.init(options)
       resolve(window.FB)
     }; // eslint-disable-line

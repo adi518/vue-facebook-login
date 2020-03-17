@@ -77,8 +77,8 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 - Updated style with leaner CSS.
 - Updated all slots to [scoped-slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
 - Updated error slot to appear on all errors.
-- Updated logo to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
-- Updated labels to comply better with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
+- Updated logo to comply with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
+- Updated labels to comply with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
 
 ### Fixed
 
@@ -94,21 +94,21 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 <div id="props-table-wrap" class="docs-table-wrap">
 
-| Name          | Type    | Default                | Note                                                                                                                          |
-| ------------- | ------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| value         | Object  | `{ connected: false }` | Used for one-way V-Model. [ &ast;&ast;&ast; ]                                                                                 |
-| app-id        | String  | None                   | Required. [ &ast;&ast;&ast; ]                                                                                                 |
-| version       | String  | `'v6.0'`               | [ &ast;&ast;, &ast;&ast;&ast; ]                                                                                               |
-| options       | Object  | `{}`                   | SDK Options. [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                           |
-| login-options | Object  | `{ scope: 'email' }`   | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
-| logo-class    | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| logo-style    | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| text-class    | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| text-style    | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| loader-class  | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| loader-style  | Object  | `{}`                   | [ &ast; ]                                                                                                                     |
-| transition    | Array   | `[]`                   | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`. |
-| use-alt-logo  | Boolean | `false`                | Use [Iconmonstr alternate Facebook logo](https://iconmonstr.com/facebook-6-svg/).                                             |
+| Name          | Type    | Default                                                 | Note                                                                                                                          |
+| ------------- | ------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| value         | Object  | `{ connected: false }`                                  | Used for one-way V-Model. [ &ast;&ast;&ast; ]                                                                                 |
+| app-id        | String  | `NONE`                                                  | Required. [ &ast;&ast;&ast; ]                                                                                                 |
+| version       | String  | `'v6.0'`                                                | [ &ast;&ast;, &ast;&ast;&ast; ]                                                                                               |
+| options       | Object  | `{ cookie: true, xfbml: true, autoLogAppEvents: true }` | SDK Options. [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                           |
+| login-options | Object  | `{ scope: 'email' }`                                    | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
+| logo-class    | String  | `NONE`                                                  | [ &ast; ]                                                                                                                     |
+| logo-style    | Object  | `{}`                                                    | [ &ast; ]                                                                                                                     |
+| text-class    | String  | `NONE`                                                  | [ &ast; ]                                                                                                                     |
+| text-style    | Object  | `{}`                                                    | [ &ast; ]                                                                                                                     |
+| loader-class  | String  | `NONE`                                                  | [ &ast; ]                                                                                                                     |
+| loader-style  | Object  | `{}`                                                    | [ &ast; ]                                                                                                                     |
+| transition    | Array   | `[]`                                                    | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`. |
+| use-alt-logo  | Boolean | `false`                                                 | Use [Iconmonstr alternate Facebook logo](https://iconmonstr.com/facebook-6-svg/).                                             |
 
 </div>
 
@@ -118,7 +118,7 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 | Type   | Description                                                                                              |
 | ------ | -------------------------------------------------------------------------------------------------------- |
-| \*     | Properties should be camel-case.                                                                         |
+| \*     | Properties should be camel-case. Example: `login-options` → `loginOptions`.                              |
 | \*\*   | See [Facebook](https://developers.facebook.com/docs/javascript/reference/FB.init/) for available values. |
 | \*\*\* | Scope-component property.                                                                                |
 
@@ -161,13 +161,17 @@ Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1
 
 ### [Sdk-Init Event](#sdk-init-event)
 
-You can use this event to grab the Facebook SDK instance, but **also** the underlying component `scope` object. Using this object, you can control the component empirically, similarly to how you would with `ref`. See example:
+You can use this event to grab the Facebook SDK instance, but **also** the underlying component `scope` object. Using this object, you can control the component empirically, similarly to how you would with `ref`.
+
+> ⚠️ The scope reference is not reactive and you **cannot** relay on it for other than utilizing the scope methods. For reactivity, use the `v-model` directive.
+
+### [Sdk-Init Event Example](#sdk-init-event-example)
 
 ```html
 <template>
   <div>
-    <v-facebook-login @sdk-init="handleSdkInit" />
-    <button v-if="facebook.scope.logout" @click="facebook.scope.logout">
+    <v-facebook-login v-model="model" @sdk-init="handleSdkInit" />
+    <button v-if="scope.logout && model.connected" @click="scope.logout">
       Logout
     </button>
   </div>
@@ -176,15 +180,14 @@ You can use this event to grab the Facebook SDK instance, but **also** the under
 <script>
   export default {
     data: () => ({
-      facebook: {
-        FB: {},
-        scope: {}
-      }
+      FB: {},
+      model: {},
+      scope: {}
     }),
     methods: {
       handleSdkInit({ FB, scope }) {
-        this.facebook.scope = scope
-        this.facebook.FB = FB
+        this.FB = FB
+        this.scope = scope
       }
     }
   }
@@ -269,13 +272,13 @@ Add [babel-polyfill](https://babeljs.io/docs/en/babel-polyfill) to your dependen
 
 Fork, clone and use the following scripts.
 
-For component:
+### Component
 
 ```console
 yarn start
 ```
 
-For documentation:
+### Documentation
 
 ```console
 yarn start:docs

@@ -12,9 +12,9 @@
     "build": "cross-env NODE_OPTIONS=--max_old_space_size=8192 vue-cli-service build",
     "build:inspect": "vue-cli-service inspect > output.js",
     "lint": "vue-cli-service lint",
-    "predeploy": "yarn && yarn update & yarn version --patch --no-git-tag-version && yarn build",
-    "deploy": "node ./gh-pages",
-    "postdeploy": "node ./post-deploy"
+    "prerelease": "yarn && yarn update & yarn version --patch --no-git-tag-version && yarn build",
+    "release": "node ./gh-pages",
+    "postrelease": "node ./post-release"
   },
   "dependencies": {
     "@vue/composition-api": "^0.4.0",
