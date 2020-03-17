@@ -1,6 +1,6 @@
 {
   "name": "docs",
-  "version": "1.0.64",
+  "version": "1.0.65",
   "description": "Documentation for vue-facebook-component-login",
   "author": "Adi Sahar",
   "license": "MIT",
@@ -29,7 +29,7 @@
     "vue": "^2.6.11",
     "vue-analytics": "^5.22.1",
     "vue-breakpoint-component": "^1.2.6",
-    "vue-facebook-login-component": "^2.1.1",
+    "vue-facebook-login-component": "^2.1.3",
     "vue-flatten-routes": "^1.1.0",
     "vue-github-button": "^1.1.2",
     "vue-markdown": "^2.2.4",
