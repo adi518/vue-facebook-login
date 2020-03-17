@@ -257,7 +257,7 @@ This package uses `async/await` syntax, which is based on [generators](https://d
 npm install --save regenerator-runtime
 ```
 
-Then, import it at the topmost of your `main.js` (or similar entry-point).
+Then, import it at the topmost of your `main.js` (or a similar entry-point).
 
 ```js
 import 'regenerator-runtime'

@@ -183,6 +183,13 @@ export default {
   td {
     padding: 1rem;
     border-right: 1px solid;
+
+    a {
+      code {
+        padding: 0;
+        background-color: transparent;
+      }
+    }
   }
 }
 </style>
