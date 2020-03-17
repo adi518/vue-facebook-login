@@ -116,6 +116,17 @@ export default {
     }
   }
 
+  a {
+    code {
+      word-break: break-word;
+      padding-top: 0.125rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      padding-bottom: 0.125rem;
+      background-color: #0c1121;
+    }
+  }
+
   code {
     color: #fe8c52;
   }

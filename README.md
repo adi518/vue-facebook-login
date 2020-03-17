@@ -56,7 +56,7 @@ To use the component in your template, simply import and register with your comp
 
 ## [JS Fiddle](#js-fiddle)
 
-See [JS Fiddle](https://jsfiddle.net/adi518/jfa0gys8/30/) for an interactive live example.
+See [JS Fiddle](https://jsfiddle.net/adi518/jfa0gys8/30/) for a vanilla example.
 
 ## [What's New in Version 2.0](#whats-new-in-version-20)
 
@@ -109,7 +109,7 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 </div>
 
-### Notes Asterisks Legend
+### Note Asterisks Legend
 
 <div id="notes-table-wrap" class="docs-table-wrap">
 
