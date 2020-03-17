@@ -5,8 +5,7 @@
   "author": "Adi Sahar",
   "license": "MIT",
   "files": [
-    "dist",
-    "../../README.md"
+    "dist"
   ],
   "main": "dist/vue-facebook-login-component.umd.min.js",
   "private": false,
