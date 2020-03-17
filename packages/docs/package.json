@@ -8,7 +8,7 @@
   "scripts": {
     "start": "yarn serve",
     "serve": "vue-cli-service serve --https --host localhost",
-    "update": "yarn vue-facebook-login-component@latest",
+    "update": "yarn add vue-facebook-login-component",
     "build": "cross-env NODE_OPTIONS=--max_old_space_size=8192 vue-cli-service build",
     "build:inspect": "vue-cli-service inspect > output.js",
     "lint": "vue-cli-service lint",
@@ -29,7 +29,7 @@
     "vue": "^2.6.11",
     "vue-analytics": "^5.22.1",
     "vue-breakpoint-component": "^1.2.6",
-    "vue-facebook-login-component": "^2.0.0",
+    "vue-facebook-login-component": "^2.1.1",
     "vue-flatten-routes": "^1.1.0",
     "vue-github-button": "^1.1.2",
     "vue-markdown": "^2.2.4",
