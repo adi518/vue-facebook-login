@@ -7,13 +7,13 @@
 ### Using NPM:
 
 ```console
-$ npm install react-ryo-cli
+npm install vue-facebook-login-component
 ```
 
 ### Using Yarn:
 
 ```console
-$ yarn add react-ryo-cli
+yarn add vue-facebook-login-component
 ```
 
 ### Embed Directly as a Script
