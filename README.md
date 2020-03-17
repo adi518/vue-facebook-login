@@ -275,7 +275,7 @@ For component:
 yarn start
 ```
 
-For documentation (includes a demo):
+For documentation:
 
 ```console
 yarn start:docs
