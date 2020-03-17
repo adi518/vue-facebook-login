@@ -76,6 +76,7 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 - Updated style with leaner CSS.
 - Updated all slots to [scoped-slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
+- Updated prop `version` default to: `v6.0`.
 - Updated error slot to appear on all errors.
 - Updated logo to comply with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
 - Updated labels to comply with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
