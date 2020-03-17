@@ -193,7 +193,7 @@ You can use this event to grab the Facebook SDK instance, but **also** the under
 
 ## [Scope Component (Advanced Customization)](#scope-component-advanced-customization)
 
-If props, slots and events do not provide enough customization, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** HTML or CSS, but rather only expose a scoped-slot with attributes and methods that are committed as API. Read more about [scoped slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
+If props, slots and events do not provide enough customization, you can use an underlying component called `v-fb-login-scope`. This component uses the render prop (known as "scoped-slot" in Vue) approach for composition. This means, it does not render **any** HTML or CSS, but rather expose a scoped-slot with attributes and methods that are committed as API. Read more about [scoped slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
 
 ### Props and Events
 
