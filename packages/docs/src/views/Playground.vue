@@ -3,37 +3,47 @@
     <h2>Vanilla Example</h2>
     <p>
       This is a vanilla example, using the bare miniumum required for using the
-      component. Basically, all you need is your application id, otherwise the
-      component will be disabled.
+      component. Basically, all you need is your application id.
     </p>
     <p>
-      <v-facebook-login :app-id="appId"></v-facebook-login>
+      <v-facebook-login-button :scope="disconnected"></v-facebook-login-button>
     </p>
     <h3>Working State</h3>
+    <p>
+      <v-facebook-login-button :scope="working"></v-facebook-login-button>
+    </p>
+    <h3>Connected State</h3>
+    <p>
+      <v-facebook-login-button :scope="connected"></v-facebook-login-button>
+    </p>
     <h3>Disabled State</h3>
-    <p>The component will be disabled on:</p>
+    <p>The component will be disabled on these events.</p>
     <ul>
       <li>Error</li>
       <li>Missing application id</li>
       <li>Asynchronous operation</li>
     </ul>
     <p>
-      <v-facebook-login></v-facebook-login>
+      <v-facebook-login-button :scope="disabled"></v-facebook-login-button>
     </p>
   </div>
 </template>
 
 <script>
-import VFacebookLogin from 'vue-facebook-login-component'
+import { VFBLoginButton as VFacebookLoginButton } from 'vue-facebook-login-component'
 
 export default {
-  name: 'Demo',
-  components: { VFacebookLogin },
+  name: 'Playground',
+  components: { VFacebookLoginButton },
   data: () => ({
     appId:
       process.env.NODE_ENV === 'development'
         ? '852858511574509'
-        : '2146252248983683'
+        : '2146252248983683',
+    disabled: { idle: true, disconnected: true, disabled: true },
+    disconnected: { idle: true, disconnected: true },
+    connected: { idle: true, connected: true },
+    working: { working: true }
   })
 }
 </script>

@@ -8,20 +8,34 @@
   >
     <slot name="before" v-bind="scope"></slot>
     <slot name="loader" v-bind="scope">
-      <span :class="['loader', loaderClass]" v-if="scope.working" :style="loaderStyle"></span>
+      <span
+        :class="['loader', loaderClass]"
+        v-if="scope.working"
+        :style="loaderStyle"
+      ></span>
     </slot>
     <slot name="logo" v-bind="scope" v-if="scope.idle && scope.disconnected">
-      <v-facebook-logo-alt :style="logoStyle" v-if="useAltLogo" :class="['logo', logoClass]"></v-facebook-logo-alt>
-      <v-facebook-logo v-else :style="logoStyle" :class="['logo', logoClass]"></v-facebook-logo>
+      <v-facebook-logo-alt
+        :style="logoStyle"
+        v-if="useAltLogo"
+        :class="['logo', logoClass]"
+      ></v-facebook-logo-alt>
+      <v-facebook-logo
+        v-else
+        :style="logoStyle"
+        :class="['logo', logoClass]"
+      ></v-facebook-logo>
     </slot>
     <span :class="textClass" :style="textStyle">
-      <slot
-        name="login"
-        v-bind="scope"
-        v-if="scope.idle && scope.disconnected"
-      >Continue with Facebook</slot>
-      <slot name="logout" v-bind="scope" v-if="scope.idle && scope.connected">Logout</slot>
-      <slot name="working" v-bind="scope" v-if="scope.working">Please wait...</slot>
+      <slot name="login" v-bind="scope" v-if="scope.idle && scope.disconnected"
+        >Continue with Facebook</slot
+      >
+      <slot name="logout" v-bind="scope" v-if="scope.idle && scope.connected"
+        >Logout</slot
+      >
+      <slot name="working" v-bind="scope" v-if="scope.working"
+        >Please wait...</slot
+      >
       <slot name="error" v-bind="scope" v-if="scope.error">⛔ Error</slot>
     </span>
     <slot name="after" v-bind="scope"></slot>
@@ -85,7 +99,7 @@ export default {
   methods: {
     handleClick() {
       this.$emit('click')
-      this.scope.toggleLogin()
+      this.scope.toggleLogin?.()
     }
   }
 }
@@ -97,7 +111,7 @@ export default {
 // http://www.color-hex.com/color-palette/185
 // https://icons8.com/icon/set/facebook-f/all
 
-$token-size: 1.5rem;
+$token-size: 1.25rem;
 $color-white: #ffffff;
 $color-nepal: #8b9dc3;
 $color-chambray: #3b55a0;
