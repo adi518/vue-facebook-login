@@ -3,36 +3,4 @@
   h1 + blockquote {
     display: none;
   }
-
-  .table {
-    @include media-breakpoint-down(xs) {
-      overflow-x: scroll;
-    }
-
-    th:nth-child(1) {
-      width: 20%;
-    }
-  }
-
-  .table-cols-4 {
-    th {
-      &:nth-child(2) {
-        width: 20%;
-      }
-
-      &:nth-child(3),
-      &:nth-child(4) {
-        width: 30%;
-      }
-    }
-  }
-
-  .table-cols-3 {
-    th {
-      &:nth-child(2),
-      &:nth-child(3) {
-        width: 40%;
-      }
-    }
-  }
 }

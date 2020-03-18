@@ -146,9 +146,40 @@ export default {
     }
   }
 
+  .table {
+    @include media-breakpoint-down(xs) {
+      overflow-x: scroll;
+    }
+
+    th:nth-child(1) {
+      width: 20%;
+    }
+  }
+
+  .table-cols-4 {
+    th {
+      &:nth-child(2) {
+        width: 20%;
+      }
+
+      &:nth-child(3),
+      &:nth-child(4) {
+        width: 30%;
+      }
+    }
+  }
+
+  .table-cols-3 {
+    th {
+      &:nth-child(2),
+      &:nth-child(3) {
+        width: 40%;
+      }
+    }
+  }
+
   table {
     width: 100%;
-    max-width: 200%;
     color: #2f4480;
     margin-bottom: 1.5em;
     background-color: rgba(#f5f2f0, 0.9);
