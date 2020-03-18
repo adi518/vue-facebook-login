@@ -123,7 +123,7 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 | \*\*   | See [Facebook](https://developers.facebook.com/docs/javascript/reference/FB.init/) for available values. |
 | \*\*\* | Scope component property.                                                                                |
 
-</div>                                                                         |
+</div>
 
 ### [useAltLogo Prop](#use-alt-logo-prop)
 
