@@ -10,7 +10,11 @@ import { useWindowScrollPosition } from 'vue-use-web'
 import { provide, computed } from '@vue/composition-api'
 
 export const NavSymbol = Symbol()
-export const NAV_STICKY_HEIGHT = 65.3125
+export const getNavHeight = () =>
+  document
+    .getElementsByTagName('nav')[0]
+    .getBoundingClientRect()
+    .height.toFixed(2)
 
 export const VNavProvider = {
   setup() {
@@ -47,9 +51,9 @@ export default {
 
   &.is-sticky {
     position: fixed;
-    padding-top: 0.8rem;
-    padding-bottom: 0.8rem;
-    background-color: #1c284c;
+    // padding-top: 0.8rem;
+    // padding-bottom: 0.8rem;
+    background-color: #3c57a4;
   }
 }
 </style>

@@ -5,17 +5,17 @@
   }
 
   .table {
-    + table th:nth-child(1) {
-      width: 20%;
-    }
-
     @include media-breakpoint-down(xs) {
       overflow-x: scroll;
+    }
+
+    th:nth-child(1) {
+      width: 20%;
     }
   }
 
   .table-cols-4 {
-    + table th {
+    th {
       &:nth-child(2) {
         width: 20%;
       }
@@ -28,7 +28,7 @@
   }
 
   .table-cols-3 {
-    + table th {
+    th {
       &:nth-child(2),
       &:nth-child(3) {
         width: 40%;

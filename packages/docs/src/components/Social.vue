@@ -7,11 +7,12 @@
       <v-github-stars :pkg="pkg"></v-github-stars>
     </v-hide-at>
     <v-nav-provider>
-      <v-github-anchor
+      <v-github-anchor :pkg="pkg"></v-github-anchor>
+      <!-- <v-github-anchor
         :pkg="pkg"
         slot-scope="{ isSticky }"
         :size="isSticky.value ? '1.625rem' : '2rem'"
-      ></v-github-anchor>
+      ></v-github-anchor> -->
     </v-nav-provider>
   </div>
 </template>

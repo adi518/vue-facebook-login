@@ -93,7 +93,7 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 ## [Props](#props)
 
-<div class="table table-cols-4"></div>
+<div class="table table-cols-4">
 
 | Name          | Type    | Default                                                 | Note                                                                                                                          |
 | ------------- | ------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -115,7 +115,7 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 ### Note Asterisks Legend
 
-<div class="table"></div>
+<div class="table">
 
 | Type   | Description                                                                                              |
 | ------ | -------------------------------------------------------------------------------------------------------- |
@@ -123,13 +123,15 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 | \*\*   | See [Facebook](https://developers.facebook.com/docs/javascript/reference/FB.init/) for available values. |
 | \*\*\* | Scope component property.                                                                                |
 
+</div>                                                                         |
+
 ### [useAltLogo Prop](#use-alt-logo-prop)
 
 Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1-svg/) (this will bring back `v1.x` logo). This prop was released as `useAlternateLogo` in `2.0.0` but shortened to `useAltLogo` in `2.1.0`, a one-off breaking change.
 
 ## [Slots](#slots)
 
-<div class="table table-cols-3"></div>
+<div class="table table-cols-3">
 
 | Name    | Default                                                         | Description                                                            |
 | ------- | --------------------------------------------------------------- | ---------------------------------------------------------------------- |
@@ -141,9 +143,11 @@ Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1
 | after   | `NONE`                                                          | After all nested elements.                                             |
 | error   | `'⛔ Error'`                                                    | Shown on error (e.g., SDK load failure).                               |
 
+</div>
+
 ## [Events](#events)
 
-<div class="table table-cols-4"></div>
+<div class="table table-cols-4">
 
 | Name     | Payload            | Description                                                                               | Note      |
 | -------- | ------------------ | ----------------------------------------------------------------------------------------- | --------- |
@@ -151,6 +155,8 @@ Offering an alternative logo from [Iconmonstr](https://iconmonstr.com/facebook-1
 | login    | (response[Object]) | User logged in.                                                                           | [ &ast; ] |
 | logout   | (response[Object]) | User logged out.                                                                          | [ &ast; ] |
 | click    | [Void]             | &nbsp;                                                                                    | [ &ast; ] |
+
+</div>
 
 [ &ast; ] - Scope component event.
 
@@ -199,7 +205,7 @@ Refer to the [tables](#props) above for scope component **specific** props/event
 
 ### [Scoped-Slot Scope (Attributes and Methods)](#scoped-slot-scope-attributes-and-methods)
 
-<div class="table table-cols-3"></div>
+<div class="table table-cols-3">
 
 | Name         | Type     | Description                                |
 | ------------ | -------- | ------------------------------------------ |
@@ -212,6 +218,8 @@ Refer to the [tables](#props) above for scope component **specific** props/event
 | disconnected | Boolean  | User is logged out.                        |
 | enabled      | Boolean  | Button is enabled.                         |
 | disabled     | Boolean  | Button is disabled.                        |
+
+</div>
 
 ### [Scope Component Example](#scope-component-example)
 

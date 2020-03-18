@@ -1,5 +1,7 @@
 <template>
-  <div @click="handleClick" class="scroll-to-top" :class="visibilityClass">↑</div>
+  <div @click="handleClick" class="scroll-to-top" :class="visibilityClass">
+    ↑
+  </div>
 </template>
 
 <script>
@@ -37,11 +39,13 @@ export default {
   right: 0;
   bottom: 0;
   opacity: 0;
+  z-index: 1;
   margin: 1rem;
   cursor: default;
   position: fixed;
   color: #8b9dc3;
   line-height: normal;
+
   padding-top: 0.15rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;

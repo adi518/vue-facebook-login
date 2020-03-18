@@ -6,8 +6,8 @@
     >
       <!-- <a href="https://jsfiddle.net/adi518/jfa0gys8">JS Fiddle</a> -->
       <template v-if="breakpoint.noMatch">
-        <v-github-stars></v-github-stars>
-        <v-downloads></v-downloads>
+        <v-github-stars :pkg="pkg"></v-github-stars>
+        <v-downloads :pkg="pkg"></v-downloads>
       </template>
     </v-menu>
     <v-scroll-to-anchor></v-scroll-to-anchor>
@@ -29,12 +29,12 @@ import VScrollToTop from '@/components/ScrollToTop'
 import ScrollToAnchor from '@/components/ScrollToAnchor'
 
 import router, { routes } from '@/router'
-import { NAV_STICKY_HEIGHT } from '@/components/Nav'
+import { getNavHeight } from '@/components/Nav'
 import menuToken from '@/assets/vue-logo-facebook.svg'
 import pkg from 'vue-facebook-login-component/package.json'
 
 const VScrollToAnchor = new ScrollToAnchor(router, {
-  offsetY: NAV_STICKY_HEIGHT
+  offsetY: () => getNavHeight() * 2
 })
 
 export default {

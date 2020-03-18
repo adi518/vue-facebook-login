@@ -51,6 +51,7 @@
 
   @include media-breakpoint-down(xs) {
     width: 8rem;
+    margin-top: 0;
 
     &:hover {
       width: 8.5rem;

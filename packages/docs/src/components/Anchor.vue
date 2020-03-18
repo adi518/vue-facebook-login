@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { NAV_STICKY_HEIGHT } from '@/components/Nav'
+import { getNavHeight } from '@/components/Nav'
 
 export default {
   name: 'VA',
@@ -48,6 +48,10 @@ export default {
     static: {
       type: Boolean,
       default: false
+    },
+    offsetY: {
+      type: Function,
+      default: getNavHeight
     }
   },
   computed: {
@@ -77,16 +81,21 @@ export default {
       // eslint-disable-next-line no-console
       console.error(`No such ref as "${ref}".`)
     },
-    scrollTo(ref) {
+    async scrollTo(ref) {
       const element =
         ref instanceof Element ? ref : this.getElementByRef(ref, this.refs)
       if (element) {
         const y =
           element.getBoundingClientRect().top +
           window.pageYOffset -
-          NAV_STICKY_HEIGHT
+          (await this.raf(this.offsetY))
         window.scrollTo({ top: y, behavior: 'smooth' })
       }
+    },
+    raf(callback) {
+      return new Promise(resolve =>
+        window.requestAnimationFrame(() => resolve(callback()))
+      )
     }
   }
 }

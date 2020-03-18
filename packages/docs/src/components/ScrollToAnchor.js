@@ -6,6 +6,22 @@ const getPaths = router =>
     {}
   )
 
+// https://stackoverflow.com/questions/52292603/is-there-a-callback-for-window-scrollto
+function scrollTo(offset, callback = () => {}) {
+  const onScroll = function() {
+    if (window.pageYOffset === Math.floor(offset)) {
+      window.removeEventListener('scroll', onScroll)
+      callback()
+    }
+  }
+  window.addEventListener('scroll', onScroll)
+  onScroll()
+  window.scrollTo({
+    top: offset,
+    behavior: 'smooth'
+  })
+}
+
 const beforeEach = (to, from, next) => {
   if (to.matched.length) return next()
   next({ path: `${from.path}?a=${to.path.substr(1)}` })
@@ -13,7 +29,7 @@ const beforeEach = (to, from, next) => {
 
 let Component = null
 
-const ScrollToAnchor = (router, { offsetY = 0 } = {}) => {
+const ScrollToAnchor = (router, { offsetY = async () => 0 } = {}) => {
   if (Component) {
     // eslint-disable-next-line no-console
     return console.error(
@@ -58,7 +74,7 @@ const ScrollToAnchor = (router, { offsetY = 0 } = {}) => {
   return Component
 }
 
-const scrollToAnchor = (anchorElOrId, offsetY = 0) => {
+const scrollToAnchor = (anchorElOrId, offsetY = () => 0) => {
   return new Promise(resolve => {
     window.requestAnimationFrame(() => {
       let anchorEl
@@ -76,15 +92,15 @@ const scrollToAnchor = (anchorElOrId, offsetY = 0) => {
           document.getElementById(anchorElOrId) ||
           document.querySelector(`[href='#${anchorElOrId}'`)
       }
-      const y =
-        anchorEl.getBoundingClientRect().top + window.pageYOffset - offsetY
-      window.scrollTo({ top: y, behavior: 'smooth' })
+      const y = () =>
+        anchorEl.getBoundingClientRect().top + window.pageYOffset - offsetY()
+      scrollTo(y())
       resolve()
     })
   })
 }
 
-function GlobalAnchorClickListener(paths, offsetY = 0) {
+function GlobalAnchorClickListener(paths, offsetY = () => 0) {
   async function handleClick(event) {
     const anchorEl = event.target.closest('a') || event.target
     if (!(anchorEl instanceof HTMLAnchorElement)) return
