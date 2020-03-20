@@ -32,6 +32,7 @@
         :useAltLogo="facebook.useAltLogo"
         class="docs-v-facebook-login mx-auto"
         logo-class="docs-v-facebook-login-logo"
+        loader-class="docs-v-facebook-login-loader"
         :class="{ 'is-connected': connected, 'is-inverted': inverted }"
       >
         <template slot="after">
@@ -194,8 +195,13 @@ export default {
   }
 
   @at-root {
-    .docs-v-facebook-login-logo {
+    .docs-v-facebook-login-logo,
+    .docs-v-facebook-login-loader {
       width: 1.75rem !important;
+    }
+
+    .docs-v-facebook-login-loader {
+      height: 1.75rem !important;
     }
   }
 }
