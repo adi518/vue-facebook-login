@@ -1,26 +1,28 @@
 <template>
   <div>
     <!-- NAV -->
-    <v-nav>
-      <v-title :pkg="pkg" :docsPkg="docs"></v-title>
-      <v-button
+    <Nav>
+      <Title :pkg="pkg" :docsPkg="docs" />
+      <Button
         is-icon
         title="Alternate Logo"
         @click="toggleAltLogo"
         v-if="facebook.model.enabled && disconnected"
-      >💋</v-button>
-      <v-button is-icon title="Invert Colors" @click="toggleInvert">🍭</v-button>
-      <v-button
+        >💋
+      </Button>
+      <Button is-icon title="Invert Colors" @click="toggleInvert">🍭</Button>
+      <Button
         title="Logout"
         @click="facebook.scope.logout"
         v-if="facebook.scope.logout && connected"
-      >logout</v-button>
-      <v-social :pkg="pkg"></v-social>
-    </v-nav>
+        >logout</Button
+      >
+      <Social :pkg="pkg" />
+    </Nav>
     <!-- NAV end -->
 
-    <v-hero>
-      <vue-logo class="mb-25"></vue-logo>
+    <Hero>
+      <VueLogo class="mb-25" />
 
       <!-- DEMO -->
       <v-facebook-login
@@ -36,57 +38,43 @@
         :class="{ 'is-connected': connected, 'is-inverted': inverted }"
       >
         <template slot="after">
-          <v-avatar v-if="idle && connected" :avatarUrl="avatarUrl"></v-avatar>
+          <Avatar v-if="idle && connected" :avatarUrl="avatarUrl" />
         </template>
       </v-facebook-login>
       <!-- DEMO end -->
 
-      <v-install-anchor class="mt-25" :to="$refs.readme ? $refs.readme.$el : null"></v-install-anchor>
-    </v-hero>
+      <InstallAnchor
+        class="mt-25"
+        :to="$refs.readme ? $refs.readme.$el : null"
+      ></InstallAnchor>
+    </Hero>
 
     <!-- README -->
-    <v-page ref="readme">
+    <Page ref="readme">
       <router-view></router-view>
-    </v-page>
+    </Page>
     <!-- README end -->
 
-    <v-breakpoint v-model="breakpoint"></v-breakpoint>
+    <Breakpoint v-model="breakpoint" />
   </div>
 </template>
 
 <script>
 import { get } from 'lodash'
 import VFacebookLogin from 'vue-facebook-login-component'
-import VBreakpoint, { VHideAt, VShowAt } from 'vue-breakpoint-component'
-
-import VNav from '@/components/Nav'
-import VPage from '@/components/Page'
-import VHero from '@/components/Hero'
-import VTitle from '@/components/Title'
-import VAvatar from '@/components/Avatar'
-import VueLogo from '@/components/VueLogo'
-import VSocial from '@/components/Social'
-import VButton from '@/components/Button'
-import VInstallAnchor from '@/components/InstallAnchor'
+import Breakpoint, { VHideAt, VShowAt } from 'vue-breakpoint-component'
 
 import docs from 'docs/package.json'
+import Avatar from '@/components/Avatar'
 import pkg from 'vue-facebook-login-component/package.json'
 
 export default {
   name: 'Docs',
   components: {
-    VNav,
-    VHero,
-    VPage,
-    VTitle,
-    VAvatar,
-    VueLogo,
+    Avatar,
     VHideAt, // eslint-disable-line
     VShowAt, // eslint-disable-line
-    VSocial,
-    VButton,
-    VBreakpoint,
-    VInstallAnchor,
+    Breakpoint,
     VFacebookLogin
   },
   data: () => ({
@@ -164,7 +152,7 @@ export default {
 // https://tobiasahlin.com/blog/how-to-animate-box-shadow/
 .docs-v-facebook-login {
   font-family: inherit !important;
-  box-shadow: 0rem 12rem 1.825rem -0.125rem rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0rem 21vh 1.825rem -0.125rem rgba(0, 0, 0, 0.2) !important;
 
   &.is-inverted {
     color: #3b55a0 !important;
@@ -198,9 +186,6 @@ export default {
     .docs-v-facebook-login-logo,
     .docs-v-facebook-login-loader {
       width: 1.75rem !important;
-    }
-
-    .docs-v-facebook-login-loader {
       height: 1.75rem !important;
     }
   }

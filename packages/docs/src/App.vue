@@ -1,52 +1,43 @@
 <template>
   <div id="app">
-    <v-menu
+    <Menu
       :routes="routes"
       :token-style="{ backgroundImage: `url(${menuToken})` }"
     >
       <!-- <a href="https://jsfiddle.net/adi518/jfa0gys8">JS Fiddle</a> -->
       <template v-if="breakpoint.noMatch">
-        <v-github-stars :pkg="pkg"></v-github-stars>
-        <v-downloads :pkg="pkg"></v-downloads>
+        <Downloads :pkg="pkg" />
+        <GithubStars :pkg="pkg" />
       </template>
-    </v-menu>
-    <v-scroll-to-anchor></v-scroll-to-anchor>
-    <v-scroll-to-top></v-scroll-to-top>
-    <router-view></router-view>
-    <v-footer :pkg="pkg"></v-footer>
-    <v-breakpoint v-model="breakpoint"></v-breakpoint>
+    </Menu>
+    <RouterView />
+    <ScrollToTop />
+    <ScrollToAnchor />
+    <Footer :pkg="pkg" />
+    <Breakpoint v-model="breakpoint" />
   </div>
 </template>
 
 <script>
-import { VBreakpoint } from 'vue-breakpoint-component'
-
-import VMenu from '@/components/Menu'
-import VFooter from '@/components/Footer'
-import VDownloads from '@/components/Downloads'
-import VGithubStars from '@/components/GitHubStars'
-import VScrollToTop from '@/components/ScrollToTop'
-import ScrollToAnchor from '@/components/ScrollToAnchor'
+import Breakpoint from 'vue-breakpoint-component'
+import {
+  getNavHeight,
+  ScrollToAnchor as ScrollToAnchorCreator
+} from 'vue-components'
 
 import router, { routes } from '@/router'
-import { getNavHeight } from '@/components/Nav'
 import menuToken from '@/assets/vue-logo-facebook.svg'
 import pkg from 'vue-facebook-login-component/package.json'
 
-const VScrollToAnchor = new ScrollToAnchor(router, {
+const ScrollToAnchor = new ScrollToAnchorCreator(router, {
   offsetY: () => getNavHeight() * 2
 })
 
 export default {
   name: 'app',
   components: {
-    VMenu,
-    VFooter,
-    VDownloads,
-    VBreakpoint,
-    VGithubStars,
-    VScrollToTop,
-    VScrollToAnchor
+    Breakpoint,
+    ScrollToAnchor
   },
   data: () => ({
     pkg,

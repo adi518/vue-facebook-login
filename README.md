@@ -270,7 +270,7 @@ import 'regenerator-runtime'
 
 Add [babel-polyfill](https://babeljs.io/docs/en/babel-polyfill) to your dependencies. Notice the deprecated method and the newly recommended method.
 
-## Development
+## [Development](#development)
 
 Fork, clone and use the following scripts.
 

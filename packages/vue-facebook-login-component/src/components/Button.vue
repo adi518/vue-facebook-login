@@ -8,11 +8,11 @@
   >
     <slot name="before" v-bind="scope"></slot>
     <slot name="loader" v-bind="scope">
-      <span
+      <v-loader
         :class="['loader', loaderClass]"
         v-if="scope.working"
         :style="loaderStyle"
-      ></span>
+      ></v-loader>
     </slot>
     <slot name="logo" v-bind="scope" v-if="scope.idle && scope.disconnected">
       <v-facebook-logo-alt
@@ -44,12 +44,14 @@
 
 <script>
 import Logo from './Logo'
+import Loader from './Loader'
 import LogoAlt from './LogoAlt'
 
 export default {
   inheritAttrs: false,
   name: 'v-facebook-login-button',
   components: {
+    VLoader: Loader,
     VFacebookLogo: Logo,
     VFacebookLogoAlt: LogoAlt
   },
@@ -111,10 +113,9 @@ export default {
 // http://www.color-hex.com/color-palette/185
 // https://icons8.com/icon/set/facebook-f/all
 
+@import '@/components/colors';
+
 $token-size: 1.25rem;
-$color-white: #ffffff;
-$color-nepal: #8b9dc3;
-$color-chambray: #3b55a0;
 
 .v-facebook-login {
   display: flex;
@@ -155,39 +156,13 @@ $color-chambray: #3b55a0;
 }
 
 .logo {
-  height: auto;
-  margin-right: 1.5ch;
-}
-
-.loader {
-  display: block;
-  border-radius: 50%;
-  border-style: solid;
-  border-width: 0.1rem;
-  border-top-color: $color-nepal;
-  border-left-color: $color-white;
-  border-right-color: $color-white;
-  border-bottom-color: $color-white;
-  animation: spin 2s linear infinite;
-}
-
-.loader {
+  width: $token-size;
   height: $token-size;
-  margin-right: 1ch;
 }
 
 .logo,
 .loader {
   opacity: 0.925;
-  width: $token-size;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  margin-right: 1.25ch;
 }
 </style>

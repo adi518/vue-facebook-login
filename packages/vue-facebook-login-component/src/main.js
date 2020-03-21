@@ -2,6 +2,7 @@ import Button from '@/components/Composed.vue'
 
 export { default as VFBLogin } from '@/components/Composed.vue'
 export { default as VFBLoginScope } from '@/components/Scope.js'
+export { default as VFBLoginLoader } from '@/components/Loader.vue'
 export { default as VFBLoginButton } from '@/components/Button.vue'
 
 export const Install = {
