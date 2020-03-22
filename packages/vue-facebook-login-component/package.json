@@ -39,7 +39,6 @@
     "vue": "^2.x"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
     "@vue/cli-plugin-babel": "^4.2.3",
     "@vue/cli-plugin-eslint": "^4.2.3",
     "@vue/cli-plugin-unit-jest": "~4.2.0",

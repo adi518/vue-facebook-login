@@ -37,7 +37,6 @@
     "vue-use-web": "^0.10.1"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-object-rest-spread": "^7.9.0",
     "@vue/cli-plugin-babel": "^4.2.3",
     "@vue/cli-plugin-eslint": "^4.2.3",
     "@vue/cli-service": "^4.2.3",
