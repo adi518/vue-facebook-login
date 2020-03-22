@@ -24,6 +24,7 @@
     "lodash": "^4.17.15",
     "lodash.reject": "^4.6.0",
     "npm-check": "^5.9.2",
+    "smoothscroll-polyfill": "^0.4.4",
     "vue": "^2.6.11",
     "vue-analytics": "^5.22.1",
     "vue-breakpoint-component": "^1.2.6",
