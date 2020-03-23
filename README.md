@@ -97,33 +97,23 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 
 | Name          | Type    | Default                                                 | Note                                                                                                                          |
 | ------------- | ------- | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| value         | Object  | `{}`                                                    | Used for one-way V-Model. [ &ast;&ast;&ast; ]                                                                                 |
-| app-id        | String  | `NONE`                                                  | Required. [ &ast;&ast;&ast; ]                                                                                                 |
-| version       | String  | `'v6.0'`                                                | [ &ast;&ast;, &ast;&ast;&ast; ]                                                                                               |
-| options       | Object  | `{ cookie: true, xfbml: true, autoLogAppEvents: true }` | SDK options. [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                           |
-| login-options | Object  | `{ scope: 'email' }`                                    | [ &ast;, &ast;&ast;, &ast;&ast;&ast; ]                                                                                        |
-| logo-class    | String  | `NONE`                                                  | [ &ast; ]                                                                                                                     |
-| logo-style    | Object  | `{}`                                                    | [ &ast; ]                                                                                                                     |
-| text-class    | String  | `NONE`                                                  | [ &ast; ]                                                                                                                     |
-| text-style    | Object  | `{}`                                                    | [ &ast; ]                                                                                                                     |
-| loader-class  | String  | `NONE`                                                  | [ &ast; ]                                                                                                                     |
-| loader-style  | Object  | `{}`                                                    | [ &ast; ]                                                                                                                     |
+| value         | Object  | `{}`                                                    | Used for one-way V-Model. [ &ast; ]                                                                                           |
+| app-id        | String  | `NONE`                                                  | Required. [ &ast; ]                                                                                                           |
+| version       | String  | `'v6.0'`                                                | See [versions](https://developers.facebook.com/docs/graph-api/changelog/). [ &ast; ]                                          |
+| options       | Object  | `{ cookie: true, xfbml: true, autoLogAppEvents: true }` | See [options](https://developers.facebook.com/docs/javascript/reference/FB.init/). [ &ast; ]                                  |
+| login-options | Object  | `{ scope: 'email' }`                                    | See [options](https://developers.facebook.com/docs/reference/javascript/FB.login/). [ &ast; ]                                 |
+| logo-class    | String  | `NONE`                                                  |                                                                                                                               |
+| logo-style    | Object  | `{}`                                                    |                                                                                                                               |
+| text-class    | String  | `NONE`                                                  |                                                                                                                               |
+| text-style    | Object  | `{}`                                                    |                                                                                                                               |
+| loader-class  | String  | `NONE`                                                  |                                                                                                                               |
+| loader-style  | Object  | `{}`                                                    |                                                                                                                               |
 | transition    | Array   | `[]`                                                    | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`. |
 | use-alt-logo  | Boolean | `false`                                                 | Use [Iconmonstr alternate Facebook logo](https://iconmonstr.com/facebook-6-svg/).                                             |
 
 </div>
 
-### Note Asterisks Legend
-
-<div class="table">
-
-| Type   | Description                                                                                              |
-| ------ | -------------------------------------------------------------------------------------------------------- |
-| \*     | Properties should be camel-case. Example: `login-options` → `loginOptions`.                              |
-| \*\*   | See [Facebook](https://developers.facebook.com/docs/javascript/reference/FB.init/) for available values. |
-| \*\*\* | Scope component property.                                                                                |
-
-</div>
+[ &ast; ] - Scope component prop.
 
 ### [useAltLogo Prop](#use-alt-logo-prop)
 
