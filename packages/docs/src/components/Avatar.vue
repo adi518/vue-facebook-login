@@ -1,9 +1,6 @@
 <template>
   <span class="avatar-wrap">
-    <span
-      :class="['avatar', { 'is-visible': avatarUrl }]"
-      :style="avatarStyle"
-    ></span>
+    <span :class="['avatar', { 'is-visible': avatarUrl }]" :style="avatarStyle"></span>
     <Loader class="loader" v-show="!avatarUrl" />
   </span>
 </template>
@@ -55,7 +52,7 @@ export default {
 
 .loader,
 .avatar {
-  width: inherit;
-  height: inherit;
+  width: inherit !important;
+  height: inherit !important;
 }
 </style>
