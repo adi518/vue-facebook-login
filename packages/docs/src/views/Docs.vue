@@ -17,6 +17,15 @@
         v-if="facebook.scope.logout && connected"
         >logout</Button
       >
+      <ScrollToTopScope>
+        <Button
+          is-icon
+          slot-scope="scope"
+          title="Back to Top"
+          @click="scope.scrollToTop"
+          >👆</Button
+        >
+      </ScrollToTopScope>
       <Social :pkg="pkg" />
     </Nav>
     <!-- NAV end -->
@@ -51,7 +60,7 @@
 
     <!-- README -->
     <Page ref="readme">
-      <router-view></router-view>
+      <RouterView />
     </Page>
     <!-- README end -->
 

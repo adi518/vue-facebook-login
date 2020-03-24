@@ -11,7 +11,9 @@
       </template>
     </Menu>
     <RouterView />
+    <!-- <ShowAt small-down> -->
     <ScrollToTop />
+    <!-- </ShowAt> -->
     <ScrollToAnchor />
     <Footer :pkg="pkg" />
     <Breakpoint v-model="breakpoint" />
@@ -19,7 +21,7 @@
 </template>
 
 <script>
-import Breakpoint from 'vue-breakpoint-component'
+import { extend as extendBreakpoint } from 'vue-breakpoint-component'
 import {
   getNavHeight,
   ScrollToAnchor as ScrollToAnchorCreator
@@ -33,9 +35,25 @@ const ScrollToAnchor = new ScrollToAnchorCreator(router, {
   offsetY: () => getNavHeight() * 2
 })
 
+const breakpoints = {
+  small: '(min-width: 576px)',
+  medium: '(min-width: 768px)',
+  large: '(min-width: 992px)',
+  xlarge: '(min-width: 1200px)',
+  xsmallDown: '(max-width: 575.98px)',
+  smallDown: '(max-width: 767.98px)',
+  mediumDown: '(max-width: 991.98px)',
+  largeDown: '(max-width: 1199.98px)'
+}
+
+const { VShowAt: ShowAt, VBreakpoint: Breakpoint } = extendBreakpoint({
+  breakpoints
+})
+
 export default {
   name: 'app',
   components: {
+    ShowAt,
     Breakpoint,
     ScrollToAnchor
   },

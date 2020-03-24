@@ -164,18 +164,18 @@ Refer to the [tables](#props-table-wrap) above for scope-component **specific** 
 
 This component embeds the [Facebook SDK snippet](https://developers.facebook.com/docs/javascript/quickstart/), so you don't have to do it yourself. However, if you want to embed it yourself, you can do so and the component will pick up the SDK instance instead.
 
-## Uncaught ReferenceError: regeneratorRuntime is not defined
+## "Uncaught ReferenceError: regeneratorRuntime is not defined"
 
-This package uses `async/await` syntax, which is based on [generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators). In short, if you target old browsers (think about that carefully) you'll have to add [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) to your dependencies. See this [issue](https://github.com/adi518/vue-facebook-login-component/issues/17) for more details.
+This package uses `async/await` syntax, which is based on [generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators). In short, if you target you'll have to add [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) to your dependencies. See this [issue](https://github.com/adi518/vue-facebook-login-component/issues/17) for more details.
 
 ```console
 npm install --save regenerator-runtime
 ```
 
-Then, import it at the topmost of your `main.js` (or similar entry-point).
+Then, import it at the topmost of your `main.js` (or a similar entry-point).
 
 ```js
-import 'regenerator-runtime'
+import 'regenerator-runtime/runtime'
 
 // ...rest of your imports
 ```

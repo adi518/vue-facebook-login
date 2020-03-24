@@ -16,12 +16,12 @@ export const routes = [
       {
         path: '/',
         component: Readme,
-        name: 'Documentation'
+        name: 'Docs'
       },
       {
         path: '/v1.x',
         component: ReadmeV1,
-        name: 'Documentation v1.x'
+        name: 'Docs v1.x'
       },
       ...(process.env.NODE_ENV === 'development'
         ? [

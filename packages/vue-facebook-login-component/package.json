@@ -7,12 +7,12 @@
   "files": [
     "dist"
   ],
-  "main": "dist/vue-facebook-login-component.umd.min.js",
+  "main": "dist/vueFacebookLoginComponent.umd.min.js",
   "private": false,
   "scripts": {
     "start": "yarn build:watch",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name %npm_package_name% ./src/main.js",
+    "build": "vue-cli-service build --target lib --name vueFacebookLoginComponent ./src/main.js",
     "build:watch": "yarn build --watch",
     "build:stats": "vue-cli-service build --report",
     "test:unit": "vue-cli-service test:unit --watch",

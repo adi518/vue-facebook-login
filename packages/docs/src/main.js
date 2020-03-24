@@ -1,5 +1,3 @@
-import 'core-js/stable'
-import 'regenerator-runtime/runtime'
 import smoothscroll from 'smoothscroll-polyfill'
 
 import Vue from 'vue'

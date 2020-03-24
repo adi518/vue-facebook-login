@@ -120,8 +120,6 @@ export default {
     }
   },
   render() {
-    if (this.$scopedSlots.default) {
-      return this.$scopedSlots.default(this.scope)
-    }
+    return this.$scopedSlots.default?.(this.scope)
   }
 }

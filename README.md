@@ -199,11 +199,11 @@ Refer to the [tables](#props) above for scope component **specific** props/event
 
 | Name         | Type     | Description                                |
 | ------------ | -------- | ------------------------------------------ |
-| login        | Function | Login handler.                             |
-| logout       | Function | Logout handler.                            |
-| toggleLogin  | Function | Toggles login/logout.                      |
-| idle         | Boolean  | No asynchronous operation is taking place. |
+| login        | Function | Call SDK login method.                     |
+| logout       | Function | Call SDK logout method.                    |
+| toggleLogin  | Function | Toggle SDK login/logout methods.           |
 | working      | Boolean  | Asynchronous operation is taking place.    |
+| idle         | Boolean  | No asynchronous operation is taking place. |
 | connected    | Boolean  | User is logged in.                         |
 | disconnected | Boolean  | User is logged out.                        |
 | enabled      | Boolean  | Button is enabled.                         |
@@ -213,7 +213,7 @@ Refer to the [tables](#props) above for scope component **specific** props/event
 
 ### [Scope Component Example](#scope-component-example)
 
-The following snippet is a minimal usage example, see [source](https://github.com/adi518/vue-facebook-login-component/blob/master/packages/vue-facebook-login-component/src/components/Composed.vue) for a full, real-word example.
+The following snippet is a minimal usage example, see [source](https://github.com/adi518/vue-facebook-login-component/blob/master/packages/vue-facebook-login-component/src/components/Composed.vue) for a real-world example.
 
 ```html
 <template>
@@ -226,11 +226,11 @@ The following snippet is a minimal usage example, see [source](https://github.co
 </template>
 
 <script>
-  import { VFBLoginScope } from 'vue-facebook-login-component'
+  import { VFBLoginScope as VFacebookLoginScope } from 'vue-facebook-login-component'
 
   export default {
     components: {
-      VFBLoginScope
+      VFacebookLoginScope
     }
   }
 </script>
@@ -238,27 +238,15 @@ The following snippet is a minimal usage example, see [source](https://github.co
 
 ## [Loading Facebook SDK](#loading-facebook-sdk)
 
-This component embeds the [Facebook SDK snippet](https://developers.facebook.com/docs/javascript/quickstart/), so you don't have to do it yourself. However, if you do want to embed it yourself, you can do so and the component will pick up your SDK instance instead.
+This component embeds the [Facebook SDK snippet](https://developers.facebook.com/docs/javascript/quickstart/) unless it find an existing SDK instance. However, be sure to resolve `window.fbAsyncInit` **before** a component instance is created, otherwise a racing condition will occur and it may not be able to find the SDK instance. See [Facebook docs](https://developers.facebook.com/docs/javascript/quickstart/) for more.
 
-## ["Uncaught ReferenceError: regeneratorRuntime is not defined"](#uncaught-referenceerror-regeneratorruntime-is-not-defined)
+## [Legacy Browser Support](#ie-support)
 
-This package uses `async/await` syntax, which is based on [generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators). In short, if you target old browsers (think about that carefully) you'll have to add [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime) to your dependencies. See this [issue](https://github.com/adi518/vue-facebook-login-component/issues/17) for more details.
+You probably don't need any polyfills to support IE as the current build statistically targets legacy browsers like IE 11 and applies transforms and polyfills adaptively. However, it is bound to change in the future as statistics change. In such case, you'll need to add [@babel/polyfill](https://babeljs.io/docs/en/babel-polyfill) to your dependencies (notice the deprecated way to do it and the newly recommended one).
 
-```console
-npm install --save regenerator-runtime
-```
+> ⚠️ Notice the difference between a transform and a polyfill. Future syntax has to be transformed, while new language API requires a polyfill. As time passes, both transformations and polyfills may drop from the build, meaning a polyfill alone won't suffice to support legacy browsers, you'll also have to include this component in your transpiled dependencies (e.g., using `transpileDependencies` option in [`vue.config.js`](https://cli.vuejs.org/config/#transpiledependencies)).
 
-Then, import it at the topmost of your `main.js` (or a similar entry-point).
-
-```js
-import 'regenerator-runtime'
-
-// ...rest of your imports
-```
-
-## [IE support](#ie-support)
-
-Add [babel-polyfill](https://babeljs.io/docs/en/babel-polyfill) to your dependencies. Notice the deprecated method and the newly recommended method.
+> ⚠️ TL;DR: Upgrade to `2.x` to support legacy browsers. Versions `1.5.1` to `1.6.0` have a maltransformed and unpolyfilled build that will not work with legacy browsers unless you add it to your transpiled dependencies and import `@babel/polyfill`. To fix that please upgrade to `2.x` (recommended) or downgrade to `<= 1.5.0`. Versions `<=1.3.6` should work in legacy browsers without issues. Versions `1.3.7-1.5.0` require `@babel/polyfill` if your app doesn't already include it.
 
 ## [Development](#development)
 
