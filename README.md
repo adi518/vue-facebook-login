@@ -242,9 +242,13 @@ This component embeds the [Facebook SDK snippet](https://developers.facebook.com
 
 ## [Legacy Browser Support](#ie-support)
 
-You probably don't need any polyfills to support IE as the current build statistically targets legacy browsers like IE 11 and applies transforms and polyfills adaptively. However, it is bound to change in the future as statistics change. In such case, you'll need to add [@babel/polyfill](https://babeljs.io/docs/en/babel-polyfill) to your dependencies (notice the deprecated way to do it and the newly recommended one).
+> ❤️ You probably don't need to apply transformations or polyfills to support IE.
 
-> ⚠️ Notice the difference between a transform and a polyfill. Future syntax has to be transformed, while new language API requires a polyfill. As time passes, both transformations and polyfills may drop from the build, meaning a polyfill alone won't suffice to support legacy browsers, you'll also have to include this component in your transpiled dependencies (e.g., using `transpileDependencies` option in [`vue.config.js`](https://cli.vuejs.org/config/#transpiledependencies)).
+The current build statistically targets legacy browsers like IE 11 and applies transforms and polyfills adaptively. However, it is bound to change in the future as statistics change. In such case, you'll need to add [@babel/polyfill](https://babeljs.io/docs/en/babel-polyfill) to your dependencies (notice the deprecated way to do it and the newly recommended one). Additionally, you'll have to add this component to your transpiled dependencies (e.g., using `transpileDependencies` option in [`vue.config.js`](https://cli.vuejs.org/config/#transpiledependencies)).
+
+> ⚠️ Notice the difference between a transform and a polyfill. Future syntax has to be transformed, while new language API requires a polyfill.
+
+### Version 1.x
 
 > ⚠️ TL;DR: Upgrade to `2.x` to support legacy browsers. Versions `<=1.3.6` should work in legacy browsers without issues. Versions `1.3.7-1.5.0` require `@babel/polyfill` if your app doesn't already include it. Versions `1.5.1` to `1.6.0` have a maltransformed and unpolyfilled build that will not work with legacy browsers unless you add it to your transpiled dependencies and import `@babel/polyfill`. To fix that please upgrade to `2.x` (recommended) or downgrade to `<= 1.5.0`.
 

@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <Menu
-      :routes="routes"
-      :token-style="{ backgroundImage: `url(${menuToken})` }"
-    >
+    <Menu :routes="routes" :token-style="{ backgroundImage: `url(${menuToken})` }">
       <!-- <a href="https://jsfiddle.net/adi518/jfa0gys8">JS Fiddle</a> -->
       <template v-if="breakpoint.noMatch">
         <Downloads :pkg="pkg" />
@@ -12,7 +9,7 @@
     </Menu>
     <RouterView />
     <!-- <ShowAt small-down> -->
-    <ScrollToTop />
+    <!-- <ScrollToTop /> -->
     <!-- </ShowAt> -->
     <ScrollToAnchor />
     <Footer :pkg="pkg" />
