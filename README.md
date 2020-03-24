@@ -246,7 +246,7 @@ You probably don't need any polyfills to support IE as the current build statist
 
 > ⚠️ Notice the difference between a transform and a polyfill. Future syntax has to be transformed, while new language API requires a polyfill. As time passes, both transformations and polyfills may drop from the build, meaning a polyfill alone won't suffice to support legacy browsers, you'll also have to include this component in your transpiled dependencies (e.g., using `transpileDependencies` option in [`vue.config.js`](https://cli.vuejs.org/config/#transpiledependencies)).
 
-> ⚠️ TL;DR: Upgrade to `2.x` to support legacy browsers. Versions `1.5.1` to `1.6.0` have a maltransformed and unpolyfilled build that will not work with legacy browsers unless you add it to your transpiled dependencies and import `@babel/polyfill`. To fix that please upgrade to `2.x` (recommended) or downgrade to `<= 1.5.0`. Versions `<=1.3.6` should work in legacy browsers without issues. Versions `1.3.7-1.5.0` require `@babel/polyfill` if your app doesn't already include it.
+> ⚠️ TL;DR: Upgrade to `2.x` to support legacy browsers. Versions `<=1.3.6` should work in legacy browsers without issues. Versions `1.3.7-1.5.0` require `@babel/polyfill` if your app doesn't already include it. Versions `1.5.1` to `1.6.0` have a maltransformed and unpolyfilled build that will not work with legacy browsers unless you add it to your transpiled dependencies and import `@babel/polyfill`. To fix that please upgrade to `2.x` (recommended) or downgrade to `<= 1.5.0`.
 
 ## [Development](#development)
 
