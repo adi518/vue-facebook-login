@@ -53,7 +53,7 @@ const { VShowAt: ShowAt, VBreakpoint: Breakpoint } = extendBreakpoint({
 export default {
   name: 'app',
   components: {
-    ShowAt,
+    ShowAt, // eslint-disable-line
     Breakpoint,
     ScrollToAnchor
   },
