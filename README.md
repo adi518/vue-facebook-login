@@ -19,7 +19,7 @@ yarn add vue-facebook-login-component
 ### Embed Directly
 
 ```html
-<script src="https://unpkg.com/vue-facebook-login-component/dist/vue-facebook-login-component.umd.min.js"></script>
+<script src="https://unpkg.com/vue-facebook-login-component/dist/vueFacebookLoginComponent.umd.min.js"></script>
 ```
 
 > When embedding, the script automatically registers itself as a Vue plugin.
