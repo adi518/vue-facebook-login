@@ -69,7 +69,7 @@ describe('Scope', () => {
     wrapper.vm.login()
     await flushPromises()
     expect(login).toHaveBeenCalledTimes(1)
-    expect(login).toHaveBeenLastCalledWith('connected')
+    expect(login).toHaveBeenLastCalledWith({ status: 'connected' })
     expect(wrapper.isEmpty()).toBe(true)
   })
 

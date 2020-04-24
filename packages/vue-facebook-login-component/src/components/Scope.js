@@ -92,10 +92,10 @@ export default {
     },
     async login() {
       const promise = login(this.loginOptions)
-      const { status } = await this.async(promise)
-      if (Sdk.isConnected(status)) {
+      const response = await this.async(promise)
+      if (Sdk.isConnected(response.status)) {
         this.connected = true
-        this.$emit('login', status)
+        this.$emit('login', response)
       }
       return promise
     },
