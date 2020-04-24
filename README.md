@@ -270,9 +270,19 @@ yarn start
 yarn start:docs
 ```
 
+### Tests
+
+```console
+yarn test
+```
+
 ## Support
 
 Please search existing issues (including closed ones) before starting a new [issue](https://github.com/adi518/vue-facebook-login-component/issues). 🙌
+
+## Contributing
+
+Start a pull request, run tests and update as necessary before submitting.
 
 ## [Related Links](#related-links)
 
