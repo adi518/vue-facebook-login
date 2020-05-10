@@ -107,6 +107,7 @@ exports[`Button logout scoped-slot 1`] = `
       {
   "idle": true,
   "error": null,
+  "hasError": false,
   "working": false,
   "enabled": true,
   "disabled": false,
@@ -158,8 +159,9 @@ exports[`Button scoped-slots 1`] = `
     class="before"
   >
     {
-  "idle": true,
+  "idle": false,
   "error": {},
+  "hasError": true,
   "working": false,
   "enabled": false,
   "disabled": true,
@@ -170,34 +172,10 @@ exports[`Button scoped-slots 1`] = `
    
   <!---->
    
-  <div
-    class="logo"
-  >
-    {
-  "idle": true,
-  "error": {},
-  "working": false,
-  "enabled": false,
-  "disabled": true,
-  "connected": false,
-  "disconnected": true
-}
-  </div>
+  <!---->
    
   <span>
-    <div
-      class="login"
-    >
-      {
-  "idle": true,
-  "error": {},
-  "working": false,
-  "enabled": false,
-  "disabled": true,
-  "connected": false,
-  "disconnected": true
-}
-    </div>
+    <!---->
      
     <!---->
      
@@ -207,8 +185,9 @@ exports[`Button scoped-slots 1`] = `
       class="error"
     >
       {
-  "idle": true,
+  "idle": false,
   "error": {},
+  "hasError": true,
   "working": false,
   "enabled": false,
   "disabled": true,
@@ -222,8 +201,9 @@ exports[`Button scoped-slots 1`] = `
     class="after"
   >
     {
-  "idle": true,
+  "idle": false,
   "error": {},
+  "hasError": true,
   "working": false,
   "enabled": false,
   "disabled": true,
@@ -246,14 +226,10 @@ exports[`Button slots 1`] = `
    
   <!---->
    
-  <div
-    class="logo"
-  />
+  <!---->
    
   <span>
-    <div
-      class="login"
-    />
+    <!---->
      
     <!---->
      

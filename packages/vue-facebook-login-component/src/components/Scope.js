@@ -1,4 +1,4 @@
-import { Sdk, login, logout, getLoginStatus } from '@/sdk'
+import { Sdk } from '@/Sdk'
 
 export default {
   inheritAttrs: false,
@@ -23,6 +23,10 @@ export default {
     loginOptions: {
       type: Object,
       default: () => ({ scope: 'email' })
+    },
+    asyncDelay: {
+      type: Number,
+      default: 0
     }
   },
   data: () => ({
@@ -31,44 +35,53 @@ export default {
     connected: false
   }),
   watch: {
+    value({ error, working, connected }) {
+      this.error = error
+      this.working = working
+      this.connected = connected
+    },
     // eslint-disable-next-line no-unused-vars
     scope({ login, logout, toggleLogin, ...restScope }) {
       this.$emit('input', restScope)
     }
   },
-  async beforeCreate() {
-    await Sdk.unsubscribe()
-  },
   async created() {
-    const created = async () => {
-      const sdk = await this.initSdk()
-      if (this.error) return
+    this.async(async () => {
+      const { appId, version, options } = this
+      const sdk = await Sdk.subscribe({ appId, version, ...options })
+      if (this.error) return void 0
       this.$emit('sdk-init', { FB: sdk, scope: this.scope })
-      const { status } = await getLoginStatus()
+      const { status } = await Sdk.getLoginStatus()
       if (Sdk.isConnected(status)) {
         this.connected = true
         this.$emit('login')
       }
-    }
-    this.async(created())
+    })
+  },
+  beforeDestroy() {
+    Sdk.unsubscribe()
   },
   computed: {
     idle() {
-      return !this.working
+      return !this.working && !this.hasError
     },
     enabled() {
       return !this.disabled
     },
     disabled() {
-      return this.working || Boolean(this.error) || !this.appId
+      return this.working || this.hasError || !this.appId
     },
     disconnected() {
       return !this.connected
+    },
+    hasError() {
+      return Boolean(this.error)
     },
     scope() {
       return {
         idle: this.idle,
         error: this.error,
+        hasError: this.hasError,
         login: this.login,
         logout: this.logout,
         working: this.working,
@@ -84,39 +97,36 @@ export default {
     toggleLogin() {
       this.connected ? this.logout() : this.login()
     },
-    async initSdk() {
-      const { appId, version, options } = this
-      const promise = Sdk.subscribe({ appId, version, ...options })
-      const sdk = await this.catch(promise)
-      return sdk
-    },
     async login() {
-      const promise = login(this.loginOptions)
-      const response = await this.async(promise)
-      if (Sdk.isConnected(response.status)) {
-        this.connected = true
-        this.$emit('login', response)
-      }
-      return promise
-    },
-    async logout() {
-      const { status } = await getLoginStatus()
-      if (Sdk.isConnected(status)) await this.async(logout())
-      this.connected = false
-      this.$emit('logout')
-      return logout
-    },
-    catch(promise) {
-      return promise.catch(error => {
-        this.error = error
-        console.error(this.error)
+      return this.async(async () => {
+        const response = await Sdk.login(this.loginOptions)
+        if (Sdk.isConnected(response.status)) {
+          this.connected = true
+          this.$emit('login', response)
+        }
+        return response
       })
     },
-    async async(promise) {
+    async logout() {
+      return this.async(async () => {
+        const response = await Sdk.getLoginStatus()
+        if (Sdk.isConnected(response.status)) await Sdk.logout()
+        this.connected = false
+        this.$emit('logout', response)
+        return response
+      })
+    },
+    async async(asyncFn) {
       this.working = true
-      promise = await this.catch(promise)
+      const promise = await asyncFn().catch(this.catchHandler)
+      const delay = new Promise(resolve => setTimeout(resolve, this.asyncDelay))
+      const [, result] = await Promise.all([delay, promise])
       this.working = false
-      return promise
+      return result
+    },
+    catchHandler(error) {
+      this.error = error
+      console.error(this.error)
     }
   },
   render() {

@@ -8,23 +8,15 @@
         title="Alternate Logo"
         @click="toggleAltLogo"
         v-if="facebook.model.enabled && disconnected"
-        >💋
-      </Button>
+      >💋</Button>
       <Button is-icon title="Invert Colors" @click="toggleInvert">🍭</Button>
       <Button
         title="Logout"
         @click="facebook.scope.logout"
         v-if="facebook.scope.logout && connected"
-        >logout</Button
-      >
+      >logout</Button>
       <ScrollToTopScope>
-        <Button
-          is-icon
-          slot-scope="scope"
-          title="Back to Top"
-          @click="scope.scrollToTop"
-          >👆</Button
-        >
+        <Button is-icon slot-scope="scope" title="Back to Top" @click="scope.scrollToTop">👆</Button>
       </ScrollToTopScope>
       <Social :pkg="pkg" />
     </Nav>
@@ -35,11 +27,12 @@
 
       <!-- DEMO -->
       <v-facebook-login
+        :async-delay="500"
         @login="handleLogin"
         @click="handleClick"
+        @sdk-init="handleSdkInit"
         v-model="facebook.model"
         :app-id="facebook.appId"
-        @sdk-init="handleSdkInit"
         :useAltLogo="facebook.useAltLogo"
         class="docs-v-facebook-login mx-auto"
         logo-class="docs-v-facebook-login-logo"
@@ -50,12 +43,29 @@
           <Avatar v-if="idle && connected" :avatarUrl="avatarUrl" />
         </template>
       </v-facebook-login>
+      <DevOnly>
+        <v-facebook-login
+          style="margin-top: 1rem"
+          :async-delay="500"
+          @login="handleLogin"
+          @click="handleClick"
+          @sdk-init="handleSdkInit"
+          v-model="facebook.model"
+          :app-id="facebook.appId"
+          :useAltLogo="facebook.useAltLogo"
+          class="docs-v-facebook-login mx-auto"
+          logo-class="docs-v-facebook-login-logo"
+          loader-class="docs-v-facebook-login-loader"
+          :class="{ 'is-connected': connected, 'is-inverted': inverted }"
+        >
+          <template slot="after">
+            <Avatar v-if="idle && connected" :avatarUrl="avatarUrl" />
+          </template>
+        </v-facebook-login>
+      </DevOnly>
       <!-- DEMO end -->
 
-      <InstallAnchor
-        class="mt-25"
-        :to="$refs.readme ? $refs.readme.$el : null"
-      ></InstallAnchor>
+      <InstallAnchor class="mt-25" :to="$refs.readme ? $refs.readme.$el : null"></InstallAnchor>
     </Hero>
 
     <!-- README -->
@@ -80,11 +90,11 @@ import pkg from 'vue-facebook-login-component/package.json'
 export default {
   name: 'Docs',
   components: {
-    Avatar,
+    Avatar, // eslint-disable-line
     VHideAt, // eslint-disable-line
     VShowAt, // eslint-disable-line
-    Breakpoint,
-    VFacebookLogin
+    Breakpoint, // eslint-disable-line
+    VFacebookLogin // eslint-disable-line
   },
   data: () => ({
     pkg,

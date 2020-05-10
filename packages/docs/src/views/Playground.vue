@@ -3,8 +3,9 @@
     <h2>Vanilla Example</h2>
     <p>
       This is a vanilla example, using the bare miniumum required for using the
-      component. Basically, all you need is your application id.
+      component. Basically, all you need is your Facebook application id.
     </p>
+    <h3>Disconnected State</h3>
     <p>
       <v-facebook-login-button :scope="disconnected"></v-facebook-login-button>
     </p>
@@ -16,8 +17,12 @@
     <p>
       <v-facebook-login-button :scope="connected"></v-facebook-login-button>
     </p>
+    <h3>Error State</h3>
+    <p>
+      <v-facebook-login-button :scope="error"></v-facebook-login-button>
+    </p>
     <h3>Disabled State</h3>
-    <p>The component will be disabled on these events.</p>
+    <p>The component will be disabled on:</p>
     <ul>
       <li>Error</li>
       <li>Missing application id</li>
@@ -40,10 +45,11 @@ export default {
       process.env.NODE_ENV === 'development'
         ? '852858511574509'
         : '2146252248983683',
-    disabled: { idle: true, disconnected: true, disabled: true },
     disconnected: { idle: true, disconnected: true },
+    working: { working: true, disabled: true },
     connected: { idle: true, connected: true },
-    working: { working: true }
+    error: { hasError: true, disabled: true },
+    disabled: { idle: true, disconnected: true, disabled: true }
   })
 }
 </script>

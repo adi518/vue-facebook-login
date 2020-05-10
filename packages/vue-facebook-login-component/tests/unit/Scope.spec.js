@@ -1,31 +1,32 @@
 import { shallowMount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import Scope from '@/components/Scope'
+import { flush } from './test-utils'
 
-jest.mock('@/sdk', () => {
-  const { Sdk } = jest.requireActual('@/sdk')
+jest.mock('@/Sdk', () => {
+  const { Sdk } = jest.requireActual('@/Sdk')
   return {
     __esModule: true,
-    ...jest.requireActual('@/sdk'),
+    ...jest.requireActual('@/Sdk'),
     Sdk: {
       isConnected: Sdk.isConnected,
       subscribe: jest.fn().mockResolvedValue({}),
-      unsubscribe: jest.fn().mockResolvedValue()
-    },
-    getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
-    login: jest.fn().mockResolvedValue({ status: 'connected' }),
-    logout: jest.fn().mockResolvedValue()
+      unsubscribe: jest.fn().mockResolvedValue(),
+      getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
+      login: jest.fn().mockResolvedValue({ status: 'connected' }),
+      logout: jest.fn().mockResolvedValue()
+    }
   }
 })
 
-const { Sdk, getLoginStatus } = require('@/sdk')
+const { Sdk } = require('@/Sdk')
 
 const commonProps = { appId: '966242223397117' }
 
 describe('Scope', () => {
   test('initial state and events (disconnected)', async () => {
     const wrapper = shallowMount(Scope, { propsData: commonProps })
-    await flushPromises()
+    await flush()
     const emitted = wrapper.emitted()
     expect(emitted['input']).toBeTruthy()
     expect(emitted['input'].length).toBe(1)
@@ -40,7 +41,7 @@ describe('Scope', () => {
   })
 
   test('initial state and events (connected)', async () => {
-    getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
+    Sdk.getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = shallowMount(Scope, { propsData: commonProps })
     await flushPromises()
     const emitted = wrapper.emitted()
@@ -82,7 +83,7 @@ describe('Scope', () => {
     wrapper.vm.logout()
     await flushPromises()
     expect(logout).toHaveBeenCalledTimes(1)
-    expect(logout).toHaveBeenLastCalledWith()
+    expect(logout).toHaveBeenLastCalledWith({ status: 'unknown' })
     expect(wrapper.isEmpty()).toBe(true)
   })
 

@@ -1,54 +1,52 @@
-import flushPromises from 'flush-promises'
 import { mount } from '@vue/test-utils'
 import Button from '@/components/Composed'
 import Scope from '@/components/Scope'
+import { flush } from './test-utils'
 
 beforeEach(() => {
   jest.spyOn(console, 'error').mockImplementation(() => {})
 })
 
-jest.mock('@/sdk', () => {
-  const { Sdk } = jest.requireActual('@/sdk')
+jest.mock('@/Sdk', () => {
+  const { Sdk } = jest.requireActual('@/Sdk')
   return {
     __esModule: true,
-    ...jest.requireActual('@/sdk'),
+    ...jest.requireActual('@/Sdk'),
     Sdk: {
       isConnected: Sdk.isConnected,
       subscribe: jest.fn().mockResolvedValue({}),
-      unsubscribe: jest.fn().mockResolvedValue()
-    },
-    getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
-    login: jest.fn().mockResolvedValue({ status: 'connected' }),
-    logout: jest.fn().mockResolvedValue()
+      unsubscribe: jest.fn().mockResolvedValue(),
+      getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
+      login: jest.fn().mockResolvedValue({ status: 'connected' }),
+      logout: jest.fn().mockResolvedValue()
+    }
   }
 })
 
-const { getLoginStatus } = require('@/sdk')
+const { Sdk } = require('@/Sdk')
 
 const commonProps = { appId: '966242223397117' }
 
 describe('Button', () => {
   test('initial render (disabled)', async () => {
     const wrapper = mount(Button)
-    await flushPromises()
+    await flush()
     expect(wrapper.attributes('disabled')).toBe('disabled')
     expect(wrapper.element).toMatchSnapshot()
   })
 
   test('initial render (disconnected)', async () => {
-    const wrapper = mount(Button, {
-      propsData: commonProps
-    })
-    await flushPromises()
+    const wrapper = mount(Button, { propsData: commonProps })
+    await flush()
     expect(wrapper.element).toMatchSnapshot()
   })
 
   test('initial render (connected)', async () => {
-    getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
+    Sdk.getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = mount(Button, {
       propsData: commonProps
     })
-    await flushPromises()
+    await flush()
     expect(wrapper.element).toMatchSnapshot()
   })
 
@@ -58,14 +56,15 @@ describe('Button', () => {
       propsData: commonProps,
       listeners: { click: onClick }
     })
-    await flushPromises()
+    await flush()
     wrapper.trigger('click')
-    await flushPromises()
+    await flush()
     expect(onClick).toHaveBeenCalled()
     expect(wrapper.emitted().input.slice(-1)[0]).toEqual([
       {
         idle: true,
         error: null,
+        hasError: false,
         enabled: true,
         working: false,
         disabled: false,
@@ -93,7 +92,8 @@ describe('Button', () => {
         'background-color 0.15s ease-in-out',
         'padding 0.15s ease-in-out'
       ],
-      useAltLogo: true
+      useAltLogo: true,
+      asyncDelay: 500
     }
     const wrapper = mount(Button, { propsData })
     expect(wrapper.vm.$props).toEqual(propsData)
@@ -111,7 +111,7 @@ describe('Button', () => {
         working: '<div class="working"></div>'
       }
     })
-    await flushPromises()
+    await flush()
     const scopeInstance = wrapper.get(Scope).vm
     scopeInstance.error = new Error()
     scopeInstance.$forceUpdate()
@@ -131,7 +131,7 @@ describe('Button', () => {
         working: '<div class="working" slot-scope="scope">{{scope}}</div>'
       }
     })
-    await flushPromises()
+    await flush()
     const scopeInstance = wrapper.get(Scope).vm
     scopeInstance.error = new Error()
     scopeInstance.$forceUpdate()
@@ -140,24 +140,24 @@ describe('Button', () => {
   })
 
   test('logout slot', async () => {
-    getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
+    Sdk.getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = mount(Button, {
       propsData: commonProps,
       slots: { logout: '<div class="logout"></div>' }
     })
-    await flushPromises()
+    await flush()
     expect(wrapper.element).toMatchSnapshot()
   })
 
   test('logout scoped-slot', async () => {
-    getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
+    Sdk.getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
     const wrapper = mount(Button, {
       propsData: commonProps,
       scopedSlots: {
         logout: '<div class="logout" slot-scope="scope">{{scope}}</div>'
       }
     })
-    await flushPromises()
+    await flush()
     expect(wrapper.element).toMatchSnapshot()
   })
 })
