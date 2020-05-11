@@ -44,7 +44,7 @@
         </template>
       </v-facebook-login>
       <DevOnly>
-        <v-facebook-login
+        <!-- <v-facebook-login
           style="margin-top: 1rem"
           :async-delay="500"
           @login="handleLogin"
@@ -61,7 +61,7 @@
           <template slot="after">
             <Avatar v-if="idle && connected" :avatarUrl="avatarUrl" />
           </template>
-        </v-facebook-login>
+        </v-facebook-login>-->
       </DevOnly>
       <!-- DEMO end -->
 
