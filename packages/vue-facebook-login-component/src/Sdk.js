@@ -20,7 +20,7 @@ function handleLoadError(error) {
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/API/HTMLScriptElement
-export function initSdk(options) {
+export function initSdk(options, locale = 'en_US') {
   return new Promise((resolve, reject) => {
     // prettier-ignore
     window.fbAsyncInit = function() {
@@ -33,7 +33,7 @@ export function initSdk(options) {
       const fjs = d.getElementsByTagName(s)[0]
       if (d.getElementById(id)) { return; }
       const js = d.createElement(s); js.id = id
-      js.src = '//connect.facebook.net/en_US/sdk.js'
+      js.src = `//connect.facebook.net/${locale}/sdk.js`
       js.onerror = error => { handleLoadError(error); reject(error) } // non-facebook line
       fjs.parentNode.insertBefore(js, fjs)
     }(document, 'script', FACEBOOK_SCRIPT_ID))
@@ -52,14 +52,14 @@ export function removeScript() {
 export class Sdk {
   static state = Object.seal({ isExternal: false, pending: null, consumers: 0 })
 
-  static async _init(options) {
+  static async _init(options, locale) {
     if (Sdk.state.isExternal) return window.FB
     if (window.FB) {
       Sdk.state.isExternal = true
       return window.FB
     }
     if (Sdk.state.pending) return Sdk.state.pending
-    Sdk.state.pending = initSdk(options)
+    Sdk.state.pending = initSdk(options, locale)
     return Sdk.state.pending
   }
 

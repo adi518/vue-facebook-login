@@ -58,7 +58,7 @@ To use the component in your template, simply import and register with your comp
 
 See [JS Fiddle](https://jsfiddle.net/adi518/jfa0gys8) for a vanilla example.
 
-## [Version 2.0](#version-2)
+## [Version 2.0 Changelog](#version-2-changelog)
 
 Simpler API, alongside newly added and updated features (mind breaking-changes).
 
@@ -113,7 +113,8 @@ Simpler API, alongside newly added and updated features (mind breaking-changes).
 | loader-style  | Object  | `{}`                                                    |                                                                                                                               |
 | transition    | Array   | `[]`                                                    | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`. |
 | use-alt-logo  | Boolean | `false`                                                 | Use [Iconmonstr alternate Facebook logo](https://iconmonstr.com/facebook-6-svg/).                                             |
-| async-delay   | Number  | 0                                                       | Minimum delay for asynchronous operations.                                                                                    |
+| async-delay   | Number  | 0                                                       | Minimum delay for asynchronous operations. [ &ast; ]                                                                          |
+| sdk-locale    | String  | 'en_US'                                                 | See [localization](https://developers.facebook.com/docs/internationalization/). [ &ast; ]                                     |
 
 </div>
 

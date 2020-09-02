@@ -94,7 +94,7 @@ export default {
     VHideAt, // eslint-disable-line
     VShowAt, // eslint-disable-line
     Breakpoint, // eslint-disable-line
-    VFacebookLogin // eslint-disable-line
+    VFacebookLogin, // eslint-disable-line
   },
   data: () => ({
     pkg,
@@ -107,11 +107,11 @@ export default {
         process.env.NODE_ENV === 'development'
           ? '852858511574509'
           : '2146252248983683',
-      useAltLogo: false
+      useAltLogo: false,
     },
     user: {},
     breakpoint: {},
-    inverted: false
+    inverted: false,
   }),
   computed: {
     idle() {
@@ -125,14 +125,14 @@ export default {
     },
     avatarUrl() {
       return get(this.user, 'picture.data.url')
-    }
+    },
   },
   methods: {
     getUserData() {
       this.facebook.FB.api(
         '/me',
         { fields: 'id, name, picture' },
-        user => (this.user = user)
+        (user) => (this.user = user)
       )
     },
     toggleAltLogo() {
@@ -151,8 +151,8 @@ export default {
     },
     toggleInvert() {
       this.inverted = !this.inverted
-    }
-  }
+    },
+  },
 }
 </script>
 

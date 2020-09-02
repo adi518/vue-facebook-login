@@ -27,6 +27,10 @@ export default {
     asyncDelay: {
       type: Number,
       default: 0
+    },
+    sdkLocale: {
+      type: String,
+      default: 'en_US'
     }
   },
   data: () => ({
@@ -47,8 +51,8 @@ export default {
   },
   async created() {
     this.async(async () => {
-      const { appId, version, options } = this
-      const sdk = await Sdk.subscribe({ appId, version, ...options })
+      const { appId, version, options, sdkLocale } = this
+      const sdk = await Sdk.subscribe({ appId, version, ...options }, sdkLocale)
       if (this.error) return void 0
       this.$emit('sdk-init', { FB: sdk, scope: this.scope })
       const { status } = await Sdk.getLoginStatus()
