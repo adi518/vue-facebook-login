@@ -3,10 +3,6 @@ import Button from '@/components/Composed'
 import Scope from '@/components/Scope'
 import { flush } from './test-utils'
 
-beforeEach(() => {
-  jest.spyOn(console, 'error').mockImplementation(() => {})
-})
-
 jest.mock('@/Sdk', () => {
   const { Sdk } = jest.requireActual('@/Sdk')
   return {
@@ -24,8 +20,13 @@ jest.mock('@/Sdk', () => {
 })
 
 const { Sdk } = require('@/Sdk')
-
 const commonProps = { appId: '966242223397117' }
+
+jest.useFakeTimers()
+
+beforeEach(() => {
+  jest.spyOn(console, 'error').mockImplementation(() => {})
+})
 
 describe('Button', () => {
   test('initial render (disabled)', async () => {
@@ -93,7 +94,8 @@ describe('Button', () => {
         'padding 0.15s ease-in-out'
       ],
       useAltLogo: true,
-      asyncDelay: 500
+      asyncDelay: 500,
+      sdkLocale: 'en_US'
     }
     const wrapper = mount(Button, { propsData })
     expect(wrapper.vm.$props).toEqual(propsData)
