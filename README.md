@@ -48,7 +48,7 @@ To use the component in your template, simply import and register with your comp
 
 ## [Features](#features)
 
-- Zero dependencies (gzipped: 22.1K)
+- Zero dependencies (gzipped: 9.98 KiB)
 - Handpicked Facebook SVG logos ([Iconmonstr](<(https://iconmonstr.com/facebook-1-svg/)>))
 - Customizable through props and scoped-slots
 - Scope component (renderless/render-props pattern)
@@ -57,42 +57,6 @@ To use the component in your template, simply import and register with your comp
 ## [JS Fiddle](#js-fiddle)
 
 See [JS Fiddle](https://jsfiddle.net/adi518/jfa0gys8) for a vanilla example.
-
-## [Version 2.0 Changelog](#version-2-changelog)
-
-Simpler API, alongside newly added and updated features (mind breaking-changes).
-
-### Added
-
-- Added test coverage.
-- Added multiple instance support.
-- Added scope field `idle`.
-- Added prop `logoClass`.
-- Added prop `textClass`.
-- Added prop `loaderClass`.
-- Added prop [`useAltLogo`](#usealtlogo-prop).
-- Added prop `asyncDelay`.
-  > Available from version `>= 2.3.0`.
-
-### Updated
-
-- Updated style with leaner CSS.
-- Updated all slots to [scoped-slots](https://vuejs.org/v2/guide/components-slots.html#Scoped-Slots).
-- Updated prop `version` default to: `v6.0`.
-- Updated error slot to appear on all errors.
-- Updated logo to comply with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
-- Updated labels to comply with [Facebook guidelines](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
-
-### Fixed
-
-- Fixed `disabled` state when `app-id` is not provided.
-
-### Removed
-
-- Removed event `connect` (use `login` instead).
-- Removed prop `buttonStyle` (use `style` instead).
-- Removed scope field `hasError` (use `error` instead).
-  > Restored in `2.3.0`.
 
 ## [Props](#props)
 
@@ -246,6 +210,14 @@ The following snippet is a minimal usage example, see [source](https://github.co
 This component embeds the [Facebook SDK snippet](https://developers.facebook.com/docs/javascript/quickstart/) unless it find an existing SDK instance. However, be sure to resolve `window.fbAsyncInit` **before** a component instance is created, otherwise a racing condition will occur and it may not be able to find the SDK instance. See [Facebook docs](https://developers.facebook.com/docs/javascript/quickstart/) for more.
 
 ## [Legacy Browser Support](#ie-support)
+
+### Version 3.x
+
+> 🧡 Mind breaking changes from `3.x` to `2.x`.
+
+Version `3.x` does **NOT** include polyfills (`core-js`) as `2.x`, in fact it was an error to include them at all. If you require new language API support for legacy browsers, you might have to add it to your app or setup your build target correctly, which will auto apply the necessary polyfills. See Vue CLI docs: https://cli.vuejs.org/guide/browser-compatibility.html#polyfills
+
+### Version 2.x
 
 > ❤️ You probably don't need to apply transformations or polyfills to support IE.
 
