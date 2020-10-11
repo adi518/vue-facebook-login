@@ -14,7 +14,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name vueFacebookLoginComponent ./src/main.js",
     "build:watch": "yarn build --watch",
-    "build:stats": "vue-cli-service build --report",
+    "build:stats": "yarn build --report",
     "test:unit": "vue-cli-service test:unit --watch",
     "lint": "vue-cli-service lint",
     "prerelease": "yarn build && yarn version --patch",
