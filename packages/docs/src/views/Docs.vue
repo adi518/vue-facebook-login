@@ -8,15 +8,23 @@
         title="Alternate Logo"
         @click="toggleAltLogo"
         v-if="facebook.model.enabled && disconnected"
-      >💋</Button>
+        >💋</Button
+      >
       <Button is-icon title="Invert Colors" @click="toggleInvert">🍭</Button>
       <Button
         title="Logout"
         @click="facebook.scope.logout"
         v-if="facebook.scope.logout && connected"
-      >logout</Button>
+        >logout</Button
+      >
       <ScrollToTopScope>
-        <Button is-icon slot-scope="scope" title="Back to Top" @click="scope.scrollToTop">👆</Button>
+        <Button
+          is-icon
+          slot-scope="scope"
+          title="Back to Top"
+          @click="scope.scrollToTop"
+          >👆</Button
+        >
       </ScrollToTopScope>
       <Social :pkg="pkg" />
     </Nav>
@@ -65,7 +73,10 @@
       </DevOnly>
       <!-- DEMO end -->
 
-      <InstallAnchor class="mt-25" :to="$refs.readme ? $refs.readme.$el : null"></InstallAnchor>
+      <InstallAnchor
+        class="mt-25"
+        :to="$refs.readme ? $refs.readme.$el : null"
+      ></InstallAnchor>
     </Hero>
 
     <!-- README -->
@@ -94,7 +105,7 @@ export default {
     VHideAt, // eslint-disable-line
     VShowAt, // eslint-disable-line
     Breakpoint, // eslint-disable-line
-    VFacebookLogin, // eslint-disable-line
+    VFacebookLogin // eslint-disable-line
   },
   data: () => ({
     pkg,
@@ -107,11 +118,11 @@ export default {
         process.env.NODE_ENV === 'development'
           ? '852858511574509'
           : '2146252248983683',
-      useAltLogo: false,
+      useAltLogo: false
     },
     user: {},
     breakpoint: {},
-    inverted: false,
+    inverted: false
   }),
   computed: {
     idle() {
@@ -125,14 +136,14 @@ export default {
     },
     avatarUrl() {
       return get(this.user, 'picture.data.url')
-    },
+    }
   },
   methods: {
     getUserData() {
       this.facebook.FB.api(
         '/me',
         { fields: 'id, name, picture' },
-        (user) => (this.user = user)
+        user => (this.user = user)
       )
     },
     toggleAltLogo() {
@@ -151,8 +162,8 @@ export default {
     },
     toggleInvert() {
       this.inverted = !this.inverted
-    },
-  },
+    }
+  }
 }
 </script>
 
@@ -172,6 +183,10 @@ export default {
 .docs-v-facebook-login {
   font-family: inherit !important;
   box-shadow: 0rem 21vh 1.825rem -0.125rem rgba(0, 0, 0, 0.2) !important;
+
+  svg {
+    border-radius: 50%;
+  }
 
   &.is-inverted {
     color: #3b55a0 !important;
