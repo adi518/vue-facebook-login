@@ -89,3 +89,4 @@ typings/
 
 # Other
 packages/vue-components
+packages/nuxt-app
