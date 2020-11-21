@@ -220,7 +220,7 @@ This component renders on the client-side only. To do that, you have to complete
 ```html
 <template>
   <client-only>
-    <v-facebook-login app-id="852858511574509" />
+    <v-facebook-login app-id="966242223397117" />
   </client-only>
 </template>
 
