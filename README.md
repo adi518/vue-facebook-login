@@ -209,6 +209,33 @@ The following snippet is a minimal usage example, see [source](https://github.co
 
 This component embeds the [Facebook SDK snippet](https://developers.facebook.com/docs/javascript/quickstart/) unless it find an existing SDK instance. However, be sure to resolve `window.fbAsyncInit` **before** a component instance is created, otherwise a racing condition will occur and it may not be able to find the SDK instance. See [Facebook docs](https://developers.facebook.com/docs/javascript/quickstart/) for more.
 
+## [Nuxt Support](#nuxt-support)
+
+This component renders on the client-side only. To do that, you have to complete a few steps.
+
+1. [Generate a self-signed certificate](https://stackoverflow.com/a/57895543/4106263).
+2. [Configure nuxt.config.js for HTTPS](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-server#example-using-https-configuration).
+3. Import the component for client-side only:
+
+```html
+<template>
+  <div class="container">
+    <client-only>
+      <v-facebook-login app-id="852858511574509" />
+    </client-only>
+  </div>
+</template>
+
+<script>
+  export default {
+    components: {
+      VFacebookLogin: () =>
+        process.client ? import('vue-facebook-login-component') : null
+    }
+  }
+</script>
+```
+
 ## [Legacy Browser Support](#ie-support)
 
 ### Version 3.x
