@@ -214,16 +214,14 @@ This component embeds the [Facebook SDK snippet](https://developers.facebook.com
 This component renders on the client-side only. To do that, you have to complete a few steps.
 
 1. [Generate a self-signed certificate](https://stackoverflow.com/a/57895543/4106263).
-2. [Configure nuxt.config.js for HTTPS](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-server#example-using-https-configuration).
+2. [Configure `nuxt.config.js` for HTTPS](https://nuxtjs.org/docs/2.x/configuration-glossary/configuration-server#example-using-https-configuration).
 3. Import the component for client-side only:
 
 ```html
 <template>
-  <div class="container">
-    <client-only>
-      <v-facebook-login app-id="852858511574509" />
-    </client-only>
-  </div>
+  <client-only>
+    <v-facebook-login app-id="852858511574509" />
+  </client-only>
 </template>
 
 <script>
