@@ -17,6 +17,7 @@
     "release:docs": "yarn --cwd ./packages/docs release",
     "build": "yarn --cwd ./packages/vue-facebook-login-component build",
     "build:watch": "yarn --cwd ./packages/vue-facebook-login-component build:watch",
-    "build:stats": "yarn --cwd ./packages/vue-facebook-login-component build:stats"
+    "build:stats": "yarn --cwd ./packages/vue-facebook-login-component build:stats",
+    "build:analyze": "yarn --cwd ./packages/vue-facebook-login-component build:analyze"
   }
 }

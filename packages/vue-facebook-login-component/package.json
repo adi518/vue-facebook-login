@@ -15,6 +15,7 @@
     "build": "vue-cli-service build --target lib --name vueFacebookLoginComponent ./src/main.js",
     "build:watch": "yarn build --watch",
     "build:stats": "yarn build --report",
+    "build:analyze": "yarn build && source-map-explorer ./dist/vueFacebookLoginComponent.umd.min.js --gzip",
     "test:unit": "vue-cli-service test:unit --watch",
     "lint": "vue-cli-service lint",
     "prerelease": "yarn build && yarn version --patch",
@@ -52,6 +53,7 @@
     "sass": "^1.26.1",
     "sass-loader": "^8.0.2",
     "sinon": "^9.0.1",
+    "source-map-explorer": "^2.5.1",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12"
   },
