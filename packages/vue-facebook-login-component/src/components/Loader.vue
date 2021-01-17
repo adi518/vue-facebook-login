@@ -3,7 +3,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '@/components/colors';
+@import './colors';
 
 .v-loader {
   display: block;

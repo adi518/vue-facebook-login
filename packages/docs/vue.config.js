@@ -6,12 +6,6 @@ if (isProduction) {
 }
 
 config.chainWebpack = config => {
-  // https://github.com/babel/babel-loader/issues/171#issuecomment-163385201
-  config.module
-    .rule('js')
-    .test(/\.jsx?$/)
-    .exclude.add(/node_modules\/(?!vue-facebook-login-component)/)
-    .end()
   config.module
     .rule('markdown')
     .test(/\.md$/)

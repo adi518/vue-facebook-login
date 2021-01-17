@@ -19,7 +19,7 @@ yarn add vue-facebook-login-component
 ### Embed Directly
 
 ```html
-<script src="https://unpkg.com/vue-facebook-login-component/dist/vueFacebookLoginComponent.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-facebook-login-component/dist/vueFacebookLoginComponent.umd.min.js"></script>
 ```
 
 > When embedding, the script automatically registers itself as a Vue plugin.
@@ -40,8 +40,8 @@ To use the component in your template, simply import and register with your comp
 
   export default {
     components: {
-      VFacebookLogin
-    }
+      VFacebookLogin,
+    },
   }
 </script>
 ```
@@ -142,14 +142,14 @@ You can use this event to grab the Facebook SDK instance, but **also** the under
     data: () => ({
       FB: {},
       model: {},
-      scope: {}
+      scope: {},
     }),
     methods: {
       handleSdkInit({ FB, scope }) {
         this.FB = FB
         this.scope = scope
-      }
-    }
+      },
+    },
   }
 </script>
 ```
@@ -199,8 +199,8 @@ The following snippet is a minimal usage example, see [source](https://github.co
 
   export default {
     components: {
-      VFacebookLoginScope
-    }
+      VFacebookLoginScope,
+    },
   }
 </script>
 ```
@@ -228,8 +228,8 @@ This component renders on the client-side only. To do that, you have to complete
   export default {
     components: {
       VFacebookLogin: () =>
-        process.client ? import('vue-facebook-login-component') : null
-    }
+        process.client ? import('vue-facebook-login-component') : null,
+    },
   }
 </script>
 ```
