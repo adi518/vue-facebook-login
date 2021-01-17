@@ -37,9 +37,9 @@
     "vue-use-web": "^0.10.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.2.3",
+    "@vue/cli-plugin-babel": "^4.5.10",
     "@vue/cli-plugin-eslint": "^4.2.3",
-    "@vue/cli-service": "^4.2.3",
+    "@vue/cli-service": "^4.5.10",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
@@ -62,7 +62,8 @@
     ],
     "rules": {
       "no-console": "warn",
-      "no-unused-vars": "warn"
+      "no-unused-vars": "warn",
+      "vue/no-unused-components": "warn"
     },
     "parserOptions": {
       "parser": "babel-eslint"

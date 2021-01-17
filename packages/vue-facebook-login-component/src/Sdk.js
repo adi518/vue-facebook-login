@@ -10,10 +10,11 @@ export const FACEBOOK_SCRIPT_ID = 'facebook-jssdk'
 export const LOGIN_STATUSES = {
   UNKNOWN: 'unknown',
   CONNECTED: 'connected',
-  NOT_AUTHORIZED: 'not_authorized'
+  NOT_AUTHORIZED: 'not_authorized',
 }
 
 function handleLoadError(error) {
+  // eslint-disable-next-line no-console
   console.error(
     new URIError(`The script ${error.target.src} didn't load correctly.`)
   )
@@ -26,7 +27,7 @@ export function initSdk(options, locale = 'en_US') {
     window.fbAsyncInit = function() {
       window.FB.init(options)
       resolve(window.FB)
-    }; // eslint-disable-line
+    };
     /* eslint-disable */
     // prettier-ignore
     ;(function (d, s, id) {

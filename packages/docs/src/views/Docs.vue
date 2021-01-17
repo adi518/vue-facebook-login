@@ -1,35 +1,5 @@
 <template>
   <div>
-    <!-- NAV -->
-    <Nav>
-      <Title :pkg="pkg" :docsPkg="docs" />
-      <Button
-        is-icon
-        title="Alternate Logo"
-        @click="toggleAltLogo"
-        v-if="facebook.model.enabled && disconnected"
-        >💋</Button
-      >
-      <Button is-icon title="Invert Colors" @click="toggleInvert">🍭</Button>
-      <Button
-        title="Logout"
-        @click="facebook.scope.logout"
-        v-if="facebook.scope.logout && connected"
-        >logout</Button
-      >
-      <ScrollToTopScope>
-        <Button
-          is-icon
-          slot-scope="scope"
-          title="Back to Top"
-          @click="scope.scrollToTop"
-          >👆</Button
-        >
-      </ScrollToTopScope>
-      <Social :pkg="pkg" />
-    </Nav>
-    <!-- NAV end -->
-
     <Hero>
       <VueLogo class="mb-25" />
 
@@ -80,7 +50,7 @@
     </Hero>
 
     <!-- README -->
-    <Page ref="readme">
+    <Page ref="readme" class="docs-page">
       <RouterView />
     </Page>
     <!-- README end -->
@@ -94,22 +64,18 @@ import { get } from 'lodash'
 import VFacebookLogin from 'vue-facebook-login-component'
 import Breakpoint, { VHideAt, VShowAt } from 'vue-breakpoint-component'
 
-import docs from 'docs/package.json'
 import Avatar from '@/components/Avatar'
-import pkg from 'vue-facebook-login-component/package.json'
 
 export default {
-  name: 'Docs',
+  name: 'Root',
   components: {
-    Avatar, // eslint-disable-line
+    Avatar,
     VHideAt, // eslint-disable-line
     VShowAt, // eslint-disable-line
-    Breakpoint, // eslint-disable-line
-    VFacebookLogin // eslint-disable-line
+    Breakpoint,
+    VFacebookLogin,
   },
   data: () => ({
-    pkg,
-    docs,
     facebook: {
       FB: {},
       model: {},
@@ -118,11 +84,11 @@ export default {
         process.env.NODE_ENV === 'development'
           ? '852858511574509'
           : '2146252248983683',
-      useAltLogo: false
+      useAltLogo: false,
     },
     user: {},
     breakpoint: {},
-    inverted: false
+    inverted: false,
   }),
   computed: {
     idle() {
@@ -136,7 +102,7 @@ export default {
     },
     avatarUrl() {
       return get(this.user, 'picture.data.url')
-    }
+    },
   },
   methods: {
     getUserData() {
@@ -162,8 +128,8 @@ export default {
     },
     toggleInvert() {
       this.inverted = !this.inverted
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -179,14 +145,14 @@ export default {
 @import '~bootstrap/scss/grid';
 @import '@/styles/markdown';
 
+.docs-page {
+  padding-top: 4rem !important;
+}
+
 // https://tobiasahlin.com/blog/how-to-animate-box-shadow/
 .docs-v-facebook-login {
   font-family: inherit !important;
   box-shadow: 0rem 21vh 1.825rem -0.125rem rgba(0, 0, 0, 0.2) !important;
-
-  svg {
-    border-radius: 50%;
-  }
 
   &.is-inverted {
     color: #3b55a0 !important;
@@ -207,10 +173,10 @@ export default {
     }
   }
 
-  &.is-connected:not(:hover) {
-    background-color: transparent !important;
-    border-color: rgba(255, 255, 255, 0.25) !important;
-  }
+  // &.is-connected:not(:hover) {
+  //   background-color: transparent !important;
+  //   border-color: rgba(255, 255, 255, 0.25) !important;
+  // }
 
   @include media-breakpoint-up(sm) {
     font-size: 1.25rem !important;

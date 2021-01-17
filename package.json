@@ -7,7 +7,9 @@
     "packages/*"
   ],
   "scripts": {
+    "prepare":"yarn build",
     "start": "yarn build:watch",
+    "start:rollup": "yarn build:rollup:watch",
     "start:docs": "yarn --cwd ./packages/docs start",
     "test": "yarn --cwd ./packages/vue-facebook-login-component test:unit",
     "update:docs": "yarn --cwd ./packages/docs update",
@@ -16,7 +18,9 @@
     "release:major": "yarn --cwd ./packages/vue-facebook-login-component release:major",
     "release:docs": "yarn --cwd ./packages/docs release",
     "build": "yarn --cwd ./packages/vue-facebook-login-component build",
+    "build:rollup": "yarn --cwd ./packages/vue-facebook-login-component build:rollup",
     "build:watch": "yarn --cwd ./packages/vue-facebook-login-component build:watch",
+    "build:rollup:watch": "yarn --cwd ./packages/vue-facebook-login-component build:rollup:watch",
     "build:stats": "yarn --cwd ./packages/vue-facebook-login-component build:stats",
     "build:analyze": "yarn --cwd ./packages/vue-facebook-login-component build:analyze"
   }

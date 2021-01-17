@@ -19,7 +19,7 @@ yarn add vue-facebook-login-component
 ### Embed Directly
 
 ```html
-<script src="https://unpkg.com/vue-facebook-login-component/dist/vueFacebookLoginComponent.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-facebook-login-component/dist/vueFacebookLoginComponent.umd.min.js"></script>
 ```
 
 > When embedding, the script automatically registers itself as a Vue plugin.
@@ -40,8 +40,8 @@ To use the component in your template, simply import and register with your comp
 
   export default {
     components: {
-      VFacebookLogin
-    }
+      VFacebookLogin,
+    },
   }
 </script>
 ```
@@ -49,7 +49,7 @@ To use the component in your template, simply import and register with your comp
 ## [Features](#features)
 
 - Zero dependencies (gzipped: 9.98 KiB)
-- Handpicked Facebook SVG logos ([Iconmonstr](<(https://iconmonstr.com/facebook-1-svg/)>))
+- Handpicked Facebook SVG logos
 - Customizable through props and scoped-slots
 - Scope component (renderless/render-props pattern)
 - Button component with flex-box CSS and `rem` sizing
@@ -142,14 +142,14 @@ You can use this event to grab the Facebook SDK instance, but **also** the under
     data: () => ({
       FB: {},
       model: {},
-      scope: {}
+      scope: {},
     }),
     methods: {
       handleSdkInit({ FB, scope }) {
         this.FB = FB
         this.scope = scope
-      }
-    }
+      },
+    },
   }
 </script>
 ```
@@ -199,8 +199,8 @@ The following snippet is a minimal usage example, see [source](https://github.co
 
   export default {
     components: {
-      VFacebookLoginScope
-    }
+      VFacebookLoginScope,
+    },
   }
 </script>
 ```
@@ -228,8 +228,8 @@ This component renders on the client-side only. To do that, you have to complete
   export default {
     components: {
       VFacebookLogin: () =>
-        process.client ? import('vue-facebook-login-component') : null
-    }
+        process.client ? import('vue-facebook-login-component') : null,
+    },
   }
 </script>
 ```
@@ -286,9 +286,14 @@ Please search existing issues (including closed ones) before starting a new [iss
 
 Start a pull request, run tests and update as necessary before submitting.
 
+## Attributions
+
+- [flaticon](https://www.flaticon.com/free-icon/facebook-circular-logo_20673)
+- [iconmonstr](https://iconmonstr.com/facebook-1-svg/)
+
 ## [Related Links](#related-links)
 
-- Facebook API [documentation](https://developers.facebook.com/docs/reference/javascript/FB.login/v6.0).
+- Facebook API [documentation](https://developers.facebook.com/docs/reference/javascript/FB.login/).
 - Facebook user experience [guideline](https://developers.facebook.com/docs/facebook-login/userexperience/#buttondesign).
 - Facebook fonts and colors, article by [Sitepoint](https://www.sitepoint.com/fonts-colors-used-facebook-twitter-google/).
 

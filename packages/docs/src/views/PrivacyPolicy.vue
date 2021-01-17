@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <Page>
     <h1>Privacy Policy</h1>
     <p>Effective date: July 30, 2018</p>
     <p>
@@ -176,7 +176,9 @@
       privacy policies or practices of any third party sites or services.
     </p>
     <h2>Children's Privacy</h2>
-    <p>Our Service does not address anyone under the age of 18 ("Children").</p>
+    <p>
+      Our Service does not address anyone under the age of 18 ("Children").
+    </p>
     <p>
       We do not knowingly collect personally identifiable information from
       anyone under the age of 18. If you are a parent or guardian and you are
@@ -210,7 +212,7 @@
         https://github.com/adi518/vue-facebook-login-component/issues
       </li>
     </ul>
-  </div>
+  </Page>
 </template>
 
 <script>
@@ -218,7 +220,7 @@ export default {
   computed: {
     location() {
       return window.location
-    }
-  }
+    },
+  },
 }
 </script>
