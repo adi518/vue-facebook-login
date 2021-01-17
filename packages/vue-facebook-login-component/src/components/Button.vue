@@ -8,20 +8,34 @@
   >
     <slot name="before" v-bind="scope"></slot>
     <slot name="loader" v-bind="scope">
-      <v-loader :class="['loader', loaderClass]" v-if="scope.working" :style="loaderStyle"></v-loader>
+      <v-loader
+        :class="['loader', loaderClass]"
+        v-if="scope.working"
+        :style="loaderStyle"
+      ></v-loader>
     </slot>
     <slot name="logo" v-bind="scope" v-if="scope.idle && scope.disconnected">
-      <v-facebook-logo-alt :style="logoStyle" v-if="useAltLogo" :class="['logo', logoClass]"></v-facebook-logo-alt>
-      <v-facebook-logo v-else :style="logoStyle" :class="['logo', logoClass]"></v-facebook-logo>
+      <v-facebook-logo-alt
+        :style="logoStyle"
+        v-if="useAltLogo"
+        :class="['logo', logoClass]"
+      ></v-facebook-logo-alt>
+      <v-facebook-logo
+        v-else
+        :style="logoStyle"
+        :class="['logo', logoClass]"
+      ></v-facebook-logo>
     </slot>
     <span :class="textClass" :style="textStyle">
-      <slot
-        name="login"
-        v-bind="scope"
-        v-if="scope.idle && scope.disconnected"
-      >Continue with Facebook</slot>
-      <slot name="logout" v-bind="scope" v-if="scope.idle && scope.connected">Logout</slot>
-      <slot name="working" v-bind="scope" v-if="scope.working">Please wait...</slot>
+      <slot name="login" v-bind="scope" v-if="scope.idle && scope.disconnected"
+        >Continue with Facebook</slot
+      >
+      <slot name="logout" v-bind="scope" v-if="scope.idle && scope.connected"
+        >Logout</slot
+      >
+      <slot name="working" v-bind="scope" v-if="scope.working"
+        >Please wait...</slot
+      >
       <slot name="error" v-bind="scope" v-if="scope.hasError">⛔ Error</slot>
     </span>
     <slot name="after" v-bind="scope"></slot>
@@ -39,42 +53,42 @@ export default {
   components: {
     VLoader: Loader,
     VFacebookLogo: Logo,
-    VFacebookLogoAlt: LogoAlt
+    VFacebookLogoAlt: LogoAlt,
   },
   props: {
     scope: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     logoClass: {
-      type: String
+      type: String,
     },
     logoStyle: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     textClass: {
-      type: String
+      type: String,
     },
     textStyle: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     loaderClass: {
-      type: String
+      type: String,
     },
     loaderStyle: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     transition: {
       type: Array,
-      default: () => []
+      default: () => [],
     },
     useAltLogo: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     inlineStyle() {
@@ -82,14 +96,14 @@ export default {
       let transition = [CSSTransition].concat(this.transition)
       transition = [...new Set(transition)].join(', ')
       return { transition }
-    }
+    },
   },
   methods: {
     handleClick() {
       this.$emit('click')
       this.scope.toggleLogin?.()
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -99,7 +113,7 @@ export default {
 // http://www.color-hex.com/color-palette/185
 // https://icons8.com/icon/set/facebook-f/all
 
-@import '@/components/colors';
+@import './colors';
 
 $token-size: 1.25rem;
 
