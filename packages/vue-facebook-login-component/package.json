@@ -13,10 +13,12 @@
   "scripts": {
     "prepare": "yarn build",
     "start": "yarn build:watch",
+    "start:alt": "yarn build:alt:watch",
     "serve": "vue-cli-service serve",
     "build": "rollup --config",
     "build:alt": "vue-cli-service build --target lib --name vueFacebookLoginComponent ./src/main.js",
     "build:watch": "yarn build --watch",
+    "build:alt:watch": "yarn build:alt --watch",
     "build:stats": "yarn build --report",
     "build:analyze": "cross-env ANALYZE=true yarn build",
     "build:alt:analyze": "yarn build && source-map-explorer ./dist/vueFacebookLoginComponent.umd.min.js --gzip",

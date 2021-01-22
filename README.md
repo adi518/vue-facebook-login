@@ -286,6 +286,11 @@ Please search existing issues (including closed ones) before starting a new [iss
 
 Start a pull request, run tests and update as necessary before submitting.
 
+## Attributions
+
+- [flaticon](https://www.flaticon.com/free-icon/facebook-circular-logo_20673)
+- [iconmonstr](https://iconmonstr.com/facebook-1-svg/)
+
 ## [Related Links](#related-links)
 
 - Facebook API [documentation](https://developers.facebook.com/docs/reference/javascript/FB.login/v6.0).
