@@ -105,7 +105,7 @@ export default {
     VHideAt, // eslint-disable-line
     VShowAt, // eslint-disable-line
     Breakpoint, // eslint-disable-line
-    VFacebookLogin // eslint-disable-line
+    VFacebookLogin, // eslint-disable-line
   },
   data: () => ({
     pkg,
@@ -118,11 +118,11 @@ export default {
         process.env.NODE_ENV === 'development'
           ? '852858511574509'
           : '2146252248983683',
-      useAltLogo: false
+      useAltLogo: false,
     },
     user: {},
     breakpoint: {},
-    inverted: false
+    inverted: false,
   }),
   computed: {
     idle() {
@@ -136,7 +136,7 @@ export default {
     },
     avatarUrl() {
       return get(this.user, 'picture.data.url')
-    }
+    },
   },
   methods: {
     getUserData() {
@@ -162,8 +162,8 @@ export default {
     },
     toggleInvert() {
       this.inverted = !this.inverted
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -183,10 +183,6 @@ export default {
 .docs-v-facebook-login {
   font-family: inherit !important;
   box-shadow: 0rem 21vh 1.825rem -0.125rem rgba(0, 0, 0, 0.2) !important;
-
-  svg {
-    border-radius: 50%;
-  }
 
   &.is-inverted {
     color: #3b55a0 !important;
