@@ -1,49 +1,40 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Docs from '@/views/Docs'
+import Root from '@/views/Docs'
 import Readme from '@/views/Readme'
-import ReadmeV1 from '@/views/ReadmeV1'
-import Playground from '@/views/Playground'
+import LiveExample from '@/views/LiveExample'
 import PrivacyPolicy from '@/views/PrivacyPolicy'
 
 Vue.use(Router)
+
 export const routes = [
   {
     path: '/',
-    component: Docs,
+    component: Root,
     children: [
       {
         path: '/',
         component: Readme,
-        name: 'Docs'
+        name: 'Get Started',
       },
-      {
-        path: '/v1.x',
-        component: ReadmeV1,
-        name: 'Docs v1.x'
-      },
-      ...(process.env.NODE_ENV === 'development'
-        ? [
-            {
-              name: 'Playground',
-              path: '/playground',
-              component: Playground
-            }
-          ]
-        : []),
-      {
-        path: '/js-fiddle',
-        name: 'JS Fiddle',
-        meta: { url: 'https://jsfiddle.net/adi518/jfa0gys8', target: '_blank' }
-      },
-      {
-        name: 'Privacy Policy',
-        path: '/privacy-policy',
-        component: PrivacyPolicy
-      }
-    ]
-  }
+    ],
+  },
+  {
+    name: 'Live Example',
+    path: '/live-example',
+    component: LiveExample,
+  },
+  {
+    path: '/js-fiddle',
+    name: 'JS Fiddle',
+    meta: { url: 'https://jsfiddle.net/adi518/jfa0gys8', target: '_blank' },
+  },
+  {
+    name: 'Privacy Policy',
+    path: '/privacy-policy',
+    component: PrivacyPolicy,
+  },
 ]
 
 const router = new Router({ routes })

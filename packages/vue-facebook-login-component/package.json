@@ -1,7 +1,7 @@
 {
   "name": "vue-facebook-login-component",
   "version": "3.0.0",
-  "description": "A renderless Vue component for composing Facebook Login",
+  "description": "A renderless Vue.js component for composing Facebook Login",
   "author": "Adi Sahar",
   "license": "MIT",
   "files": [
@@ -89,8 +89,9 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "space-before-function-paren": 0,
-      "comma-dangle": 0
+      "no-console": "warn",
+      "no-unused-vars": "warn",
+      "vue/no-unused-components": "warn"
     },
     "overrides": [
       {

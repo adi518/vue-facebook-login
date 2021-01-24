@@ -8,7 +8,7 @@ export { default as VFBLoginButton } from '@/components/Button'
 export const Install = {
   install(Vue) {
     Vue.component(Button.name, Button)
-  }
+  },
 }
 
 function autoInstall() {

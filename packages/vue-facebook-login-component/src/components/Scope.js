@@ -6,37 +6,37 @@ export default {
   props: {
     value: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     appId: {
       type: String,
-      required: true
+      required: true,
     },
     version: {
       type: String,
-      default: 'v6.0' // https://developers.facebook.com/docs/graph-api/changelog/
+      default: 'v6.0', // https://developers.facebook.com/docs/graph-api/changelog/
     },
     options: {
       type: Object,
-      default: () => ({ cookie: true, xfbml: true, autoLogAppEvents: true }) // https://developers.facebook.com/docs/javascript/quickstart
+      default: () => ({ cookie: true, xfbml: true, autoLogAppEvents: true }), // https://developers.facebook.com/docs/javascript/quickstart
     },
     loginOptions: {
       type: Object,
-      default: () => ({ scope: 'email' })
+      default: () => ({ scope: 'email' }),
     },
     asyncDelay: {
       type: Number,
-      default: 0
+      default: 0,
     },
     sdkLocale: {
       type: String,
-      default: 'en_US'
-    }
+      default: 'en_US',
+    },
   },
   data: () => ({
     error: null,
     working: true,
-    connected: false
+    connected: false,
   }),
   watch: {
     value({ error, working, connected }) {
@@ -47,7 +47,7 @@ export default {
     // eslint-disable-next-line no-unused-vars
     scope({ login, logout, toggleLogin, ...restScope }) {
       this.$emit('input', restScope)
-    }
+    },
   },
   async created() {
     this.async(async () => {
@@ -93,9 +93,9 @@ export default {
         disabled: this.disabled,
         connected: this.connected,
         toggleLogin: this.toggleLogin,
-        disconnected: this.disconnected
+        disconnected: this.disconnected,
       }
-    }
+    },
   },
   methods: {
     toggleLogin() {
@@ -130,10 +130,10 @@ export default {
     },
     catchHandler(error) {
       this.error = error
-      console.error(this.error)
-    }
+      console.error(this.error) // eslint-disable-line no-console
+    },
   },
   render() {
     return this.$scopedSlots.default?.(this.scope)
-  }
+  },
 }

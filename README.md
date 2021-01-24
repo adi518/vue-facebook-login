@@ -49,7 +49,7 @@ To use the component in your template, simply import and register with your comp
 ## [Features](#features)
 
 - Zero dependencies (gzipped: 9.98 KiB)
-- Handpicked Facebook SVG logos ([Iconmonstr](<(https://iconmonstr.com/facebook-1-svg/)>))
+- Handpicked Facebook SVG logos
 - Customizable through props and scoped-slots
 - Scope component (renderless/render-props pattern)
 - Button component with flex-box CSS and `rem` sizing

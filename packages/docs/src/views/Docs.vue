@@ -1,35 +1,5 @@
 <template>
   <div>
-    <!-- NAV -->
-    <Nav>
-      <Title :pkg="pkg" :docsPkg="docs" />
-      <Button
-        is-icon
-        title="Alternate Logo"
-        @click="toggleAltLogo"
-        v-if="facebook.model.enabled && disconnected"
-        >💋</Button
-      >
-      <Button is-icon title="Invert Colors" @click="toggleInvert">🍭</Button>
-      <Button
-        title="Logout"
-        @click="facebook.scope.logout"
-        v-if="facebook.scope.logout && connected"
-        >logout</Button
-      >
-      <ScrollToTopScope>
-        <Button
-          is-icon
-          slot-scope="scope"
-          title="Back to Top"
-          @click="scope.scrollToTop"
-          >👆</Button
-        >
-      </ScrollToTopScope>
-      <Social :pkg="pkg" />
-    </Nav>
-    <!-- NAV end -->
-
     <Hero>
       <VueLogo class="mb-25" />
 
@@ -80,7 +50,7 @@
     </Hero>
 
     <!-- README -->
-    <Page ref="readme">
+    <Page ref="readme" class="docs-page">
       <RouterView />
     </Page>
     <!-- README end -->
@@ -94,22 +64,18 @@ import { get } from 'lodash'
 import VFacebookLogin from 'vue-facebook-login-component'
 import Breakpoint, { VHideAt, VShowAt } from 'vue-breakpoint-component'
 
-import docs from 'docs/package.json'
 import Avatar from '@/components/Avatar'
-import pkg from 'vue-facebook-login-component/package.json'
 
 export default {
-  name: 'Docs',
+  name: 'Root',
   components: {
-    Avatar, // eslint-disable-line
-    VHideAt, // eslint-disable-line
-    VShowAt, // eslint-disable-line
-    Breakpoint, // eslint-disable-line
-    VFacebookLogin, // eslint-disable-line
+    Avatar,
+    VHideAt,
+    VShowAt,
+    Breakpoint,
+    VFacebookLogin,
   },
   data: () => ({
-    pkg,
-    docs,
     facebook: {
       FB: {},
       model: {},
@@ -179,6 +145,10 @@ export default {
 @import '~bootstrap/scss/grid';
 @import '@/styles/markdown';
 
+.docs-page {
+  padding-top: 4rem !important;
+}
+
 // https://tobiasahlin.com/blog/how-to-animate-box-shadow/
 .docs-v-facebook-login {
   font-family: inherit !important;
@@ -203,10 +173,10 @@ export default {
     }
   }
 
-  &.is-connected:not(:hover) {
-    background-color: transparent !important;
-    border-color: rgba(255, 255, 255, 0.25) !important;
-  }
+  // &.is-connected:not(:hover) {
+  //   background-color: transparent !important;
+  //   border-color: rgba(255, 255, 255, 0.25) !important;
+  // }
 
   @include media-breakpoint-up(sm) {
     font-size: 1.25rem !important;
