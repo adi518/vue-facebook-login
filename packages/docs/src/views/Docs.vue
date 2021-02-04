@@ -84,7 +84,7 @@ export default {
         process.env.NODE_ENV === 'development'
           ? '852858511574509'
           : '2146252248983683',
-      useAltLogo: false,
+      useAltLogo: true,
     },
     user: {},
     breakpoint: {},

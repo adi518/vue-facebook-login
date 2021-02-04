@@ -289,7 +289,7 @@ Start a pull request, run tests and update as necessary before submitting.
 ## Attributions
 
 - [flaticon](https://www.flaticon.com/free-icon/facebook-circular-logo_20673)
-- [iconmonstr](https://iconmonstr.com/facebook-1-svg/)
+- [iconmonstr](https://iconmonstr.com/facebook-6-svg/)
 
 ## [Related Links](#related-links)
 

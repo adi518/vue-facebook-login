@@ -109,8 +109,8 @@ export default {
 
 <style lang="scss" scoped>
 // http://www.color-hex.com/color/1c284c
-// https://iconmonstr.com/facebook-1-svg/
 // http://www.color-hex.com/color-palette/185
+// https://iconmonstr.com/?s=facebook
 // https://icons8.com/icon/set/facebook-f/all
 
 @import './colors';
