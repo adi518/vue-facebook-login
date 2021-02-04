@@ -14,7 +14,7 @@ export default {
     },
     version: {
       type: String,
-      default: 'v6.0', // https://developers.facebook.com/docs/graph-api/changelog/
+      default: 'v9.0', // https://developers.facebook.com/docs/graph-api/changelog/
     },
     options: {
       type: Object,
