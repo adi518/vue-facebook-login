@@ -33,7 +33,6 @@
       :token-style="{ backgroundImage: `url(${menuToken})` }"
     >
       <template v-slot:before>Vue.js Facebook Login</template>
-      <!-- <a href="https://jsfiddle.net/adi518/jfa0gys8">JS Fiddle</a> -->
       <template v-if="breakpoint.noMatch">
         <Downloads :pkg="pkg" />
         <GithubStars :pkg="pkg" />
