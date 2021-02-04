@@ -14,14 +14,16 @@ jest.mock('@/Sdk', () => {
       unsubscribe: jest.fn().mockResolvedValue(),
       getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
       login: jest.fn().mockResolvedValue({ status: 'connected' }),
-      logout: jest.fn().mockResolvedValue()
-    }
+      logout: jest.fn().mockResolvedValue(),
+    },
   }
 })
 
 const { Sdk } = require('@/Sdk')
 
 const commonProps = { appId: '966242223397117' }
+
+jest.useFakeTimers()
 
 describe('Scope', () => {
   test('initial state and events (disconnected)', async () => {
@@ -34,7 +36,7 @@ describe('Scope', () => {
     expect(emitted['sdk-init'].length).toBe(1)
     expect(wrapper.emittedByOrder().map(e => e.name)).toEqual([
       'sdk-init',
-      'input'
+      'input',
     ])
     expect(wrapper.vm.connected).toBe(false)
     expect(wrapper.isEmpty()).toBe(true)
@@ -65,7 +67,7 @@ describe('Scope', () => {
     const login = jest.fn()
     const wrapper = shallowMount(Scope, {
       propsData: commonProps,
-      listeners: { login }
+      listeners: { login },
     })
     wrapper.vm.login()
     await flushPromises()
@@ -78,7 +80,7 @@ describe('Scope', () => {
     const logout = jest.fn()
     const wrapper = shallowMount(Scope, {
       propsData: commonProps,
-      listeners: { logout }
+      listeners: { logout },
     })
     wrapper.vm.logout()
     await flushPromises()
@@ -90,7 +92,7 @@ describe('Scope', () => {
   test('empty render with regular slot', async () => {
     const wrapper = shallowMount(Scope, {
       propsData: commonProps,
-      slots: { default: '<div></div>' }
+      slots: { default: '<div></div>' },
     })
     await flushPromises()
     expect(wrapper.isEmpty()).toBe(true)
@@ -104,8 +106,8 @@ describe('Scope', () => {
         default(props) {
           scope = props
           return <div>{props.connected ? 'connected' : 'disconnected'}</div>
-        }
-      }
+        },
+      },
     })
     await flushPromises()
     expect(wrapper.vm.scope).toBe(scope)
