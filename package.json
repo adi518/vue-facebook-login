@@ -3,11 +3,12 @@
   "author": "Adi Sahar",
   "license": "MIT",
   "private": true,
+  "repository": "git@github.com:adi518/vue-facebook-login.git",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "prepare":"yarn build",
+    "prepare": "yarn build",
     "start": "yarn build:watch",
     "start:rollup": "yarn build:rollup:watch",
     "start:docs": "yarn --cwd ./packages/docs start",
