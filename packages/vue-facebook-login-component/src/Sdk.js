@@ -5,6 +5,7 @@
 // https://stackoverflow.com/questions/43445301/access-token-warning-when-logging-in-using-facebook-javascript-sdk
 
 export const FACEBOOK_SCRIPT_ID = 'facebook-jssdk'
+export const INIT_TIMEOUT = 3000
 
 // https://developers.facebook.com/docs/reference/javascript/FB.getLoginStatus
 export const LOGIN_STATUSES = {
@@ -24,6 +25,7 @@ function handleLoadError(error) {
 export function initSdk(options, locale = 'en_US') {
   return new Promise((resolve, reject) => {
     // prettier-ignore
+    // https://developers.facebook.com/docs/javascript/advanced-setup
     window.fbAsyncInit = function() {
       window.FB.init(options)
       resolve(window.FB)
@@ -39,6 +41,7 @@ export function initSdk(options, locale = 'en_US') {
       fjs.parentNode.insertBefore(js, fjs)
     }(document, 'script', FACEBOOK_SCRIPT_ID))
     /* eslint-enable */
+    window.setTimeout(() => reject('window.fbAsyncInit timed out, see: https://developers.facebook.com/support/bugs/'), INIT_TIMEOUT)
   })
 }
 

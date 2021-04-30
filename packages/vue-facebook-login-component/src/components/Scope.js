@@ -88,7 +88,7 @@ export default {
         hasError: this.hasError,
         login: this.login,
         logout: this.logout,
-        working: this.working,
+        working: this.working && !this.hasError,
         enabled: this.enabled,
         disabled: this.disabled,
         connected: this.connected,
