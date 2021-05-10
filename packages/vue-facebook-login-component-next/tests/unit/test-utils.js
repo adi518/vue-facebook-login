@@ -1,5 +1,6 @@
 /* global jest */
-import flushPromises from 'flush-promises'
+// import flushPromises from 'flush-promises'
+import { flushPromises } from '@vue/test-utils'
 
 export const flush = async () => {
   await flushPromises()

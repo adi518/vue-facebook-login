@@ -182,7 +182,7 @@ Refer to the [tables](#props) above for scope component **specific** props/event
 
 ### [Scope Component Example](#scope-component-example)
 
-The following snippet is a minimal usage example, see [source](https://github.com/adi518/vue-facebook-login-component/blob/master/packages/vue-facebook-login-component/src/components/Composed.vue) for a real-world example.
+The following snippet is a minimal usage example, see [source](https://github.com/adi518/vue-facebook-login-component/blob/master/packages/vue-facebook-login-component/src/components/FacebookLogin.vue) for a real-world example.
 
 ```html
 <template>

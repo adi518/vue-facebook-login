@@ -1,61 +1,59 @@
 import { mount } from '@vue/test-utils'
-import Button from '@/components/Composed'
 import Scope from '@/components/Scope'
-import { flush } from './test-utils'
+import FacebookLogin from '@/components/FacebookLogin'
+import { flush, mockSdk } from './test-utils'
+import { Sdk } from '@/Sdk'
 
 jest.mock('@/Sdk', () => {
   const { Sdk } = jest.requireActual('@/Sdk')
+  const { mockSdk } = jest.requireActual('./test-utils')
+  mockSdk(Sdk)
   return {
     __esModule: true,
     ...jest.requireActual('@/Sdk'),
-    Sdk: {
-      isConnected: Sdk.isConnected,
-      subscribe: jest.fn().mockResolvedValue({}),
-      unsubscribe: jest.fn().mockResolvedValue(),
-      getLoginStatus: jest.fn().mockResolvedValue({ status: 'unknown' }),
-      login: jest.fn().mockResolvedValue({ status: 'connected' }),
-      logout: jest.fn().mockResolvedValue()
-    }
+    Sdk,
   }
 })
 
-const { Sdk } = require('@/Sdk')
+const consoleError = console.error
 const commonProps = { appId: '966242223397117' }
+
+beforeEach(() => {
+  console.error = consoleError
+  mockSdk(Sdk)
+})
 
 jest.useFakeTimers()
 
-beforeEach(() => {
-  jest.spyOn(console, 'error').mockImplementation(() => {})
-})
-
-describe('Button', () => {
+describe('FacebookLogin', () => {
   test('initial render (disabled)', async () => {
-    const wrapper = mount(Button)
+    console.error = jest.fn()
+    const wrapper = mount(FacebookLogin)
     await flush()
     expect(wrapper.attributes('disabled')).toBe('disabled')
-    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('initial render (disconnected)', async () => {
-    const wrapper = mount(Button, { propsData: commonProps })
+    const wrapper = mount(FacebookLogin, { propsData: commonProps })
     await flush()
-    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('initial render (connected)', async () => {
     Sdk.getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
-    const wrapper = mount(Button, {
-      propsData: commonProps
+    const wrapper = mount(FacebookLogin, {
+      propsData: commonProps,
     })
     await flush()
-    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('login and click event', async () => {
     const onClick = jest.fn()
-    const wrapper = mount(Button, {
+    const wrapper = mount(FacebookLogin, {
       propsData: commonProps,
-      listeners: { click: onClick }
+      listeners: { click: onClick },
     })
     await flush()
     wrapper.trigger('click')
@@ -70,8 +68,8 @@ describe('Button', () => {
         working: false,
         disabled: false,
         connected: true,
-        disconnected: false
-      }
+        disconnected: false,
+      },
     ])
   })
 
@@ -91,18 +89,18 @@ describe('Button', () => {
       loaderStyle: { loaderStyle1: 1, loaderStyle2: 2, loaderStyle3: 3 },
       transition: [
         'background-color 0.15s ease-in-out',
-        'padding 0.15s ease-in-out'
+        'padding 0.15s ease-in-out',
       ],
       useAltLogo: true,
       asyncDelay: 500,
-      sdkLocale: 'en_US'
+      sdkLocale: 'en_US',
     }
-    const wrapper = mount(Button, { propsData })
+    const wrapper = mount(FacebookLogin, { propsData })
     expect(wrapper.vm.$props).toEqual(propsData)
   })
 
   test('slots', async () => {
-    const wrapper = mount(Button, {
+    const wrapper = mount(FacebookLogin, {
       propsData: { appId: '966242223397117' },
       slots: {
         logo: '<div class="logo"></div>',
@@ -110,19 +108,19 @@ describe('Button', () => {
         before: '<div class="before"></div>',
         login: '<div class="login"></div>',
         error: '<div class="error"></div>',
-        working: '<div class="working"></div>'
-      }
+        working: '<div class="working"></div>',
+      },
     })
     await flush()
     const scopeInstance = wrapper.get(Scope).vm
     scopeInstance.error = new Error()
     scopeInstance.$forceUpdate()
     await scopeInstance.$nextTick()
-    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('scoped-slots', async () => {
-    const wrapper = mount(Button, {
+    const wrapper = mount(FacebookLogin, {
       propsData: commonProps,
       scopedSlots: {
         logo: '<div class="logo" slot-scope="scope">{{scope}}</div>',
@@ -130,36 +128,36 @@ describe('Button', () => {
         before: '<div class="before" slot-scope="scope">{{scope}}</div>',
         login: '<div class="login" slot-scope="scope">{{scope}}</div>',
         error: '<div class="error" slot-scope="scope">{{scope}}</div>',
-        working: '<div class="working" slot-scope="scope">{{scope}}</div>'
-      }
+        working: '<div class="working" slot-scope="scope">{{scope}}</div>',
+      },
     })
     await flush()
     const scopeInstance = wrapper.get(Scope).vm
     scopeInstance.error = new Error()
     scopeInstance.$forceUpdate()
     await scopeInstance.$nextTick()
-    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('logout slot', async () => {
     Sdk.getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
-    const wrapper = mount(Button, {
+    const wrapper = mount(FacebookLogin, {
       propsData: commonProps,
-      slots: { logout: '<div class="logout"></div>' }
+      slots: { logout: '<div class="logout"></div>' },
     })
     await flush()
-    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   test('logout scoped-slot', async () => {
     Sdk.getLoginStatus.mockResolvedValueOnce({ status: 'connected' })
-    const wrapper = mount(Button, {
+    const wrapper = mount(FacebookLogin, {
       propsData: commonProps,
       scopedSlots: {
-        logout: '<div class="logout" slot-scope="scope">{{scope}}</div>'
-      }
+        logout: '<div class="logout" slot-scope="scope">{{scope}}</div>',
+      },
     })
     await flush()
-    expect(wrapper.element).toMatchSnapshot()
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

@@ -1,9 +1,9 @@
-import Button from '@/components/FacebookLogin'
+import Button from '@/components/FacebookLogin.vue'
 
-export { default as VFBLogin } from '@/components/FacebookLogin'
+export { default as VFBLogin } from '@/components/FacebookLogin.vue'
 export { default as VFBLoginScope } from '@/components/Scope'
-export { default as VFBLoginLoader } from '@/components/Loader'
-export { default as VFBLoginButton } from '@/components/Button'
+export { default as VFBLoginLoader } from '@/components/Loader.vue'
+export { default as VFBLoginButton } from '@/components/Button.vue'
 
 export const Install = {
   install(Vue) {

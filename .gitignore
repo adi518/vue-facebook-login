@@ -88,7 +88,5 @@ typings/
 .dynamodb/
 
 # Other
-packages/vue-components
 packages/nuxt-app
-packages/vue3-app
-packages/vue3-app-vite
+packages/vue-components

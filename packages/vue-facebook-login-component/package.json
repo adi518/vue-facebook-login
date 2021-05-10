@@ -1,15 +1,14 @@
 {
   "name": "vue-facebook-login-component",
   "version": "4.0.2",
-  "description": "A renderless Vue.js component for composing Facebook Login",
   "author": "Adi Sahar",
+  "description": "A renderless Vue.js component for composing Facebook Login",
   "license": "MIT",
   "files": [
     "dist"
   ],
   "main": "dist/vueFacebookLoginComponent.umd.min.js",
   "module": "dist/vueFacebookLoginComponent.esm.js",
-  "private": false,
   "scripts": {
     "prepare": "yarn build",
     "start": "yarn build:watch",
@@ -59,7 +58,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.1",
     "flush-promises": "^1.0.2",
-    "jest-serializer-vue": "^2.0.2",
+    "jest-serializer-vue-tjw": "^3.18.0",
     "lodash.camelcase": "^4.3.0",
     "postcss": "^8.2.4",
     "rollup": "^2.36.1",
@@ -113,7 +112,7 @@
   "jest": {
     "preset": "@vue/cli-plugin-unit-jest",
     "snapshotSerializers": [
-      "jest-serializer-vue"
+      "jest-serializer-vue-tjw"
     ],
     "collectCoverage": true,
     "collectCoverageFrom": [
