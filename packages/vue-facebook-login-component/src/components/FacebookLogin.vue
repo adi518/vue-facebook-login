@@ -43,6 +43,19 @@ export default {
         {}
       )
     },
+    buttonProps() {
+      return getButtonProps(this.filteredProps)
+    },
   },
+}
+
+function getButtonProps($props) {
+  const props = {}
+  for (const prop in $props) {
+    if (Button.props[prop]) {
+      props[prop] = $props[prop]
+    }
+  }
+  return props
 }
 </script>

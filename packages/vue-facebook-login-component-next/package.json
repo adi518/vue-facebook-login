@@ -1,0 +1,78 @@
+{
+  "name": "vue-facebook-login-component-next",
+  "version": "0.0.0",
+  "author": "Adi Sahar",
+  "description": "A renderless Vue.js 3 component for composing Facebook Login",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vue-facebook-login-component-next.umd.js",
+  "module": "./dist/vue-facebook-login-component-next.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-facebook-login-component-next.es.js",
+      "require": "./dist/vue-facebook-login-component-next.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "prepare": "yarn build",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "test": "vue-cli-service test:unit --watch",
+    "prerelease": "yarn build && yarn config set version-tag-prefix v%s-next && yarn version --patch",
+    "prerelease:minor": "yarn build && yarn config set version-tag-prefix v%s-next && yarn version --minor",
+    "prerelease:major": "yarn build && yarn config set version-tag-prefix v%s-next && yarn version --major",
+    "postrelease": "git push --follow-tags",
+    "postrelease:minor": "git push --follow-tags",
+    "postrelease:major": "git push --follow-tags",
+    "release": "yarn publish",
+    "release:minor": "yarn publish",
+    "release:major": "yarn publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adi518/vue-facebook-login-component"
+  },
+  "bugs": {
+    "url": "https://github.com/adi518/vue-facebook-login-component/issues"
+  },
+  "peerDependencies": {
+    "vue": "^3.x"
+  },
+  "dependencies": {
+    "vue": "^3.0.5"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/babel-plugin-jsx": "^1.0.6",
+    "@vue/cli-plugin-babel": "^4.5.12",
+    "@vue/cli-plugin-unit-jest": "^4.5.12",
+    "@vue/cli-service": "^4.5.12",
+    "@vue/compiler-sfc": "^3.0.5",
+    "@vue/test-utils": "^2.0.0-rc.6",
+    "jest-serializer-vue-tjw": "^3.18.0",
+    "vite": "^2.2.3",
+    "vue-jest": "^5.0.0-0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest-setup.js"
+    ],
+    "preset": "@vue/cli-plugin-unit-jest",
+    "transform": {
+      "^.+\\.vue$": "vue-jest"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue-tjw"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,vue}",
+      "!**/node_modules/**"
+    ]
+  }
+}

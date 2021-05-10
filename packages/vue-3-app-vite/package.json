@@ -1,0 +1,18 @@
+{
+  "name": "vue-3-app-vite",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.0.5",
+    "vue-facebook-login-component-next": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.2",
+    "@vue/compiler-sfc": "^3.0.5",
+    "vite": "^2.3.0"
+  }
+}
