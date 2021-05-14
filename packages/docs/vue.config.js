@@ -1,5 +1,10 @@
 const isProduction = process.env.NODE_ENV === 'production'
-const config = {}
+const config = {
+  devServer: {
+    host: 'localhost',
+    https: true,
+  },
+}
 
 if (isProduction) {
   config.publicPath = './'

@@ -32,7 +32,9 @@
       menu-class="app-menu"
       :token-style="{ backgroundImage: `url(${menuToken})` }"
     >
-      <template v-slot:before>Vue.js Facebook Login</template>
+      <template v-slot:before>
+        Facebook Login
+      </template>
       <template v-if="breakpoint.noMatch">
         <Downloads :pkg="pkg" />
         <GithubStars :pkg="pkg" />

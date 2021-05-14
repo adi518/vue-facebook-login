@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "yarn serve",
-    "serve": "vue-cli-service serve --host localhost --https",
+    "serve": "vue-cli-service serve",
     "update": "yarn add vue-facebook-login-component",
     "build": "vue-cli-service build",
     "build:inspect": "vue-cli-service inspect > output.js",
