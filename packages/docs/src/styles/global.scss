@@ -4,7 +4,7 @@
 @import '~animate.css/animate.min.css';
 
 :root {
-  --common-transition-time: 0.5s;
+  --transition-duration: 0.5s;
 }
 
 html {
@@ -13,7 +13,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
 
   @include media-breakpoint-down(xs) {
-    font-size: 110%;
+    font-size: 100%;
   }
 }
 
@@ -28,7 +28,7 @@ li {
 }
 
 a {
-  transition: color var(--common-transition-time);
+  transition: color var(--transition-duration);
 
   &:hover {
     text-decoration: none;

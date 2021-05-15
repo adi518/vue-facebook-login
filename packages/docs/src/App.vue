@@ -16,15 +16,7 @@
         v-if="facebook.scope.logout && connected"
         >logout</Button
       > -->
-      <ScrollToTopScope>
-        <Button
-          is-icon
-          slot-scope="scope"
-          title="Back to Top"
-          @click="scope.scrollToTop"
-          >👆</Button
-        >
-      </ScrollToTopScope>
+      <Button title="Vue 3 Support" @click="showModal = true">🔥 Vue 3</Button>
       <Social :pkg="pkg" />
     </Nav>
     <Menu
@@ -42,10 +34,24 @@
     </Menu>
     <RouterView />
     <!-- <ShowAt small-down> -->
-    <!-- <ScrollToTop /> -->
     <!-- </ShowAt> -->
-    <ScrollToAnchor />
     <Footer :pkg="pkg" />
+    <ScrollToTopV2 />
+    <ScrollToAnchor />
+    <vue-final-modal
+      escToClose
+      v-model="showModal"
+      classes="modal-container"
+      content-class="modal-content"
+    >
+      <span class="modal__title">Vue 3 is now supported 🔥</span>
+      <p>
+        <small>
+          While there are no API changes, you should still mind breaking changes
+          and test your app accordingly. Happy coding! 🖐
+        </small>
+      </p>
+    </vue-final-modal>
     <Breakpoint v-model="breakpoint" />
   </div>
 </template>
@@ -93,6 +99,7 @@ export default {
     routes,
     docsPkg,
     menuToken,
+    showModal: false,
     breakpoint: {},
   }),
 }
@@ -113,5 +120,28 @@ export default {
 
 #app {
   min-width: 320px;
+}
+
+.modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 35vw;
+  height: 25vh;
+  margin: 0 1rem;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal__title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
 }
 </style>

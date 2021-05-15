@@ -30,6 +30,7 @@
     "vue-breakpoint-component": "^1.2.6",
     "vue-components": "^1.0.0",
     "vue-facebook-login-component": "^4.0.2",
+    "vue-final-modal": "^2.2.0",
     "vue-flatten-routes": "^1.1.0",
     "vue-github-button": "^1.1.2",
     "vue-markdown": "^2.2.4",

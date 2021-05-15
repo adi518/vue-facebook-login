@@ -27,7 +27,7 @@ export const routes = [
   },
   {
     path: '/js-fiddle',
-    name: 'JS Fiddle',
+    name: '🧙 JS Fiddle',
     meta: { url: 'https://jsfiddle.net/adi518/jfa0gys8', target: '_blank' },
   },
   {

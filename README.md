@@ -16,6 +16,18 @@ npm install vue-facebook-login-component
 yarn add vue-facebook-login-component
 ```
 
+### NPM (Vue 3)
+
+```console
+npm install vue-facebook-login-component-next
+```
+
+### Yarn (Vue 3)
+
+```console
+yarn add vue-facebook-login-component-next
+```
+
 ### Embed Directly
 
 ```html
