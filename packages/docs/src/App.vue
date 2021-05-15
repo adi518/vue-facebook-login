@@ -45,12 +45,12 @@
       content-class="modal-content"
     >
       <span class="modal__title">Vue 3 is now supported 🔥</span>
-      <p>
+      <center>
         <small>
           While there are no API changes, you should still mind breaking changes
           and test your app accordingly. Happy coding! 🖐
         </small>
-      </p>
+      </center>
     </vue-final-modal>
     <Breakpoint v-model="breakpoint" />
   </div>
@@ -133,10 +133,10 @@ export default {
   align-items: center;
   flex-direction: column;
   width: 35vw;
-  height: 25vh;
   margin: 0 1rem;
+  min-width: 22rem;
   border-radius: 1rem;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.5rem 1.5rem;
   background-color: rgba(0, 0, 0, 0.75);
 }
 
