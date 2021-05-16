@@ -37,7 +37,7 @@
     "vue-use-web": "^0.10.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.10",
+    "@vue/cli-plugin-babel": "^4.5.13",
     "@vue/cli-plugin-eslint": "^4.2.3",
     "@vue/cli-service": "^4.5.10",
     "babel-eslint": "^10.1.0",
