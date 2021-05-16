@@ -50,6 +50,7 @@
     "markdown-loader": "^5.1.0",
     "sass": "^1.26.2",
     "sass-loader": "^8.0.2",
+    "vue-cli-plugin-lodash": "^0.1.4",
     "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {
