@@ -11,8 +11,8 @@
     "prepare": "yarn build",
     "start": "yarn build:watch",
     "start:rollup": "yarn build:rollup:watch",
-    "start:docs": "yarn workspace docs start",
-    "update:docs": "yarn workspace docs update",
+    "start:docs": "yarn workspace vue-facebook-login-component-docs start",
+    "update:docs": "yarn workspace vue-facebook-login-component-docs update",
     "test": "yarn workspace vue-facebook-login-component test:unit",
     "build": "yarn workspace vue-facebook-login-component build",
     "build:rollup": "yarn workspace vue-facebook-login-component build:rollup",
@@ -23,7 +23,7 @@
     "release": "yarn workspace vue-facebook-login-component release",
     "release:minor": "yarn workspace vue-facebook-login-component release:minor",
     "release:major": "yarn workspace vue-facebook-login-component release:major",
-    "release:docs": "yarn workspace docs release",
+    "release:docs": "yarn workspace vue-facebook-login-component-docs release",
     "deduplicate": "npx yarn-deduplicate && yarn"
   }
 }

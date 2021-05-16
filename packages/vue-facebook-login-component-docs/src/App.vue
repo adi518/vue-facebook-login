@@ -63,7 +63,7 @@ import {
   ScrollToAnchor as ScrollToAnchorCreator,
 } from 'vue-components'
 
-import docsPkg from 'docs/package.json'
+import docsPkg from 'vue-facebook-login-component-docs/package.json'
 import router, { routes } from '@/router'
 import menuToken from '@/assets/vue-logo-facebook.svg'
 import pkg from 'vue-facebook-login-component/package.json'
