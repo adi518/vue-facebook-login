@@ -23,6 +23,7 @@
     "release": "yarn workspace vue-facebook-login-component release",
     "release:minor": "yarn workspace vue-facebook-login-component release:minor",
     "release:major": "yarn workspace vue-facebook-login-component release:major",
-    "release:docs": "yarn workspace docs release"
+    "release:docs": "yarn workspace docs release",
+    "deduplicate": "npx yarn-deduplicate && yarn"
   }
 }

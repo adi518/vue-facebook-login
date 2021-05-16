@@ -1,5 +1,5 @@
 {
-  "name": "docs",
+  "name": "vue-facebook-login-component-docs",
   "version": "1.0.113",
   "description": "Documentation for vue-facebook-login-component",
   "author": "Adi Sahar",
@@ -22,7 +22,6 @@
     "bootstrap": "^4.4.1",
     "core-js": "^3.6.4",
     "lodash": "^4.17.19",
-    "lodash.reject": "^4.6.0",
     "npm-check": "^5.9.2",
     "smoothscroll-polyfill": "^0.4.4",
     "vue": "^2.6.12",
