@@ -1,5 +1,5 @@
 import path from 'path'
-import camelCase from 'lodash.camelcase'
+import { camelCase } from 'lodash'
 
 import vue from 'rollup-plugin-vue'
 import postcss from 'rollup-plugin-postcss'
