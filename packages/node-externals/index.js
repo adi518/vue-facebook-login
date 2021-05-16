@@ -9,8 +9,11 @@ const resolveWorkspacePath = (relativePath = '') =>
     relativePath
   )
 
-const resolveExternals = relativePath => [
-  nodeExternals({ additionalModuleDirs: [resolveWorkspacePath(relativePath)] }),
+const resolveExternals = ({ relativePath, ...nodeExternalsOptions } = {}) => [
+  nodeExternals({
+    ...nodeExternalsOptions,
+    additionalModuleDirs: [resolveWorkspacePath(relativePath)],
+  }),
 ]
 
 module.exports = { resolveExternals, resolveWorkspacePath }

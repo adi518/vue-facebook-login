@@ -1,5 +1,6 @@
 import smoothscroll from 'smoothscroll-polyfill'
 
+import 'prismjs' // https://github.com/vmware/clarity/issues/1832
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'

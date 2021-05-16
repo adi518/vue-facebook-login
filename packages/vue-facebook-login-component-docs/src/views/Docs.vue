@@ -2,7 +2,6 @@
   <div>
     <Hero>
       <VueLogo class="mb-25" />
-
       <!-- DEMO -->
       <v-facebook-login
         :async-delay="500"
@@ -42,7 +41,6 @@
         </v-facebook-login>-->
       </DevOnly>
       <!-- DEMO end -->
-
       <InstallAnchor
         class="mt-25"
         :to="$refs.readme ? $refs.readme.$el : null"
@@ -70,8 +68,8 @@ export default {
   name: 'Root',
   components: {
     Avatar,
-    VHideAt, // eslint-disable-line
-    VShowAt, // eslint-disable-line
+    VHideAt,
+    VShowAt,
     Breakpoint,
     VFacebookLogin,
   },
