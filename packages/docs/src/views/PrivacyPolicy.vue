@@ -3,14 +3,14 @@
     <h1>Privacy Policy</h1>
     <p>Effective date: July 30, 2018</p>
     <p>
-      Vue-Facebook-Login-Component ("us", "we", or "our") operates the
+      Vue-Facebook-Login ("us", "we", or "our") operates the
       {{ location.href }} website (the "Service").
     </p>
     <p>
       This page informs you of our policies regarding the collection, use, and
       disclosure of personal data when you use our Service and the choices you
-      have associated with that data. This Privacy Policy for
-      Vue-Facebook-Login-Component is powered by
+      have associated with that data. This Privacy Policy for Vue-Facebook-Login
+      is powered by
       <a
         href="https://www.freeprivacypolicy.com/free-privacy-policy-generator.php"
         >FreePrivacyPolicy.com</a
@@ -84,7 +84,7 @@
     </ul>
     <h2>Use of Data</h2>
     <p>
-      Vue-Facebook-Login-Component uses the collected data for various purposes:
+      Vue-Facebook-Login uses the collected data for various purposes:
     </p>
     <ul>
       <li>To provide and maintain the Service</li>
@@ -118,23 +118,22 @@
       information represents your agreement to that transfer.
     </p>
     <p>
-      Vue-Facebook-Login-Component will take all steps reasonably necessary to
-      ensure that your data is treated securely and in accordance with this
-      Privacy Policy and no transfer of your Personal Data will take place to an
-      organization or a country unless there are adequate controls in place
-      including the security of your data and other personal information.
+      Vue-Facebook-Login will take all steps reasonably necessary to ensure that
+      your data is treated securely and in accordance with this Privacy Policy
+      and no transfer of your Personal Data will take place to an organization
+      or a country unless there are adequate controls in place including the
+      security of your data and other personal information.
     </p>
     <h2>Disclosure Of Data</h2>
     <h3>Legal Requirements</h3>
     <p>
-      Vue-Facebook-Login-Component may disclose your Personal Data in the good
-      faith belief that such action is necessary to:
+      Vue-Facebook-Login may disclose your Personal Data in the good faith
+      belief that such action is necessary to:
     </p>
     <ul>
       <li>To comply with a legal obligation</li>
       <li>
-        To protect and defend the rights or property of
-        Vue-Facebook-Login-Component
+        To protect and defend the rights or property of Vue-Facebook-Login
       </li>
       <li>
         To prevent or investigate possible wrongdoing in connection with the
