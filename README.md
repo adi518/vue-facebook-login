@@ -60,7 +60,7 @@ To use the component in your template, simply import and register with your comp
 
 ## [Features](#features)
 
-- Zero dependencies (gzipped: 9.98 KiB)
+- Zero dependencies (Gzipped: 7.85 KiB)
 - Handpicked Facebook SVG logos
 - Customizable through props and scoped-slots
 - Scope component (renderless/render-props pattern)

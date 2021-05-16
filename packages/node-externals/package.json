@@ -1,0 +1,8 @@
+{
+  "name": "node-externals",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "adi518",
+  "license": "MIT",
+  "private": true
+}

@@ -45,6 +45,7 @@
     "vue": "^2.x"
   },
   "devDependencies": {
+    "node-externals": "^1.0.0",
     "@rollup/plugin-alias": "^3.1.1",
     "@rollup/plugin-node-resolve": "^11.0.1",
     "@vue/cli-plugin-babel": "^4.2.3",
@@ -57,6 +58,7 @@
     "cross-env": "^7.0.3",
     "eslint": "^6.8.0",
     "eslint-plugin-vue": "^6.2.1",
+    "find-yarn-workspace-root": "^2.0.0",
     "flush-promises": "^1.0.2",
     "jest-serializer-vue-tjw": "^3.18.0",
     "lodash.camelcase": "^4.3.0",
@@ -73,7 +75,8 @@
     "sinon": "^9.0.1",
     "source-map-explorer": "^2.5.1",
     "vue": "^2.6.12",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.12",
+    "webpack-node-externals": "^3.0.0"
   },
   "eslintConfig": {
     "root": true,
