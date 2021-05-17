@@ -1,6 +1,6 @@
 {
   "name": "vue-facebook-login-component-next",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Adi Sahar",
   "description": "A renderless Vue.js 3 component for composing Facebook Login",
   "license": "MIT",
@@ -43,7 +43,6 @@
     "vue": "^3.x"
   },
   "devDependencies": {
-    "vue": "^3.0.5",
     "@testing-library/jest-dom": "^5.12.0",
     "@vitejs/plugin-vue": "^1.2.2",
     "@vue/babel-plugin-jsx": "^1.0.6",
@@ -54,6 +53,7 @@
     "@vue/test-utils": "^2.0.0-rc.6",
     "jest-serializer-vue-tjw": "^3.18.0",
     "vite": "^2.2.3",
+    "vue": "^3.0.5",
     "vue-jest": "^5.0.0-0"
   },
   "jest": {
