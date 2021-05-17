@@ -1,10 +1,10 @@
 // https://github.com/Thunberg087/vue-fragment/issues/45
 // https://github.com/tjw-lint/jest-serializer-vue-tjw/pull/64
 
-import { mount } from '@vue/test-utils'
-import Button from '@/components/Button.vue'
-import FacebookLogin from '@/components/FacebookLogin.vue'
+import FacebookLogin from '@/FacebookLogin.vue'
 import { flush, mockSdk } from './test-utils'
+import { mount } from '@vue/test-utils'
+import Button from '@/Button.vue'
 import { Sdk } from '@/Sdk'
 
 jest.mock('@/Sdk', () => {

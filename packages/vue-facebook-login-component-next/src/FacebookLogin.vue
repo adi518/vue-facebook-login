@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import Scope from './Scope'
-import Button from './Button.vue'
-import { getButtonProps } from './utils'
+import Scope from '@/Scope'
+import Button from '@/Button.vue'
+import { getComponentProps } from '@/utils'
 
 export default {
   name: 'facebook-login',
@@ -32,7 +32,7 @@ export default {
       },
     },
     buttonProps() {
-      return getButtonProps(this.$props)
+      return getComponentProps(Button, this.$props)
     },
   },
 }

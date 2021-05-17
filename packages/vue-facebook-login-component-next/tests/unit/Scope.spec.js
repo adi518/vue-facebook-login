@@ -2,9 +2,9 @@
 
 import { shallowMount } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
-import Scope from '@/components/Scope'
 import { flush } from './test-utils'
 import { Sdk } from '@/Sdk'
+import Scope from '@/Scope'
 
 function mockSdk(Sdk) {
   Sdk.subscribe = jest.fn().mockResolvedValue({})
