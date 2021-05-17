@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import Scope from './Scope'
-import Button from './Button.vue'
+import Scope from '@/Scope'
+import Button from '@/Button.vue'
 
 export default {
   name: 'v-facebook-login',

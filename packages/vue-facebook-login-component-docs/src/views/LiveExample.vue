@@ -14,6 +14,13 @@
     <p>
       <VFacebookLoginButton :scope="disconnected"></VFacebookLoginButton>
     </p>
+    <h3>Disconnected State (Alternative Logo)</h3>
+    <p>
+      <VFacebookLoginButton
+        :scope="disconnected"
+        useAltLogo
+      ></VFacebookLoginButton>
+    </p>
     <h3>Working State</h3>
     <p>
       <VFacebookLoginButton :scope="working"></VFacebookLoginButton>

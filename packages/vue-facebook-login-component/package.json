@@ -21,7 +21,7 @@
     "build:stats": "yarn build --report",
     "build:analyze": "cross-env ANALYZE=true yarn build",
     "build:rollup:analyze": "yarn build && source-map-explorer ./dist/vueFacebookLoginComponent.umd.min.js --gzip",
-    "test:unit": "vue-cli-service test:unit --watch",
+    "test": "vue-cli-service test:unit --watch",
     "lint": "vue-cli-service lint",
     "prerelease": "yarn build && yarn version --patch",
     "prerelease:minor": "yarn build && yarn version --minor",
@@ -41,7 +41,6 @@
     "url": "https://github.com/adi518/vue-facebook-login-component/issues"
   },
   "peerDependencies": {
-    "core-js": "^3.x",
     "vue": "^2.x"
   },
   "devDependencies": {

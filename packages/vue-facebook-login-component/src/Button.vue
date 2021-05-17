@@ -43,9 +43,9 @@
 </template>
 
 <script>
-import Logo from './Logo'
-import Loader from './Loader'
-import LogoAlt from './LogoAlt'
+import Logo from '@/Logo'
+import Loader from '@/Loader'
+import LogoAlt from '@/LogoAlt'
 
 export default {
   inheritAttrs: false,

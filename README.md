@@ -60,11 +60,12 @@ To use the component in your template, simply import and register with your comp
 
 ## [Features](#features)
 
-- Zero dependencies (Gzipped: 7.85 KiB)
-- Handpicked Facebook SVG logos
+- Zero dependencies (umd, minified + gzipped at `7.85 KiB`)
+- Supports Vue.js 3 (umd, tree-shakeable, minified + gzipped at `3.6 KiB`)
 - Customizable through props and scoped-slots
 - Scope component (renderless/render-props pattern)
-- Button component with flex-box CSS and `rem` sizing
+- Button component with CSS Flexbox and `rem` sizing
+- High quality, handpicked freeware SVG logos
 
 ## [JS Fiddle](#js-fiddle)
 

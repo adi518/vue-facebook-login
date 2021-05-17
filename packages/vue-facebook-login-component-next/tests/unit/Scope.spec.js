@@ -99,7 +99,7 @@ describe('Scope', () => {
     // expect(wrapper.vm.$el).toBeEmptyDOMElement() // https://github.com/testing-library/jest-dom/issues/353
   })
 
-  test('empty render with regular slot', async () => {
+  test('slot', async () => {
     const wrapper = shallowMount(Scope, {
       props: commonProps,
       slots: { default: '<div></div>' },
@@ -108,7 +108,7 @@ describe('Scope', () => {
     // expect(wrapper.vm.$el).toBeEmptyDOMElement() // https://github.com/testing-library/jest-dom/issues/353
   })
 
-  test('render with scoped-slot', async () => {
+  test('scoped-slot', async () => {
     let scope
     const wrapper = shallowMount(Scope, {
       props: commonProps,

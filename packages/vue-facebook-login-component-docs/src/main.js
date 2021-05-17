@@ -1,3 +1,4 @@
+import 'core-js/stable'
 import smoothscroll from 'smoothscroll-polyfill'
 
 import 'prismjs' // https://github.com/vmware/clarity/issues/1832

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import Scope from '@/components/Scope'
-import FacebookLogin from '@/components/FacebookLogin'
+import FacebookLogin from '@/FacebookLogin'
 import { flush, mockSdk } from './test-utils'
+import Scope from '@/Scope'
 import { Sdk } from '@/Sdk'
 
 jest.mock('@/Sdk', () => {

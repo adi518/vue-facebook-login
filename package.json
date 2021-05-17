@@ -11,7 +11,7 @@
     "prepare": "yarn build",
     "start": "yarn build:watch",
     "start:rollup": "yarn build:rollup:watch",
-    "start:docs": "yarn workspace vue-facebook-login-component-docs start",
+    "start:docs": "nodemon --exec yarn workspace vue-facebook-login-component-docs start",
     "update:docs": "yarn workspace vue-facebook-login-component-docs update",
     "test": "yarn workspace vue-facebook-login-component test:unit",
     "build": "yarn workspace vue-facebook-login-component build",
@@ -28,5 +28,13 @@
     "release-next:major": "yarn workspace vue-facebook-login-component-next release:major",
     "release:docs": "yarn workspace vue-facebook-login-component-docs release",
     "dedup": "npx yarn-deduplicate && yarn"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*"
+    ]
   }
 }
