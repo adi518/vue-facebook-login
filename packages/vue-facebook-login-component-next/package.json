@@ -1,6 +1,6 @@
 {
   "name": "vue-facebook-login-component-next",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Adi Sahar",
   "description": "A renderless Vue.js 3 component for composing Facebook Login",
   "license": "MIT",
@@ -22,7 +22,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "test": "vue-cli-service test:unit --watch",
-    "prerelease": "yarn build && yarn config set version-tag-prefix next- && yarn version --patch",
+    "prerelease": "yarn build && yarn config set version-tag-prefix next- && yarn version --patch && exit",
     "prerelease:minor": "yarn build && yarn config set version-tag-prefix next- && yarn version --minor",
     "prerelease:major": "yarn build && yarn config set version-tag-prefix next- && yarn version --major",
     "postrelease": "git push --follow-tags",
