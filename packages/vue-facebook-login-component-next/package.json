@@ -16,6 +16,7 @@
     },
     "./dist/style.css": "./dist/style.css"
   },
+  "sideEffects": false,
   "scripts": {
     "prepare": "yarn build",
     "dev": "vite",
