@@ -1,17 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Root from '@/views/Docs'
-import Readme from '@/views/Readme'
-import LiveExample from '@/views/LiveExample'
-import PrivacyPolicy from '@/views/PrivacyPolicy'
+import Readme from '@/components/Readme'
+import GetStarted from '@/components/GetStarted'
+import LiveExample from '@/components/LiveExample'
+import PrivacyPolicy from '@/components/PrivacyPolicy'
 
 Vue.use(Router)
 
 export const routes = [
   {
     path: '/',
-    component: Root,
+    component: GetStarted,
     children: [
       {
         path: '/',

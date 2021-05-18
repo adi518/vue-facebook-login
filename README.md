@@ -60,12 +60,12 @@ To use the component in your template, simply import and register with your comp
 
 ## [Features](#features)
 
-- Zero dependencies (umd, minified + gzipped at `7.85 KiB`)
-- Supports Vue.js 3 (umd, tree-shakeable, minified + gzipped at `3.6 KiB`)
-- Customizable through props and scoped-slots
-- Scope component (renderless/render-props pattern)
-- Button component with CSS Flexbox and `rem` sizing
-- High quality, handpicked freeware SVG logos
+- Zero dependencies (umd, minified + gzipped at `7.85 KiB`).
+- Supports Vue.js 3 (umd, tree-shakeable, minified + gzipped at `3.6 KiB`).
+- Customizable through props and scoped-slots.
+- Scope component (renderless/render-props pattern).
+- Button component with CSS Flexbox and `rem` sizing.
+- High quality, handpicked freeware SVG logos.
 
 ## [JS Fiddle](#js-fiddle)
 
@@ -89,7 +89,7 @@ See [JS Fiddle](https://jsfiddle.net/adi518/jfa0gys8) for a vanilla example.
 | loader-class  | String  | `NONE`                                                  |                                                                                                                               |
 | loader-style  | Object  | `{}`                                                    |                                                                                                                               |
 | transition    | Array   | `[]`                                                    | Array of CSS transition values. Example:<br><br>`[ 'background-color 0.15s ease-in-out', 'padding 0.15s ease-in-out', ... ]`. |
-| use-alt-logo  | Boolean | `false`                                                 | Use [Iconmonstr alternate Facebook logo](https://iconmonstr.com/facebook-6-svg/).                                             |
+| use-alt-logo  | Boolean | `false`                                                 | Use [Flaticon Facebook logo](https://www.flaticon.com/free-icon/facebook-circular-logo_20673).                                |
 | async-delay   | Number  | 0                                                       | Minimum delay for asynchronous operations. [ &ast; ]                                                                          |
 | sdk-locale    | String  | 'en_US'                                                 | See [localization](https://developers.facebook.com/docs/internationalization/). [ &ast; ]                                     |
 
