@@ -16,11 +16,14 @@
     },
     "./dist/style.css": "./dist/style.css"
   },
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "prepare": "yarn build",
     "dev": "vite",
     "build": "vite build",
+    "build:watch": "vite build --watch",
     "serve": "vite preview",
     "test": "vue-cli-service test:unit --watch",
     "prerelease": "yarn build && yarn config set version-tag-prefix next-v && yarn version --patch",
