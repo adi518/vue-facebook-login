@@ -1,6 +1,6 @@
 {
   "name": "vue-facebook-login-component-next",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Adi Sahar",
   "description": "A renderless Vue.js 3 component for composing Facebook Login",
   "license": "MIT",
