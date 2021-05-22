@@ -1,4 +1,4 @@
-const { resolveExternals } = require('node-externals')
+const { resolveExternals } = require('monorepo-utils')
 
 module.exports = {
   chainWebpack: config => {
