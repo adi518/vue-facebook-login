@@ -7035,10 +7035,10 @@ git-url-parse@^11.4.3:
   dependencies:
     git-up "^4.0.0"
 
-github-buttons@^2.3.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/github-buttons/-/github-buttons-2.7.0.tgz#ce481388a39a8ed91a8073b6d3f1802f0068d52d"
-  integrity sha512-NGW6U6ZgLVTat6E6ZobWa9lwHsrthRo8NJ8GxlOAcrfeURg0k9qTrs1gG6Vzjjxt8jg/Wd2Or7RSGjKOrT5mFA==
+github-buttons@^2.8.0:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/github-buttons/-/github-buttons-2.18.1.tgz#93737ca38dd6a108799ebbbce7bafc46eb80c535"
+  integrity sha512-s3I3D3d0lNIflVBRFHsCoIkNfSZqBO6ivzWjNdoefBf+7TPMLgXiFoezr8M6SABiYCjZ8UXB3sIxa+ZxTKmWHw==
 
 giturl@^1.0.0:
   version "1.0.1"
@@ -15275,12 +15275,12 @@ vue-flatten-routes@^1.1.0:
   resolved "https://registry.yarnpkg.com/vue-flatten-routes/-/vue-flatten-routes-1.1.0.tgz#1d2e4cc112fc40092ad920a52c6170bf584cbb1e"
   integrity sha512-Knt8w/RKUwfpJwCfOyf5xw2Tr2BNJg5qbuPnwGRJaXYLNtEO/nm4fTVTfZcOarJ3y7rtMx9TsEEx9iZTzrnFMg==
 
-vue-github-button@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/vue-github-button/-/vue-github-button-1.1.2.tgz#318518c3a31d0fbd278ebcc80fbc5f88d68836e6"
-  integrity sha512-VukmgRy1wU0Ec8L8Qti4OOojQSfLRunf/In8bMqEJMXCZAz9BEgF4P+loAMBDoUqLYfyak4VJ2O7NTsZH2GLvQ==
+vue-github-button@^1.1.2, vue-github-button@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/vue-github-button/-/vue-github-button-1.3.0.tgz#a4da317a3b93d05824768b3916a0d22fa91603be"
+  integrity sha512-Cc92t+GBLwBPhwtHSvKXjbx07U3+6xdi+eR+s9c734tHbndipCLenJjLVkgErNhKZ0EvDjRyuu8Hu69gg9/TxQ==
   dependencies:
-    github-buttons "^2.3.0"
+    github-buttons "^2.8.0"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
