@@ -83,14 +83,14 @@ const breakpoints = {
   largeDown: '(max-width: 1199.98px)',
 }
 
-const { VShowAt: ShowAt, VBreakpoint: Breakpoint } = extendBreakpoint({
+const { /* VShowAt: ShowAt, */ VBreakpoint: Breakpoint } = extendBreakpoint({
   breakpoints,
 })
 
 export default {
   name: 'app',
   components: {
-    ShowAt,
+    // ShowAt,
     Breakpoint,
     ScrollToAnchor,
   },
